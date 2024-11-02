@@ -14,4 +14,19 @@
     <ProjectReference Include="..\DosPinos.HRMS.Entities\DosPinos.HRMS.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="Resources\Commons\Commons.Designer.cs">
+      <DependentUpon>Commons.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Commons\Commons.resx">
+      <LastGenOutput>Commons.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>

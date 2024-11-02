@@ -2,7 +2,7 @@
 {
     public class UpdateNotificationPOCO : EntityDTO, IUpdateNotificationPOCO
     {
-        [Range(1, int.MaxValue, ErrorMessage = "Debe proporcionar un identificador.")]
+        [Range(1, int.MaxValue, ErrorMessageResourceName = "FieldRequired", ErrorMessageResourceType = typeof(Resources.Commons.Commons))]
         public int NotificationId { get; set; }
         public bool IsRead { get; } = true;
     }

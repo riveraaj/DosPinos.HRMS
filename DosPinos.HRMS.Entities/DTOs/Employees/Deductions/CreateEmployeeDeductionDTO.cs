@@ -1,10 +1,8 @@
-﻿using DosPinos.HRMS.Entities.Interfaces.Employees.Deductions;
-
-namespace DosPinos.HRMS.Entities.DTOs.Employees.Deductions
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Deductions
 {
     public class CreateEmployeeDeductionDTO : ICreateEmployeeDeductionDTO
     {
-        public decimal DeductionAmount { get; set; }
+        public decimal DeductionAmount { get; set; } = 1;
         public byte DeductionId { get; set; }
         public int EmployeeId { get; set; }
     }

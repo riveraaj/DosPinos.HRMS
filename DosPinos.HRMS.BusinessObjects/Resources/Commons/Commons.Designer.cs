@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
+namespace DosPinos.HRMS.BusinessObjects.Resources.Commons {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Commons {
+    public class Commons {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,10 +36,10 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DosPinos.HRMS.BusinessLogic.Resources.Commons.Commons", typeof(Commons).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DosPinos.HRMS.BusinessObjects.Resources.Commons.Commons", typeof(Commons).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -51,7 +51,7 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
         /// <summary>
         ///   Looks up a localized string similar to Class unknown..
         /// </summary>
-        internal static string CallerClass {
+        public static string CallerClass {
             get {
                 return ResourceManager.GetString("CallerClass", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
         /// <summary>
         ///   Looks up a localized string similar to Method unknown..
         /// </summary>
-        internal static string CallerMethod {
+        public static string CallerMethod {
             get {
                 return ResourceManager.GetString("CallerMethod", resourceCulture);
             }
@@ -81,16 +81,25 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
         /// <summary>
         ///   Looks up a localized string similar to Ha ocurrido un error inesperado mientras procesábamos su solicitud. Por favor, intente nuevamente más tarde. Si el problema persiste, contacte al equipo de soporte técnico..
         /// </summary>
-        internal static string ErrorMessage {
+        public static string ErrorMessage {
             get {
                 return ResourceManager.GetString("ErrorMessage", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to El campo es requerido.
+        /// </summary>
+        public static string FieldRequired {
+            get {
+                return ResourceManager.GetString("FieldRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 866312E165B3C.
         /// </summary>
-        internal static string SecretIV {
+        public static string SecretIV {
             get {
                 return ResourceManager.GetString("SecretIV", resourceCulture);
             }
@@ -99,7 +108,7 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
         /// <summary>
         ///   Looks up a localized string similar to 311728D4B1874.
         /// </summary>
-        internal static string SecretKey {
+        public static string SecretKey {
             get {
                 return ResourceManager.GetString("SecretKey", resourceCulture);
             }
@@ -108,7 +117,7 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
         /// <summary>
         ///   Looks up a localized string similar to Caller Class: {0}, Caller Method: {1}..
         /// </summary>
-        internal static string SourceMessage {
+        public static string SourceMessage {
             get {
                 return ResourceManager.GetString("SourceMessage", resourceCulture);
             }
@@ -117,7 +126,7 @@ namespace DosPinos.HRMS.BusinessLogic.Resources.Commons {
         /// <summary>
         ///   Looks up a localized string similar to No se pudo completar la acción solicitada. Intente nuevamente o contacte soporte si el problema persiste..
         /// </summary>
-        internal static string WarningMessage {
+        public static string WarningMessage {
             get {
                 return ResourceManager.GetString("WarningMessage", resourceCulture);
             }

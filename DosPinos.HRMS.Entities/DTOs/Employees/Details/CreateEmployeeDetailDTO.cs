@@ -1,12 +1,9 @@
-﻿using DosPinos.HRMS.Entities.Interfaces.Employees.Details;
-
-namespace DosPinos.HRMS.Entities.DTOs.Employees.Details
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Details
 {
     public class CreateEmployeeDetailDTO : ICreateEmployeeDetailDTO
     {
         public DateOnly DateBirth { get; set; }
         public int Children { get; set; }
-        public DateOnly DateEntry { get; set; }
         public byte MaritalStatusId { get; set; }
         public byte NationalityId { get; set; }
         public byte GenderId { get; set; }

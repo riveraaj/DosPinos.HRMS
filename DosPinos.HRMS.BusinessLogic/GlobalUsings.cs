@@ -19,7 +19,6 @@ global using DosPinos.HRMS.BusinessLogic.Iterators.Overtimes.Catalogs.OvertimesT
 global using DosPinos.HRMS.BusinessLogic.Iterators.Securities.Catalogs.Roles;
 global using DosPinos.HRMS.BusinessLogic.Iterators.WorkingDays.Catalogs.Holidays;
 global using DosPinos.HRMS.BusinessLogic.Mappers;
-global using DosPinos.HRMS.BusinessLogic.Resources.Commons;
 global using DosPinos.HRMS.BusinessObjects.Enums.Commons;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Log;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notification;
@@ -60,6 +59,7 @@ global using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays.Catalogs.Holid
 global using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays.Catalogs.Holidays.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.POCOs.Commons.Log;
 global using DosPinos.HRMS.BusinessObjects.POCOs.Commons.Notification;
+global using DosPinos.HRMS.BusinessObjects.Resources.Commons;
 global using DosPinos.HRMS.Entities.Enums.Commons;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Notification;

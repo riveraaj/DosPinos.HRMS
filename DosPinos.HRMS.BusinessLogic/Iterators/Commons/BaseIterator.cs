@@ -7,7 +7,7 @@
         public IOperationResponseVO HandlerLog(Module module, ActionCategory action, Exception ex, IEntityDTO entity)
         {
             var (className, methodName) = CallerHelper.GetCallerInfo();
-            string source = string.Format(Resources.Commons.Commons.SourceMessage, className,
+            string source = string.Format(BusinessObjects.Resources.Commons.Commons.SourceMessage, className,
                                                                                    methodName);
             ILogPOCO log = new LogPOCO
             {
@@ -22,7 +22,7 @@
 
             _createLogIterator.Create(log);
 
-            return CustomError(Resources.Commons.Commons.ErrorMessage);
+            return CustomError(BusinessObjects.Resources.Commons.Commons.ErrorMessage);
         }
 
         public IOperationResponseVO CustomWarning(string message) => new OperationResponseVO()

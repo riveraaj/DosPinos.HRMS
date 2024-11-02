@@ -18,7 +18,7 @@
 
                 //Create notification
                 var result = _notificationRepository.Create(notification);
-                if (!result) response = this.CustomWarning(Resources.Commons.Commons.WarningMessage);
+                if (!result) response = this.CustomWarning(BusinessObjects.Resources.Commons.Commons.WarningMessage);
             }
             catch (Exception exception)
             {
