@@ -18,7 +18,7 @@
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Notification, ActionCategory.Create, exception, entity);
+                response = this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
             }
 
             _outputPort.Handle(response);

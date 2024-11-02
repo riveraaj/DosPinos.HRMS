@@ -13,16 +13,16 @@
             try
             {
                 // Validate DTO model
-                var validationResult = notification.ValidateModel();
-                if (!validationResult.IsValid) this.CustomWarning(validationResult.ErrorMessages);
+                Helpers.ValidationResult validationResult = notification.ValidateModel();
+                if (!validationResult.IsValid) return this.CustomWarning(validationResult.ErrorMessages);
 
                 //Create notification
                 var result = _notificationRepository.Create(notification);
-                if (!result) this.CustomWarning(Resources.Commons.Commons.WarningMessage);
+                if (!result) response = this.CustomWarning(Resources.Commons.Commons.WarningMessage);
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Notification, ActionCategory.Create, exception, notification);
+                response = this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, notification);
             }
 
             return response;

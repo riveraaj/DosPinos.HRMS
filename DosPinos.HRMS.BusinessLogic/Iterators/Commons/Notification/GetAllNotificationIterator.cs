@@ -1,8 +1,8 @@
 ﻿namespace DosPinos.HRMS.BusinessLogic.Iterators.Commons.Notification
 {
     internal class GetAllNotificationIterator(INotificationRepository notificationRepository,
-                                            ICreateLogIterator createLogIterator,
-                                            IOutputPort outputPort) : BaseIterator(createLogIterator), IGetAllNotificationInputPort
+                                              ICreateLogIterator createLogIterator,
+                                              IOutputPort outputPort) : BaseIterator(createLogIterator), IGetAllNotificationInputPort
     {
         private readonly INotificationRepository _notificationRepository = notificationRepository;
         private readonly IOutputPort _outputPort = outputPort;
@@ -19,7 +19,7 @@
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Notification, ActionCategory.Create, exception, entity);
+                response = this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
             }
 
             _outputPort.Handle(response);

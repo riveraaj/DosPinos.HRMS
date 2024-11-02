@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.InputPorts
 {
     public interface ICreateEmployeeInputPort
     {
-        void Create(ICreateEmployeeDTO employeeDTO);
+        void Process(ICreateEmployeeDTO employeeDTO);
     }
 }

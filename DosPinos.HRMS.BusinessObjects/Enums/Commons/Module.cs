@@ -15,7 +15,6 @@
         Maintenance,
         Inquiries,
         Reports,
-        Security,
-        Notification
+        Security
     }
 }

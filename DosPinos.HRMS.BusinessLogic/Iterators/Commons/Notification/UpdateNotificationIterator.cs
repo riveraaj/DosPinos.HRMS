@@ -18,8 +18,13 @@
                 IUpdateNotificationPOCO notification = NotificationMapper.MapFrom(notificationDTO);
 
                 // Validate DTO model
-                var validationResult = notification.ValidateModel();
-                if (!validationResult.IsValid) this.CustomWarning(validationResult.ErrorMessages);
+                Helpers.ValidationResult validationResult = notification.ValidateModel();
+                if (!validationResult.IsValid)
+                {
+                    response = this.CustomWarning(validationResult.ErrorMessages);
+                    _outputPort.Handle(response);
+                    return;
+                }
 
                 //Update notification
                 var result = _notificationRepository.Update(notification);
@@ -27,7 +32,7 @@
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Notification, ActionCategory.Create, exception, notificationDTO);
+                response = this.HandlerLog(Module.Maintenance, ActionCategory.Update, exception, notificationDTO);
             }
 
             _outputPort.Handle(response);
