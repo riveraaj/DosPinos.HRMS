@@ -6,6 +6,7 @@
         Headquarters,
         SystemAdministrator,
         HumanResources,
-        HumanResourcesAdministrator
+        HumanResourcesAdministrator,
+        Administrator
     }
 }

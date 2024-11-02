@@ -1,21 +1,29 @@
+using DosPinos.HRMS.Controllers.Securities.Catalogs;
+using DosPinos.HRMS.Entities.DTOs.Commons.Base;
+using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
+using DosPinos.HRMS.Entities.Interfaces.Securities.Catalogs;
 using DosPinos.HRMS.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace DosPinos.HRMS.WebApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(GetAllRoleController roleController,
+                                ILogger<HomeController> logger) : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        private readonly ILogger<HomeController> _logger = logger;
+        private readonly GetAllRoleController _roleController = roleController;
 
         public IActionResult Index()
         {
-            return View();
+            IOperationResponseVO response = _roleController.GetAll(new EntityDTO
+            {
+                UserId = 1
+            });
+
+            List<IGetAllRoleDTO> roleList = (List<IGetAllRoleDTO>)response.Content;
+
+            return View(roleList);
         }
 
         public IActionResult Privacy()
