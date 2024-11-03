@@ -10,7 +10,6 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees.Details
 
         [RequiredGreaterThanZero]
         public int Children { get; set; }
-        public DateOnly DateEntry { get; } = DateOnly.FromDateTime(DateTime.Now);
 
         [RequiredGreaterThanZero]
         public byte MaritalStatusId { get; set; }

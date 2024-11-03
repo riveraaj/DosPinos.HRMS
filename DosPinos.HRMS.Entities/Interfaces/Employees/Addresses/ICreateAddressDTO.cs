@@ -3,6 +3,6 @@
     public interface ICreateAddressDTO
     {
         string Address { get; set; }
-        byte DistrictId { get; set; }
+        short DistrictId { get; set; }
     }
 }

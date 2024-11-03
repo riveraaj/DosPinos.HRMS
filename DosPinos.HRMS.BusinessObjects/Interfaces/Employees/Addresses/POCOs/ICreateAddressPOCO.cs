@@ -3,7 +3,6 @@
     public interface ICreateAddressPOCO
     {
         string Address { get; set; }
-        byte DistrictId { get; set; }
-        int EmployeeId { get; }
+        short DistrictId { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
     internal static class PhoneMapper
     {
         public static ICreatePhonePOCO MapFrom(ICreatePhoneDTO phoneDTO, int employeeId)
-            => new CreatePhonePOCO(employeeId)
+            => new CreatePhonePOCO
             {
                 PhoneNumber = phoneDTO.PhoneNumber,
                 PhoneTypeId = phoneDTO.PhoneTypeId,

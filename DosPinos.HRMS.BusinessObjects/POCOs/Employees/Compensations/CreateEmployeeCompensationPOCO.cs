@@ -1,13 +1,11 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Compensations.POCOs;
+using DosPinos.HRMS.BusinessObjects.ValidationAttributes;
 
 namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees.Compensations
 {
-    public class CreateEmployeeCompensationPOCO(int employeeId) : ICreateEmployeeCompensationPOCO
+    public class CreateEmployeeCompensationPOCO : ICreateEmployeeCompensationPOCO
     {
-        [Range(1, int.MaxValue, ErrorMessageResourceName = "FieldRequired", ErrorMessageResourceType = typeof(Resources.Commons.Commons))]
+        [RequiredGreaterThanZero]
         public byte SalaryCategoryId { get; set; }
-
-        [Range(1, int.MaxValue, ErrorMessageResourceName = "FieldRequired", ErrorMessageResourceType = typeof(Resources.Commons.Commons))]
-        public int EmployeeId { get; } = employeeId;
     }
 }

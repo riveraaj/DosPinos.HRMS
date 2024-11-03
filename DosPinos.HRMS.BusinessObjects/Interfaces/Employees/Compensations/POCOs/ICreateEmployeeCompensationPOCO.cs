@@ -3,6 +3,5 @@
     public interface ICreateEmployeeCompensationPOCO
     {
         byte SalaryCategoryId { get; set; }
-        int EmployeeId { get; }
     }
 }

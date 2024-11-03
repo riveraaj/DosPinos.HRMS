@@ -4,7 +4,6 @@
     {
         DateOnly DateBirth { get; set; }
         int Children { get; set; }
-        DateOnly DateEntry { get; }
         byte MaritalStatusId { get; set; }
         byte NationalityId { get; set; }
         byte GenderId { get; set; }

@@ -7,7 +7,7 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
     internal static class AddressMapper
     {
         public static ICreateAddressPOCO MapFrom(ICreateAddressDTO addressDTO, int employeeId)
-            => new CreateAddressPOCO(employeeId)
+            => new CreateAddressPOCO
             {
                 Address = addressDTO.Address,
                 DistrictId = addressDTO.DistrictId,

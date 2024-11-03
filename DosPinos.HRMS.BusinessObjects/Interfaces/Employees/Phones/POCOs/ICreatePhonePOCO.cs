@@ -4,6 +4,5 @@
     {
         int PhoneNumber { get; set; }
         byte PhoneTypeId { get; set; }
-        int EmployeeId { get; }
     }
 }

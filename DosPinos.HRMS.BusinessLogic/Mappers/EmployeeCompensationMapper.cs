@@ -7,7 +7,7 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
     internal static class EmployeeCompensationMapper
     {
         public static ICreateEmployeeCompensationPOCO MapFrom(ICreateEmployeeCompensationDTO compensationDTO, int employeeId)
-            => new CreateEmployeeCompensationPOCO(employeeId)
+            => new CreateEmployeeCompensationPOCO
             {
                 SalaryCategoryId = compensationDTO.SalaryCategoryId,
             };
