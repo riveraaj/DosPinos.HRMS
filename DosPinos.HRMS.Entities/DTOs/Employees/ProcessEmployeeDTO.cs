@@ -2,7 +2,7 @@
 
 namespace DosPinos.HRMS.Entities.DTOs.Employees
 {
-    public class ProcessEmployeeDTO : IProcessEmployeeDTO
+    public class ProcessEmployeeDTO : ICreateEntireEmployeeDTO
     {
         public ICreateEmployeeDTO Employee { get; set; }
         public ICreateAddressDTO Address { get; set; }

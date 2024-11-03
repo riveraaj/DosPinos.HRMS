@@ -2,8 +2,8 @@
 
 namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.InputPorts
 {
-    internal interface IProcessEmployeeInputPort
+    internal interface ICreateEntireEmployeeInputPort
     {
-        Task Process(IProcessEmployeeDTO employeeDTO);
+        Task CreateAsync(ICreateEntireEmployeeDTO employeeDTO);
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees
 {
-    public interface IProcessEmployeeDTO
+    public interface ICreateEntireEmployeeDTO
     {
         ICreateEmployeeDTO Employee { get; set; }
         ICreateAddressDTO Address { get; set; }
