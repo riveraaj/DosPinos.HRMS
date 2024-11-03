@@ -2,6 +2,6 @@
 {
     public interface IGetAllIncapacityTypeInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

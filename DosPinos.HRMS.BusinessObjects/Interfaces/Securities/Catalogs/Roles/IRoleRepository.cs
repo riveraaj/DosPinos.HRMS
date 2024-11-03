@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Securities.Catalogs.Roles
 {
     public interface IRoleRepository
     {
-        IEnumerable<IGetAllRoleDTO> GetAll();
+        Task<IEnumerable<IGetAllRoleDTO>> GetAllAsync();
     }
 }

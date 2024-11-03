@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Details.InputPorts
 {
     public interface ICreateEmployeeDetailInputPort
     {
-        void Create(ICreateEmployeeDetailDTO detailDTO);
+        Task CreateAsync(ICreateEmployeeDetailDTO detailDTO);
     }
 }

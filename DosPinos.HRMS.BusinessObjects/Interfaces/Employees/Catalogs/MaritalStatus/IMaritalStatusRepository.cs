@@ -2,6 +2,6 @@
 {
     public interface IMaritalStatusRepository
     {
-        IEnumerable<IGetAllMaritalStatusDTO> GetAll();
+        Task<IEnumerable<IGetAllMaritalStatusDTO>> GetAllAsync();
     }
 }

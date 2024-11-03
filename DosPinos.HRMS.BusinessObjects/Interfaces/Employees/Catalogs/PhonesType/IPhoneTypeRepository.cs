@@ -2,6 +2,6 @@
 {
     public interface IPhoneTypeRepository
     {
-        IEnumerable<IGetAllPhoneTypeDTO> GetAll();
+        Task<IEnumerable<IGetAllPhoneTypeDTO>> GetAllAsync();
     }
 }

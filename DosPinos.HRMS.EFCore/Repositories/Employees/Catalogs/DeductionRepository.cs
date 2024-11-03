@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllDeductionDTO> GetAll()
+        public async Task<IEnumerable<IGetAllDeductionDTO>> GetAllAsync()
         {
             List<IGetAllDeductionDTO> response = [];
 
-            List<Deduction> deductionList = [.. _context.Deductions];
+            List<Deduction> deductionList = [.. await _context.Deductions.ToListAsync()];
 
             Parallel.ForEach(deductionList, (deduction) =>
             {

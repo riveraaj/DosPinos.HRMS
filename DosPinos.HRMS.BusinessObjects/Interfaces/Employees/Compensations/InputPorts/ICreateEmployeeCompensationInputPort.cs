@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Compensations.Input
 {
     public interface ICreateEmployeeCompensationInputPort
     {
-        void Create(ICreateEmployeeCompensationDTO compensationDTO);
+        Task CreateAsync(ICreateEmployeeCompensationDTO compensationDTO);
     }
 }

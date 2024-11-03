@@ -1,6 +1,4 @@
-﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.MaritalStatus.InputPorts;
-
-namespace DosPinos.HRMS.Controllers.Employees.Catalogs.MaritalStatus
+﻿namespace DosPinos.HRMS.Controllers.Employees.Catalogs.MaritalStatus
 {
     public class GetAllMaritalStatusController(IGetAllMaritalStatusInputPort inputPort,
                                         IOutputPort outputPort)
@@ -8,9 +6,9 @@ namespace DosPinos.HRMS.Controllers.Employees.Catalogs.MaritalStatus
         private readonly IGetAllMaritalStatusInputPort _inputPort = inputPort;
         private readonly IOutputPort _outputPort = outputPort;
 
-        public IOperationResponseVO GetAll(IEntityDTO userId)
+        public async Task<IOperationResponseVO> GetAllAsync(IEntityDTO userId)
         {
-            _inputPort.GetAll(userId);
+            await _inputPort.GetAllAsync(userId);
             return _outputPort.OperationResponse;
         }
     }

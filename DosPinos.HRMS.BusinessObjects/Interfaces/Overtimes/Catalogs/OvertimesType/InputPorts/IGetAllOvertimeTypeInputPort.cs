@@ -2,6 +2,6 @@
 {
     public interface IGetAllOvertimeTypeInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

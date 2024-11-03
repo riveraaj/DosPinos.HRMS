@@ -8,7 +8,7 @@
         private readonly INotificationRepository _notificationRepository = notificationRepository;
         private readonly IOutputPort _outputPort = outputPort;
 
-        public void Update(INotificationDTO notificationDTO)
+        public async Task UpdateAsync(INotificationDTO notificationDTO)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
@@ -27,12 +27,12 @@
                 }
 
                 //Update notification
-                var result = _notificationRepository.Update(notification);
+                var result = await _notificationRepository.UpdateAsync(notification);
                 if (!result) response = this.CustomWarning(BusinessObjects.Resources.Commons.Commons.WarningMessage);
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.Update, exception, notificationDTO);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.Update, exception, notificationDTO);
             }
 
             _outputPort.Handle(response);

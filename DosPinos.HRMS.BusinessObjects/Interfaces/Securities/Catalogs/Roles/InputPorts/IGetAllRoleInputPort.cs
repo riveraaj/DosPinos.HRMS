@@ -2,6 +2,6 @@
 {
     public interface IGetAllRoleInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

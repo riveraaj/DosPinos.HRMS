@@ -2,6 +2,6 @@
 {
     public interface IHiringTypeRepository
     {
-        IEnumerable<IGetAllHiringTypeDTO> GetAll();
+        Task<IEnumerable<IGetAllHiringTypeDTO>> GetAllAsync();
     }
 }

@@ -1,9 +1,7 @@
-﻿using DosPinos.HRMS.Entities.Interfaces.WorkingDays.Catalogs;
-
-namespace DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays.Catalogs.Holidays
+﻿namespace DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays.Catalogs.Holidays
 {
     public interface IHolidayRepository
     {
-        IEnumerable<IGetAllHolidayDTO> GetAll();
+        Task<IEnumerable<IGetAllHolidayDTO>> GetAllAsync();
     }
 }

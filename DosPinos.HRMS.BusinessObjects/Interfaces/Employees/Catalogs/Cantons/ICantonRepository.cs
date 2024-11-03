@@ -2,6 +2,6 @@
 {
     public interface ICantonRepository
     {
-        IEnumerable<IGetAllCantonDTO> GetAll();
+        Task<IEnumerable<IGetAllCantonDTO>> GetAllAsync();
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IGetAllGenderInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

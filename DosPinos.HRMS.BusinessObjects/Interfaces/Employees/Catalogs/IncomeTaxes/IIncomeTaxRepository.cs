@@ -2,6 +2,6 @@
 {
     public interface IIncomeTaxRepository
     {
-        IEnumerable<IGetAllIncomeTaxDTO> GetAll();
+        Task<IEnumerable<IGetAllIncomeTaxDTO>> GetAllAsync();
     }
 }

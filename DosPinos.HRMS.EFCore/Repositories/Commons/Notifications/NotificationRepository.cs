@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<INotificationDTO> GetAll(int userId)
+        public async Task<IEnumerable<INotificationDTO>> GetAllAsync(int userId)
         {
             List<INotificationDTO> result = [];
 
-            List<Notification> notificationList = [.. _context.Notifications];
+            List<Notification> notificationList = [.. await _context.Notifications.ToListAsync()];
 
             foreach (var notification in notificationList)
                 result.Add(NotificationMapper.MapFrom(notification));
@@ -16,24 +16,24 @@
             return result;
         }
 
-        public bool Create(ICreateNotificationPOCO notificationPOCO)
+        public async Task<bool> CreateAsync(ICreateNotificationPOCO notificationPOCO)
         {
             Notification notification = NotificationMapper.MapFrom(notificationPOCO);
 
-            _context.Notifications.Add(notification);
-            int result = _context.SaveChanges();
+            await _context.Notifications.AddAsync(notification);
+            int result = await _context.SaveChangesAsync();
 
             return result > 0;
         }
 
-        public bool Update(IUpdateNotificationPOCO notificationPOCO)
+        public async Task<bool> UpdateAsync(IUpdateNotificationPOCO notificationPOCO)
         {
             Notification notification = _context.Notifications.FirstOrDefault(n => n.NotificationId == notificationPOCO.NotificationId);
 
             if (notification == null) return false;
 
             notification.Read = notificationPOCO.IsRead;
-            int result = _context.SaveChanges();
+            int result = await _context.SaveChangesAsync();
 
             return result > 0;
         }

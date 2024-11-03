@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllCantonDTO> GetAll()
+        public async Task<IEnumerable<IGetAllCantonDTO>> GetAllAsync()
         {
             List<IGetAllCantonDTO> response = [];
 
-            List<Canton> cantonList = [.. _context.Cantons];
+            List<Canton> cantonList = [.. await _context.Cantons.ToListAsync()];
 
             Parallel.ForEach(cantonList, (canton) =>
             {

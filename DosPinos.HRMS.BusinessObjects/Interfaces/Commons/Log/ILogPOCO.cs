@@ -2,7 +2,7 @@
 {
     public interface ILogPOCO : IEntityDTO
     {
-        DateTime TimeStamp { get; set; }
+        DateTime TimeStamp { get; }
         string Source { get; set; }
         string Message { get; set; }
         string Exeption { get; set; }

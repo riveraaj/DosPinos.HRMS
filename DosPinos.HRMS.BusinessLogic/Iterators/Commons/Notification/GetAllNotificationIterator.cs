@@ -7,19 +7,19 @@
         private readonly INotificationRepository _notificationRepository = notificationRepository;
         private readonly IOutputPort _outputPort = outputPort;
 
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all notification where is not read
-                List<INotificationDTO> notificationList = _notificationRepository.GetAll(entity.UserId).ToList();
+                IEnumerable<INotificationDTO> notificationList = await _notificationRepository.GetAllAsync(entity.UserId);
                 response.Content = notificationList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
             }
 
             _outputPort.Handle(response);

@@ -2,6 +2,6 @@
 {
     public interface INationalityRepository
     {
-        IEnumerable<IGetAllNationalityDTO> GetAll();
+        Task<IEnumerable<IGetAllNationalityDTO>> GetAllAsync();
     }
 }

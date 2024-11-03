@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllDistrictDTO> GetAll()
+        public async Task<IEnumerable<IGetAllDistrictDTO>> GetAllAsync()
         {
             List<IGetAllDistrictDTO> response = [];
 
-            List<District> districtList = [.. _context.Districts];
+            List<District> districtList = [.. await _context.Districts.ToListAsync()];
 
             Parallel.ForEach(districtList, (district) =>
             {

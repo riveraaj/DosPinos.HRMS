@@ -6,19 +6,19 @@
     {
         private readonly IHolidayRepository _holidayRepository = holidayRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all holidays
-                List<IGetAllHolidayDTO> holidayList = _holidayRepository.GetAll().ToList();
+                IEnumerable<IGetAllHolidayDTO> holidayList = await _holidayRepository.GetAllAsync();
                 response.Content = holidayList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, entity);
             }
 
             _outputPort.Handle(response);

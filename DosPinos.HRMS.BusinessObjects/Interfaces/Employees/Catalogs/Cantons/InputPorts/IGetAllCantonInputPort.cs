@@ -2,6 +2,6 @@
 {
     public interface IGetAllCantonInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

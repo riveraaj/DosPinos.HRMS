@@ -2,6 +2,6 @@
 {
     public interface ILogRepository
     {
-        bool Create(ILogPOCO log);
+        Task<bool> CreateAsync(ILogPOCO log);
     }
 }

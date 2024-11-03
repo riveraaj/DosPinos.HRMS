@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllHolidayDTO> GetAll()
+        public async Task<IEnumerable<IGetAllHolidayDTO>> GetAllAsync()
         {
             List<IGetAllHolidayDTO> response = [];
 
-            List<Holiday> holidayList = [.. _context.Holidays];
+            List<Holiday> holidayList = [.. await _context.Holidays.ToListAsync()];
 
             Parallel.ForEach(holidayList, (holiday) =>
             {

@@ -6,19 +6,19 @@
     {
         private readonly IOvertimeTypeRepository _overtimeTypeRepository = overtimeTypeRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all overtime types
-                List<IGetAllOvertimeTypeDTO> overtimeTypeList = _overtimeTypeRepository.GetAll().ToList();
+                IEnumerable<IGetAllOvertimeTypeDTO> overtimeTypeList = await _overtimeTypeRepository.GetAllAsync();
                 response.Content = overtimeTypeList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, entity);
             }
 
             _outputPort.Handle(response);

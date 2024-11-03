@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllGenderDTO> GetAll()
+        public async Task<IEnumerable<IGetAllGenderDTO>> GetAllAsync()
         {
             List<IGetAllGenderDTO> response = [];
 
-            List<Gender> genderList = [.. _context.Genders];
+            List<Gender> genderList = [.. await _context.Genders.ToListAsync()];
 
             Parallel.ForEach(genderList, (gender) =>
             {

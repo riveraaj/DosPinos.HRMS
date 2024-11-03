@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllIncomeTaxDTO> GetAll()
+        public async Task<IEnumerable<IGetAllIncomeTaxDTO>> GetAllAsync()
         {
             List<IGetAllIncomeTaxDTO> response = [];
 
-            List<IncomeTax> incomeTaxList = [.. _context.IncomeTaxes];
+            List<IncomeTax> incomeTaxList = [.. await _context.IncomeTaxes.ToListAsync()];
 
             Parallel.ForEach(incomeTaxList, (incomeTax) =>
             {

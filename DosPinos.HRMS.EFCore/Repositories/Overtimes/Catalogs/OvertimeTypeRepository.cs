@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllOvertimeTypeDTO> GetAll()
+        public async Task<IEnumerable<IGetAllOvertimeTypeDTO>> GetAllAsync()
         {
             List<IGetAllOvertimeTypeDTO> response = [];
 
-            List<OvertimeType> overtimeTypeList = [.. _context.OvertimeTypes];
+            List<OvertimeType> overtimeTypeList = [.. await _context.OvertimeTypes.ToListAsync()];
 
             Parallel.ForEach(overtimeTypeList, (overtimeType) =>
             {

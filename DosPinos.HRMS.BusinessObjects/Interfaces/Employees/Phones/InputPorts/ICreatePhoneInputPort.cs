@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Phones.InputPorts
 {
     public interface ICreatePhoneInputPort
     {
-        void Create(ICreatePhoneDTO phoneDTO);
+        Task CreateAsync(ICreatePhoneDTO phoneDTO);
     }
 }

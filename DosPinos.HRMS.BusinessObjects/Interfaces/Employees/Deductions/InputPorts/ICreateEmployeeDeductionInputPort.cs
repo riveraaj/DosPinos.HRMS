@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Deductions.InputPor
 {
     public interface ICreateEmployeeDeductionInputPort
     {
-        void Create(ICreateEmployeeDeductionDTO deductionDTO);
+        Task CreateAsync(ICreateEmployeeDeductionDTO deductionDTO);
     }
 }

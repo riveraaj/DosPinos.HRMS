@@ -4,6 +4,6 @@
     {
         private readonly ILogRepository _logRepository = logRepository;
 
-        public void Create(ILogPOCO log) => _logRepository.Create(log);
+        public async Task CreateAsync(ILogPOCO log) => await _logRepository.CreateAsync(log);
     }
 }

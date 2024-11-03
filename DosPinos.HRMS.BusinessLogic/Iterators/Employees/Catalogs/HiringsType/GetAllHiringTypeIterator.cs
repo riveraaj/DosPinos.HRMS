@@ -6,19 +6,19 @@
     {
         private readonly IHiringTypeRepository _hiringTypeRepository = hiringTypeRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all hiringTypes
-                List<IGetAllHiringTypeDTO> hiringTypeList = _hiringTypeRepository.GetAll().ToList();
+                IEnumerable<IGetAllHiringTypeDTO> hiringTypeList = await _hiringTypeRepository.GetAllAsync();
                 response.Content = hiringTypeList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
             }
 
             _outputPort.Handle(response);

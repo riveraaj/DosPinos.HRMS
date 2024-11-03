@@ -2,6 +2,6 @@
 {
     public interface ICreateLogIterator
     {
-        void Create(ILogPOCO log);
+        Task CreateAsync(ILogPOCO log);
     }
 }

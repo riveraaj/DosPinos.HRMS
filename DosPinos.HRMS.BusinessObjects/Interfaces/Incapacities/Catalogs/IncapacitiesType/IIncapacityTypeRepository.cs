@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities.Catalogs.Incapac
 {
     public interface IIncapacityTypeRepository
     {
-        IEnumerable<IGetAllIncapacityTypeDTO> GetAll();
+        Task<IEnumerable<IGetAllIncapacityTypeDTO>> GetAllAsync();
     }
 }

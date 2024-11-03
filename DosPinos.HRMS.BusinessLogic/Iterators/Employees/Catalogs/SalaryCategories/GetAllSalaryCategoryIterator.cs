@@ -6,19 +6,19 @@
     {
         private readonly ISalaryCategoryRepository _salaryCategoryRepository = salaryCategoryRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all salaryCategorys
-                List<IGetAllSalaryCategoryDTO> salaryCategoryList = _salaryCategoryRepository.GetAll().ToList();
+                IEnumerable<IGetAllSalaryCategoryDTO> salaryCategoryList = await _salaryCategoryRepository.GetAllAsync();
                 response.Content = salaryCategoryList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
             }
 
             _outputPort.Handle(response);

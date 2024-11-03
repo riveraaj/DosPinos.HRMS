@@ -2,6 +2,6 @@
 {
     public interface IGetAllHiringTypeInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

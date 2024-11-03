@@ -2,6 +2,6 @@
 {
     public interface IDistrictRepository
     {
-        IEnumerable<IGetAllDistrictDTO> GetAll();
+        Task<IEnumerable<IGetAllDistrictDTO>> GetAllAsync();
     }
 }

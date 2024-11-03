@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Addresses.InputPort
 {
     public interface ICreateAddressInputPort
     {
-        void Create(ICreateAddressDTO addressDTO);
+        Task CreateAsync(ICreateAddressDTO addressDTO);
     }
 }

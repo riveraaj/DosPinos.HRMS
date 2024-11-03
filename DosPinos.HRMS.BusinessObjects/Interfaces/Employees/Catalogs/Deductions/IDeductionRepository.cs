@@ -2,6 +2,6 @@
 {
     public interface IDeductionRepository
     {
-        IEnumerable<IGetAllDeductionDTO> GetAll();
+        Task<IEnumerable<IGetAllDeductionDTO>> GetAllAsync();
     }
 }

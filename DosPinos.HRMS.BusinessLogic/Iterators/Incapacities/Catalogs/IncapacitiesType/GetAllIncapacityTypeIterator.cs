@@ -6,19 +6,19 @@
     {
         private readonly IIncapacityTypeRepository _incapacityTypeRepository = incapacityTypeRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all incapacity types
-                List<IGetAllIncapacityTypeDTO> incapacityTypeList = _incapacityTypeRepository.GetAll().ToList();
+                IEnumerable<IGetAllIncapacityTypeDTO> incapacityTypeList = await _incapacityTypeRepository.GetAllAsync();
                 response.Content = incapacityTypeList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, entity);
             }
 
             _outputPort.Handle(response);

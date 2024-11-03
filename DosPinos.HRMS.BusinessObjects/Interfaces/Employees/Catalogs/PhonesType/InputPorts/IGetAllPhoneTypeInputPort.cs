@@ -2,6 +2,6 @@
 {
     public interface IGetAllPhoneTypeInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

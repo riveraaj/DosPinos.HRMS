@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.InputPorts
 {
     internal interface IProcessEmployeeInputPort
     {
-        void Process(IProcessEmployeeDTO employeeDTO);
+        Task Process(IProcessEmployeeDTO employeeDTO);
     }
 }

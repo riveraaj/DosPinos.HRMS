@@ -4,7 +4,7 @@
     {
         private readonly ICreateLogIterator _createLogIterator = createLogIterator;
 
-        public IOperationResponseVO HandlerLog(Module module, ActionCategory action, Exception ex, IEntityDTO entity)
+        public async Task<IOperationResponseVO> HandlerLog(Module module, ActionCategory action, Exception ex, IEntityDTO entity)
         {
             var (className, methodName) = CallerHelper.GetCallerInfo();
             string source = string.Format(BusinessObjects.Resources.Commons.Commons.SourceMessage, className,
@@ -20,7 +20,7 @@
                 UserId = entity.UserId
             };
 
-            _createLogIterator.Create(log);
+            await _createLogIterator.CreateAsync(log);
 
             return CustomError(BusinessObjects.Resources.Commons.Commons.ErrorMessage);
         }

@@ -2,6 +2,6 @@
 {
     public interface ISalaryCategoryRepository
     {
-        IEnumerable<IGetAllSalaryCategoryDTO> GetAll();
+        Task<IEnumerable<IGetAllSalaryCategoryDTO>> GetAllAsync();
     }
 }

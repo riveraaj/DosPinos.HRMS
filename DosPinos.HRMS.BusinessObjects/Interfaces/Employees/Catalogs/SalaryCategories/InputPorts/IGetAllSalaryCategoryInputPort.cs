@@ -2,6 +2,6 @@
 {
     public interface IGetAllSalaryCategoryInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

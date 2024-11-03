@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllJobTitleDTO> GetAll()
+        public async Task<IEnumerable<IGetAllJobTitleDTO>> GetAllAsync()
         {
             List<IGetAllJobTitleDTO> response = [];
 
-            List<JobTitle> jobTitleList = [.. _context.JobTitles];
+            List<JobTitle> jobTitleList = [.. await _context.JobTitles.ToListAsync()];
 
             Parallel.ForEach(jobTitleList, (jobTitle) =>
             {

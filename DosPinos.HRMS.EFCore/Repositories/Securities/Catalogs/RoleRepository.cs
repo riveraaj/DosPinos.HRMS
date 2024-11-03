@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllRoleDTO> GetAll()
+        public async Task<IEnumerable<IGetAllRoleDTO>> GetAllAsync()
         {
             List<IGetAllRoleDTO> response = [];
 
-            List<Role> roleList = [.. _context.Roles];
+            List<Role> roleList = [.. await _context.Roles.ToListAsync()];
 
             Parallel.ForEach(roleList, (role) =>
             {

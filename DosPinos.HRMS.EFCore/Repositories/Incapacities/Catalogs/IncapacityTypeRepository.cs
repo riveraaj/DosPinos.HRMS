@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllIncapacityTypeDTO> GetAll()
+        public async Task<IEnumerable<IGetAllIncapacityTypeDTO>> GetAllAsync()
         {
             List<IGetAllIncapacityTypeDTO> response = [];
 
-            List<IncapacityType> incapacityTypeList = [.. _context.IncapacityTypes];
+            List<IncapacityType> incapacityTypeList = [.. await _context.IncapacityTypes.ToListAsync()];
 
             Parallel.ForEach(incapacityTypeList, (incapacityType) =>
             {

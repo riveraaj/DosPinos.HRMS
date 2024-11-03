@@ -2,6 +2,6 @@
 {
     public interface IGetAllDistrictInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

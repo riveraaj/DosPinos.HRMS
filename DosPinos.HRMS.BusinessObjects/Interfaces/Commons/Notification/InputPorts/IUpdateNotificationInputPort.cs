@@ -2,6 +2,6 @@
 {
     public interface IUpdateNotificationInputPort
     {
-        void Update(INotificationDTO notification);
+        Task UpdateAsync(INotificationDTO notification);
     }
 }

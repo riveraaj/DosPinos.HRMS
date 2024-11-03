@@ -2,6 +2,6 @@
 {
     public interface IGenderRepository
     {
-        IEnumerable<IGetAllGenderDTO> GetAll();
+        Task<IEnumerable<IGetAllGenderDTO>> GetAllAsync();
     }
 }

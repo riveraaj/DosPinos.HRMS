@@ -2,6 +2,6 @@
 {
     public interface IGetAllNotificationInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

@@ -6,9 +6,9 @@
         private readonly IGetAllNotificationInputPort _inputPort = inputPort;
         private readonly IOutputPort _outputPort = outputPort;
 
-        public IOperationResponseVO GetAll(IEntityDTO userId)
+        public async Task<IOperationResponseVO> GetAllAsync(IEntityDTO userId)
         {
-            _inputPort.GetAll(userId);
+            await _inputPort.GetAllAsync(userId);
             return _outputPort.OperationResponse;
         }
     }

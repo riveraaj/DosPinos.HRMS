@@ -6,19 +6,19 @@
     {
         private readonly IRoleRepository _roleRepository = roleRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all roles
-                List<IGetAllRoleDTO> roleList = _roleRepository.GetAll().ToList();
+                IEnumerable<IGetAllRoleDTO> roleList = await _roleRepository.GetAllAsync();
                 response.Content = roleList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, entity);
             }
 
             _outputPort.Handle(response);

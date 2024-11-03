@@ -6,19 +6,19 @@
     {
         private readonly IProvinceRepository _provinceRepository = provinceRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all provinces
-                List<IGetAllProvinceDTO> provinceList = _provinceRepository.GetAll().ToList();
+                IEnumerable<IGetAllProvinceDTO> provinceList = await _provinceRepository.GetAllAsync();
                 response.Content = provinceList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
             }
 
             _outputPort.Handle(response);

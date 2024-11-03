@@ -6,19 +6,19 @@
     {
         private readonly IGenderRepository _genderRepository = genderRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all genders
-                List<IGetAllGenderDTO> genderList = _genderRepository.GetAll().ToList();
+                IEnumerable<IGetAllGenderDTO> genderList = await _genderRepository.GetAllAsync();
                 response.Content = genderList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
             }
 
             _outputPort.Handle(response);

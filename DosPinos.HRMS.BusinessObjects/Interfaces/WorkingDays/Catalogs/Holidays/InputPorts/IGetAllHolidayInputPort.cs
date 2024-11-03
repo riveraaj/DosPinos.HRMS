@@ -2,6 +2,6 @@
 {
     public interface IGetAllHolidayInputPort
     {
-        void GetAll(IEntityDTO entity);
+        Task GetAllAsync(IEntityDTO entity);
     }
 }

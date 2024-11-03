@@ -2,8 +2,8 @@
 {
     public interface INotificationRepository
     {
-        IEnumerable<INotificationDTO> GetAll(int userId);
-        bool Create(ICreateNotificationPOCO notification);
-        bool Update(IUpdateNotificationPOCO notification);
+        Task<IEnumerable<INotificationDTO>> GetAllAsync(int userId);
+        Task<bool> CreateAsync(ICreateNotificationPOCO notification);
+        Task<bool> UpdateAsync(IUpdateNotificationPOCO notification);
     }
 }

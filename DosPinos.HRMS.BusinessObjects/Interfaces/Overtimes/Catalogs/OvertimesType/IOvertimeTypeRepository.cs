@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Overtimes.Catalogs.OvertimesT
 {
     public interface IOvertimeTypeRepository
     {
-        IEnumerable<IGetAllOvertimeTypeDTO> GetAll();
+        Task<IEnumerable<IGetAllOvertimeTypeDTO>> GetAllAsync();
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IJobTitleRepository
     {
-        IEnumerable<IGetAllJobTitleDTO> GetAll();
+        Task<IEnumerable<IGetAllJobTitleDTO>> GetAllAsync();
     }
 }

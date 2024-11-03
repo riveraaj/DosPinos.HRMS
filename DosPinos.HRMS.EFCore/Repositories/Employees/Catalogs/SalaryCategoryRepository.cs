@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllSalaryCategoryDTO> GetAll()
+        public async Task<IEnumerable<IGetAllSalaryCategoryDTO>> GetAllAsync()
         {
             List<IGetAllSalaryCategoryDTO> response = [];
 
-            List<SalaryCategory> salaryCategoryList = [.. _context.SalaryCategories];
+            List<SalaryCategory> salaryCategoryList = [.. await _context.SalaryCategories.ToListAsync()];
 
             Parallel.ForEach(salaryCategoryList, (salaryCategory) =>
             {

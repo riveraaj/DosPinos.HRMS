@@ -2,6 +2,6 @@
 {
     public interface IProvinceRepository
     {
-        IEnumerable<IGetAllProvinceDTO> GetAll();
+        Task<IEnumerable<IGetAllProvinceDTO>> GetAllAsync();
     }
 }

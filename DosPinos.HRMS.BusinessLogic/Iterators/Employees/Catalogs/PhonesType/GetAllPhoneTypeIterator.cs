@@ -6,19 +6,19 @@
     {
         private readonly IPhoneTypeRepository _phoneTypeRepository = phoneTypeRepository;
         private readonly IOutputPort _outputPort = outputPort;
-        public void GetAll(IEntityDTO entity)
+        public async Task GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
             try
             {
                 //Get all phoneTypes
-                List<IGetAllPhoneTypeDTO> phoneTypeList = _phoneTypeRepository.GetAll().ToList();
+                IEnumerable<IGetAllPhoneTypeDTO> phoneTypeList = await _phoneTypeRepository.GetAllAsync();
                 response.Content = phoneTypeList;
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
             }
 
             _outputPort.Handle(response);

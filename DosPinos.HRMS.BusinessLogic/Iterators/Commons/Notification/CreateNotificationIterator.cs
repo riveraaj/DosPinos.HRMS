@@ -6,7 +6,7 @@
     {
         private readonly INotificationRepository _notificationRepository = notificationRepository;
 
-        public IOperationResponseVO Create(ICreateNotificationPOCO notification)
+        public async Task<IOperationResponseVO> CreateAsync(ICreateNotificationPOCO notification)
         {
             IOperationResponseVO response = new OperationResponseVO();
 
@@ -17,12 +17,12 @@
                 if (!validationResult.IsValid) return this.CustomWarning(validationResult.ErrorMessages);
 
                 //Create notification
-                var result = _notificationRepository.Create(notification);
+                var result = await _notificationRepository.CreateAsync(notification);
                 if (!result) response = this.CustomWarning(BusinessObjects.Resources.Commons.Commons.WarningMessage);
             }
             catch (Exception exception)
             {
-                response = this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, notification);
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.Create, exception, notification);
             }
 
             return response;

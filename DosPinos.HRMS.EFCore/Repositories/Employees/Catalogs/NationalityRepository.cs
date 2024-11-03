@@ -4,11 +4,11 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public IEnumerable<IGetAllNationalityDTO> GetAll()
+        public async Task<IEnumerable<IGetAllNationalityDTO>> GetAllAsync()
         {
             List<IGetAllNationalityDTO> response = [];
 
-            List<Nationality> nationalityList = [.. _context.Nationalities];
+            List<Nationality> nationalityList = [.. await _context.Nationalities.ToListAsync()];
 
             Parallel.ForEach(nationalityList, (nationality) =>
             {

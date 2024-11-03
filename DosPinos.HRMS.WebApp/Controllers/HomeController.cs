@@ -14,9 +14,9 @@ namespace DosPinos.HRMS.WebApp.Controllers
         private readonly ILogger<HomeController> _logger = logger;
         private readonly GetAllRoleController _roleController = roleController;
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            IOperationResponseVO response = _roleController.GetAll(new EntityDTO
+            IOperationResponseVO response = await _roleController.GetAllAsync(new EntityDTO
             {
                 UserId = 1
             });
