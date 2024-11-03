@@ -11,7 +11,7 @@ public partial class License
 
     public DateOnly DateEnd { get; set; }
 
-    public string PathDocumentation { get; set; }
+    public string DocumentationPath { get; set; }
 
     public bool MandatoryPayment { get; set; }
 

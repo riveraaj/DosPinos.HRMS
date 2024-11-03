@@ -97,6 +97,8 @@ public partial class DospinosdbContext : DbContext
 
     public virtual DbSet<Vacation> Vacations { get; set; }
 
+    public virtual DbSet<VwActiveEmployee> VwActiveEmployees { get; set; }
+
     public virtual DbSet<WorkingDay> WorkingDays { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -106,6 +108,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.ActionCategoryId).HasName("PK_action_category_id");
 
             entity.ToTable("action_category", "humanresources");
+
+            entity.HasIndex(e => e.ActionCategoryDescription, "UK_action_category_description").IsUnique();
 
             entity.Property(e => e.ActionCategoryId)
                 .ValueGeneratedOnAdd()
@@ -190,16 +194,14 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("deduction", "humanresources");
 
-            entity.HasIndex(e => e.DeductionPercentage, "IDX_deduction_percentage");
-
-            entity.HasIndex(e => e.DeductionDescription, "IDX_deduction_type");
+            entity.HasIndex(e => e.DeductionDescription, "UK_deduction_description").IsUnique();
 
             entity.Property(e => e.DeductionId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("deduction_id");
             entity.Property(e => e.DeductionDescription)
                 .IsRequired()
-                .HasMaxLength(50)
+                .HasMaxLength(25)
                 .IsUnicode(false)
                 .HasColumnName("deduction_description");
             entity.Property(e => e.DeductionPercentage)
@@ -234,8 +236,6 @@ public partial class DospinosdbContext : DbContext
 
             entity.HasIndex(e => e.Identification, "UK_employee_indentification").IsUnique();
 
-            entity.HasIndex(e => e.Identification, "[IDX_employee_identification").IsUnique();
-
             entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
             entity.Property(e => e.EmployeeStatus)
                 .HasDefaultValue(true)
@@ -254,7 +254,6 @@ public partial class DospinosdbContext : DbContext
             entity.Property(e => e.ManagerId).HasColumnName("manager_id");
             entity.Property(e => e.OvertimeExcess).HasColumnName("overtime_excess");
             entity.Property(e => e.SecondLastName)
-                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("second_last_name");
@@ -270,12 +269,7 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("employee_compensation", "humanresources");
 
-            entity.HasIndex(e => e.EmployeeId, "idx_employee_compensation_employee");
-
             entity.Property(e => e.EmployeeCompensationId).HasColumnName("employee_compensation_id");
-            entity.Property(e => e.Bonus)
-                .HasColumnType("decimal(10, 2)")
-                .HasColumnName("bonus");
             entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
             entity.Property(e => e.SalaryCategoryId).HasColumnName("salary_category_id");
 
@@ -296,12 +290,9 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("employee_deduction", "humanresources");
 
-            entity.HasIndex(e => e.DeductionId, "IDX_employee_deduction_deduction");
-
-            entity.HasIndex(e => e.EmployeeId, "IDX_employee_deduction_employee");
-
             entity.Property(e => e.EmployeeDeductionId).HasColumnName("employee_deduction_id");
             entity.Property(e => e.DeductionAmount)
+                .HasDefaultValue(1m)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("deduction_amount");
             entity.Property(e => e.DeductionId).HasColumnName("deduction_id");
@@ -324,14 +315,12 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("employee_detail", "humanresources");
 
-            entity.HasIndex(e => new { e.MaritalStatusId, e.NationalityId, e.GenderId }, "IDX_employee_detail_attributes");
-
-            entity.HasIndex(e => e.EmployeeId, "IDX_employee_detail_employee");
-
             entity.Property(e => e.EmployeeDetailId).HasColumnName("employee_detail_id");
             entity.Property(e => e.Children).HasColumnName("children");
             entity.Property(e => e.DateBirth).HasColumnName("date_birth");
-            entity.Property(e => e.DateEntry).HasColumnName("date_entry");
+            entity.Property(e => e.DateEntry)
+                .HasDefaultValueSql("(getdate())")
+                .HasColumnName("date_entry");
             entity.Property(e => e.Deceased).HasColumnName("deceased");
             entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
             entity.Property(e => e.GenderId).HasColumnName("gender_id");
@@ -521,6 +510,8 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("gender", "humanresources");
 
+            entity.HasIndex(e => e.GenderDescription, "UK_gender_description").IsUnique();
+
             entity.Property(e => e.GenderId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("gender_id");
@@ -535,6 +526,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.HiringTypeId).HasName("PK_hiring_type_id");
 
             entity.ToTable("hiring_type", "humanresources");
+
+            entity.HasIndex(e => e.HiringTypeDescription, "UK_hiring_type_description").IsUnique();
 
             entity.Property(e => e.HiringTypeId)
                 .ValueGeneratedOnAdd()
@@ -581,6 +574,7 @@ public partial class DospinosdbContext : DbContext
             entity.Property(e => e.DateEnd).HasColumnName("date_end");
             entity.Property(e => e.DateStart).HasColumnName("date_start");
             entity.Property(e => e.DocumentationPath)
+                .IsRequired()
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("documentation_path");
@@ -603,6 +597,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.IncapacityTypeId).HasName("PK_incapacity_type_id");
 
             entity.ToTable("incapacity_type", "humanresources");
+
+            entity.HasIndex(e => e.IncapacityTypeDescription, "UK_incapacity_type_description").IsUnique();
 
             entity.Property(e => e.IncapacityTypeId)
                 .ValueGeneratedOnAdd()
@@ -634,7 +630,7 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("job_title", "humanresources");
 
-            entity.HasIndex(e => e.JobTitleDescription, "idx_job_title_name");
+            entity.HasIndex(e => e.JobTitleDescription, "UK_job_title_description").IsUnique();
 
             entity.Property(e => e.JobTitleId)
                 .ValueGeneratedOnAdd()
@@ -662,16 +658,15 @@ public partial class DospinosdbContext : DbContext
                 .HasColumnName("approval_status");
             entity.Property(e => e.DateEnd).HasColumnName("date_end");
             entity.Property(e => e.DateStart).HasColumnName("date_start");
+            entity.Property(e => e.DocumentationPath)
+                .HasMaxLength(100)
+                .IsUnicode(false)
+                .HasColumnName("documentation_path");
             entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
             entity.Property(e => e.LicenseTypeId).HasColumnName("license_type_id");
             entity.Property(e => e.MandatoryPayment)
                 .HasDefaultValue(true)
                 .HasColumnName("mandatory_payment");
-            entity.Property(e => e.PathDocumentation)
-                .IsRequired()
-                .HasMaxLength(100)
-                .IsUnicode(false)
-                .HasColumnName("path_documentation");
 
             entity.HasOne(d => d.Employee).WithMany(p => p.Licenses)
                 .HasForeignKey(d => d.EmployeeId)
@@ -689,6 +684,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.LicenseTypeId).HasName("PK_license_type_id");
 
             entity.ToTable("license_type", "humanresources");
+
+            entity.HasIndex(e => e.LicenseTypeDescription, "UK_license_type_description").IsUnique();
 
             entity.Property(e => e.LicenseTypeId)
                 .ValueGeneratedOnAdd()
@@ -770,6 +767,8 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("machine", "humanresources");
 
+            entity.HasIndex(e => e.MachineDescription, "UK_machine_description").IsUnique();
+
             entity.Property(e => e.MachineId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("machine_id");
@@ -784,6 +783,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.MaritalStatusId).HasName("PK_marital_status_id");
 
             entity.ToTable("marital_status", "humanresources");
+
+            entity.HasIndex(e => e.MaritalStatusDescription, "UK_marital_status_description").IsUnique();
 
             entity.Property(e => e.MaritalStatusId)
                 .ValueGeneratedOnAdd()
@@ -801,6 +802,8 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("module", "humanresources");
 
+            entity.HasIndex(e => e.ModuleDescription, "UK_module_description").IsUnique();
+
             entity.Property(e => e.ModuleId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("module_id");
@@ -816,6 +819,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.NationalityId).HasName("PK_nationality_id");
 
             entity.ToTable("nationality", "humanresources");
+
+            entity.HasIndex(e => e.NationalityDescription, "UK_nationality_description").IsUnique();
 
             entity.Property(e => e.NationalityId)
                 .ValueGeneratedOnAdd()
@@ -916,6 +921,8 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("overtime_type", "humanresources");
 
+            entity.HasIndex(e => e.OvertimeTypeDescription, "UK_overtime_type_description").IsUnique();
+
             entity.Property(e => e.OvertimeTypeId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("overtime_type_id");
@@ -995,6 +1002,8 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("phone_type", "humanresources");
 
+            entity.HasIndex(e => e.PhoneTypeDescription, "UK_phone_type_description").IsUnique();
+
             entity.Property(e => e.PhoneTypeId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("phone_type_id");
@@ -1010,6 +1019,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.ProvinceId).HasName("PK_province_id");
 
             entity.ToTable("province", "humanresources");
+
+            entity.HasIndex(e => e.ProvinceDescription, "UK_province_description").IsUnique();
 
             entity.Property(e => e.ProvinceId)
                 .ValueGeneratedOnAdd()
@@ -1051,6 +1062,8 @@ public partial class DospinosdbContext : DbContext
 
             entity.ToTable("role", "humanresources");
 
+            entity.HasIndex(e => e.RoleDescription, "UK_role_description").IsUnique();
+
             entity.Property(e => e.RoleId)
                 .ValueGeneratedOnAdd()
                 .HasColumnName("role_id");
@@ -1066,6 +1079,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.SalaryCategoryId).HasName("PK_salary_category_id");
 
             entity.ToTable("salary_category", "humanresources");
+
+            entity.HasIndex(e => e.SalaryCategoryDescription, "UK_salary_category_description").IsUnique();
 
             entity.Property(e => e.SalaryCategoryId)
                 .ValueGeneratedOnAdd()
@@ -1091,10 +1106,6 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.UserId).HasName("PK_user_id");
 
             entity.ToTable("user", "humanresources");
-
-            entity.HasIndex(e => e.Email, "IDX_user_email").IsUnique();
-
-            entity.HasIndex(e => e.RoleId, "IDX_user_role");
 
             entity.HasIndex(e => e.Email, "UK_email").IsUnique();
 
@@ -1154,6 +1165,52 @@ public partial class DospinosdbContext : DbContext
                 .HasForeignKey(d => d.EmployeeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_vacation_employee_id");
+        });
+
+        modelBuilder.Entity<VwActiveEmployee>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("vw_ActiveEmployee", "humanresources");
+
+            entity.Property(e => e.DateEntry).HasColumnName("date_entry");
+            entity.Property(e => e.FirstLastName)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("first_last_name");
+            entity.Property(e => e.FirstName)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("first_name");
+            entity.Property(e => e.HiringTypeDescription)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("hiring_type_description");
+            entity.Property(e => e.Identification).HasColumnName("identification");
+            entity.Property(e => e.JobTitleDescription)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("job_title_description");
+            entity.Property(e => e.MFirstLastName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("m_first_last_name");
+            entity.Property(e => e.MFirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("m_first_name");
+            entity.Property(e => e.MSecondLastName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("m_second_last_name");
+            entity.Property(e => e.SecondLastName)
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("second_last_name");
         });
 
         modelBuilder.Entity<WorkingDay>(entity =>

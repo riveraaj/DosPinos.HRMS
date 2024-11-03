@@ -7,8 +7,6 @@ public partial class EmployeeCompensation
 {
     public int EmployeeCompensationId { get; set; }
 
-    public decimal Bonus { get; set; }
-
     public byte SalaryCategoryId { get; set; }
 
     public int EmployeeId { get; set; }
