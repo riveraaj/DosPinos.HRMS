@@ -1,4 +1,7 @@
-﻿namespace DosPinos.HRMS.EFCore
+﻿using DosPinos.HRMS.EFCore.Interfaces;
+using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
+
+namespace DosPinos.HRMS.EFCore
 {
     public static class DependencyContainer
     {
@@ -8,6 +11,9 @@
             //Contexts
             services.AddDbContext<DospinosdbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+            //Stored Proccedure
+            services.AddScoped<IInvokeStoredProcedure, InvokeStoredProcedure>();
 
             //Log
             services.AddScoped<ILogRepository, LogRepository>();

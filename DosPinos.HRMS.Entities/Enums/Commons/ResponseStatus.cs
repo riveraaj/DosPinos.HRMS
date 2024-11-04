@@ -2,8 +2,8 @@
 {
     public enum ResponseStatus
     {
-        Warning,
         Success,
+        Warning,
         Error
     }
 }
