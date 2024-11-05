@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllIncapacityTypeDTO>> GetAllAsync()
         {
-            List<IGetAllIncapacityTypeDTO> response = [];
-
             List<IncapacityType> incapacityTypeList = [.. await _context.IncapacityTypes.ToListAsync()];
-
-            Parallel.ForEach(incapacityTypeList, (incapacityType) =>
-            {
-                response.Add(IncapacityTypeMapper.MapFrom(incapacityType));
-            });
-
-            return response;
+            return incapacityTypeList.Select(IncapacityTypeMapper.MapFrom).ToList();
         }
     }
 }

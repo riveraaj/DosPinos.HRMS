@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllNationalityDTO>> GetAllAsync()
         {
-            List<IGetAllNationalityDTO> response = [];
-
             List<Nationality> nationalityList = [.. await _context.Nationalities.ToListAsync()];
-
-            Parallel.ForEach(nationalityList, (nationality) =>
-            {
-                response.Add(NationalityMapper.MapFrom(nationality));
-            });
-
-            return response;
+            return nationalityList.Select(NationalityMapper.MapFrom).ToList();
         }
     }
 }

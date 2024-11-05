@@ -16,9 +16,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
         public async Task<IEnumerable<IGetAllEmployeeDTO>> GetAllAsync()
         {
             List<VwActiveEmployee> employeeList = [.. await _context.VwActiveEmployees.ToListAsync()];
-            List<IGetAllEmployeeDTO> result = employeeList.Select(EmployeeMapper.MapFrom).ToList();
-
-            return result;
+            return employeeList.Select(EmployeeMapper.MapFrom).ToList();
         }
 
         public async Task<IOperationResponseVO> CreateAsync(ICreateEntireEmployeePOCO employeePOCO)

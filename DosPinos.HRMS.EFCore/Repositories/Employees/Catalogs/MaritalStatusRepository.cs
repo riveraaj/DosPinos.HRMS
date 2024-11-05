@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllMaritalStatusDTO>> GetAllAsync()
         {
-            List<IGetAllMaritalStatusDTO> response = [];
-
             List<MaritalStatus> maritalStatusList = [.. await _context.MaritalStatuses.ToListAsync()];
-
-            Parallel.ForEach(maritalStatusList, (maritalStatus) =>
-            {
-                response.Add(MaritalStatusMapper.MapFrom(maritalStatus));
-            });
-
-            return response;
+            return maritalStatusList.Select(MaritalStatusMapper.MapFrom).ToList();
         }
     }
 }

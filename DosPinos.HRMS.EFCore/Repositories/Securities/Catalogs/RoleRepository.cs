@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllRoleDTO>> GetAllAsync()
         {
-            List<IGetAllRoleDTO> response = [];
-
             List<Role> roleList = [.. await _context.Roles.ToListAsync()];
-
-            Parallel.ForEach(roleList, (role) =>
-            {
-                response.Add(RoleMapper.MapFrom(role));
-            });
-
-            return response;
+            return roleList.Select(RoleMapper.MapFrom).ToList();
         }
     }
 }

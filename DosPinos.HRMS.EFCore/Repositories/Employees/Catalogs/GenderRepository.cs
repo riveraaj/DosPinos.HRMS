@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllGenderDTO>> GetAllAsync()
         {
-            List<IGetAllGenderDTO> response = [];
-
             List<Gender> genderList = [.. await _context.Genders.ToListAsync()];
-
-            Parallel.ForEach(genderList, (gender) =>
-            {
-                response.Add(GenderMapper.MapFrom(gender));
-            });
-
-            return response;
+            return genderList.Select(GenderMapper.MapFrom).ToList();
         }
     }
 }

@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllOvertimeTypeDTO>> GetAllAsync()
         {
-            List<IGetAllOvertimeTypeDTO> response = [];
-
             List<OvertimeType> overtimeTypeList = [.. await _context.OvertimeTypes.ToListAsync()];
-
-            Parallel.ForEach(overtimeTypeList, (overtimeType) =>
-            {
-                response.Add(OvertimeTypeMapper.MapFrom(overtimeType));
-            });
-
-            return response;
+            return overtimeTypeList.Select(OvertimeTypeMapper.MapFrom).ToList();
         }
     }
 }

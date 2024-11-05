@@ -6,12 +6,8 @@
 
         public async Task<IEnumerable<INotificationDTO>> GetAllAsync(int userId)
         {
-            List<INotificationDTO> result = [];
-
             List<Notification> notificationList = [.. await _context.Notifications.ToListAsync()];
-            Parallel.ForEach(notificationList, notification => result.Add(NotificationMapper.MapFrom(notification)));
-
-            return result;
+            return notificationList.Select(NotificationMapper.MapFrom).ToList();
         }
 
         public async Task<bool> CreateAsync(ICreateNotificationPOCO notificationPOCO)

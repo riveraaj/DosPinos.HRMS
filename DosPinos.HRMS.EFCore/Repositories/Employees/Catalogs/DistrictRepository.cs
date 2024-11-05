@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllDistrictDTO>> GetAllAsync()
         {
-            List<IGetAllDistrictDTO> response = [];
-
             List<District> districtList = [.. await _context.Districts.ToListAsync()];
-
-            Parallel.ForEach(districtList, (district) =>
-            {
-                response.Add(DistrictMapper.MapFrom(district));
-            });
-
-            return response;
+            return districtList.Select(DistrictMapper.MapFrom).ToList();
         }
     }
 }

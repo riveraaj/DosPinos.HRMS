@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllHiringTypeDTO>> GetAllAsync()
         {
-            List<IGetAllHiringTypeDTO> response = [];
-
             List<HiringType> hiringTypeList = [.. await _context.HiringTypes.ToListAsync()];
-
-            Parallel.ForEach(hiringTypeList, (hiringType) =>
-            {
-                response.Add(HiringTypeMapper.MapFrom(hiringType));
-            });
-
-            return response;
+            return hiringTypeList.Select(HiringTypeMapper.MapFrom).ToList();
         }
     }
 }

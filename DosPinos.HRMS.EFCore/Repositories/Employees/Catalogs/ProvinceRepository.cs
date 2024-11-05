@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllProvinceDTO>> GetAllAsync()
         {
-            List<IGetAllProvinceDTO> response = [];
-
             List<Province> provinceList = [.. await _context.Provinces.ToListAsync()];
-
-            Parallel.ForEach(provinceList, (province) =>
-            {
-                response.Add(ProvinceMapper.MapFrom(province));
-            });
-
-            return response;
+            return provinceList.Select(ProvinceMapper.MapFrom).ToList();
         }
     }
 }

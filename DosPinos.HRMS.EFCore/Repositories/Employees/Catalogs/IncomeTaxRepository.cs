@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllIncomeTaxDTO>> GetAllAsync()
         {
-            List<IGetAllIncomeTaxDTO> response = [];
-
             List<IncomeTax> incomeTaxList = [.. await _context.IncomeTaxes.ToListAsync()];
-
-            Parallel.ForEach(incomeTaxList, (incomeTax) =>
-            {
-                response.Add(IncomeTaxMapper.MapFrom(incomeTax));
-            });
-
-            return response;
+            return incomeTaxList.Select(IncomeTaxMapper.MapFrom).ToList();
         }
     }
 }

@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllHolidayDTO>> GetAllAsync()
         {
-            List<IGetAllHolidayDTO> response = [];
-
             List<Holiday> holidayList = [.. await _context.Holidays.ToListAsync()];
-
-            Parallel.ForEach(holidayList, (holiday) =>
-            {
-                response.Add(HolidayMapper.MapFrom(holiday));
-            });
-
-            return response;
+            return holidayList.Select(HolidayMapper.MapFrom).ToList();
         }
     }
 }

@@ -6,16 +6,8 @@
 
         public async Task<IEnumerable<IGetAllDeductionDTO>> GetAllAsync()
         {
-            List<IGetAllDeductionDTO> response = [];
-
             List<Deduction> deductionList = [.. await _context.Deductions.ToListAsync()];
-
-            Parallel.ForEach(deductionList, (deduction) =>
-            {
-                response.Add(DeductionMapper.MapFrom(deduction));
-            });
-
-            return response;
+            return deductionList.Select(DeductionMapper.MapFrom).ToList();
         }
     }
 }
