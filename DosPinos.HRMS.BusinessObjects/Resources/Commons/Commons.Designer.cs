@@ -88,7 +88,7 @@ namespace DosPinos.HRMS.BusinessObjects.Resources.Commons {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to El campo es requerido.
+        ///   Looks up a localized string similar to El campo {0} es requerido.
         /// </summary>
         public static string FieldRequired {
             get {

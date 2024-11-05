@@ -8,7 +8,6 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees.Deductions
         [RequiredGreaterThanZero]
         public byte DeductionId { get; set; }
 
-        [RequiredGreaterThanZero]
         public int EmployeeId { get; set; }
 
         [RequiredGreaterThanZero]

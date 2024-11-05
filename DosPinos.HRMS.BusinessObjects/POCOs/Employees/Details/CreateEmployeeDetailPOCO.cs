@@ -8,7 +8,6 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees.Details
         [DateWihinLastCentury]
         public DateOnly DateBirth { get; set; }
 
-        [RequiredGreaterThanZero]
         public int Children { get; set; }
 
         [RequiredGreaterThanZero]

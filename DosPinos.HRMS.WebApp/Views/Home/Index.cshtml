@@ -1,5 +1,5 @@
-﻿@using DosPinos.HRMS.Entities.Interfaces.Securities.Catalogs
-@model List<IGetAllRoleDTO>;
+﻿@* @using DosPinos.HRMS.Entities.Interfaces.Securities.Catalogs
+@model List<IGetAllRoleDTO>; *@
 
 @{
     ViewData["Title"] = "Home Page";
@@ -10,11 +10,11 @@
     <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 
     <ul>
-        @foreach (var role in Model)
+        @* @foreach (var role in Model)
         {
             <li>
                 @role.RoleDescription;
             </li>
-        }
+        } *@
     </ul>
 </div>

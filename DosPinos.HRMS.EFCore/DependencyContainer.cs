@@ -1,5 +1,7 @@
-﻿using DosPinos.HRMS.EFCore.Interfaces;
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
+using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
+using DosPinos.HRMS.EFCore.Repositories.Employees;
 
 namespace DosPinos.HRMS.EFCore
 {
@@ -39,6 +41,9 @@ namespace DosPinos.HRMS.EFCore
             services.AddScoped<IOvertimeTypeRepository, OvertimeTypeRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IHolidayRepository, HolidayRepository>();
+
+            //Employee
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
             return services;
         }

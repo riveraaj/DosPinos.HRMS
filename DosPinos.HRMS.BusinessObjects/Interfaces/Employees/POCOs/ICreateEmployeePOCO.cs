@@ -7,5 +7,6 @@
         string FirstLastName { get; set; }
         string SecondLastName { get; set; }
         int ManagerId { get; set; }
+        bool HasManager { get; set; }
     }
 }

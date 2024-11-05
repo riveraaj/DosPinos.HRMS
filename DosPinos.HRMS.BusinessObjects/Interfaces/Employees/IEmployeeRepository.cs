@@ -4,6 +4,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees
 {
     public interface IEmployeeRepository
     {
-        Task CreateAsync(ICreateEmployeePOCO employeePOCO);
+        Task<IOperationResponseVO> CreateAsync(ICreateEntireEmployeePOCO employeePOCO);
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace DosPinos.HRMS.Controllers
+﻿using DosPinos.HRMS.Controllers.Employees;
+
+namespace DosPinos.HRMS.Controllers
 {
     public static class DependencyContainer
     {
@@ -24,6 +26,9 @@
             services.AddScoped<GetAllOvertimeTypeController>();
             services.AddScoped<GetAllHolidayController>();
             services.AddScoped<GetAllRoleController>();
+
+            //Employee
+            services.AddScoped<CreateEmployeeController>();
 
             return services;
         }

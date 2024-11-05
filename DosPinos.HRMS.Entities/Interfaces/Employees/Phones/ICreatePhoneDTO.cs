@@ -2,7 +2,7 @@
 {
     public interface ICreatePhoneDTO
     {
-        int PhoneNumber { get; set; }
+        string PhoneNumber { get; set; }
         byte PhoneTypeId { get; set; }
     }
 }

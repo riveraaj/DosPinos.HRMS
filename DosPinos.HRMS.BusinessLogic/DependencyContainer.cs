@@ -29,6 +29,9 @@
             services.AddScoped<IGetAllHolidayInputPort, GetAllHolidayIterator>();
             services.AddScoped<IGetAllOvertimeTypeInputPort, GetAllOvertimeTypeIterator>();
 
+            //Employee
+            services.AddScoped<ICreateEntireEmployeeInputPort, CreateEntireEmployeeIterator>();
+
             return services;
         }
     }

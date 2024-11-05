@@ -18,7 +18,8 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees
         [RequiredAndMaxLength(50)]
         public string SecondLastName { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "El campo es requerido")]
         public int ManagerId { get; set; }
+
+        public bool HasManager { get; set; }
     }
 }

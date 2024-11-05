@@ -2,6 +2,7 @@
 global using DosPinos.HRMS.BusinessLogic.Iterators.Commons;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Commons.Log;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Commons.Notification;
+global using DosPinos.HRMS.BusinessLogic.Iterators.Employees;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Employees.Catalogs.Cantons;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Employees.Catalogs.Deductions;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Employees.Catalogs.Districts;
@@ -49,6 +50,7 @@ global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.Provinc
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.Provinces.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.SalaryCategories;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.SalaryCategories.InputPorts;
+global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities.Catalogs.IncapacitiesType;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities.Catalogs.IncapacitiesType.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Overtimes.Catalogs.OvertimesType;

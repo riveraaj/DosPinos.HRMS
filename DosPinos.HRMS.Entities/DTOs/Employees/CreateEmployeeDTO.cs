@@ -9,5 +9,6 @@ namespace DosPinos.HRMS.Entities.DTOs.Employees
         public string FirstLastName { get; set; }
         public string SecondLastName { get; set; }
         public int ManagerId { get; set; }
+        public bool HasManager { get; set; }
     }
 }

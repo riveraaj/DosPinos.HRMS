@@ -5,8 +5,8 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees.Phones
 {
     public class CreatePhonePOCO : ICreatePhonePOCO
     {
-        [ValidarPhoneNumber]
-        public int PhoneNumber { get; set; }
+        [RequiredAndMaxLength(20)]
+        public string PhoneNumber { get; set; }
 
         [RequiredGreaterThanZero]
         public byte PhoneTypeId { get; set; }

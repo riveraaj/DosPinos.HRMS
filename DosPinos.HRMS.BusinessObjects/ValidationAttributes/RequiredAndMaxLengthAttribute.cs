@@ -6,14 +6,16 @@
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
+            string fieldName = validationContext.DisplayName;
+
             if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
             {
-                return new ValidationResult("El campo es requerido y no puede estar vacío.");
+                return new ValidationResult($"El campo {fieldName} es requerido y no puede estar vacío.");
             }
 
             if (value.ToString().Length > _maxLength)
             {
-                return new ValidationResult($"El campo no puede tener más de {_maxLength} caracteres.");
+                return new ValidationResult($"El campo {fieldName} no puede tener más de {_maxLength} caracteres.");
             }
 
             return ValidationResult.Success;

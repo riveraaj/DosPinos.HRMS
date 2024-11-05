@@ -12,7 +12,7 @@
 
             try
             {
-                // Validate DTO model
+                // Validate POCO model
                 Helpers.ValidationResult validationResult = notification.ValidateModel();
                 if (!validationResult.IsValid) return this.CustomWarning(validationResult.ErrorMessages);
 

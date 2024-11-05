@@ -2,7 +2,7 @@
 {
     public interface ICreatePhonePOCO
     {
-        int PhoneNumber { get; set; }
+        string PhoneNumber { get; set; }
         byte PhoneTypeId { get; set; }
     }
 }

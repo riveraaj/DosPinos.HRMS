@@ -139,6 +139,6 @@
     <value>No se pudo completar la acción solicitada. Intente nuevamente o contacte soporte si el problema persiste.</value>
   </data>
   <data name="FieldRequired" xml:space="preserve">
-    <value>El campo es requerido</value>
+    <value>El campo {0} es requerido</value>
   </data>
 </root>
