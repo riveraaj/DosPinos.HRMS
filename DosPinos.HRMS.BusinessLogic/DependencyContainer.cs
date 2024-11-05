@@ -31,6 +31,7 @@
 
             //Employee
             services.AddScoped<ICreateEntireEmployeeInputPort, CreateEntireEmployeeIterator>();
+            services.AddScoped<IGetAllEmployeeInputPort, GetAllEmployeeIterator>();
 
             return services;
         }

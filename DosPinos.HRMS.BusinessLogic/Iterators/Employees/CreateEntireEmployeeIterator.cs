@@ -1,5 +1,4 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.InputPorts;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.POCOs;
 using DosPinos.HRMS.Entities.Interfaces.Employees;
 

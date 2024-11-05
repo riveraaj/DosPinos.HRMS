@@ -1,10 +1,5 @@
 using DosPinos.HRMS.Controllers.Employees;
-using DosPinos.HRMS.Entities.DTOs.Employees;
-using DosPinos.HRMS.Entities.DTOs.Employees.Addresses;
-using DosPinos.HRMS.Entities.DTOs.Employees.Compesations;
-using DosPinos.HRMS.Entities.DTOs.Employees.Deductions;
-using DosPinos.HRMS.Entities.DTOs.Employees.Details;
-using DosPinos.HRMS.Entities.DTOs.Employees.Phones;
+using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -12,57 +7,61 @@ using System.Diagnostics;
 
 namespace DosPinos.HRMS.WebApp.Controllers
 {
-    public class HomeController(CreateEmployeeController controller,
+    public class HomeController(GetAllEmployeeController controller,
                                 ILogger<HomeController> logger) : Controller
     {
         private readonly ILogger<HomeController> _logger = logger;
-        private readonly CreateEmployeeController _controller = controller;
+        private readonly GetAllEmployeeController _controller = controller;
 
         public async Task<IActionResult> Index()
         {
-            IOperationResponseVO response = await _controller.CreateAsync(new CreateEntireEmployeeDTO()
+            IOperationResponseVO response = await _controller.GetAllAsync(new EntityDTO()
             {
-                Address = new CreateAddressDTO()
-                {
-                    Address = "Test01",
-                    DistrictId = 1
-                },
-                Compensation = new CreateEmployeeCompensationDTO()
-                {
-                    SalaryCategoryId = 1
-                },
-                Deduction = new CreateEmployeeDeductionDTO()
-                {
-                    DeductionAmount = 1,
-                    DeductionId = 1
-                },
-                Detail = new CreateEmployeeDetailDTO()
-                {
-                    Children = 0,
-                    DateBirth = new DateOnly(2003, 7, 17),
-                    GenderId = 2,
-                    HiringTypeId = 1,
-                    JobTitleId = 1,
-                    MaritalStatusId = 1,
-                    NationalityId = 1
-                },
-                Phone = new CreatePhoneDTO()
-                {
-                    PhoneNumber = "87849928",
-                    PhoneTypeId = 1
-                },
-                Employee = new CreateEmployeeDTO()
-                {
-                    FirstLastName = "Test",
-                    Identification = 123456789,
-                    ManagerId = 5,
-                    Name = "Test",
-                    SecondLastName = "Test",
-                    HasManager = true
-                }
+                UserId = 1
             });
 
-            Console.WriteLine(response);
+            //IOperationResponseVO response = await _controller.CreateAsync(new CreateEntireEmployeeDTO()
+            //{
+            //    Address = new CreateAddressDTO()
+            //    {
+            //        Address = "Test01",
+            //        DistrictId = 1
+            //    },
+            //    Compensation = new CreateEmployeeCompensationDTO()
+            //    {
+            //        SalaryCategoryId = 1
+            //    },
+            //    Deduction = new CreateEmployeeDeductionDTO()
+            //    {
+            //        DeductionAmount = 1,
+            //        DeductionId = 1
+            //    },
+            //    Detail = new CreateEmployeeDetailDTO()
+            //    {
+            //        Children = 0,
+            //        DateBirth = new DateOnly(2003, 7, 17),
+            //        GenderId = 2,
+            //        HiringTypeId = 1,
+            //        JobTitleId = 1,
+            //        MaritalStatusId = 1,
+            //        NationalityId = 1
+            //    },
+            //    Phone = new CreatePhoneDTO()
+            //    {
+            //        PhoneNumber = "87849928",
+            //        PhoneTypeId = 1
+            //    },
+            //    Employee = new CreateEmployeeDTO()
+            //    {
+            //        FirstLastName = "Test",
+            //        Identification = 123456789,
+            //        ManagerId = 5,
+            //        Name = "Test",
+            //        SecondLastName = "Test",
+            //        HasManager = true
+            //    }
+            //});
+
             //IOperationResponseVO response = await _roleController.GetAllAsync(new EntityDTO
             //{
             //    UserId = 1
@@ -70,7 +69,8 @@ namespace DosPinos.HRMS.WebApp.Controllers
 
             //List<IGetAllRoleDTO> roleList = (List<IGetAllRoleDTO>)response.Content;
 
-            return View();
+            Console.WriteLine(response);
+            return View(response.Content);
         }
 
         public IActionResult Privacy()

@@ -1,5 +1,7 @@
 ﻿@* @using DosPinos.HRMS.Entities.Interfaces.Securities.Catalogs
 @model List<IGetAllRoleDTO>; *@
+@using DosPinos.HRMS.Entities.Interfaces.Employees
+@model List<IGetAllEmployeeDTO>
 
 @{
     ViewData["Title"] = "Home Page";
@@ -16,5 +18,27 @@
                 @role.RoleDescription;
             </li>
         } *@
+
+        @foreach (var employee in Model)
+        {
+            <li>
+                @employee.Identification
+            </li>
+            <li>
+                @employee.EmployeeName
+            </li>
+            <li>
+                @employee.DateEntry
+            </li>
+            <li>
+                @employee.HiringTypeDescription
+            </li>
+            <li>
+                @employee.JobTitleDescription
+            </li>
+            <li>
+                @employee.ManagerName
+            </li>
+        }
     </ul>
 </div>

@@ -9,9 +9,7 @@
             List<INotificationDTO> result = [];
 
             List<Notification> notificationList = [.. await _context.Notifications.ToListAsync()];
-
-            foreach (var notification in notificationList)
-                result.Add(NotificationMapper.MapFrom(notification));
+            Parallel.ForEach(notificationList, notification => result.Add(NotificationMapper.MapFrom(notification)));
 
             return result;
         }
