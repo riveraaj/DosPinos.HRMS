@@ -12,57 +12,78 @@ namespace DosPinos.HRMS.EFCore.Repositories.Commons.Base
 
         public DbCommand CreateCommand(string storedProcedureName, Dictionary<string, object> parameters)
         {
-            var command = _context.Database.GetDbConnection().CreateCommand();
-            command.CommandText = storedProcedureName;
-            command.CommandType = CommandType.StoredProcedure;
-
-            if (parameters != null)
+            try
             {
-                foreach (var param in parameters)
+                var command = _context.Database.GetDbConnection().CreateCommand();
+                command.CommandText = storedProcedureName;
+                command.CommandType = CommandType.StoredProcedure;
+
+                if (parameters != null)
                 {
-                    var dbParameter = command.CreateParameter();
-                    dbParameter.ParameterName = param.Key;
-                    dbParameter.Value = param.Value ?? DBNull.Value;
-                    command.Parameters.Add(dbParameter);
+                    foreach (var param in parameters)
+                    {
+                        var dbParameter = command.CreateParameter();
+                        dbParameter.ParameterName = param.Key;
+                        dbParameter.Value = param.Value ?? DBNull.Value;
+                        command.Parameters.Add(dbParameter);
+                    }
                 }
+                return command;
             }
-            return command;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<List<Dictionary<string, object>>> ExecuteReadAsync(DbCommand command)
         {
-            List<Dictionary<string, object>> result = [];
-
-            using var reader = await command.ExecuteReaderAsync();
-            while (await reader.ReadAsync())
+            try
             {
-                var row = new Dictionary<string, object>();
-                for (var i = 0; i < reader.FieldCount; i++)
-                {
-                    row[reader.GetName(i)] = reader.IsDBNull(i) ? null : reader.GetValue(i);
-                }
-                result.Add(row);
-            }
+                List<Dictionary<string, object>> result = [];
 
-            return result;
+                using var reader = await command.ExecuteReaderAsync();
+                while (await reader.ReadAsync())
+                {
+                    var row = new Dictionary<string, object>();
+                    for (var i = 0; i < reader.FieldCount; i++)
+                    {
+                        row[reader.GetName(i)] = reader.IsDBNull(i) ? null : reader.GetValue(i);
+                    }
+                    result.Add(row);
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public async Task<IOperationResponseVO> ExecuteWriteAsync(DbCommand command)
         {
-            IOperationResponseVO response = new OperationResponseVO();
-
-            using var reader = await command.ExecuteReaderAsync();
-            if (await reader.ReadAsync())
+            try
             {
-                var messageId = reader["Message_ID"] as int?;
-                var message = reader["Message"] as string;
+                IOperationResponseVO response = new OperationResponseVO();
 
-                // Setting the status based on the message ID
-                response.Status = messageId.HasValue ? (ResponseStatus)messageId.Value : ResponseStatus.Error;
-                response.Message = [message];
+                using var reader = await command.ExecuteReaderAsync();
+                if (await reader.ReadAsync())
+                {
+                    var messageId = reader["Message_ID"] as int?;
+                    var message = reader["Message"] as string;
+
+                    // Setting the status based on the message ID
+                    response.Status = messageId.HasValue ? (ResponseStatus)messageId.Value : ResponseStatus.Error;
+                    response.Message = [message];
+                }
+
+                return response;
             }
-
-            return response;
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
     }
 }

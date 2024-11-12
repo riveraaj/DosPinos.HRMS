@@ -3,7 +3,6 @@ using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
 
 namespace DosPinos.HRMS.WebApp.Controllers
 {
@@ -18,7 +17,8 @@ namespace DosPinos.HRMS.WebApp.Controllers
         {
             IOperationResponseVO response = await _controller.GetAllAsync(new EntityDTO()
             {
-                UserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                //UserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                UserId = 1
             });
 
             return View(response.Content);

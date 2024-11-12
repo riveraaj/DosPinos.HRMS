@@ -1,0 +1,112 @@
+﻿@model List<DosPinos.HRMS.Entities.DTOs.Payroll.GetPayrollByDateDTO>;
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container">
+
+    @if (Model == null || Model.Count <= 0)
+    {
+        <form asp-action="Create" method="post" id="formPayroll">
+            <button onclick="submitForm()" class="btn btn-secondary">Calcular nómina</button>
+        </form>
+    }
+    else
+    {
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Identificación</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Puesto de trabajo</th>
+                            <th scope="col">Inicio de período</th>
+                            <th scope="col">Fin de período</th>
+                            <th scope="col">Salario bruto</th>
+                            <th scope="col">Horas extras</th>
+                            <th scope="col">Monto de horas extras</th>
+                            <th scope="col">Recompensas</th>
+                            <th scope="col">Deducciones</th>
+                            <th scope="col">Salario total</th>
+                            <th scope="col">Salario neto</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var employee in Model)
+                        {
+                            <tr>
+                                <td class="text-start">@employee.Identification</td>
+                                <td>@employee.FullName</td>
+                                <td>@employee.JobTitle</td>
+                                <td>@employee.StartPeriod</td>
+                                <td>@employee.EndPeriod</td>
+                                <td>@employee.GrossSalary.ToString("C")</td>
+                                <td>
+                                    @* Convertir las horas decimales en formato "hh h mm min" *@
+                                    @{
+                                        decimal decimalHours = employee.Overtime;  // Suponemos que `Overtime` es el campo con horas decimales
+                                        int hours = (int)decimalHours;
+                                        int minutes = (int)((decimalHours - hours) * 60);
+
+                                        // Construimos el string con horas y minutos, verificando si son mayores a 0
+                                        string formattedTime = "";
+
+                                        if (hours > 0)
+                                        {
+                                            formattedTime += $"{hours} h";
+                                        }
+
+                                        if (minutes > 0)
+                                        {
+                                            if (formattedTime != "")
+                                            {
+                                                formattedTime += " ";  // Agrega espacio si ya hay horas
+                                            }
+                                            formattedTime += $"{minutes} min";
+                                        }
+
+                                        // Si no tiene horas ni minutos, mostrar "0 h 0 min" o dejar en blanco
+                                        if (string.IsNullOrEmpty(formattedTime))
+                                        {
+                                            formattedTime = "------";
+                                        }
+                                    }
+                                    @formattedTime
+                                </td>
+                                <td>@employee.AmoutOvertime.ToString("C")</td>
+                                <td>@employee.Bonus.ToString("C")</td>
+                                <td>@employee.Deductions.ToString("C")</td>
+                                <td>@employee.TotalSalary.ToString("C")</td>
+                                <td>@employee.NetSalary.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        const $form = document.getElementById('formPayroll');
+
+        $form.addEventListener('submit', (e) => {
+            e.preventDefault();
+        });
+
+        const submitForm = async () => {  // Agregar async aquí
+            let message = "¿Deseas continuar con el calculo de nómina?",
+                icon = "question",
+                isConfirmed = await showConfirmationAlert(message, icon); // Ahora puedes usar await
+
+            console.log(isConfirmed);
+
+            if (isConfirmed) {
+                $form.submit();
+            }
+        }
+    </script>
+}

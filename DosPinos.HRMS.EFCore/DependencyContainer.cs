@@ -1,8 +1,10 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
 using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
 using DosPinos.HRMS.EFCore.Repositories.Employees;
+using DosPinos.HRMS.EFCore.Repositories.Payroll;
 using DosPinos.HRMS.EFCore.Repositories.Securities;
 
 namespace DosPinos.HRMS.EFCore
@@ -49,6 +51,9 @@ namespace DosPinos.HRMS.EFCore
 
             //User 
             services.AddScoped<IUserRepository, UserRepository>();
+
+            //Payroll
+            services.AddScoped<IPayrollRepository, PayrollRepository>();
 
             return services;
         }

@@ -1,6 +1,6 @@
 ﻿namespace DosPinos.HRMS.Entities.DTOs.Payroll
 {
-    public class GetPayrollByDate
+    public class GetPayrollByDateDTO
     {
         public int Identification { get; set; }
         public string JobTitle { get; set; }

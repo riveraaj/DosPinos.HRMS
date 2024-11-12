@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.Controllers.Employees;
+using DosPinos.HRMS.Controllers.Payroll;
 
 namespace DosPinos.HRMS.Controllers
 {
@@ -33,6 +34,9 @@ namespace DosPinos.HRMS.Controllers
 
             //Securities
             services.AddScoped<UserController>();
+
+            //Payroll
+            services.AddScoped<PayrollController>();
 
             return services;
         }

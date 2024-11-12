@@ -38,6 +38,9 @@ namespace DosPinos.HRMS.BusinessLogic
             //Security
             services.AddScoped<UserService>();
 
+            //Payroll
+            services.AddScoped<PayrollService>();
+
             return services;
         }
     }
