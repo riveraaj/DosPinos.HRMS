@@ -1,0 +1,12 @@
+﻿using DosPinos.HRMS.Entities.DTOs.Payroll;
+
+namespace DosPinos.HRMS.BusinessObjects.Interfaces.Payroll
+{
+    public interface IPayrollRepository
+    {
+        Task<IEnumerable<int>> GetAsync();
+        Task<IEnumerable<GetPayrollByDate>> GetAsync(int month, int year);
+        Task<IEnumerable<DateOnly>> Validate();
+        Task<IOperationResponseVO> CreateAsync(int employeeId);
+    }
+}

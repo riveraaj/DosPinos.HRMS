@@ -9,34 +9,6 @@ namespace DosPinos.HRMS.BusinessLogic.Services
     {
         private readonly IUserRepository _userRepository = userRepository;
 
-        /// <summary>
-        /// Login
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IOperationResponseVO> ProcessAsync(ILoginUserDTO userDTO)
-        {
-            IOperationResponseVO response = new OperationResponseVO();
-
-            try
-            {
-                ILoginUserDTO credentialsUser = await _userRepository.Get(userDTO.UserName);
-
-                if (credentialsUser == null) return this.CustomWarning("El usuario no existe. Por favor, ingrese un usuario válido.");
-
-                bool comparePassword = CryptographyHelper.CompareEncryptedAndDecrypted(userDTO.Password, credentialsUser.Password);
-
-                if (!comparePassword) return this.CustomWarning("La contraseña es incorrecta. Por favor, intentelo nuevamente.");
-
-                response.Content = credentialsUser;
-            }
-            catch (Exception exception)
-            {
-                response = await this.HandlerLog(Module.Security, ActionCategory.Login, exception, userDTO);
-            }
-
-            return response;
-        }
-
         public async Task<IOperationResponseVO> GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();
@@ -72,6 +44,34 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             catch (Exception exception)
             {
                 response = await this.HandlerLog(Module.Security, ActionCategory.Create, exception, userDTO);
+            }
+
+            return response;
+        }
+
+        /// <summary>
+        /// Login
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IOperationResponseVO> ProcessAsync(ILoginUserDTO userDTO)
+        {
+            IOperationResponseVO response = new OperationResponseVO();
+
+            try
+            {
+                ILoginUserDTO credentialsUser = await _userRepository.Get(userDTO.UserName);
+
+                if (credentialsUser == null) return this.CustomWarning("El usuario no existe. Por favor, ingrese un usuario válido.");
+
+                bool comparePassword = CryptographyHelper.CompareEncryptedAndDecrypted(userDTO.Password, credentialsUser.Password);
+
+                if (!comparePassword) return this.CustomWarning("La contraseña es incorrecta. Por favor, intentelo nuevamente.");
+
+                response.Content = credentialsUser;
+            }
+            catch (Exception exception)
+            {
+                response = await this.HandlerLog(Module.Security, ActionCategory.Login, exception, userDTO);
             }
 
             return response;
