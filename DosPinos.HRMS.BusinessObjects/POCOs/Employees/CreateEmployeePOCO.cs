@@ -21,5 +21,8 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees
         public int ManagerId { get; set; }
 
         public bool HasManager { get; set; }
+
+        [RequiredAndMaxLength(100)]
+        public string Email { get; set; }
     }
 }

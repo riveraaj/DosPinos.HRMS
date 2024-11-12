@@ -1,7 +1,9 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
 using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
 using DosPinos.HRMS.EFCore.Repositories.Employees;
+using DosPinos.HRMS.EFCore.Repositories.Securities;
 
 namespace DosPinos.HRMS.EFCore
 {
@@ -44,6 +46,9 @@ namespace DosPinos.HRMS.EFCore
 
             //Employee
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+
+            //User 
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }

@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="SecretKey" xml:space="preserve">
-    <value>311728D4B1874</value>
+    <value>MKPeFo3Vrkrhynfe9VZ0QQ==</value>
   </data>
   <data name="SecretIV" xml:space="preserve">
-    <value>866312E165B3C</value>
+    <value>F69avNIHKccIZLsgEFJXWw==</value>
   </data>
   <data name="CallerClass" xml:space="preserve">
     <value>Class unknown.</value>
@@ -133,7 +133,7 @@
     <value>Caller Class: {0}, Caller Method: {1}.</value>
   </data>
   <data name="ErrorMessage" xml:space="preserve">
-    <value>Ha ocurrido un error inesperado mientras procesábamos su solicitud. Por favor, intente nuevamente más tarde. Si el problema persiste, contacte al equipo de soporte técnico.</value>
+    <value>Ocurrió un error al procesar su solicitud. Intente de nuevo más tarde.</value>
   </data>
   <data name="WarningMessage" xml:space="preserve">
     <value>No se pudo completar la acción solicitada. Intente nuevamente o contacte soporte si el problema persiste.</value>

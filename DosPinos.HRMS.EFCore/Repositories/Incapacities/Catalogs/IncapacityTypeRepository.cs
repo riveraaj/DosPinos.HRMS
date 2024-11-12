@@ -6,7 +6,7 @@
 
         public async Task<IEnumerable<IGetAllIncapacityTypeDTO>> GetAllAsync()
         {
-            List<IncapacityType> incapacityTypeList = [.. await _context.IncapacityTypes.ToListAsync()];
+            List<SpecialPermissionType> incapacityTypeList = [.. await _context.SpecialPermissionTypes.ToListAsync()];
             return incapacityTypeList.Select(IncapacityTypeMapper.MapFrom).ToList();
         }
     }

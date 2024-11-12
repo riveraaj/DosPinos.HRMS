@@ -79,7 +79,7 @@ namespace DosPinos.HRMS.BusinessObjects.Resources.Commons {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ha ocurrido un error inesperado mientras procesábamos su solicitud. Por favor, intente nuevamente más tarde. Si el problema persiste, contacte al equipo de soporte técnico..
+        ///   Looks up a localized string similar to Ocurrió un error al procesar su solicitud. Intente de nuevo más tarde..
         /// </summary>
         public static string ErrorMessage {
             get {
@@ -97,7 +97,7 @@ namespace DosPinos.HRMS.BusinessObjects.Resources.Commons {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 866312E165B3C.
+        ///   Looks up a localized string similar to F69avNIHKccIZLsgEFJXWw==.
         /// </summary>
         public static string SecretIV {
             get {
@@ -106,7 +106,7 @@ namespace DosPinos.HRMS.BusinessObjects.Resources.Commons {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 311728D4B1874.
+        ///   Looks up a localized string similar to MKPeFo3Vrkrhynfe9VZ0QQ==.
         /// </summary>
         public static string SecretKey {
             get {

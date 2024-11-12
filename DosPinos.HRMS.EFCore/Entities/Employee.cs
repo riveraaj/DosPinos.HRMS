@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DosPinos.HRMS.EFCore.Entities;
+﻿namespace DosPinos.HRMS.EFCore.Entities;
 
 public partial class Employee
 {
@@ -17,7 +14,7 @@ public partial class Employee
 
     public bool EmployeeStatus { get; set; }
 
-    public bool OvertimeExcess { get; set; }
+    public decimal OvertimeExcess { get; set; }
 
     public int? ManagerId { get; set; }
 
@@ -33,15 +30,13 @@ public partial class Employee
 
     public virtual ICollection<EmployeeVacationBalance> EmployeeVacationBalances { get; set; } = new List<EmployeeVacationBalance>();
 
-    public virtual ICollection<EvaluationIncapacity> EvaluationIncapacities { get; set; } = new List<EvaluationIncapacity>();
-
     public virtual ICollection<EvaluationLicense> EvaluationLicenses { get; set; } = new List<EvaluationLicense>();
+
+    public virtual ICollection<EvaluationSpecialPermission> EvaluationSpecialPermissions { get; set; } = new List<EvaluationSpecialPermission>();
 
     public virtual ICollection<EvaluationVacation> EvaluationVacations { get; set; } = new List<EvaluationVacation>();
 
     public virtual ICollection<EvaluationWorkingDay> EvaluationWorkingDays { get; set; } = new List<EvaluationWorkingDay>();
-
-    public virtual ICollection<Incapacity> Incapacities { get; set; } = new List<Incapacity>();
 
     public virtual ICollection<Employee> InverseManager { get; set; } = new List<Employee>();
 
@@ -59,9 +54,11 @@ public partial class Employee
 
     public virtual ICollection<Reward> Rewards { get; set; } = new List<Reward>();
 
+    public virtual ICollection<SpecialPermission> SpecialPermissions { get; set; } = new List<SpecialPermission>();
+
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 
     public virtual ICollection<Vacation> Vacations { get; set; } = new List<Vacation>();
 
-    public virtual WorkingDay WorkingDay { get; set; }
+    public virtual ICollection<WorkingDay> WorkingDays { get; set; } = new List<WorkingDay>();
 }

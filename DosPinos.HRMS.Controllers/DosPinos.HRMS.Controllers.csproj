@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DosPinos.HRMS.BusinessLogic\DosPinos.HRMS.BusinessLogic.csproj" />
     <ProjectReference Include="..\DosPinos.HRMS.BusinessObjects\DosPinos.HRMS.BusinessObjects.csproj" />
   </ItemGroup>
 

@@ -14,6 +14,8 @@ public partial class VwActiveEmployee
 
     public DateOnly DateEntry { get; set; }
 
+    public string Email { get; set; }
+
     public string HiringTypeDescription { get; set; }
 
     public string MFirstName { get; set; }
@@ -21,4 +23,6 @@ public partial class VwActiveEmployee
     public string MFirstLastName { get; set; }
 
     public string MSecondLastName { get; set; }
+
+    public decimal OvertimeExcess { get; set; }
 }

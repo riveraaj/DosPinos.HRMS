@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DosPinos.HRMS.EFCore.Entities;
+﻿namespace DosPinos.HRMS.EFCore.Entities;
 
 public partial class EmployeeDeduction
 {
     public int EmployeeDeductionId { get; set; }
 
-    public decimal DeductionAmount { get; set; }
+    public decimal DeductionPercentage { get; set; }
 
     public byte DeductionId { get; set; }
 

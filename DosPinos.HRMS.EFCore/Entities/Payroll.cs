@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DosPinos.HRMS.EFCore.Entities;
+﻿namespace DosPinos.HRMS.EFCore.Entities;
 
 public partial class Payroll
 {
@@ -17,9 +14,13 @@ public partial class Payroll
 
     public decimal NetSalary { get; set; }
 
+    public decimal AmountOvertime { get; set; }
+
     public decimal Overtime { get; set; }
 
     public decimal Bonus { get; set; }
+
+    public bool IsConfirmated { get; set; }
 
     public int EmployeeId { get; set; }
 

@@ -1,4 +1,6 @@
-﻿namespace DosPinos.HRMS.BusinessLogic
+﻿using DosPinos.HRMS.BusinessLogic.Services;
+
+namespace DosPinos.HRMS.BusinessLogic
 {
     public static class DependencyContainer
     {
@@ -32,6 +34,9 @@
             //Employee
             services.AddScoped<ICreateEntireEmployeeInputPort, CreateEntireEmployeeIterator>();
             services.AddScoped<IGetAllEmployeeInputPort, GetAllEmployeeIterator>();
+
+            //Security
+            services.AddScoped<UserService>();
 
             return services;
         }

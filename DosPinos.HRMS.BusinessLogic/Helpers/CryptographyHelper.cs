@@ -1,4 +1,6 @@
-﻿namespace DosPinos.HRMS.BusinessLogic.Helpers
+﻿using System.Text;
+
+namespace DosPinos.HRMS.BusinessLogic.Helpers
 {
     internal static class CryptographyHelper
     {
@@ -13,9 +15,10 @@
 
             using MemoryStream memoryStream = new();
             using CryptoStream cryptoStream = new(memoryStream, aes.CreateEncryptor(), CryptoStreamMode.Write);
-            using StreamWriter writer = new(cryptoStream);
+            using BinaryWriter writer = new(cryptoStream);
 
-            writer.Write(text);
+            writer.Write(Encoding.UTF8.GetBytes(text));
+            cryptoStream.FlushFinalBlock();
             return Convert.ToBase64String(memoryStream.ToArray());
         }
 
@@ -29,7 +32,7 @@
 
             using MemoryStream memoryStream = new(buffer);
             using CryptoStream cryptoStream = new(memoryStream, aes.CreateDecryptor(), CryptoStreamMode.Read);
-            using StreamReader reader = new(cryptoStream);
+            using StreamReader reader = new(cryptoStream, Encoding.UTF8);
 
             return reader.ReadToEnd();
         }

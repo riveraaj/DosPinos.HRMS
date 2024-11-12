@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DosPinos.HRMS.EFCore.Entities;
+﻿namespace DosPinos.HRMS.EFCore.Entities;
 
 public partial class EmployeeDetail
 {
@@ -14,6 +11,8 @@ public partial class EmployeeDetail
     public byte Children { get; set; }
 
     public DateOnly DateEntry { get; set; }
+
+    public string Email { get; set; }
 
     public byte MaritalStatusId { get; set; }
 

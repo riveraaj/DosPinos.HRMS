@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DosPinos.HRMS.EFCore.Entities;
+﻿namespace DosPinos.HRMS.EFCore.Entities;
 
 public partial class User
 {
@@ -13,9 +10,7 @@ public partial class User
 
     public string Password { get; set; }
 
-    public DateOnly LastAccess { get; set; }
-
-    public string Email { get; set; }
+    public DateOnly? LastAccess { get; set; }
 
     public int EmployeeId { get; set; }
 

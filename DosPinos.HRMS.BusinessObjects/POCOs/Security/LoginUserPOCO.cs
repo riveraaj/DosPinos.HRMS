@@ -1,4 +1,5 @@
-﻿using DosPinos.HRMS.Entities.Enums.Commons;
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Securities.POCOs;
+using DosPinos.HRMS.Entities.Enums.Commons;
 
 namespace DosPinos.HRMS.BusinessObjects.POCOs.Security
 {

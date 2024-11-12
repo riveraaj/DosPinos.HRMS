@@ -1,0 +1,40 @@
+﻿@using DosPinos.HRMS.Entities.ValueObjects
+@{
+    OperationResponseVO response = null;
+
+    if (ViewData.ContainsKey("alert"))
+    {
+        response = ViewData["alert"] as OperationResponseVO;
+    }
+}
+
+<!DOCTYPE html>
+<html lang="es-mx">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"] - HRMS</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="~/lib/sweetalert2/dist/sweetalert2.min.css" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/sweetalert2/dist/sweetalert2.all.min.js"></script>
+
+    <script>
+        // Verificar si `response` no es `null` antes de usar sus propiedades
+        const operationStatus = '@(response != null ? response.Status.ToString() : string.Empty)';
+        const operationMessage = '@Html.Raw((response != null ? (response.Message).FirstOrDefault() : string.Empty))';
+    </script>
+
+    <script src="~/js/toast.js"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

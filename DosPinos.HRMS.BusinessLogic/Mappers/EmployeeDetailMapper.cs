@@ -15,7 +15,8 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
                 HiringTypeId = detailDTO.HiringTypeId,
                 JobTitleId = detailDTO.JobTitleId,
                 MaritalStatusId = detailDTO.MaritalStatusId,
-                NationalityId = detailDTO.NationalityId
+                NationalityId = detailDTO.NationalityId,
+                Email = detailDTO.Email,
             };
     }
 }

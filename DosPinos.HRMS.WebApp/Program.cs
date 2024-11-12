@@ -1,6 +1,16 @@
 using DosPinos.HRMS.IoC;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
+
+//Add cookie
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login";
+        options.ExpireTimeSpan = TimeSpan.FromDays(1);
+        options.AccessDeniedPath = "/Home";
+    });
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -40,8 +40,8 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
                 {"@address", employeePOCO.Address.Address},
                 {"@districtId", employeePOCO.Address.DistrictId},
                 {"@salaryCategoryId", employeePOCO.Compensation.SalaryCategoryId},
-                {"@deductionId", employeePOCO.Deduction.DeductionId},
-                {"@hasManager", employeePOCO.Employee.HasManager }
+                {"@hasManager", employeePOCO.Employee.HasManager },
+                {"@email", employeePOCO.Detail.Email },
             };
 
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateEntireEmployee", parameters, false);
