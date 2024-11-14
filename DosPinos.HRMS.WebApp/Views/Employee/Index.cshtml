@@ -1,0 +1,35 @@
+﻿@model List<DosPinos.HRMS.Entities.Interfaces.Employees.IGetAllEmployeeDTO>
+
+@{
+    ViewData["Title"] = "Empleados";
+}
+
+<div class="content-tables">
+    <div class="table-responsive">
+        <table class="table data-table">
+            <thead>
+                <tr>
+                    <th scope="col">Identificación</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Fecha de entrada</th>
+                    <th scope="col">Tipo de contrato</th>
+                    <th scope="col">Puesto</th>
+                    <th scope="col">Jefe directo</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model)
+                {
+                    <tr>
+                        <td class="text-start">@employee.Identification</td>
+                        <td><a asp-action="Edit" asp-route-employeeId="@employee.Identification">@employee.EmployeeName</a></td>
+                        <td>@employee.DateEntry</td>
+                        <td>@employee.HiringTypeDescription</td>
+                        <td>@employee.JobTitleDescription</td>
+                        <td>@employee.ManagerName</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

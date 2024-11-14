@@ -1,0 +1,90 @@
+﻿@model DosPinos.HRMS.Entities.DTOs.Vacations.CreateVacationDTO;
+
+@{
+    ViewData["Title"] = "Tiempo Libre";
+    var today = DateTime.Now.ToString("yyyy-MM-dd");
+}
+
+<div class="container d-flex flex-row wrapper ">
+    <div class="container w-25">
+        <h2>Vacaciones</h2>
+        <form asp-action="Create" method="post" class="row gap-3 pt-3">
+            <input type="date" asp-for="DateStart" min="@today" required />
+            <input type="date" asp-for="DateEnd" min="@today" required />
+            <button class="btn btn-success">Solicitar</button>
+        </form>
+    </div>
+
+    <div class="container w-25">
+        <h2>Permisos especiales</h2>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#specialPermissionModal">Solicitar</button>
+    </div>
+
+    <div class="container w-25">
+        <h2>Licencias medicas</h2>
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#licenseModal">Solicitar</button>
+    </div>
+
+    <!-- Specila Permission Modal -->
+    <div class="modal fade" id="specialPermissionModal" tabindex="-1" aria-labelledby="specialPermissionModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <form>
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Solicitud de permiso especial</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="formFileSm" class="form-label">Fecha de inicio</label>
+                            <input type="date" asp-for="DateStart" min="@today" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFileSm" class="form-label">Fecha de fin</label>
+                            <input type="date" asp-for="DateEnd" min="@today" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFileSm" class="form-label">Adjuntar evidencia</label>
+                            <input class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg,.jpeg,.png" placeholder="Ningún archivo seleccionado">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- License Modal -->
+    <div class="modal fade" id="licenseModal" tabindex="-1" aria-labelledby="licenseModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <form>           
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario para licencias medicas</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                          <div class="mb-3">
+                            <label for="formFileSm" class="form-label">Fecha de inicio</label>
+                            <input type="date" asp-for="DateStart" min="@today" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFileSm" class="form-label">Fecha de fin</label>
+                            <input type="date" asp-for="DateEnd" min="@today" required />
+                        </div>
+                        <div class="mb-3">
+                            <label for="formFileSm" class="form-label">Adjuntar evidencia</label>
+                            <input class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg,.jpeg,.png" placeholder="Ningún archivo seleccionado">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Enviar aplicación</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

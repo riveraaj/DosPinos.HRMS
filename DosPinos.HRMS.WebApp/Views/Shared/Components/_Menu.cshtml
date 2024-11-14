@@ -19,6 +19,13 @@
         </li>
 
         <li class="sidebar-item">
+            <a asp-action="Index" asp-controller="Employee" class="sidebar-link">
+                <i class="bi bi-people"></i>
+                <span>Empleados</span>
+            </a>
+        </li>
+
+        @* <li class="sidebar-item">
             <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                data-bs-target="#employees" aria-expanded="false" aria-controls="employees">
                 <i class="bi bi-people"></i>
@@ -32,20 +39,29 @@
                     <a href="#" class="sidebar-link">Register</a>
                 </li>
             </ul>
-        </li>
+        </li> *@
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a asp-action="Index" asp-controller="WorkingDay" class="sidebar-link">
                 <i class="bi bi-clock"></i>
                 <span>Asistencia</span>
             </a>
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a class ="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+                    data-bs-target="#freeTime" aria-expanded="false" aria-controls="freeTimes">
                 <i class="bi bi-airplane"></i>
                 <span>Tiempo libre</span>
             </a>
+            <ul id="freeTime" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a asp-action="Index" asp-controller="Vacation" class="sidebar-link">Tiempo libre</a>
+                </li>
+                <li class="sidebar-item">
+                    <a asp-action ="Pending" asp-controller="Vacation" class="sidebar-link">Solicitudes pendientes</a>
+                </li>
+            </ul>
         </li>
 
        @*  <li class="sidebar-item">
@@ -56,14 +72,14 @@
         </li> *@
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a asp-action="Index" asp-controller="Liquidation" class="sidebar-link">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Liquidación</span>
             </a>
         </li>
 
         <li class="sidebar-item">
-            <a href="#" class="sidebar-link">
+            <a asp-action="Index" asp-controller="ChristmasBonus" class="sidebar-link">
                 <i class="bi bi-gift"></i>
                 <span>Aguinaldo</span>
             </a>

@@ -8,5 +8,7 @@ namespace DosPinos.HRMS.Controllers.Payroll
 
         public async Task<IOperationResponseVO> CreateAsync(IEntityDTO entity)
             => await _payrollService.CreateAsync(entity);
+        public async Task<IOperationResponseVO> CreateAsync(int employeeId, IEntityDTO entity)
+           => await _payrollService.CreateAsync(employeeId, entity);
     }
 }

@@ -13,14 +13,13 @@ namespace DosPinos.HRMS.WebApp.Controllers
 
         public IActionResult Index()
         {
-            var payrollData = TempData["PayrollData"] as string;
-            if (!string.IsNullOrEmpty(payrollData))
+            if (TempData["PayrollData"] is string payrollData)
             {
                 var payrollList = JsonConvert.DeserializeObject<List<GetPayrollByDateDTO>>(payrollData);
                 return View(payrollList);
             }
 
-            // Si no hay datos en TempData, pasar un modelo vacío o predeterminado
+            // Si no hay datos en TempData, pasar un modelo predeterminado
             return View(new List<GetPayrollByDateDTO>());
         }
 
@@ -34,10 +33,24 @@ namespace DosPinos.HRMS.WebApp.Controllers
                 UserId = 1
             });
 
-            ViewData["alert"] = response;
+            TempData["alert"] = JsonConvert.SerializeObject(response);
             TempData["PayrollData"] = JsonConvert.SerializeObject(response.Content);
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateIndividual(int employeeId, int identification)
+        {
+            var response = await _payrollController.CreateAsync(employeeId, new EntityDTO()
+            {
+                //UserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)
+                UserId = 1
+            });
+
+            TempData["alert"] = JsonConvert.SerializeObject(response);
+
+            return RedirectToAction("Index", "Employee", identification);
         }
     }
 }

@@ -1,0 +1,45 @@
+﻿@model WorkingDayViewModel;
+
+@{
+    ViewData["Title"] = "Jornada Laboral";
+    var today = DateTime.Now.ToString("yyyy-MM-dd");
+}
+
+<div class="container">
+    <h2>Registro de jornada laboral</h2>
+
+    @foreach (var item in Model.Get)
+    {
+        if (item.EmployeeId == 6) continue;
+
+        <div class="w-100 row">
+            <div class="row">@item.EmployeeName</div>
+            <form asp-action="Create" method="post">
+                <input type="hidden" name="EmployeeId" value="@item.EmployeeId"/>
+                <div class="row">
+                    <input type="time" name="StartTime" required />
+                </div>
+                <div class="row">
+                    <input type="time" name="EndTime" required />
+                </div>
+                <div class="row">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Comentario">
+                        <label for="floatingInput">Comentario</label>
+                    </div>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="IsFreeDay">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Día libre
+                    </label>
+                </div>
+                <div class="row">
+                    <button class="btn btn-success">Guardar</button>
+                </div>
+            </form>
+     
+            <div class="row">@item.HourTotal</div>
+        </div>
+    }
+</div>

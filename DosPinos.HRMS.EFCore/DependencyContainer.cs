@@ -1,11 +1,19 @@
-﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.ChristmasBonus;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Liquidation;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Vacations;
+using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays;
 using DosPinos.HRMS.EFCore.Interfaces;
+using DosPinos.HRMS.EFCore.Repositories.ChristmasBonus;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
 using DosPinos.HRMS.EFCore.Repositories.Employees;
+using DosPinos.HRMS.EFCore.Repositories.Liquidation;
 using DosPinos.HRMS.EFCore.Repositories.Payroll;
 using DosPinos.HRMS.EFCore.Repositories.Securities;
+using DosPinos.HRMS.EFCore.Repositories.Vacations;
+using DosPinos.HRMS.EFCore.Repositories.WorkingDays;
 
 namespace DosPinos.HRMS.EFCore
 {
@@ -54,6 +62,18 @@ namespace DosPinos.HRMS.EFCore
 
             //Payroll
             services.AddScoped<IPayrollRepository, PayrollRepository>();
+
+            //Liquidation
+            services.AddScoped<ILiquidationRepository, LiquidationRepository>();
+
+            //Christamas Bonus
+            services.AddScoped<IChristmasBonusRepository, ChristmasBonusRepository>();
+
+            //Vacation
+            services.AddScoped<IVacationRepository, VacationRepository>();
+
+            //WorkingDay
+            services.AddScoped<IWorkingDayRepository, WorkingDayRepository>();
 
             return services;
         }

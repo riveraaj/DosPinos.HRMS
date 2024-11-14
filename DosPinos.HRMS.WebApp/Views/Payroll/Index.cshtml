@@ -1,7 +1,7 @@
 ﻿@model List<DosPinos.HRMS.Entities.DTOs.Payroll.GetPayrollByDateDTO>;
 
 @{
-    ViewData["Title"] = "Dashboard";
+    ViewData["Title"] = "Nomina";
 }
 
 <div class="container">
@@ -9,7 +9,7 @@
     @if (Model == null || Model.Count <= 0)
     {
         <form asp-action="Create" method="post" id="formPayroll">
-            <button onclick="submitForm()" class="btn btn-secondary">Calcular nómina</button>
+            <button onclick="submitFormPayroll()" class="btn btn-success">Calcular nómina</button>
         </form>
     }
     else
@@ -91,21 +91,19 @@
 
 @section Scripts {
     <script>
-        const $form = document.getElementById('formPayroll');
+        const $formPayroll = document.getElementById('formPayroll');
 
-        $form.addEventListener('submit', (e) => {
+        $formPayroll.addEventListener('submit', (e) => {
             e.preventDefault();
         });
 
-        const submitForm = async () => {  // Agregar async aquí
-            let message = "¿Deseas continuar con el calculo de nómina?",
+        const submitFormPayroll = async () => {
+            let message = "¿Deseas continuar con el cálculo de nómina?",
                 icon = "question",
-                isConfirmed = await showConfirmationAlert(message, icon); // Ahora puedes usar await
-
-            console.log(isConfirmed);
+                isConfirmed = await showConfirmationAlert(message, icon);
 
             if (isConfirmed) {
-                $form.submit();
+                $formPayroll.submit();
             }
         }
     </script>

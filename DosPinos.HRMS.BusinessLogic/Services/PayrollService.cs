@@ -37,5 +37,24 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
+        public async Task<IOperationResponseVO> CreateAsync(int employeeId, IEntityDTO entity)
+        {
+            IOperationResponseVO response = new OperationResponseVO();
+
+            try
+            {
+                response = await _payrollRepository.CreateAsync(employeeId);
+
+                // Si hay algún warning en la respuesta, agrega el mensaje
+                if (response.Status != ResponseStatus.Success)
+                    response = this.CustomWarning("El proceso se completó, pero se encontraron algunos errores durante la ejecución. Revise los detalles para más información.");
+            }
+            catch (Exception exception)
+            {
+                response = await this.HandlerLog(Module.Payroll, ActionCategory.Create, exception, entity);
+            }
+
+            return response;
+        }
     }
 }

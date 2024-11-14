@@ -1,0 +1,65 @@
+﻿@model List<DosPinos.HRMS.Entities.DTOs.ChristmasBonus.GetAllChristmasBonusDTO>;
+
+@{
+    ViewData["Title"] = "Aguinaldo";
+}
+
+<div class="container">
+
+    @if (Model == null || Model.Count <= 0)
+    {
+        <form asp-action="Create" method="post" id="formChristmasBonus">
+            <button onclick="submitFormChristmasBonus()" class="btn btn-success">Calcular aguinaldo</button>
+        </form>
+    }
+    else
+    {
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Identificación</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Puesto de trabajo</th>
+                            <th scope="col">Período</th>
+                            <th scope="col">Monto total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var employee in Model)
+                        {
+                            <tr>
+                                <td class="text-start">@employee.Identification</td>
+                                <td>@employee.FullName</td>
+                                <td>@employee.Job</td>
+                                <td>@employee.Date</td>
+                                <td class="text-center">@employee.Amount.ToString("C")</td>                          
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        const $formChristmasBonus = document.getElementById('formChristmasBonus');
+
+        $formChristmasBonus.addEventListener('submit', (e) => {
+            e.preventDefault();
+        });
+
+        const submitFormChristmasBonus = async () => {
+            let message = "¿Deseas continuar con el cálculo de aguinaldos?",
+                icon = "question",
+                isConfirmed = await showConfirmationAlert(message, icon);
+
+            if (isConfirmed) {
+                $formChristmasBonus.submit();
+            }
+        }
+    </script>
+}
