@@ -1,18 +1,18 @@
-﻿<aside id="sidebar">
+﻿<aside id="sidebar" class="expand">
 
     <div class="d-flex">
         <button class="toggle-btn" type="button">
             <i class="bi bi-list"></i>
         </button>
         <div class="sidebar-logo">
-            <a asp-action="Index" asp-controller="Home"><img src="~/images/logo.png" alt="Logo de la empresa DosPinos" /></a>
+            <a asp-action="Index" asp-controller="Home"><img src="~/DosPinos.HRMS.Content/assets/images/logo.png" alt="Logo de la empresa DosPinos" /></a>
         </div>
     </div>
 
     <ul class="sidebar-nav">
 
         <li class="sidebar-item">
-            <a asp-action="Index" asp-controller="Home" class="sidebar-link">
+            <a asp-action="Index" asp-controller="Dashboard" class="sidebar-link">
                 <i class="bi bi-columns-gap"></i>
                 <span>Dashboard</span>
             </a>
@@ -24,22 +24,6 @@
                 <span>Empleados</span>
             </a>
         </li>
-
-        @* <li class="sidebar-item">
-            <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-               data-bs-target="#employees" aria-expanded="false" aria-controls="employees">
-                <i class="bi bi-people"></i>
-                <span>Empleados</span>
-            </a>
-            <ul id="employee" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">Login</a>
-                </li>
-                <li class="sidebar-item">
-                    <a href="#" class="sidebar-link">Register</a>
-                </li>
-            </ul>
-        </li> *@
 
         <li class="sidebar-item">
             <a asp-action="Index" asp-controller="WorkingDay" class="sidebar-link">
@@ -64,12 +48,12 @@
             </ul>
         </li>
 
-       @*  <li class="sidebar-item">
+        <li class="sidebar-item">
             <a href="#" class="sidebar-link">
                 <i class="bi bi-buildings"></i>
                 <span>OEE</span>
             </a>
-        </li> *@
+        </li>
 
         <li class="sidebar-item">
             <a asp-action="Index" asp-controller="Liquidation" class="sidebar-link">

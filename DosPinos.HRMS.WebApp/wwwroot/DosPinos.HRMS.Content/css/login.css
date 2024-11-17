@@ -1,0 +1,111 @@
+﻿/* ********** Fonts Settings ********** */
+@font-face {
+    font-family: "Raleway";
+    src: url(../assets//font//Raleway/Raleway-VariableFont_wght.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Raleway";
+    src: url(../assets/font/raleway/raleway-italic-variablefont_wght.ttf) format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url(../assets/font/Montserrat/Montserrat-VariableFont_wght.ttf) format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Montserrat";
+    src: url(../assets/font/Montserrat/Montserrat-Italic-VariableFont_wght.ttf) format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* ********** Custom Properties ********** */
+:root {
+    --primary-font: Raleway, sans-serif;
+    --secondary-font: Montserrat, sans-serif;
+}
+
+/* ********** Reset ********** */
+html {
+    font-size: 16px;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+}
+
+body {
+    margin: 0;
+    font-family: var(--secondary-font) !important;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--primary-font) !important;
+}
+
+img {
+    height: auto;
+    border-style: none;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ********** Components ********** */
+/* ****** Login ****** */
+#form-nav{
+    width: 100%;
+    height: 5rem;
+}
+
+#login_container {
+    width: 30%;
+    margin: auto;
+    margin-top: 10%;
+}
+
+#login_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding-top: 4.5rem; 
+}
+
+#eye-password {
+    position: absolute !important;
+    right:1rem;
+    bottom: 1rem;
+    cursor: pointer;
+}

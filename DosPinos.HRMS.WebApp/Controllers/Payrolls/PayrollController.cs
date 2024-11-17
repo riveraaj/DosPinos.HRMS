@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace DosPinos.HRMS.WebApp.Controllers
+namespace DosPinos.HRMS.WebApp.Controllers.Payrolls
 {
     [Authorize]
     public class PayrollController(HRMS.Controllers.Payroll.PayrollController payrollController) : Controller

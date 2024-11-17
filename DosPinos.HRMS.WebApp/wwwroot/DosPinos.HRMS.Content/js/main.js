@@ -1,10 +1,5 @@
 ﻿const $menu = document.querySelector(".toggle-btn");
 
-window.addEventListener('click', e => {
-    if ($menu.contains(e.target)) document.querySelector("#sidebar").classList.toggle("expand");
-
-});
-
 window.addEventListener('load', () => {
     new DataTable('.data-table', {
         language: {
@@ -15,6 +10,10 @@ window.addEventListener('load', () => {
             'pdf',
         ],
     });
+}); 
+
+window.addEventListener('click', e => {
+    if ($menu.contains(e.target)) document.querySelector("#sidebar").classList.toggle("expand");
 });
 
 function showConfirmationAlert(message, icon = 'info') {
@@ -30,3 +29,23 @@ function showConfirmationAlert(message, icon = 'info') {
         return result.isConfirmed; // Retorna true si se confirma, false si se cancela
     });
 }
+
+//Disabling form submissions if there are invalid fields
+(() => {
+    'use strict'
+
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+        form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+            }
+
+            form.classList.add('was-validated')
+        }, false)
+    })
+})()

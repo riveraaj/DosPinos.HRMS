@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
-namespace DosPinos.HRMS.WebApp.Controllers
+namespace DosPinos.HRMS.WebApp.Controllers.ChristmasBonus
 {
     [Authorize]
     public class ChristmasBonusController(HRMS.Controllers.ChristmasBonus.ChristmasBonusController christmas) : Controller

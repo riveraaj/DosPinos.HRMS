@@ -1,0 +1,9 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Base.BaseViewModel;
+
+@if (Model != null && Model.Response != null)
+{
+    <div id="toast-data"
+         data-status="@Model.Response.Status.ToString()"
+         data-message="@Html.Raw(Model.Response.Message.FirstOrDefault() ?? "")">
+    </div>
+}

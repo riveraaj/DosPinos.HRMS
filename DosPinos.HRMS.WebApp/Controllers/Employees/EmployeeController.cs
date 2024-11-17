@@ -7,7 +7,7 @@ using DosPinos.HRMS.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DosPinos.HRMS.WebApp.Controllers
+namespace DosPinos.HRMS.WebApp.Controllers.Employee
 {
     [Authorize]
     public class EmployeeController(CreateEmployeeController createController,

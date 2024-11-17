@@ -1,34 +1,56 @@
-﻿@model DosPinos.HRMS.Entities.DTOs.Securities.LoginUserDTO;
+﻿@model DosPinos.HRMS.WebApp.Models.Securities.LoginViewModel;
 
 @{
-    ViewData["Title"] = "Inicio de sesión";
+    ViewData["Title"] = Model.Title;
     Layout = "_LayoutLogin";
 }
 
-<div class="container d-flex justify-content-center align-items-center" style="height: 100vh;">
-    <form asp-action="Login" method="post" class="d-flex flex-column needs-validation w-75" novalidate>
-        <div class="col-md-4 m-auto mt-5">
-            <label asp-for="@Model.UserName" class="form-label">Usuario</label>
-            <div class="input-group has-validation">
-                <input type="text" class="form-control" asp-for="@Model.UserName" aria-describedby="inputGroupPrepend" required>
-                <div class="invalid-feedback">
-                    Escriba su usuario.
-                </div>
+<div id="form-nav" class="bg-success"></div>
+
+<div class="shadow-lg py-5 text-center rounded-3" id="login_container">
+
+    <h3 class="mb-4">Bienvenido a</h3>
+    <img src="~/DosPinos.HRMS.Content/assets/images/logo.png" alt="logo" />
+
+    <form asp-action="Login" class="needs-validation" id="login_form" novalidate>
+
+        <div class="col-8">
+            <div class="form-floating">
+                <input type="text" class="form-control" asp-for="@Model.UserObj.UserName" placeholder="110800458" required>
+                <label asp-for="@Model.UserObj.UserName">Usuario</label>
             </div>
         </div>
 
-        <div class="col-md-4 m-auto mt-5">
-            <label asp-for="@Model.Password" class="form-label">Contraseña</label>
-            <div class="input-group has-validation">
-                <input type="password" class="form-control" asp-for="@Model.Password" aria-describedby="inputGroupPrepend" required>
-                <div class="invalid-feedback">
-                    Escriba su contraseña.
-                </div>
+        <div class="col-8 mb-5">
+            <div class="form-floating">
+                <input id="pass-input" type="password" class="form-control" asp-for="@Model.UserObj.Password" placeholder="****" required>
+                <label asp-for="@Model.UserObj.Password">Contraseña</label>
+                <i class="bi bi-eye" id="eye-password"></i>
             </div>
         </div>
 
-        <div class="m-auto mt-5">
-            <button class="btn btn-primary" type="submit">Iniciar sesión</button>
+        <div>
+            <button class="btn btn-success" type="submit">Iniciar sesión</button>
         </div>
     </form>
 </div>
+
+
+@section Scripts{
+    <script>
+        const $passInput = document.getElementById('pass-input'),
+            $passIcon = document.getElementById('eye-password');
+
+        document.addEventListener('click', e => {
+            if(e.target === $passIcon){
+                const type = $passInput.type === "password" ? "text" : "password";
+                $passInput.type = type;
+
+                //change icon
+                $passIcon.className = type === "password"
+                      ? 'bi bi-eye'
+                      : 'bi bi-eye-slash';
+            }
+        });
+    </script>
+}

@@ -15,7 +15,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\images\" />
+    <Folder Include="Models\ChristmasBonus\" />
+    <Folder Include="Models\Employees\" />
+    <Folder Include="Models\Liquidations\" />
+    <Folder Include="Models\WorkingDays\" />
+    <Folder Include="Models\Vacations\" />
+    <Folder Include="Models\Payrolls\" />
+    <Folder Include="Resources\ChristmasBonus\" />
+    <Folder Include="Resources\Employees\" />
+    <Folder Include="Resources\Liquidations\" />
+    <Folder Include="Resources\Dashboards\" />
+    <Folder Include="Resources\Securities\" />
+    <Folder Include="Resources\Vacations\" />
+    <Folder Include="Resources\Payrolls\" />
+    <Folder Include="Resources\WorkingDays\" />
+    <Folder Include="wwwroot\DosPinos.HRMS.Content\assets\images\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
     <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />

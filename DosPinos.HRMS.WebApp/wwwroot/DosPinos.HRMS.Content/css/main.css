@@ -1,29 +1,28 @@
 ﻿/* ********** Fonts Settings ********** */
 @font-face {
     font-family: "Raleway";
-    src: url(../font/Raleway/Raleway-VariableFont_wght.ttf) format('truetype');
-    src: url(../font/raleway/raleway-italic-variablefont_wght.ttf) format('truetype');
+    src: url(../assets//font//Raleway/Raleway-VariableFont_wght.ttf) format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Raleway";
-    src: url(../font/raleway/raleway-italic-variablefont_wght.ttf) format('truetype');
+    src: url(../assets/font/raleway/raleway-italic-variablefont_wght.ttf) format('truetype');
     font-weight: normal;
     font-style: italic;
 }
 
 @font-face {
     font-family: "Montserrat";
-    src: url(../font/Montserrat/Montserrat-VariableFont_wght.ttf) format('truetype');
+    src: url(../assets/font/Montserrat/Montserrat-VariableFont_wght.ttf) format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Montserrat";
-    src: url(../font/Montserrat/Montserrat-Italic-VariableFont_wght.ttf) format('truetype');
+    src: url(../assets/font/Montserrat/Montserrat-Italic-VariableFont_wght.ttf) format('truetype');
     font-weight: normal;
     font-style: italic;
 }
@@ -35,43 +34,70 @@
 }
 
 /* ********** Reset ********** */
-body {
-    font-family: var(--secondary-font) !important;
-    background-color: #ededed !important;
-}
-
-::after,
-::before {
+html {
+    font-size: 16px;
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    scroll-behavior: smooth;
 }
 
-a {
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+a,
+a:visited {
     text-decoration: none !important;
 }
 
-li {
+body {
+    margin: 0;
+    font-family: var(--secondary-font) !important;
+}
+
+b,
+strong {
+    font-weight: bolder;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--primary-font) !important;
+}
+
+img {
+    height: auto;
+    border-style: none;
+}
+
+ul,
+ol {
+    margin: 0;
+    padding: 0;
     list-style: none;
 }
-
-h1 {
-    font-weight: 600;
-    font-size: 1.5rem;
-}
-
-.wrapper {
-    display: flex;
-}
-
 .main {
-    min-height: 100vh;
     width: 100%;
+    height: 100vh;
+    transition: all 0.35s ease-in-out;
+    margin: auto;
+    background-color: #f5f5f5;
+}
+
+/*.main {
+    width: 100%;
+    height: 100vh;
     max-width: 1200px;
     overflow: hidden;
     transition: all 0.35s ease-in-out;
     margin: auto;
-}
+}*/
+
 
 @media (max-width: 75rem){
     .main{
@@ -79,6 +105,8 @@ h1 {
     }
 }
 
+/* ********** Components ********** */
+/* ****** Sidebar Menu ****** */
 #sidebar {
     width: 70px;
     min-width: 70px;
@@ -191,4 +219,11 @@ a.sidebar-link:hover {
 #sidebar.expand .sidebar-link[data-bs-toggle="collapse"].collapsed::after {
     transform: rotate(45deg);
     transition: all .2s ease-out;
+}
+
+/* ****** Top Menu ****** */
+#notification-panel{
+    min-width: 20rem !important;
+    top: 125%;
+    left: -18rem;
 }
