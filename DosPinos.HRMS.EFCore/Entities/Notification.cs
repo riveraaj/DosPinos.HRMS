@@ -10,7 +10,11 @@ public partial class Notification
 
     public DateTime CreatedAt { get; set; }
 
-    public int UserId { get; set; }
+    public int CreatedTo { get; set; }
 
-    public virtual User User { get; set; }
+    public int CreatedFor { get; set; }
+
+    public virtual User CreatedForNavigation { get; set; }
+
+    public virtual User CreatedToNavigation { get; set; }
 }

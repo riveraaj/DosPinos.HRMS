@@ -13,6 +13,7 @@ namespace DosPinos.HRMS.Controllers
         {
             //Notification
             services.AddScoped<GetAllNotificationController>();
+            services.AddScoped<UpdateNotificationController>();
 
             //Catalogs
             services.AddScoped<GetAllCantonController>();

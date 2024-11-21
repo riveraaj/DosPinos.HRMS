@@ -9,6 +9,6 @@ namespace DosPinos.HRMS.WebApp.Models.Base
 
         public string Title { get; set; }
         public IOperationResponseVO Response { get; set; }
-        public List<INotificationDTO> Notifications { get; set; }
+        public List<IGetAllNotificationDTO> Notifications { get; set; }
     }
 }

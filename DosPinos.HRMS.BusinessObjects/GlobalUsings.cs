@@ -1,11 +1,10 @@
-﻿global using DosPinos.HRMS.BusinessObjects.Enums.Commons;
+﻿global using System.ComponentModel.DataAnnotations;
+global using DosPinos.HRMS.BusinessObjects.Enums.Commons;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Log;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notification.POCOs;
-global using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
+global using DosPinos.HRMS.BusinessObjects.ValidationAttributes;
 global using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 global using DosPinos.HRMS.Entities.Enums.Commons;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
-global using DosPinos.HRMS.Entities.Interfaces.Commons.Notification;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.WorkingDays.Catalogs;
-global using System.ComponentModel.DataAnnotations;

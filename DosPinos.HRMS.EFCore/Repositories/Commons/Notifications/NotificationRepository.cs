@@ -4,9 +4,9 @@
     {
         private readonly DospinosdbContext _context = context;
 
-        public async Task<IEnumerable<INotificationDTO>> GetAllAsync(int userId)
+        public async Task<IEnumerable<IGetAllNotificationDTO>> GetAllAsync(int userId)
         {
-            List<Notification> notificationList = [.. await _context.Notifications.ToListAsync()];
+            List<Notification> notificationList = [.. await _context.Notifications.Where(x => x.CreatedFor == userId && x.Read == false).ToListAsync()];
             return notificationList.Select(NotificationMapper.MapFrom).ToList();
         }
 
@@ -20,7 +20,7 @@
             return result > 0;
         }
 
-        public async Task<bool> UpdateAsync(IUpdateNotificationPOCO notificationPOCO)
+        public async Task<bool> UpdateAsync(IUpdateNotificationDTO notificationPOCO)
         {
             Notification notification = _context.Notifications.FirstOrDefault(n => n.NotificationId == notificationPOCO.NotificationId);
 

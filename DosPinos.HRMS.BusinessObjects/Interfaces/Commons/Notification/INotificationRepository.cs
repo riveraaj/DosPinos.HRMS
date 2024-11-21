@@ -1,9 +1,11 @@
-﻿namespace DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notification
+﻿using DosPinos.HRMS.Entities.Interfaces.Commons.Notification;
+
+namespace DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notification
 {
     public interface INotificationRepository
     {
-        Task<IEnumerable<INotificationDTO>> GetAllAsync(int userId);
+        Task<IEnumerable<IGetAllNotificationDTO>> GetAllAsync(int userId);
         Task<bool> CreateAsync(ICreateNotificationPOCO notification);
-        Task<bool> UpdateAsync(IUpdateNotificationPOCO notification);
+        Task<bool> UpdateAsync(IUpdateNotificationDTO notification);
     }
 }

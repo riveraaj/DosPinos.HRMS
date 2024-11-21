@@ -1,7 +1,7 @@
-﻿using DosPinos.HRMS.Entities.Interfaces.Securities;
+﻿using System.Security.Claims;
+using DosPinos.HRMS.Entities.Interfaces.Securities;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
-using System.Security.Claims;
 
 namespace DosPinos.HRMS.WebApp.Helpers
 {
@@ -14,6 +14,8 @@ namespace DosPinos.HRMS.WebApp.Helpers
             var claims = new List<Claim> {
                 new (ClaimTypes.Role, userDTO.RoleId.ToString()),
                 new (ClaimTypes.NameIdentifier, userDTO.EmployeeId.ToString()),
+                new ("Identification", userDTO.IdentificationId.ToString()),
+                new ("Manager", userDTO.ManagerId.ToString()),
             };
 
             var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);

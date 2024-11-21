@@ -14,7 +14,7 @@
             try
             {
                 //Get all notification where is not read
-                IEnumerable<INotificationDTO> notificationList = await _notificationRepository.GetAllAsync(entity.UserId);
+                IEnumerable<IGetAllNotificationDTO> notificationList = await _notificationRepository.GetAllAsync(entity.UserId);
                 response.Content = notificationList;
             }
             catch (Exception exception)

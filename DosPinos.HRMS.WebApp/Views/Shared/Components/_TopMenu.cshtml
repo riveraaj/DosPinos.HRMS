@@ -10,12 +10,12 @@
 			<div class="nav-item dropdown">
 
 				<a class="nav-link" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-					<i class="bi bi-bell-fill @Model.Notifications.Count > 0 ? 'visible' : 'invisible'"></i>
-					<i class="bi bi-dot position-absolute text-danger fs-1 start-0 bottom-0" id="notification-alert"></i>
+					<i class="bi bi-bell-fill"></i>
+					<i class="bi bi-dot position-absolute text-danger fs-1 start-0 bottom-0 @(Model.Notifications.Count > 0 ? "visible" : "invisible")" id="notification-alert"></i>
 				</a>
 
 				<ul class="dropdown-menu px-3" id="notification-panel">
-					<li class="p-2 fw-semibold">Notificaciones</li>
+					<li class="p-2 fw-semibold text-center">Notificaciones</li>
 					<li><hr class="dropdown-divider"></li>
 
 					@if (Model.Notifications.Count > 0)
@@ -33,8 +33,7 @@
 					else
 					{
 						<form class="p-2 d-flex justify-content-between align-items-center gap-3">
-						<li>Solicitud de vacaciones pendiente de aprobacion</li>
-						<i class="bi bi-info-circle text-info"></i>
+						<li><i class="bi bi-info-circle text-info me-2"></i> No hay notificaciones sin leer.</li>
 						</form>
 					}
 				</ul>

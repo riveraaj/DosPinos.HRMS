@@ -2,22 +2,21 @@
 {
     internal static class NotificationMapper
     {
-        public static INotificationDTO MapFrom(Notification notification)
-            => new NotificationDTO()
+        public static IGetAllNotificationDTO MapFrom(Notification notification)
+            => new GetAllNotificationDTO()
             {
                 NotificationId = notification.NotificationId,
                 Message = notification.Message,
-                IsRead = notification.Read,
-                CreatedDate = notification.CreatedAt,
-                UserId = notification.UserId,
+                UserId = notification.CreatedFor,
             };
 
         public static Notification MapFrom(ICreateNotificationPOCO notificationPOCO)
             => new()
             {
+                CreatedAt = notificationPOCO.CreatedAt,
+                CreatedFor = notificationPOCO.CreatedFor,
+                CreatedTo = notificationPOCO.CreatedTo,
                 Message = notificationPOCO.Message,
-                UserId = notificationPOCO.UserId,
-                CreatedAt = DateTime.Now,
                 Read = notificationPOCO.IsRead,
             };
     }

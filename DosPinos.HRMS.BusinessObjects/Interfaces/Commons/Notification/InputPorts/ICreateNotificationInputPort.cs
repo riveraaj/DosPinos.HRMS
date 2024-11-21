@@ -2,6 +2,6 @@
 {
     public interface ICreateNotificationInputPort
     {
-        Task<IOperationResponseVO> CreateAsync(ICreateNotificationPOCO notification);
+        Task CreateAsync(ICreateNotificationPOCO notification);
     }
 }

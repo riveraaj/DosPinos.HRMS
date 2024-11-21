@@ -14,7 +14,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Securities
 
         public async Task<ILoginUserDTO> Get(string username)
         {
-            User user = await _context.Users.FirstOrDefaultAsync(x => x.Username == username);
+            User user = await _context.Users.Include(x => x.Employee).FirstOrDefaultAsync(x => x.Username == username);
 
             if (user == null) return null;
 
@@ -22,6 +22,8 @@ namespace DosPinos.HRMS.EFCore.Repositories.Securities
             {
                 RoleId = user.RoleId,
                 EmployeeId = user.EmployeeId,
+                IdentificationId = user.Employee.Identification,
+                ManagerId = user.Employee.ManagerId ?? user.EmployeeId,
                 Password = user.Password,
                 UserName = user.Username,
             };

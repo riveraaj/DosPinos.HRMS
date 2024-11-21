@@ -1,15 +1,23 @@
+using DosPinos.HRMS.Controllers.Commons.Notification;
+using DosPinos.HRMS.WebApp.Controllers.Base;
 using DosPinos.HRMS.WebApp.Models.Dashboards;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DosPinos.HRMS.WebApp.Controllers.Dashboard
+namespace DosPinos.HRMS.WebApp.Controllers.Dashboards
 {
     [Authorize]
-    public class DashboardController : Controller
+    public class DashboardController(GetAllNotificationController getAllNotificationController,
+                                     UpdateNotificationController updateNotificationController) : BaseController(getAllNotificationController,
+                                                                                                                 updateNotificationController)
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            DashboardViewModel model = new();
+            DashboardViewModel model = new()
+            {
+                Notifications = await GetAllAsync()
+            };
+
             return View(model);
         }
     }

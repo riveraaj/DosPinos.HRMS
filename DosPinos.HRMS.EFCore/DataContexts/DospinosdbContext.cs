@@ -197,6 +197,8 @@ public partial class DospinosdbContext : DbContext
 
             entity.HasIndex(e => e.DeductionPercentage, "IDX_deduction_percentage");
 
+            entity.HasIndex(e => e.DeductionDescription, "IDX_deduction_type");
+
             entity.HasIndex(e => e.DeductionDescription, "UK_deduction_description").IsUnique();
 
             entity.Property(e => e.DeductionId)
@@ -331,6 +333,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasIndex(e => new { e.MaritalStatusId, e.NationalityId, e.GenderId }, "IDX_employee_detail_attributes");
 
             entity.HasIndex(e => e.EmployeeId, "IDX_employee_detail_employee");
+
+            entity.HasIndex(e => e.Email, "IDX_user_email").IsUnique();
 
             entity.HasIndex(e => e.Email, "UK_email").IsUnique();
 
@@ -834,18 +838,24 @@ public partial class DospinosdbContext : DbContext
             entity.Property(e => e.CreatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("created_at");
+            entity.Property(e => e.CreatedFor).HasColumnName("created_for");
+            entity.Property(e => e.CreatedTo).HasColumnName("created_to");
             entity.Property(e => e.Message)
                 .IsRequired()
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("message");
             entity.Property(e => e.Read).HasColumnName("read");
-            entity.Property(e => e.UserId).HasColumnName("user_id");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Notifications)
-                .HasForeignKey(d => d.UserId)
+            entity.HasOne(d => d.CreatedForNavigation).WithMany(p => p.NotificationCreatedForNavigations)
+                .HasForeignKey(d => d.CreatedFor)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_notification_user_id");
+                .HasConstraintName("FK_notification_created_for_user_id");
+
+            entity.HasOne(d => d.CreatedToNavigation).WithMany(p => p.NotificationCreatedToNavigations)
+                .HasForeignKey(d => d.CreatedTo)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_notification_created_to_user_id");
         });
 
         modelBuilder.Entity<Oee>(entity =>
@@ -1155,6 +1165,8 @@ public partial class DospinosdbContext : DbContext
             entity.HasKey(e => e.UserId).HasName("PK_user_id");
 
             entity.ToTable("user", "humanresources");
+
+            entity.HasIndex(e => e.RoleId, "IDX_user_role");
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
             entity.Property(e => e.EmployeeId).HasColumnName("employee_id");

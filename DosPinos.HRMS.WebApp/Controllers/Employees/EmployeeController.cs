@@ -1,18 +1,24 @@
-﻿using DosPinos.HRMS.Controllers.Employees;
+﻿using System.Security.Claims;
+using DosPinos.HRMS.Controllers.Commons.Notification;
+using DosPinos.HRMS.Controllers.Employees;
 using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.DTOs.Employees;
 using DosPinos.HRMS.Entities.Enums.Commons;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
+using DosPinos.HRMS.WebApp.Controllers.Base;
 using DosPinos.HRMS.WebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DosPinos.HRMS.WebApp.Controllers.Employee
+namespace DosPinos.HRMS.WebApp.Controllers.Employees
 {
     [Authorize]
-    public class EmployeeController(CreateEmployeeController createController,
+    public class EmployeeController(GetAllNotificationController getAllNotificationController,
+                                    UpdateNotificationController updateNotificationController,
+                                    CreateEmployeeController createController,
                                     GetAllEmployeeController getAllController,
-                                    HRMS.Controllers.Employees.EmployeeController employeeController) : Controller
+                                    HRMS.Controllers.Employees.EmployeeController employeeController) : BaseController(getAllNotificationController,
+                                                                                                                       updateNotificationController)
     {
         private readonly CreateEmployeeController _createController = createController;
         private readonly GetAllEmployeeController _getAllController = getAllController;
@@ -22,8 +28,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employee
         {
             IOperationResponseVO response = await _getAllController.GetAllAsync(new EntityDTO()
             {
-                //UserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)
-                UserId = 1
+                UserId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value),
             });
 
             return View(response.Content);
