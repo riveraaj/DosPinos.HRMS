@@ -1,6 +1,6 @@
-﻿using DosPinos.HRMS.Entities.Interfaces.Commons.Notification;
+﻿using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
 
-namespace DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notification
+namespace DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications
 {
     public interface INotificationRepository
     {

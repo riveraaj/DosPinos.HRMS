@@ -1,6 +1,6 @@
 ﻿global using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
-global using DosPinos.HRMS.Entities.Interfaces.Commons.Notification;
+global using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Addresses;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Compensations;

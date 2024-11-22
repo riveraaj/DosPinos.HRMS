@@ -1,4 +1,6 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.ChristmasBonus;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Dashboards;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Liquidation;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
@@ -8,6 +10,7 @@ using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays;
 using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.EFCore.Repositories.ChristmasBonus;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
+using DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards;
 using DosPinos.HRMS.EFCore.Repositories.Employees;
 using DosPinos.HRMS.EFCore.Repositories.Liquidation;
 using DosPinos.HRMS.EFCore.Repositories.Payroll;
@@ -36,7 +39,6 @@ namespace DosPinos.HRMS.EFCore
             services.AddScoped<INotificationRepository, NotificationRepository>();
 
             //Catalogs
-            services.AddScoped<INotificationRepository, NotificationRepository>();
             services.AddScoped<IDeductionRepository, DeductionRepository>();
             services.AddScoped<ICantonRepository, CantonRepository>();
             services.AddScoped<IDistrictRepository, DistrictRepository>();
@@ -74,6 +76,9 @@ namespace DosPinos.HRMS.EFCore
 
             //WorkingDay
             services.AddScoped<IWorkingDayRepository, WorkingDayRepository>();
+
+            //Dashboard
+            services.AddScoped<IDashboardRepository, DashboardRepository>();
 
             return services;
         }

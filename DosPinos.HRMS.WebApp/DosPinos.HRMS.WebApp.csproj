@@ -16,13 +16,11 @@
 
   <ItemGroup>
     <Folder Include="Models\ChristmasBonus\" />
-    <Folder Include="Models\Employees\" />
     <Folder Include="Models\Liquidations\" />
     <Folder Include="Models\WorkingDays\" />
     <Folder Include="Models\Vacations\" />
     <Folder Include="Models\Payrolls\" />
     <Folder Include="Resources\ChristmasBonus\" />
-    <Folder Include="Resources\Employees\" />
     <Folder Include="Resources\Liquidations\" />
     <Folder Include="Resources\Dashboards\" />
     <Folder Include="Resources\Securities\" />

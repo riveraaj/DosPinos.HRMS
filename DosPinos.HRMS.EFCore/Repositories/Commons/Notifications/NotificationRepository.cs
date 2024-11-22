@@ -1,4 +1,8 @@
-﻿namespace DosPinos.HRMS.EFCore.Repositories.Commons.Notifications
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications.POCOs;
+using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
+
+namespace DosPinos.HRMS.EFCore.Repositories.Commons.Notifications
 {
     internal class NotificationRepository(DospinosdbContext context) : INotificationRepository
     {

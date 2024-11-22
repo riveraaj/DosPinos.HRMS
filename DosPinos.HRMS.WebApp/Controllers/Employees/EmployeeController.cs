@@ -1,5 +1,5 @@
 ﻿using System.Security.Claims;
-using DosPinos.HRMS.Controllers.Commons.Notification;
+using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.Controllers.Employees;
 using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.DTOs.Employees;

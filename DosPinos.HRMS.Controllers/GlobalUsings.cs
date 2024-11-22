@@ -1,4 +1,4 @@
-﻿global using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notification.InputPorts;
+﻿global using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.OutputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.Cantons.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.Deductions.InputPorts;
@@ -16,7 +16,7 @@ global using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities.Catalogs.Inca
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Overtimes.Catalogs.OvertimesType.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Securities.Catalogs.Roles.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays.Catalogs.Holidays.InputPorts;
-global using DosPinos.HRMS.Controllers.Commons.Notification;
+global using DosPinos.HRMS.Controllers.Commons.Notifications;
 global using DosPinos.HRMS.Controllers.Employees.Catalogs.Cantons;
 global using DosPinos.HRMS.Controllers.Employees.Catalogs.Deductions;
 global using DosPinos.HRMS.Controllers.Employees.Catalogs.Districts;

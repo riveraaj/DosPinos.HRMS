@@ -1,4 +1,6 @@
-﻿namespace DosPinos.HRMS.Controllers.Commons.Notification
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications.InputPorts;
+
+namespace DosPinos.HRMS.Controllers.Commons.Notifications
 {
     public class GetAllNotificationController(IGetAllNotificationInputPort inputPort,
                                               IOutputPort outputPort)

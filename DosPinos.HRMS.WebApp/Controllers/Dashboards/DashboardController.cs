@@ -1,4 +1,4 @@
-using DosPinos.HRMS.Controllers.Commons.Notification;
+using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.WebApp.Controllers.Base;
 using DosPinos.HRMS.WebApp.Models.Dashboards;
 using Microsoft.AspNetCore.Authorization;

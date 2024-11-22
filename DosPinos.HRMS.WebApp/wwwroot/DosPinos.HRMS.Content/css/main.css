@@ -101,6 +101,7 @@ ol {
 @media (max-width: 1200px) {
     .content-container {
         padding: 0 4rem;
+        padding-top: 3rem;
     }
 }
 

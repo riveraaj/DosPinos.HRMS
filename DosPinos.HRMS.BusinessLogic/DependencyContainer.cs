@@ -54,6 +54,9 @@ namespace DosPinos.HRMS.BusinessLogic
             //WorkinDay
             services.AddScoped<WorkingDayService>();
 
+            //Dashboard
+            services.AddScoped<DashboardService>();
+
             return services;
         }
     }

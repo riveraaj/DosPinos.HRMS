@@ -1,4 +1,8 @@
-﻿namespace DosPinos.HRMS.EFCore.Mappers.Commons.Notifications
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications.POCOs;
+using DosPinos.HRMS.Entities.DTOs.Commons.Notifications;
+using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
+
+namespace DosPinos.HRMS.EFCore.Mappers.Commons.Notifications
 {
     internal static class NotificationMapper
     {

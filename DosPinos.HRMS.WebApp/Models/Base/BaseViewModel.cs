@@ -1,5 +1,5 @@
 ﻿using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
-using DosPinos.HRMS.Entities.Interfaces.Commons.Notification;
+using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
 
 namespace DosPinos.HRMS.WebApp.Models.Base
 {

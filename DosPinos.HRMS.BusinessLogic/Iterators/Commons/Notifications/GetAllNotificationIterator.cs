@@ -1,4 +1,4 @@
-﻿namespace DosPinos.HRMS.BusinessLogic.Iterators.Commons.Notification
+﻿namespace DosPinos.HRMS.BusinessLogic.Iterators.Commons.Notifications
 {
     internal class GetAllNotificationIterator(INotificationRepository notificationRepository,
                                               ICreateLogIterator createLogIterator,

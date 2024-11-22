@@ -1,8 +1,8 @@
 ﻿using System.Security.Claims;
-using DosPinos.HRMS.Controllers.Commons.Notification;
+using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
-using DosPinos.HRMS.Entities.Interfaces.Commons.Notification;
+using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DosPinos.HRMS.WebApp.Controllers.Base

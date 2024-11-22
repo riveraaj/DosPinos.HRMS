@@ -1,4 +1,4 @@
-﻿namespace DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notification.InputPorts
+﻿namespace DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications.InputPorts
 {
     public interface ICreateNotificationInputPort
     {

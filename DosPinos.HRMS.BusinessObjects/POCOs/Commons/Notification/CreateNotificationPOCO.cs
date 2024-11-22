@@ -1,4 +1,4 @@
-﻿namespace DosPinos.HRMS.BusinessObjects.POCOs.Commons.Notification
+﻿namespace DosPinos.HRMS.BusinessObjects.POCOs.Commons.Notifications
 {
     public class CreateNotificationPOCO : ICreateNotificationPOCO
     {

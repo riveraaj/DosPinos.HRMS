@@ -1,4 +1,6 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Notification
+﻿using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
+
+namespace DosPinos.HRMS.Entities.DTOs.Commons.Notifications
 {
     public class GetAllNotificationDTO : EntityDTO, IGetAllNotificationDTO
     {
