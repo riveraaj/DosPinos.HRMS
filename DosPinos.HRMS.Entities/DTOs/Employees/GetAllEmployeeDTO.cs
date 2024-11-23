@@ -4,7 +4,7 @@ namespace DosPinos.HRMS.Entities.DTOs.Employees
 {
     public class GetAllEmployeeDTO : IGetAllEmployeeDTO
     {
-        public int Identification { get; set; }
+        public string Identification { get; set; }
         public string EmployeeName { get; set; }
         public string JobTitleDescription { get; set; }
         public DateOnly DateEntry { get; set; }

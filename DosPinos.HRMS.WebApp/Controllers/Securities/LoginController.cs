@@ -16,6 +16,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Securities
         public IActionResult Index(LoginViewModel model) => User.Identity.IsAuthenticated ? Redirect("~/Dashboard/Index") : View(model);
 
         [HttpPost]
+        [Route("login")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel model)
         {
@@ -38,12 +39,12 @@ namespace DosPinos.HRMS.WebApp.Controllers.Securities
 
         [Authorize]
         [HttpPost]
-        [Route("iniciar-sesion")]
+        [Route("logout")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
             await CookiesHelper.RemoveAuthenticationCookie(HttpContext);
-            return RedirectToAction("Login");
+            return RedirectToAction("Index");
         }
     }
 }

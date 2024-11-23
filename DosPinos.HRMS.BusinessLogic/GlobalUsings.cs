@@ -1,5 +1,4 @@
 ﻿global using System.ComponentModel.DataAnnotations;
-global using System.Security.Cryptography;
 global using DosPinos.HRMS.BusinessLogic.Helpers;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Commons;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Commons.Log;
@@ -62,7 +61,6 @@ global using DosPinos.HRMS.BusinessObjects.Interfaces.Securities.Catalogs.Roles.
 global using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays.Catalogs.Holidays;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays.Catalogs.Holidays.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.POCOs.Commons.Log;
-global using DosPinos.HRMS.BusinessObjects.Resources.Commons;
 global using DosPinos.HRMS.Entities.Enums.Commons;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;

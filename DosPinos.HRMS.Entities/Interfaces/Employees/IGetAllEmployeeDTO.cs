@@ -2,7 +2,7 @@
 {
     public interface IGetAllEmployeeDTO
     {
-        int Identification { get; set; }
+        string Identification { get; set; }
         string EmployeeName { get; set; }
         string JobTitleDescription { get; set; }
         DateOnly DateEntry { get; set; }

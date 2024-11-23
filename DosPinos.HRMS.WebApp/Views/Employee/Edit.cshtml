@@ -4,113 +4,84 @@
     ViewData["Title"] = Model.Title;
 }
 
-<div class="container">
-    <div class="d-flex row w-75 justify-content-center align-items-center gap-3">
-        <div class="mb-3 ">
-            <label asp-for="Employee.Identification" class="form-label">Identificación</label>
-            <input type="text" class="form-control" asp-for="Employee.Identification" readonly>
-        </div>      
-        <div class="mb-3">
-            <label asp-for="Employee.EmployeeName" class="form-label">Nombre</label>
-            <input type="text" class="form-control" asp-for="Employee.EmployeeName" readonly>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Employee.JobTitleDescription" class="form-label">Puesto</label>
-            <input type="text" class="form-control" asp-for="Employee.JobTitleDescription" readonly>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Employee.DateEntry" class="form-label">Fecha de ingreso</label>
-            <input type="text" class="form-control" asp-for="Employee.DateEntry" readonly>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Employee.HiringTypeDescription" class="form-label">Contrato</label>
-            <input type="text" class="form-control" asp-for="Employee.HiringTypeDescription" readonly>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Employee.PhoneNumber" class="form-label">Celular</label>
-            <input type="text" class="form-control" asp-for="Employee.PhoneNumber" readonly>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Employee.Email" class="form-label">Correo</label>
-            <input type="text" class="form-control" asp-for="Employee.Email" readonly>
-        </div>
-    </div>
-
-    <div class="d-flex flex-row wrapper w-100 gap-5 pt-5">
-        <div >
-            <p class="d-inline-flex gap-1">
-                <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLiquidation" aria-expanded="false" aria-controls="collapseExample">
-                    Liquidar empleado
-                </button>
-            </p>
-            <div class="collapse" id="collapseLiquidation">
-                <div class="card card-body">
-                   <form asp-action="Create" asp-controller="Liquidation" id="formLiquidation" class="">
-                        <input type="hidden" asp-for="Liquidation.EmployeeId" value="@Model.Employee.EmployeeId" />
-                        <input type="hidden" asp-for="Liquidation.Identification" value="@Model.Employee.Identification" />
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" asp-for="Liquidation.PreNotice">
-                                <label class="form-check-label" asp-for="Liquidation.PreNotice">
-                                    Pre-Aviso
-                                </label>
-                            </div>
-                        </div>
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" asp-for="Liquidation.ApplySeverance">
-                                <label class="form-check-label" asp-for="Liquidation.ApplySeverance">
-                                    Cesantía
-                                </label>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success" onclick="submitFormLiquidation()">Liquidar</button>
-                   </form>
-                </div>
+<div class="content-container">
+    <div class="container">
+        <div class="d-flex row w-75 justify-content-center align-items-center gap-3">
+            <div class="mb-3 ">
+                <label asp-for="Employee.Identification" class="form-label">Identificación</label>
+                <input type="text" class="form-control" asp-for="Employee.Identification" readonly>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Employee.EmployeeName" class="form-label">Nombre</label>
+                <input type="text" class="form-control" asp-for="Employee.EmployeeName" readonly>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Employee.JobTitleDescription" class="form-label">Puesto</label>
+                <input type="text" class="form-control" asp-for="Employee.JobTitleDescription" readonly>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Employee.DateEntry" class="form-label">Fecha de ingreso</label>
+                <input type="text" class="form-control" asp-for="Employee.DateEntry" readonly>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Employee.HiringTypeDescription" class="form-label">Contrato</label>
+                <input type="text" class="form-control" asp-for="Employee.HiringTypeDescription" readonly>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Employee.PhoneNumber" class="form-label">Celular</label>
+                <input type="text" class="form-control" asp-for="Employee.PhoneNumber" readonly>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Employee.Email" class="form-label">Correo</label>
+                <input type="text" class="form-control" asp-for="Employee.Email" readonly>
             </div>
         </div>
 
-         <div>
-            <form asp-action="CreateIndividual" asp-controller="Payroll" method="post" id="formIndividualPayroll">
-                <input type="hidden" name="employeeId" value="@Model.Employee.EmployeeId"/>
-                <input type="hidden" name="identification" value="@Model.Employee.Identification"/>
-                <button onclick="submitFormIndividualPayroll()" class="btn btn-success">Calcular nómina</button>
-            </form>
+        <div class="d-flex flex-row wrapper w-100 gap-5 pt-5">
+            <div>
+                <p class="d-inline-flex gap-1">
+                    <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseLiquidation" aria-expanded="false" aria-controls="collapseExample">
+                        Liquidar empleado
+                    </button>
+                </p>
+                <div class="collapse" id="collapseLiquidation">
+                    <div class="card card-body">
+                        <form asp-action="Create" asp-controller="Liquidation" id="formLiquidation" class="">
+                            <input type="hidden" asp-for="Liquidation.EmployeeId" value="@Model.Employee.EmployeeId" />
+                            <input type="hidden" asp-for="Liquidation.Identification" value="@Model.Employee.Identification" />
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" asp-for="Liquidation.PreNotice">
+                                    <label class="form-check-label" asp-for="Liquidation.PreNotice">
+                                        Pre-Aviso
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" asp-for="Liquidation.ApplySeverance">
+                                    <label class="form-check-label" asp-for="Liquidation.ApplySeverance">
+                                        Cesantía
+                                    </label>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-success" onclick="submitFormLiquidation()">Liquidar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <form asp-action="CreateIndividual" asp-controller="Payroll" method="post" id="formIndividualPayroll">
+                    <input type="hidden" name="employeeId" value="@Model.Employee.EmployeeId" />
+                    <input type="hidden" name="identification" value="@Model.Employee.Identification" />
+                    <button onclick="submitFormIndividualPayroll()" class="btn btn-success">Calcular nómina</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
 
-@section Scripts{
-    <script>
-        const $formLiquidation = document.getElementById('formLiquidation'),
-              $formIndividualPayroll = document.getElementById('formIndividualPayroll');
-
-        $formLiquidation.addEventListener('submit', (e) => {
-            e.preventDefault();
-        });
-
-        $formIndividualPayroll.addEventListener('submit', (e) => {
-            e.preventDefault();
-        });
-
-        const submitFormLiquidation = async () => {
-            let message = `¿Deseas continuar con la liquidación del empleado @Model.Employee.EmployeeName?`,
-                icon = "question",
-                isConfirmed = await showConfirmationAlert(message, icon);
-
-            if (isConfirmed) {
-                $formLiquidation.submit();
-            }
-        }
-
-        const submitFormIndividualPayroll = async () => {
-            let message = `¿Deseas continuar con el cálculo de nómina?`,
-                icon = "question",
-                isConfirmed = await showConfirmationAlert(message, icon);
-
-            if (isConfirmed) {
-                $formIndividualPayroll.submit();
-            }
-        }
-    </script>
+@section Scripts {
+    <script src="~/Dospinos.HRMS.Content/js/employees/editEmployee.js"></script>
 }

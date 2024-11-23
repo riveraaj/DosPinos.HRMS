@@ -1,5 +1,6 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
 using DosPinos.HRMS.Entities.DTOs.Securities;
+using DosPinos.HRMS.Entities.Helpers;
 using DosPinos.HRMS.Entities.Interfaces.Securities;
 
 namespace DosPinos.HRMS.BusinessLogic.Services

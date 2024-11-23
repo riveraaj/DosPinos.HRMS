@@ -227,3 +227,23 @@ a.sidebar-link:hover {
     top: 125%;
     left: -18rem;
 }
+
+
+/* ****** Data Table ****** */
+.page-link {
+    background-color: seagreen !important;
+    color:white
+}
+
+.active > .page-link, .page-link.active {
+        border-color: black !important;
+}
+
+.dt-layout-table{
+    padding: 1rem 0 !important;
+}
+
+tr {
+    color: white !important;
+    background-color: black !important;
+}
