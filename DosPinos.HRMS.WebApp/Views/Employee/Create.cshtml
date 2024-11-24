@@ -1,0 +1,156 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Employees.CreateEmployeeViewModel;
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+
+    <form asp-action="Create" method="post" class="d-flex flex-column gap-4 needs-validation w-75 m-auto" novalidate>
+
+        <div class="bg-white shadow row rounded-2 g-3 p-3 mt-0">
+
+            <div class="col-12">
+                <h5 class="fw-semibold">Personal</h5>
+            </div>
+
+            <div class="col-6">
+                <div class="form-floating">
+                    <input type="text" class="form-control" asp-for="@Model.EmployeeObj.Employee.Identification" placeholder="" pattern="^[1-9][0-9]*$" required>
+                    <label asp-for="@Model.EmployeeObj.Employee.Identification">Identificación</label>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-floating">
+                    <input type="text" class="form-control" asp-for="@Model.EmployeeObj.Employee.Name" maxlength="50" placeholder="" required>
+                    <label asp-for="@Model.EmployeeObj.Employee.Name">Nombre</label>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-floating">
+                    <input type="text" class="form-control" asp-for="@Model.EmployeeObj.Employee.FirstLastName" maxlength="50" placeholder="" required>
+                    <label asp-for="@Model.EmployeeObj.Employee.FirstLastName">Primer apellido</label>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-floating">
+                    <input type="text" class="form-control" asp-for="@Model.EmployeeObj.Employee.SecondLastName" maxlength="50" placeholder="" required>
+                    <label asp-for="@Model.EmployeeObj.Employee.SecondLastName">Segundo apellido</label>
+                </div>
+            </div>
+
+            <div class="col-6">
+                <div class="form-floating">
+                    <input type="date" class="form-control" asp-for="@Model.EmployeeObj.Detail.DateBirth" min="@Model.Today" placeholder="" required>
+                    <label asp-for="@Model.EmployeeObj.Detail.DateBirth">Fecha de nacimiento</label>
+                </div>
+            </div>
+
+            <hr class="col-11 mx-auto my-4 border-2 border-success" />
+
+            <div class="col-4 mt-0">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Detail.GenderId">Género</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Detail.GenderId" asp-items="@Model.Genders" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-4 mt-0">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Detail.NationalityId">Nacionalidad</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Detail.NationalityId" asp-items="@Model.Nationalities" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-4 mt-0">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Detail.MaritalStatusId">Estado civil</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Detail.MaritalStatusId" asp-items="@Model.MaritalStatus" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-4">
+                <div class="form-floating">
+                    <input type="number" class="form-control" asp-for="@Model.EmployeeObj.Detail.Children" min="0" placeholder="" required>
+                    <label asp-for="@Model.EmployeeObj.Detail.Children">Hijos</label>
+                </div>
+            </div>
+
+            <hr class="col-11 mx-auto my-4 border-2 border-success" />
+
+            <div class="col-4 mt-0">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Phone.PhoneNumber">Número de teléfono</label>
+                <input type="tel" class="form-control" asp-for="@Model.EmployeeObj.Phone.PhoneNumber" placeholder="" required>
+            </div>
+
+            <div class="col-4 mt-0">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Phone.PhoneTypeId">Tipo de teléfono</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Phone.PhoneTypeId" asp-items="@Model.PhoneTypes" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-4 mt-0">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Address.DistrictId">Distrito</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Address.DistrictId" asp-items="@Model.Districts" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-12">
+                <div class="form-floating">
+                    <textarea class="form-control" id="validationTextarea" asp-for="@Model.EmployeeObj.Address.Address" style="height:8.5rem; resize:none;" placeholder="" maxlength="200" required></textarea>
+                    <label asp-for="@Model.EmployeeObj.Address.Address">Dirección de domicilio</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white shadow row rounded-2 g-3 p-3 mt-0">
+
+            <div class="col-12">
+                <h5 class="fw-semibold">Trabajo</h5>
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Detail.HiringTypeId">Tipo de contratación</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Detail.HiringTypeId" asp-items="@Model.HiringTypes" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Detail.JobTitleId">Puesto</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Detail.JobTitleId" asp-items="@Model.JobTitles" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Employee.ManagerId">Jefe directo</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Employee.ManagerId" asp-items="@Model.Managers" required>
+                    <option selected value="0">No aplica</option>
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Compensation.SalaryCategoryId">Salario</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Compensation.SalaryCategoryId" asp-items="@Model.SalaryCategories" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-6">
+                <label class="form-label" asp-for="@Model.EmployeeObj.Detail.Email">Correo electrónico</label>
+                <input type="email" class="form-control" asp-for="@Model.EmployeeObj.Detail.Email" placeholder="" required>
+            </div>
+        </div>
+
+        <div class="row justify-content-end">
+            <button type="submit" class="btn btn-success col-3">Crear empleado</button>
+        </div>
+    </form>
+
+</div>

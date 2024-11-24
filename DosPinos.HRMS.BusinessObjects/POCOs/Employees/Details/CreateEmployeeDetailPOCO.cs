@@ -1,5 +1,4 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Details.POCOs;
-using DosPinos.HRMS.BusinessObjects.ValidationAttributes;
 
 namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees.Details
 {
@@ -24,7 +23,7 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees.Details
 
         [RequiredGreaterThanZero]
         public byte JobTitleId { get; set; }
-        [RequiredAndMaxLengthAttribute(100)]
+        [RequiredAndMaxLength(100)]
         public string Email { get; set; }
     }
 }

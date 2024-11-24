@@ -6,7 +6,7 @@ namespace DosPinos.HRMS.BusinessObjects.ValidationAttributes
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if (value == null)
+            if (value == null || value.Equals("0"))
             {
                 return new ValidationResult("La cédula es obligatoria.");
             }

@@ -8,6 +8,5 @@
         string SecondLastName { get; set; }
         int ManagerId { get; set; }
         bool HasManager { get; set; }
-        string Email { get; set; }
     }
 }

@@ -2,7 +2,6 @@
 using DosPinos.HRMS.BusinessObjects.POCOs.Employees;
 using DosPinos.HRMS.BusinessObjects.POCOs.Employees.Addresses;
 using DosPinos.HRMS.BusinessObjects.POCOs.Employees.Compensations;
-using DosPinos.HRMS.BusinessObjects.POCOs.Employees.Deductions;
 using DosPinos.HRMS.BusinessObjects.POCOs.Employees.Details;
 using DosPinos.HRMS.BusinessObjects.POCOs.Employees.Phones;
 using DosPinos.HRMS.Entities.Interfaces.Employees;
@@ -33,11 +32,6 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
                 {
                     SalaryCategoryId = employeeDTO.Compensation.SalaryCategoryId
                 },
-                Deduction = new CreateEmployeeDeductionPOCO()
-                {
-                    DeductionAmount = 1,
-                    DeductionId = employeeDTO.Deduction.DeductionId
-                },
                 Detail = new CreateEmployeeDetailPOCO()
                 {
                     Children = employeeDTO.Detail.Children,
@@ -46,7 +40,8 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
                     HiringTypeId = employeeDTO.Detail.HiringTypeId,
                     JobTitleId = employeeDTO.Detail.JobTitleId,
                     MaritalStatusId = employeeDTO.Detail.MaritalStatusId,
-                    NationalityId = employeeDTO.Detail.NationalityId
+                    NationalityId = employeeDTO.Detail.NationalityId,
+                    Email = employeeDTO.Detail.Email
                 },
                 Phone = new CreatePhonePOCO()
                 {
@@ -60,7 +55,7 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
                     ManagerId = employeeDTO.Employee.ManagerId,
                     Name = employeeDTO.Employee.Name,
                     SecondLastName = employeeDTO.Employee.SecondLastName,
-                    HasManager = employeeDTO.Employee.HasManager
+                    HasManager = employeeDTO.Employee.ManagerId != 0,
                 }
             };
     }

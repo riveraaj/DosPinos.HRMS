@@ -26,7 +26,6 @@ namespace DosPinos.HRMS.BusinessLogic.Iterators.Employees
                     employee.Employee.ValidateModel(),
                     employee.Address.ValidateModel(),
                     employee.Compensation.ValidateModel(),
-                    employee.Deduction.ValidateModel(),
                     employee.Detail.ValidateModel(),
                     employee.Phone.ValidateModel()
                 ];

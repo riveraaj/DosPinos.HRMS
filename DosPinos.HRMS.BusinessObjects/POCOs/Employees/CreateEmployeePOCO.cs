@@ -1,11 +1,9 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.POCOs;
-using DosPinos.HRMS.BusinessObjects.ValidationAttributes;
 
 namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees
 {
     public class CreateEmployeePOCO : ICreateEmployeePOCO
     {
-        [Range(1, int.MaxValue, ErrorMessage = "El campo es requerido")]
         [IdentificationCostaRica]
         public int Identification { get; set; }
 
@@ -22,7 +20,5 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees
 
         public bool HasManager { get; set; }
 
-        [RequiredAndMaxLength(100)]
-        public string Email { get; set; }
     }
 }

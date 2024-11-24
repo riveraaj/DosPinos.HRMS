@@ -61,6 +61,15 @@ namespace DosPinos.HRMS.WebApp.Resources.Employees {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Nuevo empleado.
+        /// </summary>
+        public static string CreateTitle {
+            get {
+                return ResourceManager.GetString("CreateTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Editar Empleado.
         /// </summary>
         public static string EditTitle {
