@@ -1,0 +1,63 @@
+﻿@using Newtonsoft.Json
+@model DosPinos.HRMS.WebApp.Models.Employees.EditEmployeeViewModel;
+
+<div class="info-card shadow">
+
+    <div id="provinceList" data-content="@JsonConvert.SerializeObject(Model.ProvinceList)"></div>
+    <div id="cantonList" data-content="@JsonConvert.SerializeObject(Model.CantonList)"></div>
+    <div id="districtList" data-content="@JsonConvert.SerializeObject(Model.DistrictList)"></div>
+
+    <div>
+        <h5 class="text-success fw-semibold">Información de contacto</h5>
+
+        <form>
+            <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
+
+            <div class="info-card-body">
+                <label class="form-label" asp-for="EmployeeObj.PhoneNumber">Número de teléfono</label>
+                <input type="tel" class="form-control" asp-for="EmployeeObj.PhoneNumber" readonly>
+            </div>
+
+            <div class="info-card-body">
+                <label class="form-label" asp-for="EmployeeObj.PhoneTypeId">Tipo de teléfono</label>
+                <select class="form-select" asp-for="EmployeeObj.PhoneTypeId" asp-items="@Model.PhoneTypes" readonly>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div class="mt-5">
+        <h5 class="text-success fw-semibold">Dirección de domicilio</h5>
+
+        <form>
+            <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
+
+            <div class="info-card-body">
+                <label asp-for="EmployeeObj.Address" style="width:70% !important;">Dirección de domicilio</label>
+                <textarea class="form-control" asp-for="EmployeeObj.Address" style="height:8.5rem; resize:none;" placeholder="" maxlength="200" readonly></textarea>
+            </div>
+
+            <div class="info-card-body">
+                <label class="form-label" asp-for="EmployeeObj.ProvinceId">Provincia</label>
+                <select class="form-select" asp-for="EmployeeObj.ProvinceId" id="provinceSelect" asp-items="@Model.Provinces" readonly>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="info-card-body">
+                <label class="form-label" asp-for="EmployeeObj.CantonId">Cantón</label>
+                <select class="form-select" asp-for="EmployeeObj.CantonId" id="cantonSelect" asp-items="@Model.Cantons" readonly>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="info-card-body">
+                <label class="form-label" asp-for="EmployeeObj.DistrictId">Distrito</label>
+                <select class="form-select" asp-for="EmployeeObj.DistrictId" id="districtSelect" asp-items="@Model.Districts" readonly>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+        </form>
+    </div>
+</div> 

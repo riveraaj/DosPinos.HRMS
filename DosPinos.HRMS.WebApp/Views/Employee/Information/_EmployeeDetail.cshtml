@@ -1,0 +1,64 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Employees.EditEmployeeViewModel;
+
+<div class="info-card shadow">
+    <h4 class="text-success fw-semibold">Detalles del empleado</h4>
+
+    <form>
+        <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
+
+        <div class="info-card-body">
+            <label class="form-label" asp-for="EmployeeObj.DateBirth">Fecha de nacimiento</label>
+            <input type="date" class="form-control" asp-for="EmployeeObj.DateBirth" readonly>
+        </div>
+
+        <div class="info-card-body">
+            <label asp-for="EmployeeObj.Children" class="form-label">Hijos</label>
+            <input type="number" class="form-control" asp-for="EmployeeObj.Children" readonly>
+        </div>
+
+        <div class="info-card-body">
+            <label asp-for="EmployeeObj.DateEntry" class="form-label">Fecha de ingreso</label>
+            <input type="date" class="form-control" asp-for="EmployeeObj.DateEntry" readonly>
+        </div>
+
+        <div class="info-card-body">
+            <label asp-for="EmployeeObj.Email" class="form-label" style="width:fit-content !important;">Correo</label>
+            <input type="email" class="form-control" asp-for="EmployeeObj.Email" readonly>
+        </div>
+
+        <div class="info-card-body">
+            <label class="form-label" asp-for="@Model.EmployeeObj.MaritalStatusId">Estado civil</label>
+            <select class="form-select" asp-for="@Model.EmployeeObj.MaritalStatusId" asp-items="@Model.MaritalStatus" readonly>
+                <option selected disabled value="">Seleccione una opción</option>
+            </select>
+        </div>
+
+        <div class="info-card-body">
+            <label class="form-label" asp-for="@Model.EmployeeObj.NationalityId">Nacionalidad</label>
+            <select class="form-select" asp-for="@Model.EmployeeObj.NationalityId" asp-items="@Model.Nationalities" readonly>
+                <option selected disabled value="">Seleccione una opción</option>
+            </select>
+        </div>
+
+        <div class="info-card-body">
+            <label class="form-label" asp-for="@Model.EmployeeObj.GenderId">Género</label>
+            <select class="form-select" asp-for="@Model.EmployeeObj.GenderId" asp-items="@Model.Genders" readonly>
+                <option selected disabled value="">Seleccione una opción</option>
+            </select>
+        </div>
+
+        <div class="info-card-body">
+            <label class="form-label" asp-for="@Model.EmployeeObj.HiringTypeId">Tipo de contratación</label>
+            <select class="form-select" asp-for="@Model.EmployeeObj.HiringTypeId" asp-items="@Model.HiringTypes" readonly>
+                <option selected disabled value="">Seleccione una opción</option>
+            </select>
+        </div>
+
+        <div class="info-card-body">
+            <label class="form-label" asp-for="@Model.EmployeeObj.JobTitleId">Puesto de trabajo</label>
+            <select class="form-select" asp-for="@Model.EmployeeObj.JobTitleId" asp-items="@Model.JobTitles" readonly>
+                <option selected disabled value="">Seleccione una opción</option>
+            </select>
+        </div>
+    </form>
+</div>

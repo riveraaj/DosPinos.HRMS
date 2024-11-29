@@ -81,6 +81,7 @@ ol {
     padding: 0;
     list-style: none;
 }
+
 .main {
     width: 100%;
     height: 100vh;
@@ -95,7 +96,18 @@ ol {
     max-width: 1200px;
     padding-top: 3rem;
     margin: auto;
-    overflow:auto;
+    overflow: auto;
+    scrollbar-width: thin
+}
+
+.content-container::-webkit-scrollbar {
+    width: 8px; /* Tamaño normal de la barra de desplazamiento */
+    opacity: 0; /* Inicialmente oculta */
+    transition: opacity 0.3s ease; /* Efecto de desvanecimiento */
+}
+
+.content-container:hover::-webkit-scrollbar {
+    opacity: 1; /* Muestra la barra al pasar el mouse sobre el contenedor */
 }
 
 @media (max-width: 1200px) {
@@ -142,9 +154,9 @@ ol {
 }
 
 
-    .sidebar-logo a img{
+    .sidebar-logo a img {
         object-fit: contain;
-        width:70%;  
+        width: 70%;
         margin-left: 10%;
     }
 
@@ -191,6 +203,7 @@ a.sidebar-link:hover {
     min-width: 15rem;
     display: none;
 }
+
 .sidebar-dropdown .sidebar-link {
     margin-bottom: 0px;
 }
@@ -222,7 +235,7 @@ a.sidebar-link:hover {
 }
 
 /* ****** Top Menu ****** */
-#notification-panel{
+#notification-panel {
     min-width: 20rem !important;
     top: 125%;
     left: -18rem;
@@ -232,18 +245,65 @@ a.sidebar-link:hover {
 /* ****** Data Table ****** */
 .page-link {
     background-color: seagreen !important;
-    color:white
+    color: white
 }
 
-.active > .page-link, .page-link.active {
+    .active > .page-link, .page-link.active {
         border-color: black !important;
-}
+    }
 
-.dt-layout-table{
+.dt-layout-table {
     padding: 1rem 0 !important;
 }
 
 tr {
     color: white !important;
     background-color: black !important;
+}
+
+/* ********** Utilities ********** */
+.info-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.info-card {
+    max-width: 25rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: .5rem;
+}
+
+    .info-card h4, h5 {
+        margin-bottom: 1.5rem;
+    }
+
+.info-card-body {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3rem;
+    margin-bottom: 1rem;
+}
+
+    .info-card-body label {
+        width: 80%;
+        margin-bottom: 0;
+    }
+
+    .info-card-body input {
+        text-align: right;
+    }
+
+.info-card-body input[type=number]{
+    text-align:center;
+}
+
+@media (min-width: 1235px) {
+    #compensation-employee {
+        position: relative;
+        bottom: 11rem;
+    }
 }

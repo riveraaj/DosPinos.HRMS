@@ -8,5 +8,8 @@ namespace DosPinos.HRMS.Controllers.Employees
 
         public async Task<IOperationResponseVO> GetAsync(int identification, IEntityDTO entity)
             => await _employeeService.GetAsync(identification, entity);
+
+        public async Task<IOperationResponseVO> GetAllAsync(IEntityDTO entity)
+            => await _employeeService.GetAllAsync(entity);
     }
 }

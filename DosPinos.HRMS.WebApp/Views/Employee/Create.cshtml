@@ -1,10 +1,15 @@
-﻿@model DosPinos.HRMS.WebApp.Models.Employees.CreateEmployeeViewModel;
+﻿@using Newtonsoft.Json
+@model DosPinos.HRMS.WebApp.Models.Employees.CreateEmployeeViewModel;
 
 @{
-    ViewData["Title"] = Model.Title;
+    ViewData["Title"] = Model.Title;  
 }
 
 <div class="content-container">
+
+    <div id="provinceList" data-content="@JsonConvert.SerializeObject(Model.ProvinceList)"></div>
+    <div id="cantonList" data-content="@JsonConvert.SerializeObject(Model.CantonList)"></div>
+    <div id="districtList" data-content="@JsonConvert.SerializeObject(Model.DistrictList)"></div>
 
     <form asp-action="Create" method="post" class="d-flex flex-column gap-4 needs-validation w-75 m-auto" novalidate>
 
@@ -94,8 +99,22 @@
             </div>
 
             <div class="col-4 mt-0">
+                <label class="form-label" for="provinceSelect">Provincia</label>
+                <select class="form-select" name="provinceSelect" id="provinceSelect" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-4">
+                <label class="form-label" for="cantonSelect">Cantón</label>
+                <select class="form-select" name="cantonSelect" id="cantonSelect" required>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+
+            <div class="col-4">
                 <label class="form-label" asp-for="@Model.EmployeeObj.Address.DistrictId">Distrito</label>
-                <select class="form-select" asp-for="@Model.EmployeeObj.Address.DistrictId" asp-items="@Model.Districts" required>
+                <select class="form-select" asp-for="@Model.EmployeeObj.Address.DistrictId" id="districtSelect" required>
                     <option selected disabled value="">Seleccione una opción</option>
                 </select>
             </div>
@@ -152,5 +171,8 @@
             <button type="submit" class="btn btn-success col-3">Crear empleado</button>
         </div>
     </form>
-
 </div>
+
+@section Scripts{
+    <script src="~/DosPinos.HRMS.Content/js/employees/createEmployee.js"></script>
+}

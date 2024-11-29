@@ -1,0 +1,36 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Employees.EditEmployeeViewModel;
+
+<div class="info-card shadow" id="compensation-employee">
+    <div>
+        <h5 class="text-success fw-semibold">Compensación del empleado</h5>
+
+        <form>
+            <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
+
+            <div class="info-card-body">
+                <label class="form-label" asp-for="@Model.EmployeeObj.SalaryCategoryId">Salario</label>
+                <select class="form-select" asp-for="@Model.EmployeeObj.SalaryCategoryId" asp-items="@Model.SalaryCategories" readonly>
+                    <option selected disabled value="">Seleccione una opción</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+    <div class="mt-5">
+        <h5 class="text-success fw-semibold">Información de Vacaciones</h5>
+
+        <form>
+            <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
+
+            <div class="info-card-body">
+                <label class="form-label" asp-for="EmployeeObj.VacationRemainingDays">Días restantes</label>
+                <input type="number" class="form-control" asp-for="EmployeeObj.VacationRemainingDays" readonly>
+            </div>
+
+            <div class="info-card-body">
+                <label class="form-label" asp-for="EmployeeObj.VacationUsedDays">Días usados</label>
+                <input type="number" class="form-control" asp-for="EmployeeObj.VacationUsedDays" readonly>
+            </div>
+        </form>
+    </div>
+</div>
