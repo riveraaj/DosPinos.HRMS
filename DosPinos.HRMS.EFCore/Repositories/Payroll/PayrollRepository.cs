@@ -1,8 +1,8 @@
-﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
+﻿using System.Data;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
 using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.Entities.DTOs.Payroll;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
-using System.Data;
 
 namespace DosPinos.HRMS.EFCore.Repositories.Payroll
 {
@@ -11,7 +11,6 @@ namespace DosPinos.HRMS.EFCore.Repositories.Payroll
     {
         private readonly DospinosdbContext _context = context;
         private readonly IInvokeStoredProcedure _invokeSP = invokeSP;
-
 
         public async Task<IEnumerable<int>> GetAsync()
             => await _context.Employees.Where(x => x.EmployeeStatus == true && x.EmployeeId != 6).Select(x => x.EmployeeId).ToListAsync();

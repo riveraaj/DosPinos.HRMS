@@ -1,9 +1,9 @@
 ﻿using DosPinos.HRMS.Controllers.ChristmasBonus;
 using DosPinos.HRMS.Controllers.Commons.Dashboards;
-using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.Controllers.Employees;
 using DosPinos.HRMS.Controllers.Liquidations;
 using DosPinos.HRMS.Controllers.Payroll;
+using DosPinos.HRMS.Controllers.Reports;
 using DosPinos.HRMS.Controllers.Vacation;
 using DosPinos.HRMS.Controllers.WorkingDays;
 
@@ -60,6 +60,9 @@ namespace DosPinos.HRMS.Controllers
 
             //Working Day
             services.AddScoped<DashboardController>();
+
+            //Report
+            services.AddScoped<ReportController>();
 
             return services;
         }

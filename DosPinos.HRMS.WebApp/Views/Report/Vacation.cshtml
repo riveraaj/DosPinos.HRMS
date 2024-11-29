@@ -1,0 +1,51 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Reports.ReportVacationViewModel
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+
+    <div class="card border-0 shadow m-3">
+        <div class="card-header bg-success-subtle fw-semibold">
+            Reporte Vacaciones
+        </div>
+        <div class="card-body overflow-y-auto py-5">
+
+            <div class="content-tables">
+                <div class="table-responsive">
+                    <table class="table report-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col">Empleado</th>
+                                <th scope="col">Puesto</th>
+                                <th scope="col">Total de días anuales</th>
+                                <th scope="col">Días usados</th>
+                                <th scope="col">Días restantes</th>
+                                <th scope="col">Fecha limite</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var vacation in Model.Vacation)
+                            {
+                                <tr>
+                                    <td class="text-start">@vacation.Identification</td>
+                                    <td>@vacation.FullName</td>
+                                    <td>@vacation.JobTitle</td>
+                                    <td>@vacation.Total días</td>
+                                    <td>@vacation.UsedDays @(vacation.UsedDays == 1 ? "día" : "días")</td>
+                                    <td>@vacation.RemainingDays @(vacation.RemainingDays == 1 ? "día" : "días")</td>
+                                    <td>@vacation.Date.ToString("d-M-yyyy")</td>
+                                    <td class="text-center"><a class="bg-@(vacation.Status.Equals("Completado") ? "success" : (vacation.Status.Equals("Urgente")) ? "danger" : "warning") text-white rounded-pill py-1 px-2">@vacation.Status</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

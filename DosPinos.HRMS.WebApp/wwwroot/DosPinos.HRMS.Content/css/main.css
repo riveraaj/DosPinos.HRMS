@@ -243,6 +243,10 @@ a.sidebar-link:hover {
 
 
 /* ****** Data Table ****** */
+.table th, td{
+    vertical-align: middle !important;
+}
+
 .page-link {
     background-color: seagreen !important;
     color: white

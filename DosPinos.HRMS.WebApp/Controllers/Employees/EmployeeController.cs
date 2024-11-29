@@ -62,10 +62,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
         {
             EmployeeViewModel model = new();
 
-            IOperationResponseVO response = await _getAllController.GetAllAsync(new EntityDTO()
-            {
-                UserId = ActualUser
-            });
+            IOperationResponseVO response = await _getAllController.GetAllAsync(new EntityDTO() { UserId = ActualUser });
 
             if (TempData["alert"] is not null)
             {
@@ -80,7 +77,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
         }
 
         [HttpGet]
-        [Route("nuevo-empleado")]
+        [Route("empleados/nuevo-empleado")]
         public async Task<IActionResult> Create()
         {
             CreateEmployeeViewModel model = await this.PopulateEmployee<CreateEmployeeViewModel>(new EntityDTO { UserId = ActualUser });
@@ -95,7 +92,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
         }
 
         [HttpPost]
-        [Route("nuevo-empleado")]
+        [Route("empleados/nuevo-empleado")]
         public async Task<IActionResult> Create(CreateEmployeeViewModel model)
         {
             model.EmployeeObj.UserId = ActualUser;
@@ -120,7 +117,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
         }
 
         [HttpGet]
-        [Route("empleado")]
+        [Route("empleados/editar")]
         public async Task<IActionResult> Edit(string id)
         {
             EditEmployeeViewModel model = await this.PopulateEmployee<EditEmployeeViewModel>(new EntityDTO { UserId = ActualUser });

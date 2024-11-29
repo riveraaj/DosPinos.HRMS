@@ -57,6 +57,9 @@ namespace DosPinos.HRMS.BusinessLogic
             //Dashboard
             services.AddScoped<DashboardService>();
 
+            //Report
+            services.AddScoped<ReportService>();
+
             return services;
         }
     }

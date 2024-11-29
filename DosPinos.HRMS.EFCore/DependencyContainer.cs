@@ -4,6 +4,7 @@ using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Liquidation;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Reports;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Vacations;
 using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays;
@@ -14,6 +15,7 @@ using DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards;
 using DosPinos.HRMS.EFCore.Repositories.Employees;
 using DosPinos.HRMS.EFCore.Repositories.Liquidation;
 using DosPinos.HRMS.EFCore.Repositories.Payroll;
+using DosPinos.HRMS.EFCore.Repositories.Reports;
 using DosPinos.HRMS.EFCore.Repositories.Securities;
 using DosPinos.HRMS.EFCore.Repositories.Vacations;
 using DosPinos.HRMS.EFCore.Repositories.WorkingDays;
@@ -79,6 +81,9 @@ namespace DosPinos.HRMS.EFCore
 
             //Dashboard
             services.AddScoped<IDashboardRepository, DashboardRepository>();
+
+            //Report
+            services.AddScoped<IReportRepository, ReportRepository>();
 
             return services;
         }

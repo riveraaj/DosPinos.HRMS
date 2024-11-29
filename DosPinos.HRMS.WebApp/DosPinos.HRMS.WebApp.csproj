@@ -23,6 +23,7 @@
     <Folder Include="Resources\ChristmasBonus\" />
     <Folder Include="Resources\Liquidations\" />
     <Folder Include="Resources\Dashboards\" />
+    <Folder Include="Resources\Reports\" />
     <Folder Include="Resources\Securities\" />
     <Folder Include="Resources\Vacations\" />
     <Folder Include="Resources\Payrolls\" />
