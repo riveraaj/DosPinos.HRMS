@@ -28,6 +28,7 @@ const loadData = () => {
 const loadCantonData = () => {
     $cantonSelect.parentElement.style.display = 'block';
     $cantonSelect.innerHTML = '<option selected disabled value="">Seleccione una opción</option>'; 
+    $districtSelect.innerHTML = '<option selected disabled value="">Seleccione una opción</option>'; 
 
     let newData = [];
 

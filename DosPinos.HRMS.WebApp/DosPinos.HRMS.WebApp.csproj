@@ -22,8 +22,6 @@
     <Folder Include="Models\Payrolls\" />
     <Folder Include="Resources\ChristmasBonus\" />
     <Folder Include="Resources\Liquidations\" />
-    <Folder Include="Resources\Dashboards\" />
-    <Folder Include="Resources\Reports\" />
     <Folder Include="Resources\Securities\" />
     <Folder Include="Resources\Vacations\" />
     <Folder Include="Resources\Payrolls\" />
@@ -39,17 +37,35 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\Dashboards\DashboardLabel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DashboardLabel.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Employees\EmployeeLabel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>EmployeeLabel.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Reports\ReportLabel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ReportLabel.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\Dashboards\DashboardLabel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>DashboardLabel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Employees\EmployeeLabel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EmployeeLabel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Reports\ReportLabel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ReportLabel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
 

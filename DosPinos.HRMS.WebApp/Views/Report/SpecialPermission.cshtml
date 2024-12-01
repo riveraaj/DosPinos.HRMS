@@ -1,0 +1,47 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Reports.ReportSpecialPermissionViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+
+    <div class="card border-0 shadow m-3">
+        <div class="card-header bg-success-subtle fw-semibold">
+            Reporte Permisos Especiales
+        </div>
+        <div class="card-body overflow-y-auto py-5">
+            <div class="content-tables">
+                <div class="table-responsive">
+                    <table class="table report-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col">Empleado</th>
+                                <th scope="col">Puesto</th>
+                                <th scope="col">Fecha de finalización</th>
+                                <th scope="col">Tipo de permiso</th>
+                                <th scope="col">Duración</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var permission in Model.SpecialPermission)
+                            {
+                                <tr>
+                                    <td class="text-start">@permission.Identification</td>
+                                    <td>@permission.FullName</td>
+                                    <td>@permission.JobTitle</td>
+                                    <td>@permission.Date.ToString("d-M-yyyy")</td>
+                                    <td>@permission.SpecialPermissionType</td>
+                                    <td>@permission.Duration @(permission.Duration == 1 ? "día" : "días")</td>
+                                    <td class="text-center"><a class="bg-@(permission.Status.Equals("Aprobado") ? "success" : (permission.Status.Equals("Rechazado")) ? "danger" : "warning") text-white rounded-pill py-1 px-2">@permission.Status</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -94,7 +94,16 @@
             </a>
             <ul id="reports" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                 <li class="sidebar-item">
-                    <a asp-action="Vacation" asp-controller="Report" class="sidebar-link">Reporte vacaciones</a>
+                    <a asp-action="Vacation" asp-controller="Report" class="sidebar-link text-wrap">Reporte vacaciones</a>
+                </li>
+                <li class="sidebar-item">
+                    <a asp-action="License" asp-controller="Report" class="sidebar-link text-wrap">Reporte incapacidades</a>
+                </li>
+                <li class="sidebar-item">
+                    <a asp-action="SpecialPermission" asp-controller="Report" class="sidebar-link text-wrap">Reporte permisos especiales</a>
+                </li>
+                <li class="sidebar-item">
+                    <a asp-action="Overtime" asp-controller="Report" class="sidebar-link text-wrap">Reporte exceso de horas extras</a>
                 </li>
             </ul>
         </li>

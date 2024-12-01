@@ -30,5 +30,47 @@ namespace DosPinos.HRMS.WebApp.Controllers.Reports
 
             return View(model);
         }
+
+        [Route("reportes/reporte-exceso-horas-extras")]
+        public async Task<IActionResult> Overtime()
+        {
+            IOperationResponseVO response = await _reportController.GetAllOvertimeAsync(new EntityDTO { UserId = ActualUser });
+
+            ReportOvertimeViewModel model = new()
+            {
+                Notifications = await this.GetAllAsync(),
+                Overtime = response.Content as List<OvertimeReportDTO>,
+            };
+
+            return View(model);
+        }
+
+        [Route("reportes/reporte-incapacidades")]
+        public async Task<IActionResult> License()
+        {
+            IOperationResponseVO response = await _reportController.GetAllLicenseAsync(new EntityDTO { UserId = ActualUser });
+
+            ReportLicenseViewModel model = new()
+            {
+                Notifications = await this.GetAllAsync(),
+                License = response.Content as List<LicenseReportDTO>,
+            };
+
+            return View(model);
+        }
+
+        [Route("reportes/reporte-permisos-especiales")]
+        public async Task<IActionResult> SpecialPermission()
+        {
+            IOperationResponseVO response = await _reportController.GetAllSpecialPermissionAsync(new EntityDTO { UserId = ActualUser });
+
+            ReportSpecialPermissionViewModel model = new()
+            {
+                Notifications = await this.GetAllAsync(),
+                SpecialPermission = response.Content as List<SpecialPermissionReportDTO>,
+            };
+
+            return View(model);
+        }
     }
 }

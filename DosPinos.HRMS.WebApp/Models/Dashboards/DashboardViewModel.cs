@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.WebApp.Models.Base;
+using DosPinos.HRMS.WebApp.Resources.Dashboards;
 
 namespace DosPinos.HRMS.WebApp.Models.Dashboards
 {
@@ -6,7 +7,7 @@ namespace DosPinos.HRMS.WebApp.Models.Dashboards
     {
         public DashboardViewModel()
         {
-            Title = "Dashboard";
+            Title = DashboardLabel.Title;
         }
     }
 }

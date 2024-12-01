@@ -1,0 +1,52 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Reports.ReportOvertimeViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+
+    <div class="card border-0 shadow m-3">
+        <div class="card-header bg-success-subtle fw-semibold">
+            Reporte Exceso de Horas Extra
+        </div>
+        <div class="card-body overflow-y-auto py-5">
+
+            <div class="content-tables">
+                <div class="table-responsive">
+                    <table class="table report-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center">#</th>
+                                <th scope="col">Empleado</th>
+                                <th scope="col">Puesto</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Total de horas extra</th>
+                                <th scope="col">Exceso de horas extra</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var overtime in Model.Overtime)
+                            {
+                                int hourExcess = (int)overtime.Exccess;
+                                int minuteExcess = (int)((overtime.Exccess - hourExcess) * 60);
+                                int hourTotal = (int)overtime.TotalAccrued;
+                                int minuteTotal = (int)((overtime.TotalAccrued - hourTotal) * 60);
+
+                                <tr>
+                                    <td class="text-start">@overtime.Identification</td>
+                                    <td>@overtime.FullName</td>
+                                    <td>@overtime.JobTitle</td>
+                                    <td>@overtime.Date.ToString("d-M-yyyy")</td>
+                                    <td>@hourTotal h @minuteTotal min</td>
+                                    <td>@hourExcess h @minuteExcess min</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
