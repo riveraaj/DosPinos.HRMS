@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DosPinos.HRMS.Entities.Resources.Commons {
+namespace DosPinos.HRMS.WebApp.Resources.ChristmasBonus {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace DosPinos.HRMS.Entities.Resources.Commons {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Commons {
+    internal class ChristmasBonusLabel {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Commons() {
+        internal ChristmasBonusLabel() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace DosPinos.HRMS.Entities.Resources.Commons {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DosPinos.HRMS.Entities.Resources.Commons.Commons", typeof(Commons).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DosPinos.HRMS.WebApp.Resources.ChristmasBonus.ChristmasBonusLabel", typeof(ChristmasBonusLabel).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,29 +61,20 @@ namespace DosPinos.HRMS.Entities.Resources.Commons {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to F69avNIHKccIZLsgEFJXWw==.
-        /// </summary>
-        internal static string SecretIV {
-            get {
-                return ResourceManager.GetString("SecretIV", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to MKPeFo3Vrkrhynfe9VZ0QQ==.
-        /// </summary>
-        internal static string SecretKey {
-            get {
-                return ResourceManager.GetString("SecretKey", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to La acción se ha completado con éxito..
+        ///   Looks up a localized string similar to El proceso de cálculo de aguinaldo se ha completado con éxito..
         /// </summary>
         internal static string SuccessMessage {
             get {
                 return ResourceManager.GetString("SuccessMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aguinaldo.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
             }
         }
     }

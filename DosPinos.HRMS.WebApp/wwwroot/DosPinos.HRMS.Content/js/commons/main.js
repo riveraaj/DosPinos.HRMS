@@ -20,6 +20,12 @@ function showConfirmationAlert(message, icon = 'info') {
     });
 }
 
+//Loader
+const showLoader = () =>  {
+    const $loader = document.getElementById('loader'); 
+    $loader.style.display = "flex";
+}
+
 //Disabling form submissions if there are invalid fields
 (() => {
     'use strict'

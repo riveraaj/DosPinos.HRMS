@@ -15,18 +15,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\ChristmasBonus\" />
     <Folder Include="Models\Liquidations\" />
     <Folder Include="Models\WorkingDays\" />
     <Folder Include="Models\Vacations\" />
     <Folder Include="Models\Payrolls\" />
-    <Folder Include="Resources\ChristmasBonus\" />
     <Folder Include="Resources\Liquidations\" />
     <Folder Include="Resources\Securities\" />
     <Folder Include="Resources\Vacations\" />
     <Folder Include="Resources\Payrolls\" />
     <Folder Include="Resources\WorkingDays\" />
-    <Folder Include="wwwroot\DosPinos.HRMS.Content\assets\images\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
     <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
@@ -37,6 +34,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Resources\ChristmasBonus\ChristmasBonusLabel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ChristmasBonusLabel.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Dashboards\DashboardLabel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -55,6 +57,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Resources\ChristmasBonus\ChristmasBonusLabel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>ChristmasBonusLabel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\Dashboards\DashboardLabel.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>DashboardLabel.Designer.cs</LastGenOutput>

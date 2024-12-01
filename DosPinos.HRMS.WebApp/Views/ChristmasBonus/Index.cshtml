@@ -1,65 +1,49 @@
-﻿@model List<DosPinos.HRMS.Entities.DTOs.ChristmasBonus.GetAllChristmasBonusDTO>;
+﻿@model DosPinos.HRMS.WebApp.Models.ChristmasBonus.ChristmasBonusViewModel;
 
 @{
-    ViewData["Title"] = "Aguinaldo";
+    ViewData["Title"] = Model.Title;
 }
 
-<div class="container">
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
 
-    @if (Model == null || Model.Count <= 0)
-    {
-        <form asp-action="Create" method="post" id="formChristmasBonus">
-            <button onclick="submitFormChristmasBonus()" class="btn btn-success">Calcular aguinaldo</button>
-        </form>
-    }
-    else
-    {
+        <div class="container pb-3">
+            <form asp-action="Create" method="post" id="formChristmasBonus">
+                <button onclick="submitFormChristmasBonus()" class="btn btn-success"><i class="bi bi-calculator"></i> Calcular aguinaldo</button>
+            </form>
+        </div>    
+
         <div class="content-tables">
             <div class="table-responsive">
                 <table class="table data-table">
                     <thead>
                         <tr>
-                            <th scope="col">Identificación</th>
+                            <th scope="col" class="text-start">Identificación</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">Puesto de trabajo</th>
                             <th scope="col">Período</th>
-                            <th scope="col">Monto total</th>
+                            <th scope="col" class="text-start">Monto total</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var employee in Model)
+                        @foreach (var employee in Model.ChristmasBonus)
                         {
                             <tr>
                                 <td class="text-start">@employee.Identification</td>
                                 <td>@employee.FullName</td>
                                 <td>@employee.Job</td>
-                                <td>@employee.Date</td>
-                                <td class="text-center">@employee.Amount.ToString("C")</td>                          
+                                <td>@employee.Date.ToString("d-M-yyyy")</td>
+                                <td class="text-center">@employee.Amount.ToString("C")</td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
         </div>
-    }
+
+    </div>
 </div>
 
 @section Scripts {
-    <script>
-        const $formChristmasBonus = document.getElementById('formChristmasBonus');
-
-        $formChristmasBonus.addEventListener('submit', (e) => {
-            e.preventDefault();
-        });
-
-        const submitFormChristmasBonus = async () => {
-            let message = "¿Deseas continuar con el cálculo de aguinaldos?",
-                icon = "question",
-                isConfirmed = await showConfirmationAlert(message, icon);
-
-            if (isConfirmed) {
-                $formChristmasBonus.submit();
-            }
-        }
-    </script>
+    <script src="~/DosPinos.HRMS.Content/js/christmas-bonus/christmasBonus.js"></script>
 }

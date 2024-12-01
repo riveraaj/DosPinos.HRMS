@@ -6,7 +6,8 @@
 }
 
 <div class="content-container">
-    <div class="container bg-white rounded shadow py-4 m-3">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
         <div class="container pb-3">
             <a class="text-white btn btn-success" asp-action="Create" asp-controller="Employee"><i class="bi bi-plus-circle"></i> Añadir empleado</a>
         </div>
@@ -30,7 +31,7 @@
                             <tr>
                                 <td class="text-start">@DosPinos.HRMS.Entities.Helpers.CryptographyHelper.Decrypt(employee.Identification)</td>
                                 <td><a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Identification">@employee.EmployeeName</a></td>
-                                <td>@employee.DateEntry</td>
+                                <td>@employee.DateEntry.ToString("d-M-yyyy")</td>
                                 <td>@employee.HiringTypeDescription</td>
                                 <td>@employee.JobTitleDescription</td>
                                 <td class="@(string.IsNullOrWhiteSpace(employee.ManagerName) ? "text-center" : "")">@(string.IsNullOrWhiteSpace(employee.ManagerName) ? "------" : employee.ManagerName)</td>

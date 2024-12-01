@@ -1,10 +1,17 @@
 ﻿using DosPinos.HRMS.Entities.Enums.Commons;
+using DosPinos.HRMS.Entities.Resources.Commons;
 
 namespace DosPinos.HRMS.Entities.ValueObjects
 {
     public record OperationResponseVO : IOperationResponseVO
     {
-        public ResponseStatus Status { get; set; } = ResponseStatus.Success;
+        public OperationResponseVO()
+        {
+            Status = ResponseStatus.Success;
+            Message = [Commons.SuccessMessage];
+        }
+
+        public ResponseStatus Status { get; set; }
 
         public IEnumerable<string> Message { get; set; }
 

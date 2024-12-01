@@ -117,13 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="SecretIV" xml:space="preserve">
-    <value>F69avNIHKccIZLsgEFJXWw==</value>
-  </data>
-  <data name="SecretKey" xml:space="preserve">
-    <value>MKPeFo3Vrkrhynfe9VZ0QQ==</value>
-  </data>
   <data name="SuccessMessage" xml:space="preserve">
-    <value>La acción se ha completado con éxito.</value>
+    <value>El proceso de cálculo de aguinaldo se ha completado con éxito.</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Aguinaldo</value>
   </data>
 </root>
