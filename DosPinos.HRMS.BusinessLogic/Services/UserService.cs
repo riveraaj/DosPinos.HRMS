@@ -62,6 +62,8 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             {
                 ILoginUserDTO credentialsUser = await _userRepository.Get(userDTO.UserName);
 
+                if (!credentialsUser.Status) return this.CustomWarning("El usuario no está activo. Por favor, ingrese un usuario válido o contacte con el soporte técnico para activar su cuenta.");
+
                 if (credentialsUser == null) return this.CustomWarning("El usuario no existe. Por favor, ingrese un usuario válido.");
 
                 bool comparePassword = CryptographyHelper.CompareEncryptedAndDecrypted(userDTO.Password, credentialsUser.Password);

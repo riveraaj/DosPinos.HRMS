@@ -1,39 +1,42 @@
-﻿@model List<DosPinos.HRMS.Entities.DTOs.Liquidation.GetAllLiquidationDTO>
+﻿@model DosPinos.HRMS.WebApp.Models.Liquidations.LiquidationViewModel
 
 @{
-    ViewData["Title"] = "Liquidaciones";
+    ViewData["Title"] = Model.Title;
 }
-
-<div class="content-tables">
-    <div class="table-responsive">
-        <table class="table data-table">
-            <thead>
-                <tr>
-                    <th scope="col">Identificación</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Fecha de liquidacion</th>
-                    <th scope="col">Monto total</th>
-                    <th scope="col">Cesantía</th>
-                    <th scope="col">Aguinaldo</th>
-                    <th scope="col">Vacaciones</th>
-                    <th scope="col">Pre aviso</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var employee in Model)
-                {
-                    <tr>
-                        <td class="text-start">@employee.Identification</td>
-                        <td>@employee.FullName</td>
-                        <td>@employee.LiquidatioDate</td>
-                        <td>@employee.Amount.ToString("C")</td>
-                        <td>@employee.Severance.ToString("C")</td>
-                        <td>@employee.ChristmasBonus.ToString("C")</td>
-                        <td>@employee.Vacation.ToString("C")</td>
-                        <td>@employee.PreNotice.ToString("C")</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="text-start">Identificación</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Fecha de liquidacion</th>
+                            <th scope="col">Monto total</th>
+                            <th scope="col">Cesantía</th>
+                            <th scope="col">Aguinaldo</th>
+                            <th scope="col">Vacaciones</th>
+                            <th scope="col">Pre aviso</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var liquidation in Model.Liquidation)
+                        {
+                            <tr>
+                                <td class="text-start">@liquidation.Identification</td>
+                                <td>@liquidation.FullName</td>
+                                <td>@liquidation.LiquidatioDate.ToString("d-M-yyyy")</td>
+                                <td>@liquidation.Amount.ToString("C")</td>
+                                <td>@liquidation.Severance.ToString("C")</td>
+                                <td>@liquidation.ChristmasBonus.ToString("C")</td>
+                                <td>@liquidation.Vacation.ToString("C")</td>
+                                <td>@liquidation.PreNotice.ToString("C")</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>

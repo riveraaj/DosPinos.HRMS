@@ -5,16 +5,24 @@ namespace DosPinos.HRMS.Entities.ValueObjects
 {
     public record OperationResponseVO : IOperationResponseVO
     {
+        private ResponseStatus _status;
+
         public OperationResponseVO()
         {
             Status = ResponseStatus.Success;
-            Message = [Commons.SuccessMessage];
         }
 
-        public ResponseStatus Status { get; set; }
+        public ResponseStatus Status
+        {
+            get => _status;
+            set
+            {
+                _status = value;
+                Message = (_status == ResponseStatus.Success) ? [Commons.SuccessMessage] : [];
+            }
+        }
 
         public IEnumerable<string> Message { get; set; }
-
         public object Content { get; set; }
     }
 }

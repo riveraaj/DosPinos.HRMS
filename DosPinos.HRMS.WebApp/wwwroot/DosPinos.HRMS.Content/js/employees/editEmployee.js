@@ -54,7 +54,6 @@ const loadDistrictData = () => {
     })
 }
 
-
 $formLiquidation.addEventListener('submit', (e) => {
     e.preventDefault();
 });
@@ -64,7 +63,8 @@ $formIndividualPayroll.addEventListener('submit', (e) => {
 });
 
 const submitFormLiquidation = async () => {
-    let message = `¿Deseas continuar con la liquidación del empleado @Model.Employee.EmployeeName?`,
+    let employeeName = document.getElementById('liquidation-employee-name').value;
+    let message = `¿Deseas continuar con la liquidación del empleado ${employeeName}?`,
         icon = "question",
         isConfirmed = await showConfirmationAlert(message, icon);
 

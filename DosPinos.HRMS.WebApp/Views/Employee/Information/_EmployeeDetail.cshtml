@@ -5,6 +5,7 @@
 
     <form>
         <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
+        <input type="hidden" value="@($"{Model.EmployeeObj.Name} {Model.EmployeeObj.FirstLastName} {Model.EmployeeObj.SecondLastName}")" id="liquidation-employee-name" />
 
         <div class="info-card-body">
             <label class="form-label" asp-for="EmployeeObj.DateBirth">Fecha de nacimiento</label>

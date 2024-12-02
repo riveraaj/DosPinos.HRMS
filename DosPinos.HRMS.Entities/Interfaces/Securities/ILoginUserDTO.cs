@@ -8,5 +8,6 @@
         int ManagerId { get; set; }
         string UserName { get; set; }
         string Password { get; set; }
+        bool Status { get; set; }
     }
 }

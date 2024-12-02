@@ -26,6 +26,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Securities
                 ManagerId = user.Employee.ManagerId ?? user.EmployeeId,
                 Password = user.Password,
                 UserName = user.Username,
+                Status = user.UserStatus
             };
         }
 

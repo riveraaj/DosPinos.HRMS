@@ -38,8 +38,8 @@ namespace DosPinos.HRMS.BusinessLogic.Services
                     if (responseRepository.Status != ResponseStatus.Success) response = responseRepository;
                 }
 
-                if (response.Status != ResponseStatus.Success)
-                    response = this.CustomWarning("El proceso se completó, pero se encontraron algunos errores durante la ejecución. Revise los detalles para más información.");
+                if (response.Status == ResponseStatus.Warning) response = this.CustomWarning("El proceso se completó, pero se encontraron algunos errores durante la ejecución. Revise los detalles para más información.");
+                if (response.Status == ResponseStatus.Error) throw new Exception(response.Message.FirstOrDefault());
             }
             catch (Exception exception)
             {

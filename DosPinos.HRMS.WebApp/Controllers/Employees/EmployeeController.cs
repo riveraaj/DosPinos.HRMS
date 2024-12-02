@@ -122,10 +122,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
         {
             EditEmployeeViewModel model = await this.PopulateEmployee<EditEmployeeViewModel>(new EntityDTO { UserId = ActualUser });
 
-            IOperationResponseVO response = await this._employeeController.GetAsync(Convert.ToInt32(CryptographyHelper.Decrypt(id)), new EntityDTO()
-            {
-                UserId = ActualUser
-            });
+            IOperationResponseVO response = await this._employeeController.GetAsync(Convert.ToInt32(CryptographyHelper.Decrypt(id)), new EntityDTO() { UserId = ActualUser });
 
             if (response.Status != ResponseStatus.Success)
             {

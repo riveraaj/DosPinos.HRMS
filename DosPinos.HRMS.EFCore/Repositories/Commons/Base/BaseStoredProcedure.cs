@@ -1,8 +1,8 @@
-﻿using DosPinos.HRMS.Entities.Enums.Commons;
+﻿using System.Data;
+using System.Data.Common;
+using DosPinos.HRMS.Entities.Enums.Commons;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.Entities.ValueObjects;
-using System.Data;
-using System.Data.Common;
 
 namespace DosPinos.HRMS.EFCore.Repositories.Commons.Base
 {
