@@ -29,7 +29,7 @@
                         @foreach (var employee in Model.Employees)
                         {
                             <tr>
-                                <td class="text-start">@DosPinos.HRMS.Entities.Helpers.CryptographyHelper.Decrypt(employee.Identification)</td>
+                                <td class="text-start">@CryptographyHelper.Decrypt(employee.Identification)</td>
                                 <td><a asp-action="Edit" asp-controller="Employee" asp-route-id="@employee.Identification">@employee.EmployeeName</a></td>
                                 <td>@employee.DateEntry.ToString("d-M-yyyy")</td>
                                 <td>@employee.HiringTypeDescription</td>

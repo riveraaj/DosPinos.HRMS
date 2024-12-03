@@ -17,10 +17,8 @@
   <ItemGroup>
     <Folder Include="Models\WorkingDays\" />
     <Folder Include="Models\Vacations\" />
-    <Folder Include="Models\Payrolls\" />
     <Folder Include="Resources\Securities\" />
     <Folder Include="Resources\Vacations\" />
-    <Folder Include="Resources\Payrolls\" />
     <Folder Include="Resources\WorkingDays\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
@@ -52,6 +50,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LiquidationLabel.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Payrolls\PayrollLabel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PayrollLabel.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\Reports\ReportLabel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -75,6 +78,10 @@
     <EmbeddedResource Update="Resources\Liquidations\LiquidationLabel.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LiquidationLabel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Payrolls\PayrollLabel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PayrollLabel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Reports\ReportLabel.resx">
       <Generator>ResXFileCodeGenerator</Generator>

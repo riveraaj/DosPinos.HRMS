@@ -44,7 +44,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.ChristmasBonus
         }
 
         public async Task<IEnumerable<int>> GetAllAsync()
-            => await _context.Employees.Where(x => x.EmployeeStatus == true && x.EmployeeId != 6).Select(x => x.EmployeeId).ToListAsync();
+            => await _context.Employees.Where(x => x.EmployeeStatus == true && x.EmployeeId != 1).Select(x => x.EmployeeId).ToListAsync();
 
         public async Task<IOperationResponseVO> CreateAsync(int employeeId)
         {

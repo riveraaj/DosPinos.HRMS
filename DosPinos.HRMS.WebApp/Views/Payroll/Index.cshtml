@@ -1,32 +1,39 @@
-﻿@model List<DosPinos.HRMS.Entities.DTOs.Payroll.GetPayrollByDateDTO>;
+﻿@model DosPinos.HRMS.WebApp.Models.Payrolls.PayrollViewModel
 
 @{
-    ViewData["Title"] = "Nomina";
+    ViewData["Title"] = Model.Title;
 }
 
-<div class="container">
+@section Styles{
+    <style>
+        #DataTables_Table_0_wrapper{
+            margin-bottom: 2rem;
+        }
+    </style>
+}
 
-    @if (Model == null || Model.Count <= 0)
-    {
-        <form asp-action="Create" method="post" id="formPayroll">
-            <button onclick="submitFormPayroll()" class="btn btn-success">Calcular nómina</button>
-        </form>
-    }
-    else
-    {
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
+        <div class="container pb-3">
+            <form asp-action="Create" method="post" id="formPayroll">
+                <button onclick="submitFormPayroll()" class="btn btn-success"><i class="bi bi-calculator"></i> Calcular nómina</button>
+            </form>
+        </div>
+
         <div class="content-tables">
             <div class="table-responsive">
                 <table class="table data-table">
                     <thead>
                         <tr>
-                            <th scope="col">Identificación</th>
+                            <th scope="col" class="text-start">Identificación</th>
                             <th scope="col">Nombre</th>
-                            <th scope="col">Puesto de trabajo</th>
-                            <th scope="col">Inicio de período</th>
-                            <th scope="col">Fin de período</th>
+                            <th scope="col">Puesto</th>
+                            <th scope="col">Inicio período</th>
+                            <th scope="col">Fin período</th>
                             <th scope="col">Salario bruto</th>
                             <th scope="col">Horas extras</th>
-                            <th scope="col">Monto de horas extras</th>
+                            <th scope="col">Monto horas extras</th>
                             <th scope="col">Recompensas</th>
                             <th scope="col">Deducciones</th>
                             <th scope="col">Salario total</th>
@@ -34,19 +41,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach (var employee in Model)
+                        @foreach (var payroll in Model.Payroll)
                         {
                             <tr>
-                                <td class="text-start">@employee.Identification</td>
-                                <td>@employee.FullName</td>
-                                <td>@employee.JobTitle</td>
-                                <td>@employee.StartPeriod</td>
-                                <td>@employee.EndPeriod</td>
-                                <td>@employee.GrossSalary.ToString("C")</td>
+                                <td class="text-start">@payroll.Identification</td>
+                                <td>@payroll.FullName</td>
+                                <td>@payroll.JobTitle</td>
+                                <td>@payroll.StartPeriod</td>
+                                <td>@payroll.EndPeriod</td>
+                                <td>@payroll.GrossSalary.ToString("C")</td>
                                 <td>
                                     @* Convertir las horas decimales en formato "hh h mm min" *@
                                     @{
-                                        decimal decimalHours = employee.Overtime;  // Suponemos que `Overtime` es el campo con horas decimales
+                                        decimal decimalHours = payroll.Overtime;  // Suponemos que `Overtime` es el campo con horas decimales
                                         int hours = (int)decimalHours;
                                         int minutes = (int)((decimalHours - hours) * 60);
 
@@ -67,7 +74,6 @@
                                             formattedTime += $"{minutes} min";
                                         }
 
-                                        // Si no tiene horas ni minutos, mostrar "0 h 0 min" o dejar en blanco
                                         if (string.IsNullOrEmpty(formattedTime))
                                         {
                                             formattedTime = "------";
@@ -75,36 +81,21 @@
                                     }
                                     @formattedTime
                                 </td>
-                                <td>@employee.AmoutOvertime.ToString("C")</td>
-                                <td>@employee.Bonus.ToString("C")</td>
-                                <td>@employee.Deductions.ToString("C")</td>
-                                <td>@employee.TotalSalary.ToString("C")</td>
-                                <td>@employee.NetSalary.ToString("C")</td>
+                                <td>@payroll.AmoutOvertime.ToString("C")</td>
+                                <td>@payroll.Bonus.ToString("C")</td>
+                                <td>@payroll.Deductions.ToString("C")</td>
+                                <td>@payroll.TotalSalary.ToString("C")</td>
+                                <td>@payroll.NetSalary.ToString("C")</td>
                             </tr>
                         }
                     </tbody>
                 </table>
             </div>
         </div>
-    }
+
+    </div>
 </div>
 
 @section Scripts {
-    <script>
-        const $formPayroll = document.getElementById('formPayroll');
-
-        $formPayroll.addEventListener('submit', (e) => {
-            e.preventDefault();
-        });
-
-        const submitFormPayroll = async () => {
-            let message = "¿Deseas continuar con el cálculo de nómina?",
-                icon = "question",
-                isConfirmed = await showConfirmationAlert(message, icon);
-
-            if (isConfirmed) {
-                $formPayroll.submit();
-            }
-        }
-    </script>
+    <script src="~/DosPinos.HRMS.Content/js/payroll/payroll.js"></script>
 }
