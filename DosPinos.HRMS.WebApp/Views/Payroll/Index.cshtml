@@ -1,4 +1,5 @@
-﻿@model DosPinos.HRMS.WebApp.Models.Payrolls.PayrollViewModel
+﻿@using System.Globalization
+@model DosPinos.HRMS.WebApp.Models.Payrolls.PayrollViewModel
 
 @{
     ViewData["Title"] = Model.Title;
@@ -15,7 +16,17 @@
 <div class="content-container">
     <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
 
-        <div class="container pb-3">
+        <div class="container pb-4 w-100 border-bottom border-2 position-relative">
+            <h4 class="text-center fw-semibold my-3">@Model.Today</h4>
+         
+            @if(Model.Payroll.Any(x => x.IsConfirmed)){
+                <form asp-action="" method="post" id="" class="position-absolute end-0 bottom-50 me-2">
+                    <button onclick="" class="btn btn-dark">Confirmar</button>
+                </form>
+            }
+        </div>
+
+        <div class="container py-4 w-100">
             <form asp-action="Create" method="post" id="formPayroll">
                 <button onclick="submitFormPayroll()" class="btn btn-success"><i class="bi bi-calculator"></i> Calcular nómina</button>
             </form>
@@ -23,7 +34,7 @@
 
         <div class="content-tables">
             <div class="table-responsive">
-                <table class="table data-table">
+                <table class="table report-table">
                     <thead>
                         <tr>
                             <th scope="col" class="text-start">Identificación</th>
@@ -31,13 +42,13 @@
                             <th scope="col">Puesto</th>
                             <th scope="col">Inicio período</th>
                             <th scope="col">Fin período</th>
+                            <th scope="col">Salario base</th>
                             <th scope="col">Salario bruto</th>
                             <th scope="col">Horas extras</th>
                             <th scope="col">Monto horas extras</th>
                             <th scope="col">Recompensas</th>
                             <th scope="col">Deducciones</th>
-                            <th scope="col">Salario total</th>
-                            <th scope="col">Salario neto</th>
+                            <th scope="col">Salario neto</th>                       
                         </tr>
                     </thead>
                     <tbody>
@@ -49,7 +60,8 @@
                                 <td>@payroll.JobTitle</td>
                                 <td>@payroll.StartPeriod</td>
                                 <td>@payroll.EndPeriod</td>
-                                <td>@payroll.GrossSalary.ToString("C")</td>
+                                <td>@payroll.Salary.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>@payroll.GrossSalary.ToString("C", new CultureInfo("es-CR"))</td>
                                 <td>
                                     @* Convertir las horas decimales en formato "hh h mm min" *@
                                     @{
@@ -81,11 +93,10 @@
                                     }
                                     @formattedTime
                                 </td>
-                                <td>@payroll.AmoutOvertime.ToString("C")</td>
-                                <td>@payroll.Bonus.ToString("C")</td>
-                                <td>@payroll.Deductions.ToString("C")</td>
-                                <td>@payroll.TotalSalary.ToString("C")</td>
-                                <td>@payroll.NetSalary.ToString("C")</td>
+                                <td>@payroll.AmoutOvertime.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>@payroll.Bonus.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>@payroll.Deductions.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>@payroll.NetSalary.ToString("C", new CultureInfo("es-CR"))</td>                              
                             </tr>
                         }
                     </tbody>

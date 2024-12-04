@@ -1,4 +1,5 @@
-﻿using DosPinos.HRMS.Controllers.Commons.Notifications;
+﻿using System.Globalization;
+using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.DTOs.Payroll;
 using DosPinos.HRMS.Entities.Enums.Commons;
@@ -36,6 +37,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Payrolls
 
             model.Payroll = response.Content as List<GetPayrollByDateDTO>;
             model.Notifications = await this.GetAllAsync();
+            model.Today = SetDate();
 
             return View(model);
         }
@@ -65,5 +67,8 @@ namespace DosPinos.HRMS.WebApp.Controllers.Payrolls
 
             return RedirectToAction("Edit", "Employee", new { id });
         }
+
+        private string SetDate() => char.ToUpper(DateTime.Now.ToString("MMMM yyyy", new CultureInfo("es-CR"))[0]) +
+                                    DateTime.Now.ToString("MMMM yyyy", new CultureInfo("es-CR"))[1..];
     }
 }

@@ -1,45 +1,97 @@
-﻿@model WorkingDayViewModel;
+﻿@model DosPinos.HRMS.WebApp.Models.WorkingDays.WorkingDayViewModel;
 
 @{
-    ViewData["Title"] = "Jornada Laboral";
-    var today = DateTime.Now.ToString("yyyy-MM-dd");
+    ViewData["Title"] = Model.Title;
 }
 
-<div class="container">
-    <h2>Registro de jornada laboral</h2>
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+}
 
-    @foreach (var item in Model.Get)
-    {
-        if (item.EmployeeId == 6) continue;
+<div class="content-container">
+    <div class="bg-white rounded shadow m-auto" style="width: 98% !important;">
 
-        <div class="w-100 row">
-            <div class="row">@item.EmployeeName</div>
-            <form asp-action="Create" method="post">
-                <input type="hidden" name="EmployeeId" value="@item.EmployeeId"/>
-                <div class="row">
-                    <input type="time" name="StartTime" required />
-                </div>
-                <div class="row">
-                    <input type="time" name="EndTime" required />
-                </div>
-                <div class="row">
-                    <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Comentario">
-                        <label for="floatingInput">Comentario</label>
-                    </div>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="IsFreeDay">
-                    <label class="form-check-label" for="flexCheckDefault">
-                        Día libre
-                    </label>
-                </div>
-                <div class="row">
-                    <button class="btn btn-success">Guardar</button>
-                </div>
-            </form>
-     
-            <div class="row">@item.HourTotal</div>
+        <div class="container w-100 text-center py-5">
+            <h3 class="fw-semibold m-0">Registro de asistencia de @Model.Today</h3>
         </div>
-    }
+
+        <div class="w-100 h-100 d-flex flex-column">
+
+            @foreach (var workingDay in Model.WorkinDays)
+            {
+                int hour = (int)workingDay.HourTotal;
+                int minute = (int)((workingDay.HourTotal - hour) * 60);
+
+                <div class="w-100 d-flex flex-row justify-content-evenly align-items-center gap-3 p-4 border-top border-bottom border-1">
+                    <span class="d-block text-start" style="width:20% !important;">@workingDay.EmployeeName</span>
+
+                    @if (workingDay.HourTotal == 0)
+                    {
+
+                        <form asp-action="Create" method="post" class="d-flex flex-row needs-validation align-items-center justify-content-evenly gap-3 form-working-day" style="width:70% !important;" novalidate>
+                            <input type="hidden" asp-for="WorkingDayObj.EmployeeId" value="@workingDay.EmployeeId" />
+
+                            <div class="container-picker">
+                                <label class="form-label" asp-for="WorkingDayObj.StartTime">Inicio</label>
+                                <input type="time" asp-for="WorkingDayObj.StartTime" class="form-control time-picker" placeholder="" required />
+                            </div>
+
+                            <i class="bi bi-arrow-right-short text-success fs-4 mt-4"></i>
+
+                            <div class="container-picker">
+                                <label class="form-label" asp-for="WorkingDayObj.EndTime">Fin</label>
+                                <input type="time" asp-for="WorkingDayObj.EndTime" class="form-control time-picker" placeholder="" required />
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" asp-for="WorkingDayObj.IsFreeDay">
+                                <label>Día libre</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input type="text" class="form-control" asp-for="WorkingDayObj.Comment" maxlength="50" placeholder="">
+                                <label asp-for="WorkingDayObj.Comment">Comentario</label>
+                            </div>
+
+                            <button type="submit" class="btn btn-success">Guardar</button>
+
+                        </form>
+                    }
+                    else
+                    {
+                        <div class="d-flex flex-row needs-validation align-items-center justify-content-evenly gap-3" style="width:70% !important;" novalidate>
+                            <div class="container-picker">
+                                <label class="form-label">Inicio</label>
+                                <input class="form-control time-picker" value="@workingDay.HourStart" disabled />
+                            </div>
+
+                            <i class="bi bi-arrow-right-short text-success fs-4 mt-4"></i>
+
+                            <div class="container-picker">
+                                <label class="form-label">Fin</label>
+                                <input class="form-control time-picker" value="@workingDay.HourEnd" disabled />
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" asp-for="@workingDay.IsFreeDay" disabled>
+                                <label>Día libre</label>
+                            </div>
+
+                            <div class="form-floating">
+                                <input class="form-control" value="@(string.IsNullOrEmpty(workingDay.Comment) ? "--------" : workingDay.Comment )" readonly>
+                                <label>Comentario</label>
+                            </div>
+                        </div>
+                    }
+
+                    <span class="d-block text-center" id="working-day-total-hours" style="width:10% !important;">@($"{hour}h {minute}min")</span>
+                </div>
+            }
+        </div>
+    </div>
 </div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="~/DosPinos.HRMS.Content/js/working-day/working-day.js"></script>
+}

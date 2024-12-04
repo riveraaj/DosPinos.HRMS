@@ -38,8 +38,8 @@
                                     <td>@overtime.FullName</td>
                                     <td>@overtime.JobTitle</td>
                                     <td>@overtime.Date.ToString("d-M-yyyy")</td>
-                                    <td>@hourTotal h @minuteTotal min</td>
-                                    <td>@hourExcess h @minuteExcess min</td>
+                                    <td>@($"{hourTotal}h {minuteTotal}min")</td>
+                                    <td>@($"{hourExcess}h {minuteExcess}min")</td>
                                 </tr>
                             }
                         </tbody>

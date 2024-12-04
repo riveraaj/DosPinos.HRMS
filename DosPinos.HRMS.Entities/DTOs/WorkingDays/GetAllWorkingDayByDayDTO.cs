@@ -8,5 +8,6 @@
         public TimeOnly HourEnd { get; set; }
         public decimal HourTotal { get; set; }
         public bool IsFreeDay { get; set; }
+        public string Comment { get; set; }
     }
 }

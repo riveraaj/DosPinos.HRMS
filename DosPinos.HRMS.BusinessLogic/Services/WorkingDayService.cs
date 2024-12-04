@@ -46,6 +46,17 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
+                TimeSpan regularWorkingHours = new(8, 0, 0);
+
+                //Calc hours worked
+                TimeSpan totalHoursWorked = workingDay.EndTime - workingDay.StartTime;
+
+                //Calc overtime
+                TimeSpan overtimeHours = (totalHoursWorked > regularWorkingHours) ? (totalHoursWorked - regularWorkingHours) : TimeSpan.Zero;
+
+                workingDay.HoursWorked = (decimal)totalHoursWorked.TotalHours;
+                workingDay.Overtime = (decimal)overtimeHours.TotalHours;
+
                 response = await _workingDayRepository.CreateAsync(workingDay);
             }
             catch (Exception exception)

@@ -12,8 +12,8 @@
         public decimal AmoutOvertime { get; set; }
         public decimal Bonus { get; set; }
         public decimal Deductions { get; set; }
-        public decimal TotalSalary { get; set; }
         public decimal NetSalary { get; set; }
         public bool IsConfirmed { get; set; }
+        public decimal Salary { get; set; }
     }
 }

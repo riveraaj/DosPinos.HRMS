@@ -1290,12 +1290,18 @@ public partial class DospinosdbContext : DbContext
                 .HasDefaultValue("P")
                 .IsFixedLength()
                 .HasColumnName("approval_status");
+            entity.Property(e => e.Comment)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("comment");
             entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
             entity.Property(e => e.EndTime).HasColumnName("end_time");
             entity.Property(e => e.HolidayId).HasColumnName("holiday_id");
             entity.Property(e => e.HoursWorked)
                 .HasColumnType("decimal(5, 2)")
                 .HasColumnName("hours_worked");
+            entity.Property(e => e.IsFreeDay).HasColumnName("is_free_day");
             entity.Property(e => e.StartTime).HasColumnName("start_time");
             entity.Property(e => e.WorkingDayDate).HasColumnName("working_day_date");
 

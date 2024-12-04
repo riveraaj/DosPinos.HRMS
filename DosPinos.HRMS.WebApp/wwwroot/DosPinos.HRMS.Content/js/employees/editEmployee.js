@@ -54,13 +54,8 @@ const loadDistrictData = () => {
     })
 }
 
-$formLiquidation.addEventListener('submit', (e) => {
-    e.preventDefault();
-});
-
-$formIndividualPayroll.addEventListener('submit', (e) => {
-    e.preventDefault();
-});
+$formLiquidation.addEventListener('submit', e => e.preventDefault());
+$formIndividualPayroll.addEventListener('submit', e => e.preventDefault());
 
 const submitFormLiquidation = async () => {
     let employeeName = document.getElementById('liquidation-employee-name').value;

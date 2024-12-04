@@ -8,5 +8,6 @@
         public decimal HoursWorked { get; set; }
         public decimal Overtime { get; set; }
         public bool IsFreeDay { get; set; }
+        public string Comment { get; set; }
     }
 }

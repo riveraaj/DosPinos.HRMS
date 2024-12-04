@@ -20,6 +20,20 @@ function showConfirmationAlert(message, icon = 'info') {
     });
 }
 
+function showConfirmationAlertRaw(html, icon = 'info') {
+    return Swal.fire({
+        title: '¿Estás seguro?',
+        html: html,
+        icon: icon, // 'info' o 'question'
+        showCancelButton: true,
+        confirmButtonText: 'Sí',
+        cancelButtonText: 'No',
+        buttonsStyling: true
+    }).then((result) => {
+        return result.isConfirmed; // Retorna true si se confirma, false si se cancela
+    });
+}
+
 //Loader
 const showLoader = () =>  {
     const $loader = document.getElementById('loader'); 

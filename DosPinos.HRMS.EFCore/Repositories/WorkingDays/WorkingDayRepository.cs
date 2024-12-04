@@ -12,7 +12,6 @@ namespace DosPinos.HRMS.EFCore.Repositories.WorkingDays
         private readonly DospinosdbContext _context = context;
         private readonly IInvokeStoredProcedure _invokeSP = invokeSP;
 
-
         public async Task<IEnumerable<GetAllPendingWorkingDayDTO>> GetAllAsync()
             => await _context.WorkingDays.Include(x => x.Employee)
                                          .Include(x => x.Holiday)
@@ -45,7 +44,6 @@ namespace DosPinos.HRMS.EFCore.Repositories.WorkingDays
 
                                            HourEnd = x.WorkingDays
                                                         .Where(wd => wd.WorkingDayDate == today)
-                                                        .Where(wd => wd.WorkingDayDate == today)
                                                         .Select(wd => wd.EndTime)
                                                         .FirstOrDefault(),
 
@@ -54,7 +52,14 @@ namespace DosPinos.HRMS.EFCore.Repositories.WorkingDays
                                                         .Select(wd => wd.HoursWorked)
                                                         .FirstOrDefault(),
 
-                                           IsFreeDay = !x.WorkingDays.Any(wd => wd.WorkingDayDate == today) // True si no hay registro para hoy
+                                           IsFreeDay = x.WorkingDays
+                                                        .Where(wd => wd.WorkingDayDate == today)
+                                                        .Select(wd => wd.IsFreeDay)
+                                                        .FirstOrDefault(),
+                                           Comment = x.WorkingDays
+                                                        .Where(wd => wd.WorkingDayDate == today)
+                                                        .Select(wd => wd.Comment)
+                                                        .FirstOrDefault(),
                                        }).ToListAsync();
         }
 
@@ -68,6 +73,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.WorkingDays
                 {"@hoursWorked", workingDay.HoursWorked},
                 {"@overtime", workingDay.Overtime},
                 {"@isFreeDay", workingDay.IsFreeDay},
+                {"@comment", workingDay.Comment},
             };
 
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateWorkinday", parameters, false);

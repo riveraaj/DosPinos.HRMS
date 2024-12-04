@@ -18,6 +18,10 @@ public partial class WorkingDay
 
     public byte? HolidayId { get; set; }
 
+    public string Comment { get; set; }
+
+    public bool IsFreeDay { get; set; }
+
     public virtual Employee Employee { get; set; }
 
     public virtual ICollection<EvaluationWorkingDay> EvaluationWorkingDays { get; set; } = new List<EvaluationWorkingDay>();

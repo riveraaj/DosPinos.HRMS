@@ -13,5 +13,6 @@ namespace DosPinos.HRMS.WebApp.Models.Payrolls
         }
 
         public List<GetPayrollByDateDTO> Payroll { get; set; }
+        public string Today { get; set; }
     }
 }

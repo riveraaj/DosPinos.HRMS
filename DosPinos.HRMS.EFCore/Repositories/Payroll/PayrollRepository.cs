@@ -56,13 +56,13 @@ namespace DosPinos.HRMS.EFCore.Repositories.Payroll
                     Deductions = row.TryGetValue("deductions", out object deductions) && deductions != DBNull.Value
                         ? Convert.ToDecimal(deductions)
                         : 0m,
-                    TotalSalary = row.TryGetValue("total_salary", out object totalSalary) && totalSalary != DBNull.Value
-                        ? Convert.ToDecimal(totalSalary)
-                        : 0m,
                     NetSalary = row.TryGetValue("net_salary", out object netSalary) && netSalary != DBNull.Value
                         ? Convert.ToDecimal(netSalary)
                         : 0m,
-                    IsConfirmed = row.TryGetValue("is_confirmated", out object isConfirmated) && isConfirmated != DBNull.Value && Convert.ToBoolean(isConfirmated)
+                    IsConfirmed = row.TryGetValue("is_confirmated", out object isConfirmated) && isConfirmated != DBNull.Value && Convert.ToBoolean(isConfirmated),
+                    Salary = row.TryGetValue("salary_category_range", out object salary) && salary != DBNull.Value
+                        ? Convert.ToDecimal(salary)
+                        : 0m,
                 });
             }
 

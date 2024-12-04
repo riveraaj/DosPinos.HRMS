@@ -325,3 +325,7 @@ tr {
         bottom: 11rem;
     }
 }
+
+.container-picker{
+    width: 12%;
+}
