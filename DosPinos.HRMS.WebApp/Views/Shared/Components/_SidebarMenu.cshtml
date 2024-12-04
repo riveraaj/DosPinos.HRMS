@@ -26,10 +26,19 @@
         </li>
 
         <li class="sidebar-item">
-            <a asp-action="Index" asp-controller="WorkingDay" class="sidebar-link">
+            <a class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+               data-bs-target="#assistance" aria-expanded="false" aria-controls="assistance">
                 <i class="bi bi-clock"></i>
                 <span>Asistencia</span>
             </a>
+            <ul id="assistance" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <li class="sidebar-item">
+                    <a asp-action="Index" asp-controller="WorkingDay" class="sidebar-link">Control de asistencia</a>
+                </li>
+                <li class="sidebar-item">
+                    <a asp-action="Pending" asp-controller="WorkingDay" class="sidebar-link">Gestión de asistencia</a>
+                </li>
+            </ul>
         </li>
 
         <li class="sidebar-item">

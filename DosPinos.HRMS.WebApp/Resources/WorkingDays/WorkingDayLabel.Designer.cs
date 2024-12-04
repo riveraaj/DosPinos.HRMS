@@ -61,7 +61,16 @@ namespace DosPinos.HRMS.WebApp.Resources.WorkingDays {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Jornada Laboral.
+        ///   Looks up a localized string similar to Gestión de Asistencia.
+        /// </summary>
+        internal static string PendingTitle {
+            get {
+                return ResourceManager.GetString("PendingTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Control de Asistencia.
         /// </summary>
         internal static string Title {
             get {

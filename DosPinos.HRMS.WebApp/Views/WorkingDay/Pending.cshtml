@@ -1,10 +1,5 @@
-﻿@model PendingWorkingDayViewModel;
+﻿@model DosPinos.HRMS.WebApp.Models.WorkingDays.PendingWorkingDayViewModel;
 
 @{
-    ViewData["Title"] = "Jornadas Pendientes";
-    var today = DateTime.Now.ToString("yyyy-MM-dd");
+    ViewData["Title"] = Model.Title;
 }
-
-<div class="container">
-    <h2>Jornadas laborales pendientes de aprobación</h2>
-</div>

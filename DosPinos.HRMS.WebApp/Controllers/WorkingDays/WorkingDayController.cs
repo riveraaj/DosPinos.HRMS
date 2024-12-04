@@ -5,7 +5,6 @@ using DosPinos.HRMS.Entities.DTOs.WorkingDays;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.Entities.ValueObjects;
 using DosPinos.HRMS.WebApp.Controllers.Base;
-using DosPinos.HRMS.WebApp.Models;
 using DosPinos.HRMS.WebApp.Models.WorkingDays;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,7 +20,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
     {
         private readonly HRMS.Controllers.WorkingDays.WorkingDayController _controller = controller;
 
-        [Route("jornada-laboral")]
+        [Route("asistencia/control-asistencia")]
         public async Task<IActionResult> Index()
         {
             WorkingDayViewModel model = new();
@@ -42,7 +41,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
         }
 
         [HttpPost]
-        [Route("jornada-laboral/crear")]
+        [Route("asistencia/control-asistencia/crear")]
         public async Task<IActionResult> Create(WorkingDayViewModel model)
         {
             model.WorkingDayObj.UserId = ActualUser;
@@ -54,23 +53,32 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
             return RedirectToAction("Index");
         }
 
+        [Route("asistencia/gestion-asistencia")]
         public async Task<IActionResult> Pending()
         {
-            var response = await _controller.GetAllAsync(new EntityDTO() { UserId = ActualUser });
+            PendingWorkingDayViewModel model = new();
 
-            PendingWorkingDayViewModel model = new()
+            IOperationResponseVO response = await _controller.GetAllAsync(new EntityDTO() { UserId = ActualUser });
+
+            if (TempData["alert"] is not null)
             {
-                Get = (List<GetAllPendingWorkingDayDTO>)response.Content
-            };
+                var alert = JsonConvert.DeserializeObject<OperationResponseVO>((string)TempData["alert"]);
+                model.Response = alert;
+            }
+
+            model.Notifications = await this.GetAllAsync();
+            model.PendingWorkingDays = response.Content as List<GetAllPendingWorkingDayDTO>;
 
             return View(model);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Evaluate(EvaluateWorkingDayDTO dto)
+        [Route("asistencia/gestion-asistencia/evaluar")]
+        public async Task<IActionResult> Evaluate(PendingWorkingDayViewModel model)
         {
-            dto.UserId = 1;
-            var response = await _controller.EvaluateAsync(dto);
+            model.EvaluateWorkingDayObj.UserId = ActualUser;
+
+            IOperationResponseVO response = await _controller.EvaluateAsync(model.EvaluateWorkingDayObj);
 
             ViewData["alert"] = JsonConvert.SerializeObject(response);
 

@@ -117,7 +117,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
         }
 
         [HttpGet]
-        [Route("empleados/editar")]
+        [Route("empleados/editar-empleado")]
         public async Task<IActionResult> Edit(string id)
         {
             EditEmployeeViewModel model = await this.PopulateEmployee<EditEmployeeViewModel>(new EntityDTO { UserId = ActualUser });
