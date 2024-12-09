@@ -1,0 +1,42 @@
+﻿@model DosPinos.HRMS.WebApp.Models.FreeTimes.FreeTimeViewModel;
+
+<div class="card border-0 shadow">
+
+    <div class="card-header bg-success-subtle fw-semibold">
+        Permisos especiales
+    </div>
+
+    <div class="py-4  m-auto">
+        <button class="btn btn-outline-success border-3" data-bs-toggle="modal" data-bs-target="#specialPermissionModal">Solicitar</button>
+    </div>
+</div>
+
+<div class="modal fade" id="specialPermissionModal" tabindex="-1" aria-labelledby="specialPermissionModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Solicitud de permiso especial</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="formFileSm" class="form-label">Fecha de inicio</label>
+                        <input type="date" asp-for="VacationObj.DateStart" min="@Model.Today" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFileSm" class="form-label">Fecha de fin</label>
+                        <input type="date" asp-for="VacationObj.DateEnd" min="@Model.Today" required />
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFileSm" class="form-label">Adjuntar evidencia</label>
+                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg,.jpeg,.png" placeholder="Ningún archivo seleccionado">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Enviar solicitud</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

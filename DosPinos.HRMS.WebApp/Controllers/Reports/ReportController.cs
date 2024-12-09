@@ -24,7 +24,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Reports
 
             ReportVacationViewModel model = new()
             {
-                Notifications = await this.GetAllAsync(),
+                Notifications = await this.GetAllNotificationAsync(),
                 Vacation = response.Content as List<VacationReportDTO>,
             };
 
@@ -38,7 +38,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Reports
 
             ReportOvertimeViewModel model = new()
             {
-                Notifications = await this.GetAllAsync(),
+                Notifications = await this.GetAllNotificationAsync(),
                 Overtime = response.Content as List<OvertimeReportDTO>,
             };
 
@@ -52,7 +52,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Reports
 
             ReportLicenseViewModel model = new()
             {
-                Notifications = await this.GetAllAsync(),
+                Notifications = await this.GetAllNotificationAsync(),
                 License = response.Content as List<LicenseReportDTO>,
             };
 
@@ -66,7 +66,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Reports
 
             ReportSpecialPermissionViewModel model = new()
             {
-                Notifications = await this.GetAllAsync(),
+                Notifications = await this.GetAllNotificationAsync(),
                 SpecialPermission = response.Content as List<SpecialPermissionReportDTO>,
             };
 

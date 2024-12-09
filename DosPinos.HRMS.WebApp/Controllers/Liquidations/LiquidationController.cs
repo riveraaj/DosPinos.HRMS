@@ -34,7 +34,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Liquidations
                 model.Response = alert;
             }
 
-            model.Notifications = await this.GetAllAsync();
+            model.Notifications = await this.GetAllNotificationAsync();
             model.Liquidation = response.Content as List<GetAllLiquidationDTO>;
 
             return View(model);

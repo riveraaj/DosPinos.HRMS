@@ -15,7 +15,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Dashboards
         {
             DashboardViewModel model = new()
             {
-                Notifications = await GetAllAsync()
+                Notifications = await GetAllNotificationAsync()
             };
 
             return View(model);

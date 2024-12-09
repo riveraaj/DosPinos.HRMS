@@ -7,6 +7,12 @@ namespace DosPinos.HRMS.Controllers.Vacation
     {
         private readonly VacationService _vacationService = service;
 
+        public async Task<IOperationResponseVO> GetAsync(int identification, IEntityDTO entity)
+            => await _vacationService.GetAsync(identification, entity);
+
+        public async Task<IOperationResponseVO> GetAllByEmployeeAsync(int identification, IEntityDTO entity)
+            => await _vacationService.GetAllByEmployeeAsync(identification, entity);
+
         public async Task<IOperationResponseVO> GetAllAsync(IEntityDTO entity)
             => await _vacationService.GetAllAsync(entity);
 
@@ -15,5 +21,11 @@ namespace DosPinos.HRMS.Controllers.Vacation
 
         public async Task<IOperationResponseVO> EvaluateAsync(EvaluateVacationDTO vacationDTO)
             => await _vacationService.EvaluateAsync(vacationDTO);
+
+        public async Task<IOperationResponseVO> UpdateAsync(UpdateVacationDTO vacationDTO)
+            => await _vacationService.UpdateAsync(vacationDTO);
+
+        public async Task<IOperationResponseVO> UpdateAsync(int vacationId, IEntityDTO entity)
+           => await _vacationService.DeleteAsync(vacationId, entity);
     }
 }

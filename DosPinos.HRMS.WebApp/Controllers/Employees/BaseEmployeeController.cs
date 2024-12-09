@@ -50,7 +50,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
 
             T model = new()
             {
-                Notifications = await this.GetAllAsync()
+                Notifications = await this.GetAllNotificationAsync()
             };
 
             response = await _getAllGenderController.GetAllAsync(entity);

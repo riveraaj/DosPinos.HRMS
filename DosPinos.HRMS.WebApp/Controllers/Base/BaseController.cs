@@ -13,8 +13,13 @@ namespace DosPinos.HRMS.WebApp.Controllers.Base
         private readonly GetAllNotificationController _getAllController = getAllController;
         private readonly UpdateNotificationController _updateController = updateController;
         public int ActualUser => int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
+        public int ActualEmployeeIdentification => int.Parse(User.FindFirst("Identification").Value);
+        public int ActualEmployee => int.Parse(User.FindFirst("Employee").Value);
+        public int ActualEmployeeManager => int.Parse(User.FindFirst("Manager").Value);
+        public int ActualUserRole => int.Parse(User.FindFirst(ClaimTypes.Role).Value);
+        public IEntityDTO Entity => new EntityDTO { UserId = ActualUser };
 
-        public async Task<List<IGetAllNotificationDTO>> GetAllAsync()
+        public async Task<List<IGetAllNotificationDTO>> GetAllNotificationAsync()
         {
             IOperationResponseVO response = await _getAllController.GetAllAsync(new EntityDTO { UserId = ActualUser });
             return (List<IGetAllNotificationDTO>)response.Content;

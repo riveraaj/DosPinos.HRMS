@@ -329,3 +329,8 @@ tr {
 .container-picker{
     width: 12%;
 }
+
+.hover-shadow:hover {
+    background-color: #2e8b5773 !important;
+    border-radius: .4rem;
+}

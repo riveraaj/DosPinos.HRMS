@@ -35,7 +35,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.ChristmasBonus
             }
 
             model.ChristmasBonus = response.Content as List<GetAllChristmasBonusDTO>;
-            model.Notifications = await this.GetAllAsync();
+            model.Notifications = await this.GetAllNotificationAsync();
 
             return View(model);
         }

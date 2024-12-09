@@ -13,7 +13,8 @@ namespace DosPinos.HRMS.WebApp.Helpers
 
             var claims = new List<Claim> {
                 new (ClaimTypes.Role, userDTO.RoleId.ToString()),
-                new (ClaimTypes.NameIdentifier, userDTO.EmployeeId.ToString()),
+                new (ClaimTypes.NameIdentifier, userDTO.UserId.ToString()),
+                new ("Employee", userDTO.EmployeeId.ToString()),
                 new ("Identification", userDTO.IdentificationId.ToString()),
                 new ("Manager", userDTO.ManagerId.ToString()),
             };

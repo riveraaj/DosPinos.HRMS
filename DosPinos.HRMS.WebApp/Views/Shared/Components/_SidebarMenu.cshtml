@@ -26,7 +26,7 @@
         </li>
 
         <li class="sidebar-item">
-            <a class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+            <a  href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                data-bs-target="#assistance" aria-expanded="false" aria-controls="assistance">
                 <i class="bi bi-clock"></i>
                 <span>Asistencia</span>
@@ -42,17 +42,17 @@
         </li>
 
         <li class="sidebar-item">
-            <a class ="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+            <a  href="#" class ="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
                     data-bs-target="#freeTime" aria-expanded="false" aria-controls="freeTimes">
                 <i class="bi bi-airplane"></i>
                 <span>Tiempo libre</span>
             </a>
             <ul id="freeTime" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
                 <li class="sidebar-item">
-                    <a asp-action="Index" asp-controller="Vacation" class="sidebar-link">Tiempo libre</a>
+                    <a asp-action="Index" asp-controller="FreeTime" class="sidebar-link">Mis solicitudes</a>
                 </li>
                 <li class="sidebar-item">
-                    <a asp-action ="Pending" asp-controller="Vacation" class="sidebar-link">Solicitudes pendientes</a>
+                    <a asp-action="Pending" asp-controller="FreeTime" class="sidebar-link">Gestión de solicitudes</a>
                 </li>
             </ul>
         </li>

@@ -5,7 +5,7 @@
         [RequiredAndMaxLength(100)]
         public string Message { get; set; }
         public bool IsRead { get; } = false;
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime CreatedAt { get; } = DateTime.Now;
         [RequiredGreaterThanZero]
         public int CreatedTo { get; set; }
         [RequiredGreaterThanZero]

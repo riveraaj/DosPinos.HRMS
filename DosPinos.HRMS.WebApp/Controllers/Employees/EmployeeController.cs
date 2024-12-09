@@ -71,7 +71,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
             }
 
             model.Employees = response.Content as List<IGetAllEmployeeDTO>;
-            model.Notifications = await this.GetAllAsync();
+            model.Notifications = await this.GetAllNotificationAsync();
 
             return View(model);
         }

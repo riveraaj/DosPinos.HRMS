@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using DosPinos.HRMS.Controllers.Commons.Notifications;
+﻿using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.DTOs.Payroll;
 using DosPinos.HRMS.Entities.Enums.Commons;
@@ -7,6 +6,7 @@ using DosPinos.HRMS.Entities.Helpers;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.Entities.ValueObjects;
 using DosPinos.HRMS.WebApp.Controllers.Base;
+using DosPinos.HRMS.WebApp.Helpers;
 using DosPinos.HRMS.WebApp.Models.Payrolls;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -36,8 +36,8 @@ namespace DosPinos.HRMS.WebApp.Controllers.Payrolls
             }
 
             model.Payroll = response.Content as List<GetPayrollByDateDTO>;
-            model.Notifications = await this.GetAllAsync();
-            model.Today = SetDate();
+            model.Notifications = await this.GetAllNotificationAsync();
+            model.Today = GetDateHelper.GetMonthTodayCapitalize();
 
             return View(model);
         }
@@ -67,8 +67,5 @@ namespace DosPinos.HRMS.WebApp.Controllers.Payrolls
 
             return RedirectToAction("Edit", "Employee", new { id });
         }
-
-        private string SetDate() => char.ToUpper(DateTime.Now.ToString("MMMM yyyy", new CultureInfo("es-CR"))[0]) +
-                                    DateTime.Now.ToString("MMMM yyyy", new CultureInfo("es-CR"))[1..];
     }
 }

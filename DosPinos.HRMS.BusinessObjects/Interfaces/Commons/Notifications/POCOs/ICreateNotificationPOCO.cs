@@ -4,7 +4,7 @@
     {
         string Message { get; set; }
         bool IsRead { get; }
-        DateTime CreatedAt { get; set; }
+        DateTime CreatedAt { get; }
         int CreatedTo { get; set; }
         int CreatedFor { get; set; }
     }

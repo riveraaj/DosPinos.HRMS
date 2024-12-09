@@ -1,10 +1,10 @@
-﻿using System.Globalization;
-using DosPinos.HRMS.Controllers.Commons.Notifications;
+﻿using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.DTOs.WorkingDays;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.Entities.ValueObjects;
 using DosPinos.HRMS.WebApp.Controllers.Base;
+using DosPinos.HRMS.WebApp.Helpers;
 using DosPinos.HRMS.WebApp.Models.WorkingDays;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -33,8 +33,8 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
                 model.Response = alert;
             }
 
-            model.Today = SetDate();
-            model.Notifications = await this.GetAllAsync();
+            model.Today = GetDateHelper.GetTodayCapitalize();
+            model.Notifications = await this.GetAllNotificationAsync();
             model.WorkinDays = response.Content as List<GetAllWorkingDayByDayDTO>;
 
             return View(model);
@@ -66,7 +66,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
                 model.Response = alert;
             }
 
-            model.Notifications = await this.GetAllAsync();
+            model.Notifications = await this.GetAllNotificationAsync();
             model.PendingWorkingDays = response.Content as List<GetAllPendingWorkingDayDTO>;
 
             return View(model);
@@ -84,8 +84,5 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
 
             return RedirectToAction("Pending");
         }
-
-        private string SetDate() => char.ToUpper(DateTime.Now.ToString("MMMM dd 'del' yyyy", new CultureInfo("es-CR"))[0]) +
-                                    DateTime.Now.ToString("MMMM dd 'del' yyyy", new CultureInfo("es-CR"))[1..];
     }
 }

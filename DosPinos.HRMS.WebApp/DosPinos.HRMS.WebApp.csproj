@@ -15,9 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\Vacations\" />
     <Folder Include="Resources\Securities\" />
-    <Folder Include="Resources\Vacations\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
     <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
@@ -42,6 +40,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>EmployeeLabel.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\FreeTimes\FreeTimeLabel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FreeTimeLabel.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources\Liquidations\LiquidationLabel.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -77,6 +80,10 @@
     <EmbeddedResource Update="Resources\Employees\EmployeeLabel.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>EmployeeLabel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\FreeTimes\FreeTimeLabel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FreeTimeLabel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\Liquidations\LiquidationLabel.resx">
       <Generator>ResXFileCodeGenerator</Generator>
