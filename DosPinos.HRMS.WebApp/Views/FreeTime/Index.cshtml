@@ -58,6 +58,15 @@
                                     <td>@license.TypeLicense</td>
                                     <td>@license.Status</td>
                                 </tr>
+                            }                            
+                            @foreach (var permission in Model.Permissions)
+                            {
+                                <tr>
+                                    <td>@($"{permission.StartDate} - {permission.EndDate}")</td>
+                                    <td>@permission.Days @(permission.Days == 1 ? "día" : "días")</td>
+                                    <td>@permission.TypePermission</td>
+                                    <td>@permission.Status</td>
+                                </tr>
                             }
                         </tbody>
                     </table>

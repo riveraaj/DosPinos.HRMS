@@ -5,6 +5,8 @@ using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Liquidation;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions.Catalogs.PermissionTypes;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Reports;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Vacations;
@@ -17,6 +19,8 @@ using DosPinos.HRMS.EFCore.Repositories.Employees;
 using DosPinos.HRMS.EFCore.Repositories.Incapacities;
 using DosPinos.HRMS.EFCore.Repositories.Liquidation;
 using DosPinos.HRMS.EFCore.Repositories.Payroll;
+using DosPinos.HRMS.EFCore.Repositories.Permissions;
+using DosPinos.HRMS.EFCore.Repositories.Permissions.Catalogs;
 using DosPinos.HRMS.EFCore.Repositories.Reports;
 using DosPinos.HRMS.EFCore.Repositories.Securities;
 using DosPinos.HRMS.EFCore.Repositories.Vacations;
@@ -59,6 +63,7 @@ namespace DosPinos.HRMS.EFCore
             services.AddScoped<IOvertimeTypeRepository, OvertimeTypeRepository>();
             services.AddScoped<IRoleRepository, RoleRepository>();
             services.AddScoped<IHolidayRepository, HolidayRepository>();
+            services.AddScoped<IPermissionTypeRepository, PermissionTypeRepository>();
 
             //Employee
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
@@ -89,6 +94,9 @@ namespace DosPinos.HRMS.EFCore
 
             //License
             services.AddScoped<ILicenseRepository, LicenseRepository>();
+
+            //Permission
+            services.AddScoped<IPermissionRepository, PermissionRepository>();
 
             return services;
         }

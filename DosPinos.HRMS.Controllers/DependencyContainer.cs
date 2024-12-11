@@ -1,14 +1,4 @@
-﻿using DosPinos.HRMS.Controllers.ChristmasBonus;
-using DosPinos.HRMS.Controllers.Commons.Dashboards;
-using DosPinos.HRMS.Controllers.Employees;
-using DosPinos.HRMS.Controllers.Incapacities;
-using DosPinos.HRMS.Controllers.Liquidations;
-using DosPinos.HRMS.Controllers.Payroll;
-using DosPinos.HRMS.Controllers.Reports;
-using DosPinos.HRMS.Controllers.Vacation;
-using DosPinos.HRMS.Controllers.WorkingDays;
-
-namespace DosPinos.HRMS.Controllers
+﻿namespace DosPinos.HRMS.Controllers
 {
     public static class DependencyContainer
     {
@@ -35,6 +25,7 @@ namespace DosPinos.HRMS.Controllers
             services.AddScoped<GetAllOvertimeTypeController>();
             services.AddScoped<GetAllHolidayController>();
             services.AddScoped<GetAllRoleController>();
+            services.AddScoped<GetAllPermissionTypeController>();
 
             //Employee
             services.AddScoped<CreateEmployeeController>();
@@ -67,6 +58,9 @@ namespace DosPinos.HRMS.Controllers
 
             //License
             services.AddScoped<LicenseController>();
+
+            //Permission
+            services.AddScoped<PermissionController>();
 
             return services;
         }

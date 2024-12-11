@@ -1,4 +1,6 @@
-﻿using DosPinos.HRMS.BusinessLogic.Services;
+﻿using DosPinos.HRMS.BusinessLogic.Iterators.Permissions.Catalogs.PermissionsTypes;
+using DosPinos.HRMS.BusinessLogic.Services;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions.Catalogs.PermissionTypes.InputPorts;
 
 namespace DosPinos.HRMS.BusinessLogic
 {
@@ -30,6 +32,7 @@ namespace DosPinos.HRMS.BusinessLogic
             services.AddScoped<IGetAllRoleInputPort, GetAllRoleIterator>();
             services.AddScoped<IGetAllHolidayInputPort, GetAllHolidayIterator>();
             services.AddScoped<IGetAllOvertimeTypeInputPort, GetAllOvertimeTypeIterator>();
+            services.AddScoped<IGetAllPermissionTypeInputPort, GetAllPermissionTypeIterator>();
 
             //Employee
             services.AddScoped<ICreateEntireEmployeeInputPort, CreateEntireEmployeeIterator>();
@@ -62,6 +65,9 @@ namespace DosPinos.HRMS.BusinessLogic
 
             //License
             services.AddScoped<LicenseService>();
+
+            //Permission
+            services.AddScoped<PermissionService>();
 
             return services;
         }
