@@ -50,6 +50,15 @@
                                     <td>@vacation.Status</td>
                                 </tr>
                             }
+                            @foreach (var license in Model.Licenses)
+                            {
+                                <tr>
+                                    <td>@($"{license.StartDate} - {license.EndDate}")</td>
+                                    <td>@license.Days @(license.Days == 1 ? "día" : "días")</td>
+                                    <td>@license.TypeLicense</td>
+                                    <td>@license.Status</td>
+                                </tr>
+                            }
                         </tbody>
                     </table>
                 </div>

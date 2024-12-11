@@ -25,7 +25,7 @@ namespace DosPinos.HRMS.Controllers.Vacation
         public async Task<IOperationResponseVO> UpdateAsync(UpdateVacationDTO vacationDTO)
             => await _vacationService.UpdateAsync(vacationDTO);
 
-        public async Task<IOperationResponseVO> UpdateAsync(int vacationId, IEntityDTO entity)
+        public async Task<IOperationResponseVO> DeleteAsync(int vacationId, IEntityDTO entity)
            => await _vacationService.DeleteAsync(vacationId, entity);
     }
 }

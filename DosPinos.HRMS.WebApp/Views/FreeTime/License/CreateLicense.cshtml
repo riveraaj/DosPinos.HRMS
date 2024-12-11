@@ -13,7 +13,7 @@
 
 <div class="modal fade" id="licenseModal" tabindex="-1" aria-labelledby="licenseModal" aria-hidden="true">
     <div class="modal-dialog">
-        <form>
+        <form asp-action="CreateLicense" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario para licencias medicas</h1>
@@ -21,12 +21,18 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="formFileSm" class="form-label">Fecha de inicio</label>
-                        <input type="date" asp-for="VacationObj.DateStart" min="@Model.Today" required />
+                        <label asp-for="LicenseObj.DateStart" class="form-label">Fecha de inicio</label>
+                        <input type="date" asp-for="LicenseObj.DateStart" min="@Model.Today" required />
                     </div>
                     <div class="mb-3">
-                        <label for="formFileSm" class="form-label">Fecha de fin</label>
-                        <input type="date" asp-for="VacationObj.DateEnd" min="@Model.Today" required />
+                        <label asp-for="LicenseObj.DateEnd" class="form-label">Fecha de fin</label>
+                        <input type="date" asp-for="LicenseObj.DateEnd" min="@Model.Today" required />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="LicenseObj.LicenseTypeId">Tipo de licencia</label>
+                        <select class="form-select" asp-for="LicenseObj.LicenseTypeId" asp-items="@Model.LicenseTypes" required>
+                            <option selected disabled value="">Seleccione una opción</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="formFileSm" class="form-label">Adjuntar evidencia</label>

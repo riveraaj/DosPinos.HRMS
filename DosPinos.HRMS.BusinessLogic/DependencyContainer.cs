@@ -60,6 +60,9 @@ namespace DosPinos.HRMS.BusinessLogic
             //Report
             services.AddScoped<ReportService>();
 
+            //License
+            services.AddScoped<LicenseService>();
+
             return services;
         }
     }

@@ -1,6 +1,7 @@
 ﻿using DosPinos.HRMS.Controllers.ChristmasBonus;
 using DosPinos.HRMS.Controllers.Commons.Dashboards;
 using DosPinos.HRMS.Controllers.Employees;
+using DosPinos.HRMS.Controllers.Incapacities;
 using DosPinos.HRMS.Controllers.Liquidations;
 using DosPinos.HRMS.Controllers.Payroll;
 using DosPinos.HRMS.Controllers.Reports;
@@ -63,6 +64,9 @@ namespace DosPinos.HRMS.Controllers
 
             //Report
             services.AddScoped<ReportController>();
+
+            //License
+            services.AddScoped<LicenseController>();
 
             return services;
         }

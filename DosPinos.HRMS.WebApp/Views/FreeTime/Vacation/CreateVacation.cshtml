@@ -35,7 +35,7 @@
 
 <div class="modal fade" id="vacationModal" tabindex="-1" aria-labelledby="vacationModal" aria-hidden="true">
     <div class="modal-dialog">
-        <form asp-action="Create" method="post">
+        <form asp-action="CreateVacation" method="post">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Solicitud de vacaciones</h1>
@@ -43,11 +43,11 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label for="formFileSm" class="form-label">Fecha de inicio</label>
+                        <label asp-for="VacationObj.DateStart" class="form-label">Fecha de inicio</label>
                         <input type="date" asp-for="VacationObj.DateStart" min="@Model.Today" required />
                     </div>
                     <div class="mb-3">
-                        <label for="formFileSm" class="form-label">Fecha de fin</label>
+                        <label asp-for="VacationObj.DateEnd" class="form-label">Fecha de fin</label>
                         <input type="date" asp-for="VacationObj.DateEnd" min="@Model.Today" required />
                     </div>
                 </div>

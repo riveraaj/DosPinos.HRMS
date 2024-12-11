@@ -2,6 +2,7 @@
 using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Dashboards;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Liquidation;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Reports;
@@ -13,6 +14,7 @@ using DosPinos.HRMS.EFCore.Repositories.ChristmasBonus;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards;
 using DosPinos.HRMS.EFCore.Repositories.Employees;
+using DosPinos.HRMS.EFCore.Repositories.Incapacities;
 using DosPinos.HRMS.EFCore.Repositories.Liquidation;
 using DosPinos.HRMS.EFCore.Repositories.Payroll;
 using DosPinos.HRMS.EFCore.Repositories.Reports;
@@ -84,6 +86,9 @@ namespace DosPinos.HRMS.EFCore
 
             //Report
             services.AddScoped<IReportRepository, ReportRepository>();
+
+            //License
+            services.AddScoped<ILicenseRepository, LicenseRepository>();
 
             return services;
         }

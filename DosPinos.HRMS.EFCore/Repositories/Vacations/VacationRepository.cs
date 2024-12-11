@@ -64,9 +64,6 @@ namespace DosPinos.HRMS.EFCore.Repositories.Vacations
                 {
                     EmployeeId = row.TryGetValue("employee_id", out object employeeId) ? Convert.ToInt32(employeeId) : 0,
                     VacationId = row.TryGetValue("vacation_id", out object vacationId) ? Convert.ToInt32(vacationId) : 0,
-                    Date = row.TryGetValue("vacation_date", out object date) && date != DBNull.Value
-                        ? DateOnly.Parse(((DateTime)date).ToString("yyyy-MM-dd"))
-                        : default,
                     EndDate = row.TryGetValue("date_end", out object endPeriod) && endPeriod != DBNull.Value
                         ? DateOnly.Parse(((DateTime)endPeriod).ToString("yyyy-MM-dd"))
                         : default,

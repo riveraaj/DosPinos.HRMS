@@ -2,11 +2,11 @@
 {
     internal static class IncapacityTypeMapper
     {
-        public static IGetAllIncapacityTypeDTO MapFrom(SpecialPermissionType specialPermissionType)
+        public static IGetAllIncapacityTypeDTO MapFrom(LicenseType licenseType)
            => new GetAllIncapacityTypeDTO()
            {
-               IncapacityTypeId = specialPermissionType.SpecialPermissionTypeId,
-               IncapacityTypeDescription = specialPermissionType.SpecialPermissionTypeDescription,
+               IncapacityTypeId = licenseType.LicenseTypeId,
+               IncapacityTypeDescription = licenseType.LicenseTypeDescription,
            };
     }
 }
