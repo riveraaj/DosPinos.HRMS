@@ -1124,7 +1124,6 @@ public partial class DospinosdbContext : DbContext
             entity.Property(e => e.DateEnd).HasColumnName("date_end");
             entity.Property(e => e.DateStart).HasColumnName("date_start");
             entity.Property(e => e.DocumentationPath)
-                .IsRequired()
                 .HasMaxLength(100)
                 .IsUnicode(false)
                 .HasColumnName("documentation_path");

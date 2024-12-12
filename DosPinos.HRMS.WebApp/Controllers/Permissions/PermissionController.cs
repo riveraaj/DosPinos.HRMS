@@ -1,4 +1,6 @@
 ﻿using DosPinos.HRMS.Controllers.Commons.Notifications;
+using DosPinos.HRMS.Entities.DTOs.Commons.Base;
+using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.WebApp.Controllers.Base;
 using DosPinos.HRMS.WebApp.Models.FreeTimes;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +26,17 @@ namespace DosPinos.HRMS.WebApp.Controllers.Permissions
             model.Response = await _controller.CreateAsync(model.Permission.PermissionObj);
 
             TempData["alert"] = JsonConvert.SerializeObject(model.Response);
+
+            return RedirectToAction("Index", "FreeTime");
+        }
+
+        [HttpPost]
+        [Route("tiempo-libre/mis-solicitudes/eliminar-permiso")]
+        public async Task<IActionResult> Delete(int permissionId)
+        {
+            IOperationResponseVO response = await _controller.DeleteAsync(permissionId, new EntityDTO { UserId = ActualUser });
+
+            TempData["alert"] = JsonConvert.SerializeObject(response);
 
             return RedirectToAction("Index", "FreeTime");
         }

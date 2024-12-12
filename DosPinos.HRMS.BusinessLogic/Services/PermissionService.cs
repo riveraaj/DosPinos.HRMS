@@ -39,7 +39,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
                 {
                     CreatedTo = permissionDTO.UserId,
                     CreatedFor = permissionDTO.ManagerId,
-                    Message = NotificationMessage.Vacation
+                    Message = NotificationMessage.SpecialPermission
                 };
 
                 response = await _permissionRepository.CreateAsync(permissionDTO);

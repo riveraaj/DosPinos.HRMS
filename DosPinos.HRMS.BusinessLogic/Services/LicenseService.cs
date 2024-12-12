@@ -39,7 +39,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
                 {
                     CreatedTo = licenseDTO.UserId,
                     CreatedFor = licenseDTO.ManagerId,
-                    Message = NotificationMessage.Vacation
+                    Message = NotificationMessage.License
                 };
 
                 response = await _licenseRepository.CreateAsync(licenseDTO);

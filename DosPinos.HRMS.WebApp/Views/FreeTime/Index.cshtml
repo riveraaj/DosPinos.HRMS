@@ -51,7 +51,10 @@
                                     <td>@vacation.Status</td>
                                     <td class="text-center">
                                         @if(vacation.Status.Equals("Pendiente")){
-                                            <a class="btn btn-outline-danger" asp-action="">Eliminar</a>
+                                            <form asp-action="Delete" asp-controller="Vacation">
+                                                <input type="hidden" name="vacationId" value="@vacation.VacationId" />
+                                                <button class="btn btn-outline-danger">Eliminar</button>
+                                            </form>
                                         }
                                         else {
                                             <span class="d-block">------</span>
@@ -69,7 +72,10 @@
                                     <td class="text-center">
                                         @if (license.Status.Equals("Pendiente"))
                                         {
-                                            <a class="btn btn-outline-danger" asp-action="">Eliminar</a>
+                                            <form asp-action="Delete" asp-controller="License">
+                                                <input type="hidden" name="licenseId" value="@license.LicenseId" />
+                                                <button class="btn btn-outline-danger">Eliminar</button>
+                                            </form>
                                         }
                                         else
                                         {
@@ -88,7 +94,10 @@
                                     <td class="text-center">
                                         @if (permission.Status.Equals("Pendiente"))
                                         {
-                                            <a class="btn btn-outline-danger" asp-action="">Eliminar</a>
+                                            <form asp-action="Delete" asp-controller="Permission">
+                                                <input type="hidden" name="permissionId" value="@permission.PermissionId" />
+                                                <button class="btn btn-outline-danger">Eliminar</button>
+                                            </form>
                                         }
                                         else
                                         {
