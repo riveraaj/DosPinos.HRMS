@@ -7,7 +7,7 @@ global using DosPinos.HRMS.Entities.Interfaces.Employees.Compensations;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Deductions;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Details;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Phones;
-global using DosPinos.HRMS.Entities.Interfaces.Incapacities.Catalogs;
+global using DosPinos.HRMS.Entities.Interfaces.Licenses.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.Overtimes.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.Securities;
 global using DosPinos.HRMS.Entities.Interfaces.Securities.Catalogs;

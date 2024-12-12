@@ -44,22 +44,6 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
-        public async Task<IOperationResponseVO> GetAllAsync(IEntityDTO entity)
-        {
-            IOperationResponseVO response = new OperationResponseVO();
-
-            try
-            {
-                response.Content = await _vacationRepository.GetAllAsync();
-            }
-            catch (Exception exception)
-            {
-                response = await this.HandlerLog(Module.Vacation, ActionCategory.GetAll, exception, entity);
-            }
-
-            return response;
-        }
-
         public async Task<IOperationResponseVO> CreateAsync(CreateVacationDTO vacationDTO)
         {
             IOperationResponseVO response;

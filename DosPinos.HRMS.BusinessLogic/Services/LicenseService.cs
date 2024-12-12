@@ -1,7 +1,7 @@
-﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities;
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Licenses;
 using DosPinos.HRMS.BusinessObjects.POCOs.Commons.Notifications;
 using DosPinos.HRMS.BusinessObjects.Resources.Notifications;
-using DosPinos.HRMS.Entities.DTOs.Incapacities;
+using DosPinos.HRMS.Entities.DTOs.Licenses;
 
 namespace DosPinos.HRMS.BusinessLogic.Services
 {

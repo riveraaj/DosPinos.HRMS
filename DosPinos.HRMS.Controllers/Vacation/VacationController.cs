@@ -13,9 +13,6 @@ namespace DosPinos.HRMS.Controllers.Vacation
         public async Task<IOperationResponseVO> GetAllByEmployeeAsync(int identification, IEntityDTO entity)
             => await _vacationService.GetAllByEmployeeAsync(identification, entity);
 
-        public async Task<IOperationResponseVO> GetAllAsync(IEntityDTO entity)
-            => await _vacationService.GetAllAsync(entity);
-
         public async Task<IOperationResponseVO> CreateAsync(CreateVacationDTO vacationDTO)
             => await _vacationService.CreateAsync(vacationDTO);
 

@@ -16,7 +16,7 @@ global using DosPinos.HRMS.BusinessLogic.Iterators.Employees.Catalogs.Nationalit
 global using DosPinos.HRMS.BusinessLogic.Iterators.Employees.Catalogs.PhonesType;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Employees.Catalogs.Provinces;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Employees.Catalogs.SalaryCategories;
-global using DosPinos.HRMS.BusinessLogic.Iterators.Incapacities.Catalogs.IncapacitiesType;
+global using DosPinos.HRMS.BusinessLogic.Iterators.Licenses.Catalogs.LicenseTypes;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Overtimes.Catalogs.OvertimesType;
 global using DosPinos.HRMS.BusinessLogic.Iterators.Securities.Catalogs.Roles;
 global using DosPinos.HRMS.BusinessLogic.Iterators.WorkingDays.Catalogs.Holidays;
@@ -52,8 +52,8 @@ global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.Provinc
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.SalaryCategories;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Catalogs.SalaryCategories.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.InputPorts;
-global using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities.Catalogs.IncapacitiesType;
-global using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities.Catalogs.IncapacitiesType.InputPorts;
+global using DosPinos.HRMS.BusinessObjects.Interfaces.Licenses.Catalogs.LicenseTypes;
+global using DosPinos.HRMS.BusinessObjects.Interfaces.Licenses.Catalogs.LicenseTypes.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Overtimes.Catalogs.OvertimesType;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Overtimes.Catalogs.OvertimesType.InputPorts;
 global using DosPinos.HRMS.BusinessObjects.Interfaces.Securities.Catalogs.Roles;
@@ -65,7 +65,7 @@ global using DosPinos.HRMS.Entities.Enums.Commons;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
-global using DosPinos.HRMS.Entities.Interfaces.Incapacities.Catalogs;
+global using DosPinos.HRMS.Entities.Interfaces.Licenses.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.Overtimes.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.Securities.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.WorkingDays.Catalogs;

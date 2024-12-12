@@ -42,7 +42,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach (var vacation in Model.Vacations)
+                            @foreach (var vacation in Model.Vacation.Vacations)
                             {
                                 <tr>
                                     <td>@($"{vacation.StartDate} - {vacation.EndDate}")</td>
@@ -51,7 +51,7 @@
                                     <td>@vacation.Status</td>
                                     <td class="text-center">
                                         @if(vacation.Status.Equals("Pendiente")){
-                                            <a class="btn btn-outline-success" asp-action="">Eliminar</a>
+                                            <a class="btn btn-outline-danger" asp-action="">Eliminar</a>
                                         }
                                         else {
                                             <span class="d-block">------</span>
@@ -59,7 +59,7 @@
                                     </td>
                                 </tr>
                             }
-                            @foreach (var license in Model.Licenses)
+                            @foreach (var license in Model.License.Licenses)
                             {
                                 <tr>
                                     <td>@($"{license.StartDate} - {license.EndDate}")</td>
@@ -69,7 +69,7 @@
                                     <td class="text-center">
                                         @if (license.Status.Equals("Pendiente"))
                                         {
-                                            <a class="btn btn-outline-success" asp-action="">Eliminar</a>
+                                            <a class="btn btn-outline-danger" asp-action="">Eliminar</a>
                                         }
                                         else
                                         {
@@ -78,7 +78,7 @@
                                     </td>
                                 </tr>
                             }                            
-                            @foreach (var permission in Model.Permissions)
+                            @foreach (var permission in Model.Permission.Permissions)
                             {
                                 <tr>
                                     <td>@($"{permission.StartDate} - {permission.EndDate}")</td>
@@ -88,7 +88,7 @@
                                     <td class="text-center">
                                         @if (permission.Status.Equals("Pendiente"))
                                         {
-                                            <a class="btn btn-outline-success" asp-action="">Eliminar</a>
+                                            <a class="btn btn-outline-danger" asp-action="">Eliminar</a>
                                         }
                                         else
                                         {

@@ -1,5 +1,7 @@
-﻿using DosPinos.HRMS.BusinessLogic.Iterators.Permissions.Catalogs.PermissionsTypes;
+﻿using DosPinos.HRMS.BusinessLogic.Iterators.Licenses.Catalogs.LicenseTypes;
+using DosPinos.HRMS.BusinessLogic.Iterators.Permissions.Catalogs.PermissionsTypes;
 using DosPinos.HRMS.BusinessLogic.Services;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Licenses.Catalogs.LicenseTypes.InputPorts;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions.Catalogs.PermissionTypes.InputPorts;
 
 namespace DosPinos.HRMS.BusinessLogic
@@ -28,7 +30,7 @@ namespace DosPinos.HRMS.BusinessLogic
             services.AddScoped<IGetAllMaritalStatusInputPort, GetAllMaritalStatusIterator>();
             services.AddScoped<IGetAllPhoneTypeInputPort, GetAllPhoneTypeIterator>();
             services.AddScoped<IGetAllProvinceInputPort, GetAllProvinceIterator>();
-            services.AddScoped<IGetAllIncapacityTypeInputPort, GetAllIncapacityTypeIterator>();
+            services.AddScoped<IGetAllLicenseTypeInputPort, GetAllLicenseTypeIterator>();
             services.AddScoped<IGetAllRoleInputPort, GetAllRoleIterator>();
             services.AddScoped<IGetAllHolidayInputPort, GetAllHolidayIterator>();
             services.AddScoped<IGetAllOvertimeTypeInputPort, GetAllOvertimeTypeIterator>();

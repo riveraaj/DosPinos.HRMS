@@ -21,16 +21,16 @@
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <label asp-for="LicenseObj.DateStart" class="form-label">Fecha de inicio</label>
-                        <input type="date" asp-for="LicenseObj.DateStart" min="@Model.Today" required />
+                        <label asp-for="License.LicenseObj.DateStart" class="form-label">Fecha de inicio</label>
+                        <input type="date" asp-for="License.LicenseObj.DateStart" min="@Model.Today" required />
                     </div>
                     <div class="mb-3">
-                        <label asp-for="LicenseObj.DateEnd" class="form-label">Fecha de fin</label>
-                        <input type="date" asp-for="LicenseObj.DateEnd" min="@Model.Today" required />
+                        <label asp-for="License.LicenseObj.DateEnd" class="form-label">Fecha de fin</label>
+                        <input type="date" asp-for="License.LicenseObj.DateEnd" min="@Model.Today" required />
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" asp-for="LicenseObj.LicenseTypeId">Tipo de licencia</label>
-                        <select class="form-select" asp-for="LicenseObj.LicenseTypeId" asp-items="@Model.LicenseTypes" required>
+                        <label class="form-label" asp-for="License.LicenseObj.LicenseTypeId">Tipo de licencia</label>
+                        <select class="form-select" asp-for="License.LicenseObj.LicenseTypeId" asp-items="@Model.License.LicensesTypes" required>
                             <option selected disabled value="">Seleccione una opción</option>
                         </select>
                     </div>

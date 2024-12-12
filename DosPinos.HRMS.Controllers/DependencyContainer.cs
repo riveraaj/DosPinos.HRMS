@@ -1,4 +1,7 @@
-﻿namespace DosPinos.HRMS.Controllers
+﻿using DosPinos.HRMS.Controllers.Licenses;
+using DosPinos.HRMS.Controllers.Licenses.Catalogs;
+
+namespace DosPinos.HRMS.Controllers
 {
     public static class DependencyContainer
     {
@@ -21,7 +24,7 @@
             services.AddScoped<GetAllPhoneTypeController>();
             services.AddScoped<GetAllProvinceController>();
             services.AddScoped<GetAllSalaryCategoryController>();
-            services.AddScoped<GetAllIncapacityTypeController>();
+            services.AddScoped<GetAllLicenseTypeController>();
             services.AddScoped<GetAllOvertimeTypeController>();
             services.AddScoped<GetAllHolidayController>();
             services.AddScoped<GetAllRoleController>();

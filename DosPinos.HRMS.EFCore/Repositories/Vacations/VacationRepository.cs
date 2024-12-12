@@ -1,7 +1,5 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Vacations;
-using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.Entities.DTOs.Vacations;
-using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 
 namespace DosPinos.HRMS.EFCore.Repositories.Vacations
 {
@@ -10,18 +8,6 @@ namespace DosPinos.HRMS.EFCore.Repositories.Vacations
     {
         private readonly DospinosdbContext _context = context;
         private readonly IInvokeStoredProcedure _invokeSP = invokeSP;
-
-        public async Task<IEnumerable<GetAllVacationPendingDTO>> GetAllAsync()
-            => await _context.Vacations.Include(x => x.Employee).Where(x => x.ApprovalStatus.Equals("P"))
-                                                          .Select(x => new GetAllVacationPendingDTO()
-                                                          {
-                                                              EmployeeId = x.EmployeeId,
-                                                              EndDate = x.DateEnd,
-                                                              StartDate = x.DateStart,
-                                                              FullName = $"{x.Employee.FirstName} {x.Employee.FirstLastName} {x.Employee.SecondLastName}",
-                                                              Identification = x.Employee.Identification,
-                                                              VacationId = x.VacationId,
-                                                          }).ToListAsync();
 
         public async Task<IOperationResponseVO> CreateAsync(CreateVacationDTO vacationDTO)
         {

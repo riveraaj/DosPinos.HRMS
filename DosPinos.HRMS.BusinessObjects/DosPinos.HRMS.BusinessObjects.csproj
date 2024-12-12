@@ -12,7 +12,6 @@
     <Folder Include="Interfaces\Employees\Deductions\InputPorts\" />
     <Folder Include="Interfaces\Employees\Details\InputPorts\" />
     <Folder Include="Interfaces\Employees\Phones\InputPorts\" />
-    <Folder Include="ValueObjects\" />
   </ItemGroup>
 
   <ItemGroup>
