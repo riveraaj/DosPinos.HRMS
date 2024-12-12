@@ -7,5 +7,6 @@
         public DateOnly DateStart { get; set; }
         public DateOnly DateEnd { get; set; }
         public string DocumentationPath { get; set; }
+        public int ManagerId { get; set; }
     }
 }

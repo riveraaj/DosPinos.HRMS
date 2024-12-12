@@ -38,6 +38,7 @@
                                 <th scope="col">Días</th>
                                 <th scope="col">Tipo</th>
                                 <th scope="col">Estado</th>
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,14 @@
                                     <td>@vacation.Days @(vacation.Days == 1 ? "día" : "días")</td>
                                     <td>Vacaciones</td>
                                     <td>@vacation.Status</td>
+                                    <td class="text-center">
+                                        @if(vacation.Status.Equals("Pendiente")){
+                                            <a class="btn btn-outline-success" asp-action="">Eliminar</a>
+                                        }
+                                        else {
+                                            <span class="d-block">------</span>
+                                        }
+                                    </td>
                                 </tr>
                             }
                             @foreach (var license in Model.Licenses)
@@ -57,6 +66,16 @@
                                     <td>@license.Days @(license.Days == 1 ? "día" : "días")</td>
                                     <td>@license.TypeLicense</td>
                                     <td>@license.Status</td>
+                                    <td class="text-center">
+                                        @if (license.Status.Equals("Pendiente"))
+                                        {
+                                            <a class="btn btn-outline-success" asp-action="">Eliminar</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="d-block">------</span>
+                                        }
+                                    </td>
                                 </tr>
                             }                            
                             @foreach (var permission in Model.Permissions)
@@ -66,6 +85,16 @@
                                     <td>@permission.Days @(permission.Days == 1 ? "día" : "días")</td>
                                     <td>@permission.TypePermission</td>
                                     <td>@permission.Status</td>
+                                    <td class="text-center">
+                                        @if (permission.Status.Equals("Pendiente"))
+                                        {
+                                            <a class="btn btn-outline-success" asp-action="">Eliminar</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="d-block">------</span>
+                                        }
+                                    </td>
                                 </tr>
                             }
                         </tbody>

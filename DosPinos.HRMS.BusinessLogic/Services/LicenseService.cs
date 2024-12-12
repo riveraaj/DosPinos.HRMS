@@ -1,12 +1,16 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Incapacities;
+using DosPinos.HRMS.BusinessObjects.POCOs.Commons.Notifications;
+using DosPinos.HRMS.BusinessObjects.Resources.Notifications;
 using DosPinos.HRMS.Entities.DTOs.Incapacities;
 
 namespace DosPinos.HRMS.BusinessLogic.Services
 {
     public class LicenseService(ILicenseRepository licenseRepository,
+                                ICreateNotificationInputPort noticationInputPort,
                                 ICreateLogIterator createLogIterator) : BaseIterator(createLogIterator)
     {
         private readonly ILicenseRepository _licenseRepository = licenseRepository;
+        private readonly ICreateNotificationInputPort _noticationInputPort = noticationInputPort;
 
         public async Task<IOperationResponseVO> GetAllAsync(int identification, IEntityDTO entity)
         {
@@ -31,8 +35,16 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             try
             {
                 // Validate POCO model
+                ICreateNotificationPOCO notification = new CreateNotificationPOCO()
+                {
+                    CreatedTo = licenseDTO.UserId,
+                    CreatedFor = licenseDTO.ManagerId,
+                    Message = NotificationMessage.Vacation
+                };
+
                 response = await _licenseRepository.CreateAsync(licenseDTO);
 
+                if (response.Status == ResponseStatus.Success) await _noticationInputPort.CreateAsync(notification);
                 if (response.Status == ResponseStatus.Error) throw new Exception(response.Content.ToString());
             }
             catch (Exception exception)

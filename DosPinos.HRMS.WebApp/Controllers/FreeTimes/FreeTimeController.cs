@@ -82,6 +82,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Vacations
         public async Task<IActionResult> CreateLicense(FreeTimeViewModel model)
         {
             model.LicenseObj.EmployeeId = this.ActualEmployee;
+            model.VacationObj.ManagerId = this.ActualEmployeeManager;
             model.LicenseObj.UserId = this.ActualUser;
 
             model.Response = await _licenseController.CreateAsync(model.LicenseObj);
@@ -102,6 +103,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Vacations
         public async Task<IActionResult> CreatePermission(FreeTimeViewModel model)
         {
             model.PermissionObj.EmployeeId = this.ActualEmployee;
+            model.VacationObj.ManagerId = this.ActualEmployeeManager;
             model.PermissionObj.UserId = this.ActualUser;
 
             model.Response = await _permissionController.CreateAsync(model.PermissionObj);

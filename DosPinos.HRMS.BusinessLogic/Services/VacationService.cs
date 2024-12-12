@@ -76,6 +76,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
                 response = await _vacationRepository.CreateAsync(vacationDTO);
 
                 if (response.Status == ResponseStatus.Success) await _noticationInputPort.CreateAsync(notification);
+                if (response.Status == ResponseStatus.Error) throw new Exception(response.Content.ToString());
             }
             catch (Exception exception)
             {
