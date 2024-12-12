@@ -1,7 +1,5 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions;
-using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.Entities.DTOs.Permissions;
-using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 
 namespace DosPinos.HRMS.EFCore.Repositories.Permissions
 {
@@ -25,16 +23,17 @@ namespace DosPinos.HRMS.EFCore.Repositories.Permissions
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateSpecialPermission", parameters, false);
         }
 
-        public async Task<bool> DeleteAsync(int permissionId)
+        public async Task<(bool, string)> DeleteAsync(int permissionId)
         {
             SpecialPermission permission = await _context.SpecialPermissions.FindAsync(permissionId);
 
-            if (permission == null) return false;
+            if (permission == null) return (false, string.Empty);
+            string documentationPath = permission.DocumentationPath;
 
             _context.SpecialPermissions.Remove(permission);
 
             int affectedRows = await _context.SaveChangesAsync();
-            return affectedRows > 0;
+            return (affectedRows > 0, documentationPath);
         }
 
         public async Task<IOperationResponseVO> EvaluateAsync(EvaluatePermissionDTO permissionDTO)
@@ -75,6 +74,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Permissions
                         : default,
                     Days = row.TryGetValue("days", out object days) ? Convert.ToInt32(days) : 0,
                     Status = row.TryGetValue("status", out object status) ? status.ToString() : string.Empty,
+                    DocumentationPath = row.TryGetValue("documentation_path", out object path) ? path.ToString() : string.Empty,
                 });
             }
 

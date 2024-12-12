@@ -141,4 +141,7 @@
   <data name="FieldRequired" xml:space="preserve">
     <value>El campo {0} es requerido</value>
   </data>
+  <data name="ImageBasePath" xml:space="preserve">
+    <value>C:\DosPinos.HRMS.Data\DosPinos.HRMS.Data.Images</value>
+  </data>
 </root>

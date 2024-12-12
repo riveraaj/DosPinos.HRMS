@@ -97,6 +97,15 @@ namespace DosPinos.HRMS.BusinessObjects.Resources.Commons {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to C:\DosPinos.HRMS.Data\DosPinos.HRMS.Data.Images.
+        /// </summary>
+        public static string ImageBasePath {
+            get {
+                return ResourceManager.GetString("ImageBasePath", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to F69avNIHKccIZLsgEFJXWw==.
         /// </summary>
         public static string SecretIV {

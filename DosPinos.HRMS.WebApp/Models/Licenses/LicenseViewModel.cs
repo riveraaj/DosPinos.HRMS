@@ -16,7 +16,7 @@ namespace DosPinos.HRMS.WebApp.Models.Licenses
         public CreateLicenseDTO LicenseObj { get; set; }
         public List<GetAllLicenseByEmployeeDTO> Licenses { get; set; }
         public List<IGetAllLicenseTypeDTO> LicenseTypeList { get; set; }
-
+        public IFormFile FormFile { get; set; } = null;
         public List<SelectListItem> LicensesTypes => LicenseTypeList.Select(l => new SelectListItem
         {
             Value = l.LicenseTypeId.ToString(),

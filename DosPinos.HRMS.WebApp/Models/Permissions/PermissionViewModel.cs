@@ -16,6 +16,7 @@ namespace DosPinos.HRMS.WebApp.Models.Permissions
         public CreatePermissionDTO PermissionObj { get; set; }
         public List<GetAllPermissionByEmployeeDTO> Permissions { get; set; }
         public List<GetAllPermissionTypeDTO> PermissionTypeList { get; set; }
+        public IFormFile FormFile { get; set; } = null;
 
         public List<SelectListItem> PermissionsTypes => PermissionTypeList.Select(p => new SelectListItem
         {

@@ -13,7 +13,7 @@
 
 <div class="modal fade" id="licenseModal" tabindex="-1" aria-labelledby="licenseModal" aria-hidden="true">
     <div class="modal-dialog">
-        <form asp-action="Create" asp-controller="License">
+        <form asp-action="Create" asp-controller="License" class="needs-validation" novalidate enctype="multipart/form-data">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Formulario para licencias medicas</h1>
@@ -35,8 +35,8 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="formFileSm" class="form-label">Adjuntar evidencia</label>
-                        <input class="form-control form-control-sm" id="formFileSm" type="file" accept=".jpg,.jpeg,.png" placeholder="Ningún archivo seleccionado">
+                        <label asp-for="License.FormFile" class="form-label">Adjuntar evidencia</label>
+                        <input asp-for="License.FormFile" class="form-control form-control-sm" type="file" accept=".jpg,.jpeg,.png" placeholder="Ningún archivo seleccionado" required>
                     </div>
                 </div>
                 <div class="modal-footer">

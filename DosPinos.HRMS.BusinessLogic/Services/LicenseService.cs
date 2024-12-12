@@ -34,6 +34,8 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
+                Task<string> ImageTask = ImageManagerHelper.SaveAsync(licenseDTO.ImageObj.Data, licenseDTO.ImageObj.Name);
+
                 // Validate POCO model
                 ICreateNotificationPOCO notification = new CreateNotificationPOCO()
                 {
@@ -42,6 +44,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
                     Message = NotificationMessage.License
                 };
 
+                licenseDTO.DocumentationPath = await ImageTask;
                 response = await _licenseRepository.CreateAsync(licenseDTO);
 
                 if (response.Status == ResponseStatus.Success) await _noticationInputPort.CreateAsync(notification);
@@ -94,8 +97,9 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
-                bool result = await _licenseRepository.DeleteAsync(licenseId);
-                if (!result) response = this.CustomWarning();
+                (bool, string) result = await _licenseRepository.DeleteAsync(licenseId);
+                if (!result.Item1) response = this.CustomWarning();
+                else ImageManagerHelper.Delete(result.Item2);
             }
             catch (Exception exception)
             {

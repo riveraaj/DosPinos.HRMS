@@ -9,5 +9,6 @@
         public string Status { get; set; }
         public string TypePermission { get; set; }
         public int Days { get; set; }
+        public string DocumentationPath { get; set; }
     }
 }

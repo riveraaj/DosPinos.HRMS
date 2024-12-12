@@ -20,16 +20,17 @@
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateLicense", parameters, false);
         }
 
-        public async Task<bool> DeleteAsync(int licenseId)
+        public async Task<(bool, string)> DeleteAsync(int licenseId)
         {
             License license = await _context.Licenses.FindAsync(licenseId);
 
-            if (license == null) return false;
+            if (license == null) return (false, string.Empty);
+            string documentationPath = license.DocumentationPath;
 
             _context.Licenses.Remove(license);
 
             int affectedRows = await _context.SaveChangesAsync();
-            return affectedRows > 0;
+            return (affectedRows > 0, documentationPath);
         }
 
         public async Task<IOperationResponseVO> EvaluateAsync(EvaluateLicenseDTO licenseDTO)
@@ -70,6 +71,7 @@
                         : default,
                     Days = row.TryGetValue("days", out object days) ? Convert.ToInt32(days) : 0,
                     Status = row.TryGetValue("status", out object status) ? status.ToString() : string.Empty,
+                    DocumentationPath = row.TryGetValue("documentation_path", out object path) ? path.ToString() : string.Empty,
                 });
             }
 

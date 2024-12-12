@@ -8,6 +8,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Permissions
         Task<IOperationResponseVO> CreateAsync(CreatePermissionDTO permission);
         Task<IOperationResponseVO> EvaluateAsync(EvaluatePermissionDTO permissionDTO);
         Task<bool> UpdateAsync(UpdatePermissionDTO permissionDTO);
-        Task<bool> DeleteAsync(int permissionId);
+        Task<(bool, string)> DeleteAsync(int permissionId);
     }
 }

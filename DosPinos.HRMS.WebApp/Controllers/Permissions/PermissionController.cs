@@ -19,6 +19,17 @@ namespace DosPinos.HRMS.WebApp.Controllers.Permissions
         [Route("tiempo-libre/mis-solicitudes/permiso-especial")]
         public async Task<IActionResult> Create(FreeTimeViewModel model)
         {
+            if (model.Permission.FormFile != null)
+            {
+                using (MemoryStream memoryStream = new())
+                {
+                    await model.Permission.FormFile.CopyToAsync(memoryStream);
+                    model.Permission.PermissionObj.ImageObj.Data = memoryStream.ToArray();
+                }
+
+                model.Permission.PermissionObj.ImageObj.Name = model.Permission.FormFile.FileName;
+            }
+
             model.Permission.PermissionObj.EmployeeId = this.ActualEmployee;
             model.Permission.PermissionObj.ManagerId = this.ActualEmployeeManager;
             model.Permission.PermissionObj.UserId = this.ActualUser;

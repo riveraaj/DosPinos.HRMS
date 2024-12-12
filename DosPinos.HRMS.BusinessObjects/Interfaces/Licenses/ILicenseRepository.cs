@@ -8,6 +8,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Licenses
         Task<IOperationResponseVO> CreateAsync(CreateLicenseDTO license);
         Task<IOperationResponseVO> EvaluateAsync(EvaluateLicenseDTO licenseDTO);
         Task<bool> UpdateAsync(UpdateLicenseDTO licenseDTO);
-        Task<bool> DeleteAsync(int licenseId);
+        Task<(bool, string)> DeleteAsync(int licenseId);
     }
 }

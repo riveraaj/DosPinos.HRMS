@@ -16,8 +16,9 @@
 					<i class="bi bi-dot position-absolute text-danger fs-1 start-0 bottom-0 @(Model.Notifications.Count > 0 ? "visible" : "invisible")" id="notification-alert"></i>
 				</a>
 
-				<ul class="dropdown-menu px-3" id="notification-panel">
-					<li class="p-2 fw-semibold text-center">Notificaciones</li>
+				<div class="dropdown-menu px-3" id="notification-panel">
+					<p class="p-2 fw-semibold text-center m-0">Notificaciones</p>
+					<ul class="overflow-auto" style="max-height:23rem;">
 					<li><hr class="dropdown-divider"></li>
 
 					@if (Model.Notifications.Count > 0)
@@ -39,7 +40,8 @@
 							<li><i class="bi bi-info-circle text-info me-2"></i> No hay notificaciones sin leer.</li>
 						</form>
 					}
-				</ul>
+					</ul>
+				</div>
 			</div>
 
 			<form asp-action="logout" asp-controller="Login" class="cursor-pointer">

@@ -34,6 +34,9 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
+                if (permissionDTO.ImageObj != null && permissionDTO.ImageObj.Data != null)
+                    permissionDTO.DocumentationPath = await ImageManagerHelper.SaveAsync(permissionDTO.ImageObj.Data, permissionDTO.ImageObj.Name);
+
                 // Validate POCO model
                 ICreateNotificationPOCO notification = new CreateNotificationPOCO()
                 {
@@ -94,8 +97,9 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
-                bool result = await _permissionRepository.DeleteAsync(permissionId);
-                if (!result) response = this.CustomWarning();
+                (bool, string) result = await _permissionRepository.DeleteAsync(permissionId);
+                if (!result.Item1) response = this.CustomWarning();
+                else ImageManagerHelper.Delete(result.Item2);
             }
             catch (Exception exception)
             {

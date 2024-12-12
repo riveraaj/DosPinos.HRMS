@@ -37,6 +37,7 @@
                                 <th scope="col">Período</th>
                                 <th scope="col">Días</th>
                                 <th scope="col">Tipo</th>
+                                <th scope="col">Documentos</th>
                                 <th scope="col">Estado</th>
                                 <th scope="col">Acciones</th>
                             </tr>
@@ -48,6 +49,7 @@
                                     <td>@($"{vacation.StartDate} - {vacation.EndDate}")</td>
                                     <td>@vacation.Days @(vacation.Days == 1 ? "día" : "días")</td>
                                     <td>Vacaciones</td>
+                                    <td class="text-center">------</td>
                                     <td>@vacation.Status</td>
                                     <td class="text-center">
                                         @if(vacation.Status.Equals("Pendiente")){
@@ -68,6 +70,16 @@
                                     <td>@($"{license.StartDate} - {license.EndDate}")</td>
                                     <td>@license.Days @(license.Days == 1 ? "día" : "días")</td>
                                     <td>@license.TypeLicense</td>
+                                    <td class="text-center">
+                                        @if (!string.IsNullOrEmpty(license.DocumentationPath))
+                                        {
+                                            <a class="text-primary" href="@($"/documentos/{license.DocumentationPath}")" target="_blank">Ver documento</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="d-block">------</span>
+                                        }
+                                    </td>
                                     <td>@license.Status</td>
                                     <td class="text-center">
                                         @if (license.Status.Equals("Pendiente"))
@@ -90,6 +102,16 @@
                                     <td>@($"{permission.StartDate} - {permission.EndDate}")</td>
                                     <td>@permission.Days @(permission.Days == 1 ? "día" : "días")</td>
                                     <td>@permission.TypePermission</td>
+                                    <td class="text-center">
+                                        @if (!string.IsNullOrEmpty(permission.DocumentationPath))
+                                        {
+                                            <a class="text-primary" href="@($"/documentos/{permission.DocumentationPath}")" target="_blank">Ver documento</a>
+                                        }
+                                        else
+                                        {
+                                            <span class="d-block">------</span>
+                                        }
+                                    </td>
                                     <td>@permission.Status</td>
                                     <td class="text-center">
                                         @if (permission.Status.Equals("Pendiente"))

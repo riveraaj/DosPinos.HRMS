@@ -1,5 +1,6 @@
 using DosPinos.HRMS.IoC;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +35,12 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseStaticFiles(new StaticFileOptions
+{
+    FileProvider = new PhysicalFileProvider(@"C:\DosPinos.HRMS.Data\DosPinos.HRMS.Data.Images"),
+    RequestPath = "/documentos"
+});
 
 app.MapControllerRoute(
     name: "default",

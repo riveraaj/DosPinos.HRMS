@@ -11,7 +11,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Licenses
     public class LicenseController(GetAllNotificationController notificationController,
                                    UpdateNotificationController updateController,
                                    HRMS.Controllers.Licenses.LicenseController controller) : BaseController(notificationController,
-                                                                                                                updateController)
+                                                                                                            updateController)
     {
         private readonly HRMS.Controllers.Licenses.LicenseController _controller = controller;
 
@@ -19,6 +19,14 @@ namespace DosPinos.HRMS.WebApp.Controllers.Licenses
         [Route("tiempo-libre/mis-solicitudes/incapacidad")]
         public async Task<IActionResult> Create(FreeTimeViewModel model)
         {
+            using (MemoryStream memoryStream = new())
+            {
+                await model.License.FormFile.CopyToAsync(memoryStream);
+                model.License.LicenseObj.ImageObj.Data = memoryStream.ToArray();
+            }
+
+            model.License.LicenseObj.ImageObj.Name = model.License.FormFile.FileName;
+
             model.License.LicenseObj.EmployeeId = this.ActualEmployee;
             model.License.LicenseObj.ManagerId = this.ActualEmployeeManager;
             model.License.LicenseObj.UserId = this.ActualUser;
