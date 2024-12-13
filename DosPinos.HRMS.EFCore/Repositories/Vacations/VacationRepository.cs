@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Vacations;
+using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 using DosPinos.HRMS.Entities.DTOs.Vacations;
 
 namespace DosPinos.HRMS.EFCore.Repositories.Vacations
@@ -21,13 +22,13 @@ namespace DosPinos.HRMS.EFCore.Repositories.Vacations
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateVacation", parameters, false);
         }
 
-        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateVacationDTO vacationDTO)
+        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateApplicationDTO vacationDTO)
         {
             Dictionary<string, object> parameters = new()
             {
                 {"@isApproved", vacationDTO.IsApproved},
                 {"@employeeId", vacationDTO.EmployeeId},
-                {"@vacationId", vacationDTO.VacationId},
+                {"@vacationId", vacationDTO.ApplicantId},
             };
 
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateEvaluationVacation", parameters, false);

@@ -1,5 +1,4 @@
-﻿using DosPinos.HRMS.Controllers.Licenses;
-using DosPinos.HRMS.Controllers.Licenses.Catalogs;
+﻿using DosPinos.HRMS.Controllers.Commons.FreeTimes;
 
 namespace DosPinos.HRMS.Controllers
 {
@@ -64,6 +63,9 @@ namespace DosPinos.HRMS.Controllers
 
             //Permission
             services.AddScoped<PermissionController>();
+
+            //FreeTime
+            services.AddScoped<FreeTimeController>();
 
             return services;
         }

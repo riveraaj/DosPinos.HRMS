@@ -1,0 +1,69 @@
+﻿@model DosPinos.HRMS.WebApp.Models.FreeTimes.ManageApplicationViewModel;
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+
+    <div class="card border-0 shadow m-3">
+        <div class="card-header bg-success-subtle fw-semibold">
+            @Model.Title
+        </div>
+        <div class="card-body overflow-y-auto py-5">
+            <div class="content-tables">
+                <div class="table-responsive">
+                    <table class="table data-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Empleado</th>
+                                <th scope="col">Puesto</th>
+                                <th scope="col">Período</th>
+                                <th scope="col">Días</th>
+                                <th scope="col">Tipo</th>
+                                <th scope="col">Documentos</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var applicant in Model.Applications)
+                            {
+                                <tr>
+                                    <td>@applicant.EmployeeName</td>
+                                    <td>@applicant.JobTitle</td>
+                                    <td>@($"{applicant.StartDate} - {applicant.EndDate}")</td>
+                                    <td>@applicant.Days @(applicant.Days == 1 ? "día" : "días")</td>
+                                    <td>@applicant.ApplicationType</td>
+                                    <td class="text-center">
+                                        @if (!applicant.DocumentationPath.StartsWith("-"))
+                                        {
+                                            <a class="text-primary" href="@($"/documentos/{applicant.DocumentationPath}")" target="_blank">Ver documento</a>
+                                        }
+                                        else
+                                        {
+                                            @applicant.DocumentationPath
+                                        }
+                                    </td>
+                                    <td class="d-flex justify-content-center align-items-center">
+                                        <form asp-action="Evaluate">
+                                            <input type="hidden" asp-for="EvaluationObj.ApplicantId" value="@applicant.ApplicantId" />
+                                            <input type="hidden" asp-for="EvaluationObj.IsApproved" value="true" />
+                                            <input type="hidden" asp-for="EvaluationObj.Code" value="@applicant.Code" />
+                                            <button class="bg-transparent border-0 text-success fs-4"><i class="bi bi-check-square"></i></button>
+                                        </form>
+                                        <form asp-action="Evaluate">
+                                            <input type="hidden" asp-for="EvaluationObj.ApplicantId" value="@applicant.ApplicantId" />
+                                            <input type="hidden" asp-for="EvaluationObj.IsApproved" value="false" />
+                                            <input type="hidden" asp-for="EvaluationObj.Code" value="@applicant.Code" />
+                                            <button class="bg-transparent border-0 text-danger fs-4"><i class="bi bi-x-square"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

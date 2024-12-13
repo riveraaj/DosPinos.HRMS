@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions;
+using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 using DosPinos.HRMS.Entities.DTOs.Permissions;
 
 namespace DosPinos.HRMS.EFCore.Repositories.Permissions
@@ -36,13 +37,13 @@ namespace DosPinos.HRMS.EFCore.Repositories.Permissions
             return (affectedRows > 0, documentationPath);
         }
 
-        public async Task<IOperationResponseVO> EvaluateAsync(EvaluatePermissionDTO permissionDTO)
+        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateApplicationDTO permissionDTO)
         {
             Dictionary<string, object> parameters = new()
             {
                 {"@isApproved", permissionDTO.IsApproved},
                 {"@employeeId", permissionDTO.EmployeeId},
-                {"@permissionId", permissionDTO.PermissionId},
+                {"@permissionId", permissionDTO.ApplicantId},
             };
 
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateEvaluationSpecialPermission", parameters, false);

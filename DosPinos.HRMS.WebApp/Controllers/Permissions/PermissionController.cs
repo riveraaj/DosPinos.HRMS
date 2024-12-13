@@ -1,5 +1,6 @@
 ﻿using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.Entities.DTOs.Commons.Base;
+using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.WebApp.Controllers.Base;
 using DosPinos.HRMS.WebApp.Models.FreeTimes;
@@ -50,6 +51,20 @@ namespace DosPinos.HRMS.WebApp.Controllers.Permissions
             TempData["alert"] = JsonConvert.SerializeObject(response);
 
             return RedirectToAction("Index", "FreeTime");
+        }
+
+        public async Task<IActionResult> Evaluate()
+        {
+            if (TempData["Evaluation"] is not null)
+            {
+                var model = JsonConvert.DeserializeObject<EvaluateApplicationDTO>((string)TempData["Evaluation"]);
+                IOperationResponseVO response = await _controller.EvaluateAsync(model);
+
+                TempData["alert"] = JsonConvert.SerializeObject(response);
+                return RedirectToAction("ManageApplication", "FreeTime");
+            }
+
+            return RedirectToAction("ManageApplication", "FreeTime");
         }
     }
 }

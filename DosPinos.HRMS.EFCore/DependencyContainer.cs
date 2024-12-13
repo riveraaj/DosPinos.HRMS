@@ -1,5 +1,6 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.ChristmasBonus;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Dashboards;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.FreeTimes;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Liquidation;
@@ -13,6 +14,7 @@ using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays;
 using DosPinos.HRMS.EFCore.Repositories.ChristmasBonus;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
 using DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards;
+using DosPinos.HRMS.EFCore.Repositories.Commons.FreeTimes;
 using DosPinos.HRMS.EFCore.Repositories.Employees;
 using DosPinos.HRMS.EFCore.Repositories.Licenses;
 using DosPinos.HRMS.EFCore.Repositories.Liquidation;
@@ -95,6 +97,9 @@ namespace DosPinos.HRMS.EFCore
 
             //Permission
             services.AddScoped<IPermissionRepository, PermissionRepository>();
+
+            //FreeTime
+            services.AddScoped<IFreeTimeRepository, FreeTimeRepository>();
 
             return services;
         }

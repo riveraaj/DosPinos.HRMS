@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.BusinessLogic.Services;
+using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 using DosPinos.HRMS.Entities.DTOs.Licenses;
 
 namespace DosPinos.HRMS.Controllers.Licenses
@@ -12,7 +13,7 @@ namespace DosPinos.HRMS.Controllers.Licenses
         public async Task<IOperationResponseVO> CreateAsync(CreateLicenseDTO licenseDTO)
             => await _service.CreateAsync(licenseDTO);
 
-        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateLicenseDTO licenseDTO)
+        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateApplicationDTO licenseDTO)
             => await _service.EvaluateAsync(licenseDTO);
 
         public async Task<IOperationResponseVO> UpdateAsync(UpdateLicenseDTO licenseDTO)

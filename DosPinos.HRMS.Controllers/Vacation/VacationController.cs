@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.BusinessLogic.Services;
+using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 using DosPinos.HRMS.Entities.DTOs.Vacations;
 
 namespace DosPinos.HRMS.Controllers.Vacation
@@ -16,7 +17,7 @@ namespace DosPinos.HRMS.Controllers.Vacation
         public async Task<IOperationResponseVO> CreateAsync(CreateVacationDTO vacationDTO)
             => await _vacationService.CreateAsync(vacationDTO);
 
-        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateVacationDTO vacationDTO)
+        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateApplicationDTO vacationDTO)
             => await _vacationService.EvaluateAsync(vacationDTO);
 
         public async Task<IOperationResponseVO> UpdateAsync(UpdateVacationDTO vacationDTO)

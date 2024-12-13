@@ -1,4 +1,6 @@
-﻿namespace DosPinos.HRMS.EFCore.Repositories.Licenses
+﻿using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
+
+namespace DosPinos.HRMS.EFCore.Repositories.Licenses
 {
     internal class LicenseRepository(DospinosdbContext context,
                                    IInvokeStoredProcedure invokeSP) : ILicenseRepository
@@ -33,13 +35,13 @@
             return (affectedRows > 0, documentationPath);
         }
 
-        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateLicenseDTO licenseDTO)
+        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateApplicationDTO licenseDTO)
         {
             Dictionary<string, object> parameters = new()
             {
                 {"@isApproved", licenseDTO.IsApproved},
                 {"@employeeId", licenseDTO.EmployeeId},
-                {"@licenseId", licenseDTO.LicenseId},
+                {"@licenseId", licenseDTO.ApplicantId},
             };
 
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateEvaluationLicense", parameters, false);

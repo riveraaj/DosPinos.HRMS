@@ -1,6 +1,7 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions;
 using DosPinos.HRMS.BusinessObjects.POCOs.Commons.Notifications;
 using DosPinos.HRMS.BusinessObjects.Resources.Notifications;
+using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 using DosPinos.HRMS.Entities.DTOs.Permissions;
 
 namespace DosPinos.HRMS.BusinessLogic.Services
@@ -58,7 +59,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
-        public async Task<IOperationResponseVO> EvaluateAsync(EvaluatePermissionDTO permissionDTO)
+        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateApplicationDTO permissionDTO)
         {
             IOperationResponseVO response;
 

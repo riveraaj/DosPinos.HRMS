@@ -1,7 +1,5 @@
-﻿using DosPinos.HRMS.BusinessLogic.Iterators.Licenses.Catalogs.LicenseTypes;
-using DosPinos.HRMS.BusinessLogic.Iterators.Permissions.Catalogs.PermissionsTypes;
+﻿using DosPinos.HRMS.BusinessLogic.Iterators.Permissions.Catalogs.PermissionsTypes;
 using DosPinos.HRMS.BusinessLogic.Services;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Licenses.Catalogs.LicenseTypes.InputPorts;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions.Catalogs.PermissionTypes.InputPorts;
 
 namespace DosPinos.HRMS.BusinessLogic
@@ -16,6 +14,7 @@ namespace DosPinos.HRMS.BusinessLogic
             services.AddScoped<ICreateNotificationInputPort, CreateNotificationIterator>();
             services.AddScoped<IUpdateNotificationInputPort, UpdateNotificationIterator>();
             services.AddScoped<IGetAllNotificationInputPort, GetAllNotificationIterator>();
+            services.AddScoped<FreeTimeService>();
 
             //Catalogs
             services.AddScoped<IGetAllCantonInputPort, GetAllCantonIterator>();

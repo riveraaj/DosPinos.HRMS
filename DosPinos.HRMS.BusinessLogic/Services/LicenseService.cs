@@ -1,6 +1,7 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Licenses;
 using DosPinos.HRMS.BusinessObjects.POCOs.Commons.Notifications;
 using DosPinos.HRMS.BusinessObjects.Resources.Notifications;
+using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 using DosPinos.HRMS.Entities.DTOs.Licenses;
 
 namespace DosPinos.HRMS.BusinessLogic.Services
@@ -58,7 +59,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
-        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateLicenseDTO licenseDTO)
+        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateApplicationDTO licenseDTO)
         {
             IOperationResponseVO response;
 

@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.BusinessLogic.Services;
+using DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 using DosPinos.HRMS.Entities.DTOs.Permissions;
 
 namespace DosPinos.HRMS.Controllers.Permissions
@@ -12,7 +13,7 @@ namespace DosPinos.HRMS.Controllers.Permissions
         public async Task<IOperationResponseVO> CreateAsync(CreatePermissionDTO permissionDTO)
             => await _service.CreateAsync(permissionDTO);
 
-        public async Task<IOperationResponseVO> EvaluateAsync(EvaluatePermissionDTO permissionDTO)
+        public async Task<IOperationResponseVO> EvaluateAsync(EvaluateApplicationDTO permissionDTO)
             => await _service.EvaluateAsync(permissionDTO);
 
         public async Task<IOperationResponseVO> UpdateAsync(UpdatePermissionDTO permissionDTO)
