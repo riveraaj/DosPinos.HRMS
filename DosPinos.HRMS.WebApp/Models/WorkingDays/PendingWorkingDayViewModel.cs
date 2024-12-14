@@ -10,10 +10,10 @@ namespace DosPinos.HRMS.WebApp.Models.WorkingDays
         {
             this.Title = WorkingDayLabel.PendingTitle;
             EvaluateWorkingDayObj = new();
-            PendingWorkingDays = [];
+            WorkingDays = [];
         }
 
         public EvaluateWorkingDayDTO EvaluateWorkingDayObj { get; set; }
-        public List<GetAllPendingWorkingDayDTO> PendingWorkingDays { get; set; }
+        public List<GetAllPendingWorkingDayDTO> WorkingDays { get; set; }
     }
 }

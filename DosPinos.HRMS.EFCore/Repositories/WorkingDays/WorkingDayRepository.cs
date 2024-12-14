@@ -1,8 +1,6 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays;
 using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays.POCOs;
-using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.Entities.DTOs.WorkingDays;
-using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 
 namespace DosPinos.HRMS.EFCore.Repositories.WorkingDays
 {
@@ -14,17 +12,19 @@ namespace DosPinos.HRMS.EFCore.Repositories.WorkingDays
 
         public async Task<IEnumerable<GetAllPendingWorkingDayDTO>> GetAllAsync()
             => await _context.WorkingDays.Include(x => x.Employee)
-                                         .Include(x => x.Holiday)
+                                            .ThenInclude(x => x.EmployeeDetails)
+                                            .ThenInclude(x => x.JobTitle)
                                          .Where(x => x.ApprovalStatus.Equals("P"))
                                          .Select(x => new GetAllPendingWorkingDayDTO()
                                          {
+                                             WorkinDayId = x.WorkingDayId,
                                              EmployeeId = x.EmployeeId,
                                              Identification = x.Employee.Identification,
                                              Date = x.WorkingDayDate,
                                              EmployeeName = $"{x.Employee.FirstName} {x.Employee.FirstLastName} {x.Employee.SecondLastName}",
+                                             JobTitle = x.Employee.EmployeeDetails.FirstOrDefault().JobTitle.JobTitleDescription,
                                              EndTime = x.EndTime,
                                              StartTime = x.StartTime,
-                                             Holiday = x.Holiday.HolidayDescription,
                                              HourWorked = x.HoursWorked
                                          }).ToListAsync();
 

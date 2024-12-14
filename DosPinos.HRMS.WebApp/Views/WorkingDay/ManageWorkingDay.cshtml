@@ -1,0 +1,67 @@
+﻿@model DosPinos.HRMS.WebApp.Models.WorkingDays.PendingWorkingDayViewModel;
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+
+    <div class="card border-0 shadow m-3">
+        <div class="card-header bg-success-subtle fw-semibold">
+            @Model.Title
+        </div>
+        <div class="card-body overflow-y-auto py-5">
+            <div class="content-tables">
+                <div class="table-responsive">
+                    <table class="table data-table">
+                        <thead>
+                            <tr>
+                                <th class="text-center" scope="col">#</th>
+                                <th scope="col">Empleado</th>
+                                <th scope="col">Puesto</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Inicio de jornada</th>
+                                <th scope="col">Fin de jornada</th>
+                                <th scope="col">Horas trabajadas</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var workingDay in Model.WorkingDays)
+                            {
+                                int hourTotal = (int)workingDay.HourWorked;
+                                int minuteTotal = (int)((workingDay.HourWorked - hourTotal) * 60);
+
+                                <tr>
+                                    <td class="text-center">@workingDay.Identification</td>
+                                    <td>@workingDay.EmployeeName</td>
+                                    <td>@workingDay.JobTitle</td>
+                                    <td>@workingDay.Date.ToString("dd-MM-yyyy")</td>
+                                    <td>@workingDay.StartTime</td>
+                                    <td>@workingDay.EndTime</td>
+                                    <td>@($"{hourTotal}h {minuteTotal}min")</td>
+
+                                    <td>
+                                        <div class="d-flex flex-wrap justify-content-center align-items-center">
+                                            <form asp-action="Evaluate">
+                                                <input type="hidden" asp-for="EvaluateWorkingDayObj.WorkingDayId" value="@workingDay.WorkinDayId" />
+                                                <input type="hidden" asp-for="EvaluateWorkingDayObj.IsApproved" value="true" />
+                                                <button class="bg-transparent border-0 text-success fs-4" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Aprobar"><i class="bi bi-check-square"></i></button>
+                                            </form>
+                                            <form asp-action="Evaluate">
+                                                <input type="hidden" asp-for="EvaluateWorkingDayObj.WorkingDayId" value="@workingDay.WorkinDayId" />
+                                                <input type="hidden" asp-for="EvaluateWorkingDayObj.IsApproved" value="true" />
+                                            
+                                                <button class="bg-transparent border-0 text-danger fs-4" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Rechazar"><i class="bi bi-x-square"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

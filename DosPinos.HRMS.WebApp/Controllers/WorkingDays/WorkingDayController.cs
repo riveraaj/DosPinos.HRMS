@@ -54,7 +54,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
         }
 
         [Route("asistencia/gestion-asistencia")]
-        public async Task<IActionResult> Pending()
+        public async Task<IActionResult> ManageWorkingDay()
         {
             PendingWorkingDayViewModel model = new();
 
@@ -67,7 +67,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
             }
 
             model.Notifications = await this.GetAllNotificationAsync();
-            model.PendingWorkingDays = response.Content as List<GetAllPendingWorkingDayDTO>;
+            model.WorkingDays = response.Content as List<GetAllPendingWorkingDayDTO>;
 
             return View(model);
         }
@@ -77,12 +77,14 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
         public async Task<IActionResult> Evaluate(PendingWorkingDayViewModel model)
         {
             model.EvaluateWorkingDayObj.UserId = ActualUser;
+            model.EvaluateWorkingDayObj.EmployeeId = ActualEmployee;
+            model.EvaluateWorkingDayObj.Comment = string.Empty;
 
             IOperationResponseVO response = await _controller.EvaluateAsync(model.EvaluateWorkingDayObj);
 
-            ViewData["alert"] = JsonConvert.SerializeObject(response);
+            TempData["alert"] = JsonConvert.SerializeObject(response);
 
-            return RedirectToAction("Pending");
+            return RedirectToAction("ManageWorkingDay");
         }
     }
 }
