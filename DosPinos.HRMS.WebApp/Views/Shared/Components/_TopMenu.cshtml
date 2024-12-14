@@ -1,10 +1,15 @@
 ﻿@model DosPinos.HRMS.WebApp.Models.Base.BaseViewModel;
 
+@{
+	string currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+	string currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
+
 <nav class="navbar fs-6 px-2 bg-success">
 	<div class="container-fluid">
 		<div class="py-2 text-white">
 			<span>
-				@(ViewData["Title"].ToString().Contains("Reporte") ? "Reporte" : ViewData["Title"])			
+				@(ViewData["Title"].ToString().Contains("Reporte") ? "Reporte" : ViewData["Title"])
 			</span>
 		</div>
 
@@ -19,27 +24,29 @@
 				<div class="dropdown-menu px-3" id="notification-panel">
 					<p class="p-2 fw-semibold text-center m-0">Notificaciones</p>
 					<ul class="overflow-auto" style="max-height:23rem;">
-					<li><hr class="dropdown-divider"></li>
+						<li><hr class="dropdown-divider"></li>
 
-					@if (Model.Notifications.Count > 0)
-					{
-						@foreach (var notification in Model.Notifications)
+						@if (Model.Notifications.Count > 0)
 						{
-							<form asp-action="UpdateNotificationAsync" method="post" class="p-2 d-flex justify-content-between align-items-center gap-3 hover-shadow">
-								<input type="hidden" asp-for="NotificationObj.NotificationId" value="@notification.NotificationId"/>
+							@foreach (var notification in Model.Notifications)
+							{
+								<form asp-action="UpdateNotification" asp-controller="Dashboard" method="post" class="p-2 d-flex justify-content-between align-items-center gap-3 hover-shadow">
+									<input type="hidden" asp-for="NotificationObj.NotificationId" value="@notification.NotificationId" />
+									<input type="hidden" asp-for="NotificationObj.ActionOrigin" value="@currentAction" />
+									<input type="hidden" asp-for="NotificationObj.ControllerOrigin" value="@currentController" />
 								<li>@notification.Message</li>
 								<button type="submit" aria-label="Close" class="text-danger fs-3 bg-transparent border-0">
 									<i class="bi bi-x"></i>
 								</button>
+								</form>
+							}
+						}
+						else
+						{
+							<form class="p-2 d-flex justify-content-between align-items-center gap-3">
+							<li><i class="bi bi-info-circle text-info me-2"></i> No hay notificaciones sin leer.</li>
 							</form>
 						}
-					}
-					else
-					{
-						<form class="p-2 d-flex justify-content-between align-items-center gap-3">
-							<li><i class="bi bi-info-circle text-info me-2"></i> No hay notificaciones sin leer.</li>
-						</form>
-					}
 					</ul>
 				</div>
 			</div>

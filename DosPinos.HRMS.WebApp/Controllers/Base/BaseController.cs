@@ -25,6 +25,10 @@ namespace DosPinos.HRMS.WebApp.Controllers.Base
             return (List<IGetAllNotificationDTO>)response.Content;
         }
 
-        public async Task UpdateAsync(IUpdateNotificationDTO notification) => await _updateController.UpdateAsync(notification);
+        public async Task<IActionResult> UpdateNotificationAsync(IUpdateNotificationDTO notification)
+        {
+            await _updateController.UpdateAsync(notification);
+            return RedirectToAction(notification.ActionOrigin, notification.ControllerOrigin);
+        }
     }
 }
