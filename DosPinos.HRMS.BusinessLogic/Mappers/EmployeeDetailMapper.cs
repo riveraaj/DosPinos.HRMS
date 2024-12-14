@@ -17,6 +17,7 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
                 MaritalStatusId = detailDTO.MaritalStatusId,
                 NationalityId = detailDTO.NationalityId,
                 Email = detailDTO.Email,
+                EntryDate = detailDTO.EntryDate,
             };
     }
 }

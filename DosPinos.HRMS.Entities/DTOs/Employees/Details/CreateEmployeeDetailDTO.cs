@@ -10,5 +10,6 @@
         public byte HiringTypeId { get; set; }
         public byte JobTitleId { get; set; }
         public string Email { get; set; }
+        public DateOnly EntryDate { get; set; }
     }
 }

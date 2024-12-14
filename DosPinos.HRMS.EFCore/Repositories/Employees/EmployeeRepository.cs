@@ -1,10 +1,8 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.POCOs;
-using DosPinos.HRMS.EFCore.Interfaces;
 using DosPinos.HRMS.EFCore.Mappers.Employees;
 using DosPinos.HRMS.Entities.DTOs.Employees;
 using DosPinos.HRMS.Entities.Enums.Commons;
-using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.Entities.Interfaces.Employees;
 
 namespace DosPinos.HRMS.EFCore.Repositories.Employees
@@ -96,6 +94,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
                 {"@salaryCategoryId", employeePOCO.Compensation.SalaryCategoryId},
                 {"@hasManager", employeePOCO.Employee.HasManager },
                 {"@email", employeePOCO.Detail.Email },
+                {"@dateEntry", employeePOCO.Detail.EntryDate }
             };
 
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateEntireEmployee", parameters, false);

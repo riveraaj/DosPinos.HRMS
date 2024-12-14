@@ -41,7 +41,8 @@ namespace DosPinos.HRMS.BusinessLogic.Mappers
                     JobTitleId = employeeDTO.Detail.JobTitleId,
                     MaritalStatusId = employeeDTO.Detail.MaritalStatusId,
                     NationalityId = employeeDTO.Detail.NationalityId,
-                    Email = employeeDTO.Detail.Email
+                    Email = employeeDTO.Detail.Email,
+                    EntryDate = employeeDTO.Detail.EntryDate
                 },
                 Phone = new CreatePhonePOCO()
                 {

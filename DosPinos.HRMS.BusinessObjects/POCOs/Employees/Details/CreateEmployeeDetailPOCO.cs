@@ -25,5 +25,8 @@ namespace DosPinos.HRMS.BusinessObjects.POCOs.Employees.Details
         public byte JobTitleId { get; set; }
         [RequiredAndMaxLength(100)]
         public string Email { get; set; }
+
+        [DateWihinLastCentury]
+        public DateOnly EntryDate { get; set; }
     }
 }

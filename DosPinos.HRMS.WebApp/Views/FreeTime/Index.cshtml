@@ -50,7 +50,7 @@
                                     <td>@vacation.Days @(vacation.Days == 1 ? "día" : "días")</td>
                                     <td>Vacaciones</td>
                                     <td class="text-center">------</td>
-                                    <td>@vacation.Status</td>
+                                    <td class="text-center"><a class="bg-@(vacation.Status.Equals("Aprobado") ? "success" : (vacation.Status.Equals("Rechazado")) ? "danger" : "warning") text-white rounded-pill py-1 px-2">@vacation.Status</a></td>
                                     <td class="text-center">
                                         @if(vacation.Status.Equals("Pendiente")){
                                             <form asp-action="Delete" asp-controller="Vacation">
@@ -80,7 +80,7 @@
                                             <span class="d-block">------</span>
                                         }
                                     </td>
-                                    <td>@license.Status</td>
+                                    <td class="text-center"><a class="bg-@(license.Status.Equals("Aprobado") ? "success" : (license.Status.Equals("Rechazado")) ? "danger" : "warning") text-white rounded-pill py-1 px-2">@license.Status</a></td>
                                     <td class="text-center">
                                         @if (license.Status.Equals("Pendiente"))
                                         {
@@ -112,7 +112,7 @@
                                             <span class="d-block">------</span>
                                         }
                                     </td>
-                                    <td>@permission.Status</td>
+                                    <td class="text-center"><a class="bg-@(permission.Status.Equals("Aprobado") ? "success" : (permission.Status.Equals("Rechazado")) ? "danger" : "warning") text-white rounded-pill py-1 px-2">@permission.Status</a></td>
                                     <td class="text-center">
                                         @if (permission.Status.Equals("Pendiente"))
                                         {
