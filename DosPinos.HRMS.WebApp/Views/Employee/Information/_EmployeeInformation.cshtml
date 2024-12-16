@@ -4,8 +4,8 @@
     <div>
         <h5 class="text-success fw-semibold">Compensación del empleado</h5>
 
-        <form>
-            <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
+        <form data-url="@Url.Action("Edit", "EmployeeCompensation")">
+            <input type="hidden" class="form-control" asp-for="UpdateEmployeeObj.CompensationObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId">
 
             <div class="info-card-body">
                 <label class="form-label" asp-for="@Model.EmployeeObj.SalaryCategoryId">Salario</label>

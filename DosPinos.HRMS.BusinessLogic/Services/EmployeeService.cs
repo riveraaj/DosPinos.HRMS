@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
+using DosPinos.HRMS.Entities.DTOs.Employees;
 
 namespace DosPinos.HRMS.BusinessLogic.Services
 {
@@ -40,6 +41,23 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             catch (Exception exception)
             {
                 response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+            }
+
+            return response;
+        }
+
+        public async Task<IOperationResponseVO> UpdateAsync(UpdateEmployeeDTO employeeDTO)
+        {
+            IOperationResponseVO response;
+            try
+            {
+                employeeDTO.HasManager = employeeDTO.ManagerId != 0;
+                response = await _employeeRepository.UpdateAsync(employeeDTO);
+                if (response.Status == ResponseStatus.Error) throw new Exception(response.Message.FirstOrDefault());
+            }
+            catch (Exception exception)
+            {
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.Update, exception, employeeDTO);
             }
 
             return response;

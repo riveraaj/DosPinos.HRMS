@@ -108,5 +108,21 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
                                             ManagerName = $"{e.FirstName} {e.FirstLastName} {e.SecondLastName}"
                                         })
                                         .ToListAsync();
+
+        public async Task<IOperationResponseVO> UpdateAsync(UpdateEmployeeDTO employeeDTO)
+        {
+            Dictionary<string, object> parameters = new()
+            {
+                {"@employeeId", employeeDTO.EmployeeId},
+                {"@firstName", employeeDTO.FirstName},
+                {"@lastName", employeeDTO.LastName},
+                {"@secondLastName", employeeDTO.SecondLastName},
+                {"@overtime", employeeDTO.Overtime},
+                {"@hasManager", employeeDTO.HasManager},
+                {"@managerId", employeeDTO.ManagerId},
+            };
+
+            return await _invokeSP.ExecuteAsync("[humanresources].usp_UpdateEmployee", parameters, false);
+        }
     }
 }

@@ -39,6 +39,10 @@ namespace DosPinos.HRMS.BusinessLogic
             services.AddScoped<ICreateEntireEmployeeInputPort, CreateEntireEmployeeIterator>();
             services.AddScoped<IGetAllEmployeeInputPort, GetAllEmployeeIterator>();
             services.AddScoped<EmployeeService>();
+            services.AddScoped<EmployeeDetailService>();
+            services.AddScoped<EmployeeCompensationService>();
+            services.AddScoped<AddressService>();
+            services.AddScoped<PhoneService>();
 
             //Security
             services.AddScoped<UserService>();

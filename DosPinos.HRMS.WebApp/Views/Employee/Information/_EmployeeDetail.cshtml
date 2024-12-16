@@ -3,18 +3,17 @@
 <div class="info-card shadow">
     <h4 class="text-success fw-semibold">Detalles del empleado</h4>
 
-    <form>
-        <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
-        <input type="hidden" value="@($"{Model.EmployeeObj.Name} {Model.EmployeeObj.FirstLastName} {Model.EmployeeObj.SecondLastName}")" id="liquidation-employee-name" />
+    <form data-url="@Url.Action("Edit", "EmployeeDetail")">
+        <input type="hidden" class="form-control" asp-for="UpdateEmployeeObj.DetailObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId">
 
         <div class="info-card-body">
-            <label class="form-label" asp-for="EmployeeObj.DateBirth">Fecha de nacimiento</label>
-            <input type="date" class="form-control" asp-for="EmployeeObj.DateBirth" readonly>
+            <label class="form-label" asp-for="UpdateEmployeeObj.DetailObj.DateBirth">Fecha de nacimiento</label>
+            <input type="date" class="form-control" asp-for="UpdateEmployeeObj.DetailObj.DateBirth" value="@Model.EmployeeObj.DateBirth.ToString("yyyy-MM-dd")" min="@Model.Today">
         </div>
 
         <div class="info-card-body">
-            <label asp-for="EmployeeObj.Children" class="form-label">Hijos</label>
-            <input type="number" class="form-control" asp-for="EmployeeObj.Children" readonly>
+            <label asp-for="UpdateEmployeeObj.DetailObj.Children" class="form-label">Hijos</label>
+            <input type="number" class="form-control" asp-for="UpdateEmployeeObj.DetailObj.Children" min="0" value="@Model.EmployeeObj.Children">
         </div>
 
         <div class="info-card-body">

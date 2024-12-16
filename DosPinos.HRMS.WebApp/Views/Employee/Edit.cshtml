@@ -26,20 +26,21 @@
                 <div class="collapse mt-1" id="collapseLiquidation">
                     <div class="card card-body">
                         <form asp-action="Create" asp-controller="Liquidation" id="formLiquidation" class="">
-                            <input type="hidden" asp-for="Liquidation.EmployeeId" value="@Model.EmployeeObj.EmployeeId" />
-                            <input type="hidden" asp-for="Liquidation.Identification" value="@Model.EmployeeObj.Identification" />
+                            <input type="hidden" value="@($"{Model.EmployeeObj.Name} {Model.EmployeeObj.FirstLastName} {Model.EmployeeObj.SecondLastName}")" id="liquidation-employee-name" />
+                            <input type="hidden" asp-for="LiquidationObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId" />
+                            <input type="hidden" asp-for="LiquidationObj.Identification" value="@Model.EmployeeObj.Identification" />
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" asp-for="Liquidation.PreNotice">
-                                    <label class="form-check-label" asp-for="Liquidation.PreNotice">
+                                    <input class="form-check-input" type="checkbox" asp-for="LiquidationObj.PreNotice">
+                                    <label class="form-check-label" asp-for="LiquidationObj.PreNotice">
                                         Pre-Aviso
                                     </label>
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" asp-for="Liquidation.ApplySeverance">
-                                    <label class="form-check-label" asp-for="Liquidation.ApplySeverance">
+                                    <input class="form-check-input" type="checkbox" asp-for="LiquidationObj.ApplySeverance">
+                                    <label class="form-check-label" asp-for="LiquidationObj.ApplySeverance">
                                         Cesantía
                                     </label>
                                 </div>

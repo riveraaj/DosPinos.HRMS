@@ -116,7 +116,6 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
             return View("Create", newModel);
         }
 
-        [HttpGet]
         [Route("empleados/editar-empleado")]
         public async Task<IActionResult> Edit(string id)
         {
@@ -139,6 +138,22 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
             }
 
             return View(model);
+        }
+
+        [Route("empleados/editar-empleado")]
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditEmployeeViewModel model)
+        {
+            model.UpdateEmployeeObj.EmployeeObj.UserId = ActualUser;
+            model.UpdateEmployeeObj.EmployeeObj.ManagerId = model.EmployeeObj.ManagerId;
+
+            IOperationResponseVO response = await _employeeController.UpdateAsync(model.UpdateEmployeeObj.EmployeeObj);
+
+            TempData["alert"] = JsonConvert.SerializeObject(response);
+
+            string id = CryptographyHelper.Encrypt(model.EmployeeObj.Identification.ToString());
+
+            return RedirectToAction("Edit", "Employee", new { id });
         }
     }
 }

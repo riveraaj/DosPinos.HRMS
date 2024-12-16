@@ -77,3 +77,39 @@ const submitFormIndividualPayroll = async () => {
         $formIndividualPayroll.submit();
     }
 }
+
+//Edit employee filds
+document.addEventListener('DOMContentLoaded', function () {
+    const forms = document.querySelectorAll('form');
+
+    forms.forEach(form => {
+        form.addEventListener('change', function (e) {
+            const url = form.getAttribute('data-url'),
+                formData = new FormData(form),
+                data = new URLSearchParams(formData);
+            let emptyInputs = false,
+                nonDistrict = true;
+
+            formData.forEach((value, key) => {
+                if (value === "" || value === null) emptyInputs = true;
+                if (key.endsWith("ProvinceId") || key.endsWith("CantonId")) nonDistrict = false;
+                if (key.endsWith("DistrictId")) nonDistrict = true;
+            });
+
+            if (!emptyInputs && nonDistrict) {
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: data.toString()
+                })
+                    .catch(error => {
+                        showToast("Error", "El campo no se ha podido actualizar.");
+                    });
+            } else if (emptyInputs){
+                showToast("Warning", "No pueden dejarse campos vacíos.");
+            }
+        });
+    });
+});

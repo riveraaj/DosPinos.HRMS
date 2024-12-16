@@ -3,8 +3,8 @@
 <div class="info-card shadow">
     <h4 class="text-success fw-semibold">Información personal</h4>
 
-    <form>
-        <input type="hidden" class="form-control" asp-for="EmployeeObj.EmployeeId" readonly>
+    <form data-url="@Url.Action("Edit", "Employee")">
+        <input type="hidden" class="form-control" asp-for="UpdateEmployeeObj.EmployeeObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId">
 
         <div class="info-card-body">
             <label class="form-label" asp-for="EmployeeObj.Identification">Identificación</label>
@@ -12,29 +12,28 @@
         </div>
 
         <div class="info-card-body">
-            <label asp-for="EmployeeObj.Name" class="form-label">Nombre</label>
-            <input type="text" class="form-control" asp-for="EmployeeObj.Name" readonly>
+            <label asp-for="UpdateEmployeeObj.EmployeeObj.FirstName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" asp-for="UpdateEmployeeObj.EmployeeObj.FirstName" value="@Model.EmployeeObj.Name" maxlength="50">
         </div>
 
         <div class="info-card-body">
-            <label asp-for="EmployeeObj.FirstLastName" class="form-label">Primer apellido</label>
-            <input type="text" class="form-control" asp-for="EmployeeObj.FirstLastName" readonly>
-        </div>
-
-
-        <div class="info-card-body">
-            <label asp-for="EmployeeObj.SecondLastName" class="form-label">Segundo apellido</label>
-            <input type="text" class="form-control" asp-for="EmployeeObj.SecondLastName" readonly value="@(!string.IsNullOrEmpty(Model.EmployeeObj.SecondLastName) ? Model.EmployeeObj.SecondLastName : "--------")">
+            <label asp-for="UpdateEmployeeObj.EmployeeObj.LastName" class="form-label">Primer apellido</label>
+            <input type="text" class="form-control" asp-for="UpdateEmployeeObj.EmployeeObj.LastName" value="@Model.EmployeeObj.FirstLastName" maxlength="50">
         </div>
 
         <div class="info-card-body">
-            <label asp-for="EmployeeObj.OvertimeExcess" class="form-label">Horas extras laboradas</label>
-            <input type="number" class="form-control" asp-for="EmployeeObj.OvertimeExcess" readonly>
+            <label asp-for="UpdateEmployeeObj.EmployeeObj.SecondLastName" class="form-label">Segundo apellido</label>
+            <input type="text" class="form-control" asp-for="UpdateEmployeeObj.EmployeeObj.SecondLastName" value="@(!string.IsNullOrEmpty(Model.EmployeeObj.SecondLastName) ? Model.EmployeeObj.SecondLastName : "--------")" maxlength="50">
         </div>
 
         <div class="info-card-body">
-            <label class="form-label" asp-for="@Model.EmployeeObj.ManagerId">Jefe directo</label>
-            <select class="form-select" asp-for="@Model.EmployeeObj.ManagerId" asp-items="@Model.Managers" readonly>
+            <label asp-for="UpdateEmployeeObj.EmployeeObj.Overtime" class="form-label">Horas extras laboradas</label>
+            <input type="number" class="form-control" asp-for="UpdateEmployeeObj.EmployeeObj.Overtime" value="@Model.EmployeeObj.OvertimeExcess">
+        </div>
+
+        <div class="info-card-body">
+            <label class="form-label" asp-for="EmployeeObj.ManagerId">Jefe directo</label>
+            <select class="form-select" asp-for="EmployeeObj.ManagerId" asp-items="@Model.Managers">
                 <option selected value="0">No aplica</option>
             </select>
         </div>

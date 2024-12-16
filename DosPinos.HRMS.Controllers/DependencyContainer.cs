@@ -33,6 +33,10 @@ namespace DosPinos.HRMS.Controllers
             services.AddScoped<CreateEmployeeController>();
             services.AddScoped<GetAllEmployeeController>();
             services.AddScoped<EmployeeController>();
+            services.AddScoped<EmployeeDetailController>();
+            services.AddScoped<EmployeeCompensationController>();
+            services.AddScoped<PhoneController>();
+            services.AddScoped<AddressController>();
 
             //Securities
             services.AddScoped<UserController>();

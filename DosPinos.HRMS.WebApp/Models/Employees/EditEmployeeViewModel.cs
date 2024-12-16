@@ -11,11 +11,14 @@ namespace DosPinos.HRMS.WebApp.Models.Employees
         {
             this.Title = EmployeeLabel.EditTitle;
             EmployeeObj = new();
-            Liquidation = new();
+            LiquidationObj = new();
+            Today = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
         }
 
+        public string Today { get; set; }
         public GetEmployeeByIdentifactionDTO EmployeeObj { get; set; }
-        public CreateLiquidationDTO Liquidation { get; set; }
+        public CreateLiquidationDTO LiquidationObj { get; set; }
+        public UpdateEntireEmployeeDTO UpdateEmployeeObj { get; set; }
 
         public List<SelectListItem> Provinces => ProvinceList.Select(m => new SelectListItem
         {

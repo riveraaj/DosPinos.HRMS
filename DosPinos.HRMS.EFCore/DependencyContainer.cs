@@ -3,6 +3,10 @@ using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Dashboards;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.FreeTimes;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Addresses;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Compensations;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Details;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Phones;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Liquidation;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions;
@@ -67,6 +71,11 @@ namespace DosPinos.HRMS.EFCore
 
             //Employee
             services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+            services.AddScoped<IEmployeeDetailRepository, EmployeeDetailRepository>();
+            services.AddScoped<IEmployeeCompensationRepository, EmployeeCompensationRepository>();
+            services.AddScoped<IPhoneRepository, PhoneRepository>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+
 
             //User 
             services.AddScoped<IUserRepository, UserRepository>();

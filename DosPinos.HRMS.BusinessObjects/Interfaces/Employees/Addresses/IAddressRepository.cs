@@ -1,6 +1,9 @@
-﻿namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Addresses
+﻿using DosPinos.HRMS.Entities.DTOs.Employees.Addresses;
+
+namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Addresses
 {
-    internal interface IAddressRepository
+    public interface IAddressRepository
     {
+        Task<IOperationResponseVO> UpdateAsync(UpdateAddressDTO addressDTO);
     }
 }

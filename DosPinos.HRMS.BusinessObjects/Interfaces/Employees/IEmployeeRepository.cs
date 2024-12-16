@@ -11,5 +11,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees
         Task<IEnumerable<IGetAllEmployeeDTO>> GetAllAsync();
         Task<IEnumerable<GetAllManagerDTO>> GetAllManagerAsync();
         Task<IOperationResponseVO> CreateAsync(ICreateEntireEmployeePOCO employeePOCO);
+        Task<IOperationResponseVO> UpdateAsync(UpdateEmployeeDTO employeeDTO);
     }
 }
