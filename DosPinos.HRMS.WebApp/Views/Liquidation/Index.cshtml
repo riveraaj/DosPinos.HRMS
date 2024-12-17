@@ -1,4 +1,5 @@
-﻿@model DosPinos.HRMS.WebApp.Models.Liquidations.LiquidationViewModel
+﻿@using System.Globalization
+@model DosPinos.HRMS.WebApp.Models.Liquidations.LiquidationViewModel
 
 @{
     ViewData["Title"] = Model.Title;
@@ -27,11 +28,11 @@
                                 <td class="text-start">@liquidation.Identification</td>
                                 <td>@liquidation.FullName</td>
                                 <td>@liquidation.LiquidatioDate.ToString("d-M-yyyy")</td>
-                                <td>@liquidation.Amount.ToString("C")</td>
-                                <td>@liquidation.Severance.ToString("C")</td>
-                                <td>@liquidation.ChristmasBonus.ToString("C")</td>
-                                <td>@liquidation.Vacation.ToString("C")</td>
-                                <td>@liquidation.PreNotice.ToString("C")</td>
+                                <td>@liquidation.Amount.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>@liquidation.Severance.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>@liquidation.ChristmasBonus.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>@liquidation.Vacation.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>@liquidation.PreNotice.ToString("C", new CultureInfo("es-CR"))</td>
                             </tr>
                         }
                     </tbody>

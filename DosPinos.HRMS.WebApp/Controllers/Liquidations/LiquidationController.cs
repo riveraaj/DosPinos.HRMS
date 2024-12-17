@@ -6,6 +6,7 @@ using DosPinos.HRMS.Entities.Helpers;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.Entities.ValueObjects;
 using DosPinos.HRMS.WebApp.Controllers.Base;
+using DosPinos.HRMS.WebApp.Models.Employees;
 using DosPinos.HRMS.WebApp.Models.Liquidations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -40,14 +41,15 @@ namespace DosPinos.HRMS.WebApp.Controllers.Liquidations
             return View(model);
         }
 
-        public async Task<IActionResult> Create(CreateLiquidationDTO liquidation)
+        [HttpPost]
+        public async Task<IActionResult> Create(EditEmployeeViewModel model)
         {
-            liquidation.TerminationDate = DateOnly.FromDateTime(DateTime.Now);
-            liquidation.UserId = ActualUser;
+            model.LiquidationObj.TerminationDate = DateOnly.FromDateTime(DateTime.Now);
+            model.LiquidationObj.UserId = ActualUser;
 
-            string id = CryptographyHelper.Encrypt(liquidation.Identification.ToString());
+            string id = CryptographyHelper.Encrypt(model.LiquidationObj.Identification.ToString());
 
-            IOperationResponseVO response = await _liquidationController.CreateAsync(liquidation);
+            IOperationResponseVO response = await _liquidationController.CreateAsync(model.LiquidationObj);
 
             TempData["alert"] = JsonConvert.SerializeObject(response);
 

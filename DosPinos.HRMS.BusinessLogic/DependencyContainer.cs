@@ -74,6 +74,9 @@ namespace DosPinos.HRMS.BusinessLogic
             //Permission
             services.AddScoped<PermissionService>();
 
+            //Reward
+            services.AddScoped<RewardService>();
+
             return services;
         }
     }

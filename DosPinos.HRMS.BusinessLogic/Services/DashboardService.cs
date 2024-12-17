@@ -13,11 +13,11 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
-                response.Content = _dashboardRepository.GetAllEmployeesVacationAsync();
+                response.Content = await _dashboardRepository.GetAllEmployeesVacationAsync();
             }
             catch (Exception exception)
             {
-                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Inquiries, ActionCategory.GetAll, exception, entity);
             }
 
             return response;
@@ -29,11 +29,11 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
-                response.Content = _dashboardRepository.GetAllActiveEmployeesAsync();
+                response.Content = await _dashboardRepository.GetAllActiveEmployeesAsync();
             }
             catch (Exception exception)
             {
-                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Inquiries, ActionCategory.GetAll, exception, entity);
             }
 
             return response;
@@ -45,11 +45,11 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
-                response.Content = _dashboardRepository.GetAllEmployeesLicenseAsync();
+                response.Content = await _dashboardRepository.GetAllEmployeesLicenseAsync();
             }
             catch (Exception exception)
             {
-                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Inquiries, ActionCategory.GetAll, exception, entity);
             }
 
             return response;
@@ -61,11 +61,11 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
-                response.Content = _dashboardRepository.GetAllCloseVacationAsync();
+                response.Content = await _dashboardRepository.GetAllCloseVacationAsync();
             }
             catch (Exception exception)
             {
-                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Inquiries, ActionCategory.GetAll, exception, entity);
             }
 
             return response;
@@ -77,11 +77,11 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
-                response.Content = _dashboardRepository.GetAllEmployeesExcessOvertimeAsync();
+                response.Content = await _dashboardRepository.GetAllEmployeesExcessOvertimeAsync();
             }
             catch (Exception exception)
             {
-                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+                response = await this.HandlerLog(Module.Inquiries, ActionCategory.GetAll, exception, entity);
             }
 
             return response;

@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.Controllers.Commons.FreeTimes;
+using DosPinos.HRMS.Controllers.Rewards;
 using DosPinos.HRMS.Controllers.Securities;
 
 namespace DosPinos.HRMS.Controllers
@@ -71,6 +72,9 @@ namespace DosPinos.HRMS.Controllers
 
             //FreeTime
             services.AddScoped<FreeTimeController>();
+
+            //Reward
+            services.AddScoped<RewardController>();
 
             return services;
         }

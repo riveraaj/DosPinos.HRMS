@@ -5,29 +5,47 @@
 }
 
 <div class="content-container">
-
     <div class="d-flex gap-4 w-100 m-auto justify-content-center flex-wrap">
-
         <div class="col-md-3 card border-0 shadow">
             <div class="card-header bg-success-subtle fw-semibold">
                 Empleados en vacaciones
             </div>
             <div class="card-body overflow-y-auto" style="height: 14rem;">
-
-                <div class="border-bottom border-2 border-success mb-4 py-2">Brayna Garcia</div>
-                <div class="border-bottom border-2 border-success mb-4 py-2">William Torres</div>
-
+                @if (Model.Vacations.Count > 0)
+                {
+                    @foreach (var employee in Model.Vacations)
+                    {
+                        <div class="border-bottom border-2 border-success mb-4 py-2 d-flex justify-content-between">
+                            <div>
+                                @employee.FullName
+                            </div>
+                            <div class="fw-bold">
+                                @employee.Days @(employee.Days == 1 ? "día" : "días")
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <span>No hay empleados en período de vacaciones.</span>
+                }
             </div>
         </div>
 
         <div class="d-flex gap-4 flex-column" style="width: 40%;">
-
             <div class="card border-0 shadow">
                 <div class="card-header bg-success-subtle fw-semibold">
                     Empleados activos
                 </div>
                 <div class="card-body d-flex align-items-center" style="min-height: 6rem;">
-                    <span>Total de empleados activos: <b class="text-success">5</b></span>
+                    @if (Model.Employees.Total > 0)
+                    {
+                        <span>Total de empleados activos: <b class="text-success">@Model.Employees.Total</b></span>
+                    }
+                    else
+                    {
+                        <span class="fw-bold">No hay empleados registrados.</span>
+                    }
                 </div>
             </div>
 
@@ -36,52 +54,74 @@
                     Empleados incapacitados
                 </div>
                 <div class="card-body d-flex align-items-center" style="min-height: 6rem;">
-                    <span class="d-none">Total de empleados incapacitados: <b class="text-success">No hay empleados incapacitados.</b></span>
-                    <span class="fw-bold">No hay empleados incapacitados.</span>
+                    @if (Model.Licenses.Total > 0)
+                    {
+                        <span>Total de empleados incapacitados: <b class="text-success">@Model.Licenses.Total</b></span>
+                    }
+                    else
+                    {
+                        <span class="fw-bold">No hay empleados incapacitados.</span>
+                    }
                 </div>
             </div>
         </div>
     </div>
 
     <div class="d-flex gap-4 pt-4 w-100 justify-content-center flex-wrap">
-
         <div class="col-md-3 card border-0 shadow">
             <div class="card-header bg-success-subtle fw-semibold">
                 <b>Vacaciones por expirar</b>
             </div>
             <div class="card-body overflow-y-auto" style="height: 16rem;">
-
-                <div class="border-bottom border-2 border-success mb-4 py-2">William Torres</div>
-
+                @if (Model.CloseVacations.Count > 0)
+                {
+                    @foreach (var employee in Model.CloseVacations)
+                    {
+                        <div class="border-bottom border-2 border-success mb-4 py-2 d-flex justify-content-between">
+                            <div>
+                                @employee.FullName
+                            </div>
+                            <div class="fw-bold">
+                                @employee.Days @(employee.Days == 1 ? "día" : "días")
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <span>No hay empleados próximos a reincorporarse al trabajo.</span>
+                }
             </div>
         </div>
 
         <div class="d-flex gap-4 flex-column" style="width:40%;">
-
             <div class="card border-0 shadow">
                 <div class="card-header bg-success-subtle fw-semibold">
                     Excendentes por horas extras
                 </div>
                 <div class="card-body overflow-y-auto" style="height: 16rem;">
 
-                    <div class="border-bottom border-2 border-warning mb-4 py-2 d-flex justify-content-between">
-                        <div>
-                            Carlos Fallas: 
-                        </div>
-                        <div class="fw-bold">
-                            15hrs 3mns
-                        </div>
-                    </div>
+                    @if (Model.EmployeesExcessOvertime.Count > 0)
+                    {
+                        @foreach (var employees in Model.EmployeesExcessOvertime)
+                        {
+                            int hourTotal = (int)employees.Overtime;
+                            int minuteTotal = (int)((employees.Overtime - hourTotal) * 60);
 
-                    <div class="border-bottom border-2 border-danger mb-4 py-2 d-flex justify-content-between">
-                        <div>
-                            Eddie Colocho:
-                        </div>
-                        <div class="fw-bold">
-                            40hrs 0mns
-                        </div>
-                    </div>
-
+                            <div class="border-bottom border-2 @(employees.Overtime >= 40 ? "border-danger" : "border-warning") mb-4 py-2 d-flex justify-content-between">
+                                <div>
+                                    @employees.FullName:
+                                </div>
+                                <div class="fw-bold">
+                                    @($"{hourTotal}h {minuteTotal}min")
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <span>No existen registros de empleados con acumulación excesiva de horas extras.</span>
+                    }
                 </div>
             </div>
         </div>

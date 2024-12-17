@@ -6,6 +6,7 @@
 
 <div class="content-container">
     <div class="info-container m-3 align-items-baseline">
+        <input type="hidden" value="@($"{Model.EmployeeObj.Name} {Model.EmployeeObj.FirstLastName} {Model.EmployeeObj.SecondLastName}")" id="alert-employee-name" />
 
         <partial name="Information/_PersonalInformation"/>
 
@@ -25,8 +26,7 @@
 
                 <div class="collapse mt-1" id="collapseLiquidation">
                     <div class="card card-body">
-                        <form asp-action="Create" asp-controller="Liquidation" id="formLiquidation">
-                            <input type="hidden" value="@($"{Model.EmployeeObj.Name} {Model.EmployeeObj.FirstLastName} {Model.EmployeeObj.SecondLastName}")" id="liquidation-employee-name" />
+                        <form asp-action="Create" asp-controller="Liquidation" id="formLiquidation" method="post">
                             <input type="hidden" asp-for="LiquidationObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId" />
                             <input type="hidden" asp-for="LiquidationObj.Identification" value="@Model.EmployeeObj.Identification" />
                             <div class="mb-3">
@@ -52,10 +52,30 @@
             </div>
 
             <div class="my-4">
+                <button class="btn btn-outline-dark" type="button" data-bs-toggle="collapse" data-bs-target="#collapseReward" aria-expanded="false" aria-controls="collapseExample">
+                    Otorgar Recompensa
+                </button>
+
+                <div class="collapse mt-1" id="collapseReward">
+                    <div class="card card-body">
+                        <form asp-action="Create" asp-controller="Reward" id="formReward" method="post">
+                            <input type="hidden" asp-for="RewardObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId" />
+                            <input type="hidden" asp-for="RewardObj.Identification" value="@Model.EmployeeObj.Identification" />
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="RewardObj.Amount">Monto</label>
+                                <input class="form-control" type="number" asp-for="RewardObj.Amount">
+                            </div>
+                            <button type="submit" class="btn btn-success" onclick="submitFormReward()">Conceder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="my-4">
                 <form asp-action="CreateIndividual" asp-controller="Payroll" method="post" id="formIndividualPayroll">
                     <input type="hidden" name="employeeId" value="@Model.EmployeeObj.EmployeeId" />
                     <input type="hidden" name="identification" value="@Model.EmployeeObj.Identification" />
-                    <button onclick="submitFormIndividualPayroll()" class="btn btn-success">Calcular nómina</button>
+                    <button onclick="submitFormIndividualPayroll()" class="btn btn-outline-success">Calcular nómina</button>
                 </form>
             </div>
         </div>

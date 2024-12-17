@@ -1,8 +1,4 @@
-﻿//Liquidation
-const $formLiquidation = document.getElementById('formLiquidation'),
-    $formIndividualPayroll = document.getElementById('formIndividualPayroll');
-
-//Address
+﻿/*  Handler Address  */
 const provinces = JSON.parse(document.getElementById('provinceList').getAttribute('data-content')),
     cantons = JSON.parse(document.getElementById('cantonList').getAttribute('data-content')),
     districts = JSON.parse(document.getElementById('districtList').getAttribute('data-content'));
@@ -54,11 +50,17 @@ const loadDistrictData = () => {
     })
 }
 
+/* Hanlder Forms */
+const $formLiquidation = document.getElementById('formLiquidation'),
+    $formIndividualPayroll = document.getElementById('formIndividualPayroll'),
+    $formReward = document.getElementById('formReward');
+
 $formLiquidation.addEventListener('submit', e => e.preventDefault());
 $formIndividualPayroll.addEventListener('submit', e => e.preventDefault());
+$formReward.addEventListener('submit', e => e.preventDefault());
 
 const submitFormLiquidation = async () => {
-    let employeeName = document.getElementById('liquidation-employee-name').value;
+    let employeeName = document.getElementById('alert-employee-name').value;
     let message = `¿Deseas continuar con la liquidación del empleado ${employeeName}?`,
         icon = "question",
         isConfirmed = await showConfirmationAlert(message, icon);
@@ -69,7 +71,8 @@ const submitFormLiquidation = async () => {
 }
 
 const submitFormIndividualPayroll = async () => {
-    let message = `¿Deseas continuar con el cálculo de nómina?`,
+    let employeeName = document.getElementById('alert-employee-name').value;
+    let message = `¿Deseas continuar con el cálculo de nómina para el empleado ${employeeName}?`,
         icon = "question",
         isConfirmed = await showConfirmationAlert(message, icon);
 
@@ -78,7 +81,18 @@ const submitFormIndividualPayroll = async () => {
     }
 }
 
-//Edit employee filds
+const submitFormReward = async () => {
+    let employeeName = document.getElementById('alert-employee-name').value;
+    let message = `¿Deseas continuar con la asignación del bono para el empleado ${employeeName}?`,
+        icon = "question",
+        isConfirmed = await showConfirmationAlert(message, icon);
+
+    if (isConfirmed) {
+        $formReward.submit();
+    } 
+}
+
+/* Hanlder update fields */
 document.addEventListener('DOMContentLoaded', function () {
     const forms = document.querySelectorAll('form');
 

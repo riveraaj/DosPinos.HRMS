@@ -12,6 +12,7 @@ using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions.Catalogs.PermissionTypes;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Reports;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Rewards;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
 using DosPinos.HRMS.BusinessObjects.Interfaces.Vacations;
 using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays;
@@ -26,6 +27,7 @@ using DosPinos.HRMS.EFCore.Repositories.Payroll;
 using DosPinos.HRMS.EFCore.Repositories.Permissions;
 using DosPinos.HRMS.EFCore.Repositories.Permissions.Catalogs;
 using DosPinos.HRMS.EFCore.Repositories.Reports;
+using DosPinos.HRMS.EFCore.Repositories.Rewards;
 using DosPinos.HRMS.EFCore.Repositories.Securities;
 using DosPinos.HRMS.EFCore.Repositories.Vacations;
 using DosPinos.HRMS.EFCore.Repositories.WorkingDays;
@@ -109,6 +111,9 @@ namespace DosPinos.HRMS.EFCore
 
             //FreeTime
             services.AddScoped<IFreeTimeRepository, FreeTimeRepository>();
+
+            //Reward
+            services.AddScoped<IRewardRepository, RewardRepository>();
 
             return services;
         }

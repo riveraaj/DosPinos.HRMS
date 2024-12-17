@@ -16,12 +16,15 @@ namespace DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards
         public async Task<IEnumerable<GetAllCloseVacationDTO>> GetAllCloseVacationAsync()
         {
             var today = DateOnly.FromDateTime(DateTime.Today);
+            List<Vacation> vacations = await GetAllCloseVacationsQuery(today).ToListAsync();
 
-            return await GetAllCloseVacationsQuery(today).Select(v => new GetAllCloseVacationDTO()
-            {
-                FullName = $"{v.Employee.FirstName} {v.Employee.FirstLastName} {v.Employee.SecondLastName}"
-            })
-                                                            .ToListAsync();
+            return vacations.Where(v => (v.DateEnd.DayNumber - today.DayNumber) <= 3) // Evaluación en memoria
+                              .Select(v => new GetAllCloseVacationDTO
+                              {
+                                  FullName = $"{v.Employee.FirstName} {v.Employee.FirstLastName} {v.Employee.SecondLastName}",
+                                  Days = (v.DateEnd.DayNumber - v.DateStart.DayNumber) + 1
+                              })
+                              .ToList();
         }
 
         public async Task<IEnumerable<GetAllEmployeesExcessOvertimeDTO>> GetAllEmployeesExcessOvertimeAsync()
@@ -43,16 +46,13 @@ namespace DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards
                                        .Where(v => v.DateEnd >= DateOnly.FromDateTime(DateTime.Today))
                                        .Select(v => new GetAllEmployeesVacationDTO()
                                        {
-                                           FullName = $"{v.Employee.FirstName} {v.Employee.FirstLastName} {v.Employee.SecondLastName}"
-                                       })
-                                       .ToListAsync();
+                                           FullName = $"{v.Employee.FirstName} {v.Employee.FirstLastName} {v.Employee.SecondLastName}",
+                                           Days = (v.DateEnd.DayNumber - v.DateStart.DayNumber) + 1
+                                       }).ToListAsync();
 
         private IQueryable<Vacation> GetAllCloseVacationsQuery(DateOnly today)
-        {
-            return _context.Vacations.Include(v => v.Employee)
-                                     .Where(v => v.DateEnd >= today
-                                                 && v.DateStart <= today
-                                                 && (v.DateEnd.DayNumber - today.DayNumber) <= 3);
-        }
+            => _context.Vacations
+                           .Include(v => v.Employee)
+                           .Where(v => v.DateEnd >= today && v.DateStart <= today);
     }
 }

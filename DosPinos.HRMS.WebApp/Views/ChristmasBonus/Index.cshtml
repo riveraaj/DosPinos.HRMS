@@ -1,4 +1,5 @@
-﻿@model DosPinos.HRMS.WebApp.Models.ChristmasBonus.ChristmasBonusViewModel;
+﻿@using System.Globalization
+@model DosPinos.HRMS.WebApp.Models.ChristmasBonus.ChristmasBonusViewModel;
 
 @{
     ViewData["Title"] = Model.Title;
@@ -33,7 +34,7 @@
                                 <td>@employee.FullName</td>
                                 <td>@employee.Job</td>
                                 <td>@employee.Date.ToString("d-M-yyyy")</td>
-                                <td class="text-center">@employee.Amount.ToString("C")</td>
+                                <td class="text-center">@employee.Amount.ToString("C", new CultureInfo("es-CR"))</td>
                             </tr>
                         }
                     </tbody>
