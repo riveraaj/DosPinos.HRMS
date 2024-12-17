@@ -49,7 +49,15 @@
 
             <div class="col-6">
                 <div class="form-floating">
-                    <input type="date" class="form-control" asp-for="@Model.EmployeeObj.Detail.DateBirth" min="@Model.Today" placeholder="" required>
+                    <input type="date"
+                           class="form-control"
+                           asp-for="@Model.EmployeeObj.Detail.DateBirth"
+                           value="@(Model.EmployeeObj.Detail.DateBirth >= DateOnly.FromDateTime(Model.Today)
+                        ? Model.EmployeeObj.Detail.DateBirth.ToString("yyyy-MM-dd")
+                        : DateOnly.FromDateTime(Model.Today).ToString("yyyy-MM-dd"))"
+                           min="@DateOnly.FromDateTime(Model.Today).ToString("yyyy-MM-dd")"
+                           placeholder=""
+                           required>
                     <label asp-for="@Model.EmployeeObj.Detail.DateBirth">Fecha de nacimiento</label>
                 </div>
             </div>
@@ -168,7 +176,10 @@
 
             <div class="col-6">
                 <div class="form-floating">
-                    <input type="date" class="form-control" asp-for="@Model.EmployeeObj.Detail.EntryDate" min="@Model.Today" placeholder="" required>
+                    <input type="date" class="form-control" asp-for="@Model.EmployeeObj.Detail.EntryDate" value="@(Model.EmployeeObj.Detail.DateBirth >= DateOnly.FromDateTime(Model.Today)
+                        ? Model.EmployeeObj.Detail.DateBirth.ToString("yyyy-MM-dd")
+                        : DateOnly.FromDateTime(Model.Today).ToString("yyyy-MM-dd"))"
+                           min="@DateOnly.FromDateTime(Model.Today).ToString("yyyy-MM-dd")" placeholder="" required>
                     <label asp-for="@Model.EmployeeObj.Detail.EntryDate">Fecha de ingreso</label>
                 </div>
             </div>

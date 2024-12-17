@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace DosPinos.HRMS.WebApp.Controllers.Liquidations
 {
-    [Authorize]
+    [Authorize(Roles = "4, 5, 6")]
     public class LiquidationController(GetAllNotificationController notificationController,
                                        UpdateNotificationController updateController,
                                        HRMS.Controllers.Liquidations.LiquidationController liquidationController)

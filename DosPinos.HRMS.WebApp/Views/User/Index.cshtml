@@ -1,0 +1,71 @@
+﻿@using DosPinos.HRMS.Entities.Helpers
+@model DosPinos.HRMS.WebApp.Models.Securities.UserViewModel
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
+        <div class="container pb-3">
+            <button class="text-white btn btn-success" data-bs-toggle="modal" data-bs-target="#userModal"><i class="bi bi-plus-circle"></i> Añadir usuario</button>
+        </div>
+
+        <partial name="_CreateUserModal" />
+
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th class="text-start" scope="col">Usuario</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Rol</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model.Users)
+                        {
+                            <tr>
+                                <td class="text-start">@user.UserIdDB</td>
+                                <td>@user.FullName</td>
+                                <td>
+                                    <form data-url="@Url.Action("Edit", "User")">
+                                        <input type="hidden" asp-for="UpdateUserObj.UserIdDB" value="@user.UserIdDB" />
+
+                                        <select class="form-select" asp-for="@user.RolId" asp-items="@Model.Roles" readonly>
+                                            <option selected disabled value="">Seleccione una opción</option>
+                                        </select>
+                                    </form>
+                                </td>
+                                <td>
+                                    @if(!user.IsActive){
+                                        <form asp-action="Delete" method="post">
+                                            <input type="hidden" asp-for="DeleteUserObj.IsActive" value="true" />
+                                            <input type="hidden" asp-for="DeleteUserObj.UserIdDB" value="@user.UserIdDB" />
+
+                                            <button class="btn btn-success">Reactivar</button>
+                                        </form>
+                                    }else{
+                                        <form asp-action="Delete" method="post">
+                                            <input type="hidden" asp-for="DeleteUserObj.IsActive" value="false" />
+                                            <input type="hidden" asp-for="DeleteUserObj.UserIdDB" value="@user.UserIdDB" />
+
+                                            <button class="btn btn-danger">Desactivar</button>
+                                        </form>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/DosPinos.HRMS.Content/js/securities/user.js"></script>
+}

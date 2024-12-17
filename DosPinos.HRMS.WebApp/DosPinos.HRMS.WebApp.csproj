@@ -15,7 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Resources\Securities\" />
     <Folder Include="wwwroot\lib\bootstrap\" />
     <Folder Include="wwwroot\lib\bootstrap\dist\js\" />
     <Folder Include="wwwroot\lib\jquery-validation-unobtrusive\" />
@@ -61,6 +60,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ReportLabel.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Securities\SecurityLabel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SecurityLabel.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\WorkingDays\WorkingDayLabel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -96,6 +100,10 @@
     <EmbeddedResource Update="Resources\Reports\ReportLabel.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>ReportLabel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Securities\SecurityLabel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>SecurityLabel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\WorkingDays\WorkingDayLabel.resx">
       <Generator>ResXFileCodeGenerator</Generator>

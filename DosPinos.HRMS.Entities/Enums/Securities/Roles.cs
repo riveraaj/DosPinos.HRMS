@@ -1,6 +1,6 @@
-﻿namespace DosPinos.HRMS.BusinessObjects.Enums.Securities
+﻿namespace DosPinos.HRMS.Entities.Enums.Securities
 {
-    internal enum Roles
+    public enum Roles
     {
         Collaborator = 1,
         Headquarters,

@@ -42,6 +42,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.FreeTimes
             return View(model);
         }
 
+        [Authorize(Roles = "2, 4, 5, 6")]
         [Route("tiempo-libre/gestion-solicitudes")]
         public async Task<IActionResult> ManageApplication()
         {

@@ -10,10 +10,10 @@ namespace DosPinos.HRMS.WebApp.Models.Employees
         {
             this.Title = EmployeeLabel.CreateTitle;
             EmployeeObj = new CreateEntireEmployeeDTO();
-            Today = DateTime.Now.AddYears(-100).ToString("yyyy-MM-dd");
+            Today = DateTime.Now.AddYears(-100);
         }
 
-        public string Today { get; }
+        public DateTime Today { get; }
         public ICreateEntireEmployeeDTO EmployeeObj { get; set; }
     }
 }

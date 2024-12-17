@@ -13,7 +13,7 @@ using Newtonsoft.Json;
 
 namespace DosPinos.HRMS.WebApp.Controllers.ChristmasBonus
 {
-    [Authorize]
+    [Authorize(Roles = "4, 5, 6")]
     public class ChristmasBonusController(GetAllNotificationController getAllNotificationController,
                                         UpdateNotificationController updateNotificationController,
                                         HRMS.Controllers.ChristmasBonus.ChristmasBonusController christmas) : BaseController(getAllNotificationController,

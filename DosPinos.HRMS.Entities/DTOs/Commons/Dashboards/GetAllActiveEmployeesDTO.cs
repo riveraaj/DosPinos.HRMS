@@ -1,6 +1,6 @@
 ﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Dashboards
 {
-    public class GetAllActiveEmployees
+    public class GetAllActiveEmployeesDTO
     {
         public int Total { get; set; }
     }

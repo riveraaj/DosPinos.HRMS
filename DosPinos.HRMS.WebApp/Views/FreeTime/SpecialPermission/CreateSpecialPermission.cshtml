@@ -20,13 +20,21 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label asp-for="Permission.PermissionObj.DateStart" class="form-label">Fecha de inicio</label>
-                        <input type="date" asp-for="Permission.PermissionObj.DateStart" min="@Model.Today" required />
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label asp-for="Permission.PermissionObj.DateStart" class="form-label">Fecha de inicio</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" asp-for="Permission.PermissionObj.DateStart" min="@Model.Today" required />
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label asp-for="Permission.PermissionObj.DateEnd" class="form-label">Fecha de fin</label>
-                        <input type="date" asp-for="Permission.PermissionObj.DateEnd" min="@Model.Today" required />
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label asp-for="Permission.PermissionObj.DateEnd" class="form-label">Fecha de fin</label>
+                        </div>
+                        <div class="col-auto">
+                            <input type="date" asp-for="Permission.PermissionObj.DateEnd" min="@Model.Today" required />
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label class="form-label" asp-for="Permission.PermissionObj.PermissionTypeId">Tipo de licencia</label>

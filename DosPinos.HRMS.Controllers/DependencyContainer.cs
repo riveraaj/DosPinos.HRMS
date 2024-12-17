@@ -1,4 +1,5 @@
 ﻿using DosPinos.HRMS.Controllers.Commons.FreeTimes;
+using DosPinos.HRMS.Controllers.Securities;
 
 namespace DosPinos.HRMS.Controllers
 {

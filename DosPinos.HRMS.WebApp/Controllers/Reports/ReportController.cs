@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace DosPinos.HRMS.WebApp.Controllers.Reports
 {
-    [Authorize]
+    [Authorize(Roles = "2, 6")]
     public class ReportController(HRMS.Controllers.Reports.ReportController reportController,
                                   GetAllNotificationController getAllNotificationController,
                                   UpdateNotificationController updateNotificationController) : BaseController(getAllNotificationController,

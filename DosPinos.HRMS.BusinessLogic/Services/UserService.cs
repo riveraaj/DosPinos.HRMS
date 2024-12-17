@@ -26,6 +26,22 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
+        public async Task<IOperationResponseVO> GetAllActiveAsync(IEntityDTO entity)
+        {
+            IOperationResponseVO response = new OperationResponseVO();
+
+            try
+            {
+                response.Content = await _userRepository.GetAllActive();
+            }
+            catch (Exception exception)
+            {
+                response = await this.HandlerLog(Module.Security, ActionCategory.GetAll, exception, entity);
+            }
+
+            return response;
+        }
+
         public async Task<IOperationResponseVO> CreateAsync(CreateUserDTO userDTO)
         {
             IOperationResponseVO response;
@@ -41,6 +57,42 @@ namespace DosPinos.HRMS.BusinessLogic.Services
                 response = await _userRepository.CreateAsync(userDTO);
 
                 if (response.Status == ResponseStatus.Error) throw new Exception(response.Content.ToString());
+            }
+            catch (Exception exception)
+            {
+                response = await this.HandlerLog(Module.Security, ActionCategory.Create, exception, userDTO);
+            }
+
+            return response;
+        }
+
+        public async Task<IOperationResponseVO> UpdateAsync(UpdateUserDTO userDTO)
+        {
+            IOperationResponseVO response;
+
+            try
+            {
+                response = await _userRepository.UpdateAsync(userDTO);
+
+                if (response.Status == ResponseStatus.Error) throw new Exception(response.Content.ToString());
+            }
+            catch (Exception exception)
+            {
+                response = await this.HandlerLog(Module.Security, ActionCategory.Create, exception, userDTO);
+            }
+
+            return response;
+        }
+
+        public async Task<IOperationResponseVO> DeleteAsync(DeleteUserDTO userDTO)
+        {
+            IOperationResponseVO response = new OperationResponseVO();
+
+            try
+            {
+                bool result = await _userRepository.DeleteAsync(userDTO);
+
+                if (!result) response = this.CustomWarning();
             }
             catch (Exception exception)
             {

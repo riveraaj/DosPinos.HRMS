@@ -14,7 +14,7 @@ using Newtonsoft.Json;
 
 namespace DosPinos.HRMS.WebApp.Controllers.Payrolls
 {
-    [Authorize]
+    [Authorize(Roles = "5, 6")]
     public class PayrollController(GetAllNotificationController notificationController,
                                    UpdateNotificationController updateController,
                                    HRMS.Controllers.Payroll.PayrollController payrollController)

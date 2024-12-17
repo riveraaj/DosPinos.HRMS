@@ -1,5 +1,4 @@
-﻿using DosPinos.HRMS.Controllers.Securities.Catalogs;
-using DosPinos.HRMS.Entities.Enums.Commons;
+﻿using DosPinos.HRMS.Entities.Enums.Commons;
 using DosPinos.HRMS.Entities.Interfaces.Securities;
 using DosPinos.HRMS.WebApp.Helpers;
 using DosPinos.HRMS.WebApp.Models.Securities;
@@ -9,9 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 namespace DosPinos.HRMS.WebApp.Controllers.Securities
 {
     [Route("acceso")]
-    public class LoginController(UserController userController) : Controller
+    public class LoginController(HRMS.Controllers.Securities.UserController userController) : Controller
     {
-        private readonly UserController _userController = userController;
+        private readonly HRMS.Controllers.Securities.UserController _userController = userController;
 
         public IActionResult Index(LoginViewModel model) => User.Identity.IsAuthenticated ? Redirect("~/Dashboard/Index") : View(model);
 

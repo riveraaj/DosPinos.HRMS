@@ -53,6 +53,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.WorkingDays
             return RedirectToAction("Index");
         }
 
+        [Authorize(Roles = "2, 6")]
         [Route("asistencia/gestion-asistencia")]
         public async Task<IActionResult> ManageWorkingDay()
         {

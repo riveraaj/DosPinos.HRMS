@@ -1,5 +1,6 @@
 ﻿using DosPinos.HRMS.Entities.DTOs.Securities;
 using DosPinos.HRMS.WebApp.Models.Base;
+using DosPinos.HRMS.WebApp.Resources.Securities;
 
 namespace DosPinos.HRMS.WebApp.Models.Securities
 {
@@ -7,7 +8,7 @@ namespace DosPinos.HRMS.WebApp.Models.Securities
     {
         public LoginViewModel()
         {
-            this.Title = "Inicio de sesión";
+            this.Title = SecurityLabel.TitleLogin;
             UserObj = new();
         }
 

@@ -8,7 +8,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards
         private readonly DospinosdbContext _context = context;
         private const int OVERTIME_LIMIT = 30;
 
-        public async Task<GetAllActiveEmployees> GetAllActiveEmployeesAsync() => new()
+        public async Task<GetAllActiveEmployeesDTO> GetAllActiveEmployeesAsync() => new()
         {
             Total = await _context.Employees.CountAsync(e => e.EmployeeStatus)
         };

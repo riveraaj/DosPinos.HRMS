@@ -1,7 +1,6 @@
 ﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
-using DosPinos.HRMS.EFCore.Interfaces;
+using DosPinos.HRMS.EFCore.Mappers.Securities;
 using DosPinos.HRMS.Entities.DTOs.Securities;
-using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.Entities.Interfaces.Securities;
 
 namespace DosPinos.HRMS.EFCore.Repositories.Securities
@@ -38,7 +37,9 @@ namespace DosPinos.HRMS.EFCore.Repositories.Securities
         {
             List<GetAllWithoutUserDTO> getAllWithoutUserDTOs = [];
 
-            List<Employee> employeesWithoutUser = await _context.Employees.Where(e => !_context.Users.Any(u => u.EmployeeId == e.EmployeeId))
+            List<Employee> employeesWithoutUser = await _context.Employees.Include(x => x.EmployeeDetails)
+                                                                            .ThenInclude(x => x.JobTitle)
+                                                                          .Where(e => !_context.Users.Any(u => u.EmployeeId == e.EmployeeId) && e.EmployeeStatus)
                                                                           .ToListAsync();
 
             employeesWithoutUser.ForEach(x =>
@@ -46,7 +47,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Securities
                 getAllWithoutUserDTOs.Add(new GetAllWithoutUserDTO()
                 {
                     EmployeeId = x.EmployeeId,
-                    FullName = $"{x.FirstName} {x.FirstLastName} {x.SecondLastName}"
+                    FullName = $"{x.Identification} | {x.FirstName} {x.FirstLastName} {x.SecondLastName} | {x.EmployeeDetails.FirstOrDefault().JobTitle.JobTitleDescription}"
                 });
             });
 
@@ -64,6 +65,35 @@ namespace DosPinos.HRMS.EFCore.Repositories.Securities
             };
 
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateUser", parameters, false);
+        }
+
+        public async Task<IEnumerable<GetAllUserDTO>> GetAllActive()
+        {
+            List<User> users = [.. await _context.Users.Include(x => x.Employee).Where(x => x.UserId != 1).ToListAsync()];
+            return users.Select(UserMapper.MapFrom).ToList();
+        }
+
+        public async Task<IOperationResponseVO> UpdateAsync(UpdateUserDTO userDTO)
+        {
+            Dictionary<string, object> parameters = new()
+            {
+                {"@userId", userDTO.UserIdDB},
+                {"@roleId", userDTO.RoleId},
+            };
+
+            return await _invokeSP.ExecuteAsync("[humanresources].usp_UpdateUser", parameters, false);
+        }
+
+        public async Task<bool> DeleteAsync(DeleteUserDTO userDTO)
+        {
+            User user = await _context.Users.FindAsync(userDTO.UserIdDB);
+
+            if (user == null) return false;
+
+            user.UserStatus = userDTO.IsActive;
+
+            int affectedRows = await _context.SaveChangesAsync();
+            return affectedRows > 0;
         }
     }
 }

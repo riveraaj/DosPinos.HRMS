@@ -24,7 +24,7 @@ using Newtonsoft.Json;
 
 namespace DosPinos.HRMS.WebApp.Controllers.Employees
 {
-    [Authorize]
+    [Authorize(Roles = "2, 6, 4, 5")]
     public class EmployeeController(GetAllNotificationController getAllNotificationController,
                                         UpdateNotificationController updateNotificationController,
                                         CreateEmployeeController createController,
@@ -56,7 +56,6 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
         private readonly CreateEmployeeController _createController = createController;
         private readonly GetAllEmployeeController _getAllController = getAllController;
 
-        [HttpGet]
         [Route("empleados")]
         public async Task<IActionResult> Index()
         {
@@ -76,7 +75,6 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
             return View(model);
         }
 
-        [HttpGet]
         [Route("empleados/nuevo-empleado")]
         public async Task<IActionResult> Create()
         {

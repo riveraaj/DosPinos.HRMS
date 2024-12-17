@@ -1,0 +1,47 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Securities.UserViewModel
+
+<div class="modal fade" id="userModal" tabindex="-1" aria-labelledby="userModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="Create" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo usuario</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label class="m-0 form-label" asp-for="UserObj.Username" class="form-label">Usuario</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="m-0 form-control" type="text" asp-for="UserObj.Username" maxlength="50" required />
+                        </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label class="m-0 form-label" asp-for="UserObj.Password" class="form-label">Contraseña</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="m-0 form-control" type="text" asp-for="UserObj.Password" required />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="UserObj.EmployeeId">Colaborador</label>
+                        <select class="form-select" asp-for="UserObj.EmployeeId" asp-items="@Model.Employees" required>
+                            <option selected disabled value="">Seleccione un colaborador</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="UserObj.RoleId">Tipo de licencia</label>
+                        <select class="form-select" asp-for="UserObj.RoleId" asp-items="@Model.Roles" required>
+                            <option selected disabled value="">Seleccione una opción</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Enviar aplicación</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
