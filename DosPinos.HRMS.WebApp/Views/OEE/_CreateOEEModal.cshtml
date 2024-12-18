@@ -10,19 +10,19 @@
                 </div>
                 <div class="modal-body">
                     <div class="row mb-3 align-items-center">
-                        <div class="col-auto">
-                            <label class="m-0 form-label" asp-for="OEEObj.OperatingTime" class="form-label">Tiempo operativo</label>
+                        <div class="col-6">
+                            <label class="m-0 form-label" asp-for="OEEObj.OperatingTime" class="form-label">Tiempo operativo obtenido</label>
                         </div>
-                        <div class="col-auto">
-                            <input class="m-0 form-control" type="text" asp-for="OEEObj.OperatingTime" pattern="^[1-8][0-9]*$" maxlength="2" required value="24" />
+                        <div class="col-6">
+                            <input class="m-0 form-control" type="text" asp-for="OEEObj.OperatingTime" pattern="^[1-8][0-9]*$" maxlength="2" required />
                         </div>
                     </div>
                     <div class="row mb-3 align-items-center">
-                        <div class="col-auto">
-                            <label class="m-0 form-label" asp-for="OEEObj.RealOperatingTime" class="form-label">Tiempo real operativo</label>
+                        <div class="col-6">
+                            <label class="m-0 form-label" asp-for="OEEObj.RealOperatingTime" class="form-label">Tiempo operativo real</label>
                         </div>
-                        <div class="col-auto">
-                            <input class="m-0 form-control" type="text" asp-for="OEEObj.RealOperatingTime" pattern="^[1-8][0-9]*$" maxlength="2" required />
+                        <div class="col-6">
+                            <input class="m-0 form-control" type="text" asp-for="OEEObj.RealOperatingTime" pattern="^[1-8][0-9]*$" maxlength="2" required value="24" />
                         </div>
                     </div>
                     <div class="mb-3">
