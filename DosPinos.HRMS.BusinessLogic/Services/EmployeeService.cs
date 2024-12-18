@@ -29,6 +29,22 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
+        public async Task<IOperationResponseVO> GetAllActiveAsync(IEntityDTO entity)
+        {
+            IOperationResponseVO response = new OperationResponseVO();
+
+            try
+            {
+                response.Content = await _employeeRepository.GetAllActiveAsync();
+            }
+            catch (Exception exception)
+            {
+                response = await this.HandlerLog(Module.Maintenance, ActionCategory.GetAll, exception, entity);
+            }
+
+            return response;
+        }
+
         public async Task<IOperationResponseVO> GetAllAsync(IEntityDTO entity)
         {
             IOperationResponseVO response = new OperationResponseVO();

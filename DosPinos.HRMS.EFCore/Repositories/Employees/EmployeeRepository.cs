@@ -1,5 +1,4 @@
-﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.POCOs;
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.POCOs;
 using DosPinos.HRMS.EFCore.Mappers.Employees;
 using DosPinos.HRMS.Entities.DTOs.Employees;
 using DosPinos.HRMS.Entities.Enums.Commons;
@@ -63,6 +62,12 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
             }
 
             return employee;
+        }
+
+        public async Task<IEnumerable<GetAllActiveEmployeeDTO>> GetAllActiveAsync()
+        {
+            List<Employee> employeeList = [.. await _context.Employees.Where(e => e.EmployeeStatus).ToListAsync()];
+            return employeeList.Select(EmployeeMapper.MapFrom).ToList();
         }
 
         public async Task<IEnumerable<IGetAllEmployeeDTO>> GetAllAsync()

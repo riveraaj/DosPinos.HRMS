@@ -1,0 +1,59 @@
+﻿@model DosPinos.HRMS.WebApp.Models.OEEs.OEEViewModel
+
+<div class="modal fade" id="oeeModal" tabindex="-1" aria-labelledby="oeeModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="Create" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo OEE</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label class="m-0 form-label" asp-for="OEEObj.OperatingTime" class="form-label">Tiempo operativo</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="m-0 form-control" type="text" asp-for="OEEObj.OperatingTime" pattern="^[1-8][0-9]*$" maxlength="2" required value="24" />
+                        </div>
+                    </div>
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label class="m-0 form-label" asp-for="OEEObj.RealOperatingTime" class="form-label">Tiempo real operativo</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="m-0 form-control" type="text" asp-for="OEEObj.RealOperatingTime" pattern="^[1-8][0-9]*$" maxlength="2" required />
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="OEEObj.MachineId">Empleado #1</label>
+                        <select class="form-select" asp-for="OEEObj.MachineId" asp-items="@Model.Machines" required>
+                            <option selected disabled value="">Seleccione una opción</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="OEEObj.EmployeeOne">Empleado #1</label>
+                        <select class="form-select" asp-for="OEEObj.EmployeeOne" asp-items="@Model.Employees" required>
+                            <option selected disabled value="">Seleccione una opción</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="OEEObj.EmployeeTwo">Empleado #2</label>
+                        <select class="form-select" asp-for="OEEObj.EmployeeTwo" asp-items="@Model.Employees" required>
+                            <option selected disabled value="">Seleccione una opción</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="OEEObj.EmployeeThree">Empleado #3</label>
+                        <select class="form-select" asp-for="OEEObj.EmployeeThree" asp-items="@Model.Employees" required>
+                            <option selected disabled value="">Seleccione una opción</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

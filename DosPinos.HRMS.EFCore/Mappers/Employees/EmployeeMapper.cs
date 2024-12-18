@@ -16,5 +16,11 @@ namespace DosPinos.HRMS.EFCore.Mappers.Employees
                 JobTitleDescription = activeEmployee.JobTitleDescription,
                 ManagerName = $"{activeEmployee.MFirstName} {activeEmployee.MFirstLastName} {activeEmployee.MSecondLastName}"
             };
+
+        public static GetAllActiveEmployeeDTO MapFrom(Employee employee) => new()
+        {
+            EmployeeId = employee.EmployeeId,
+            FullName = $"{employee.FirstName} {employee.FirstLastName} {employee.SecondLastName}"
+        };
     }
 }

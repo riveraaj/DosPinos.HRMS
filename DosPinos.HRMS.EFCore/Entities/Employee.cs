@@ -46,7 +46,11 @@ public partial class Employee
 
     public virtual Employee Manager { get; set; }
 
-    public virtual ICollection<Oee> Oees { get; set; } = new List<Oee>();
+    public virtual ICollection<Oee> OeeEmployeeOneNavigations { get; set; } = new List<Oee>();
+
+    public virtual ICollection<Oee> OeeEmployeeThreeNavigations { get; set; } = new List<Oee>();
+
+    public virtual ICollection<Oee> OeeEmployeeTwoNavigations { get; set; } = new List<Oee>();
 
     public virtual ICollection<Payroll> Payrolls { get; set; } = new List<Payroll>();
 

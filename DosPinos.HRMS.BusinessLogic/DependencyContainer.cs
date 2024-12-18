@@ -77,6 +77,12 @@ namespace DosPinos.HRMS.BusinessLogic
             //Reward
             services.AddScoped<RewardService>();
 
+            //OEE
+            services.AddScoped<OEEService>();
+
+            //Machine
+            services.AddScoped<MachineService>();
+
             return services;
         }
     }

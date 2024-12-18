@@ -6,5 +6,7 @@ public partial class Machine
 
     public string MachineDescription { get; set; }
 
+    public decimal? MachineProduction { get; set; }
+
     public virtual ICollection<Oee> Oees { get; set; } = new List<Oee>();
 }

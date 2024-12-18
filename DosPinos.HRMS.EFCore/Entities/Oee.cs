@@ -16,9 +16,17 @@ public partial class Oee
 
     public byte MachineId { get; set; }
 
-    public int EmployeeId { get; set; }
+    public int EmployeeOne { get; set; }
 
-    public virtual Employee Employee { get; set; }
+    public int EmployeeTwo { get; set; }
+
+    public int EmployeeThree { get; set; }
+
+    public virtual Employee EmployeeOneNavigation { get; set; }
+
+    public virtual Employee EmployeeThreeNavigation { get; set; }
+
+    public virtual Employee EmployeeTwoNavigation { get; set; }
 
     public virtual Machine Machine { get; set; }
 }

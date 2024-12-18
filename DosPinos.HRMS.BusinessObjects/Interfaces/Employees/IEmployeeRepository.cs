@@ -8,6 +8,7 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees
     public interface IEmployeeRepository
     {
         Task<GetEmployeeByIdentifactionDTO> GetAsync(int identifiaction);
+        Task<IEnumerable<GetAllActiveEmployeeDTO>> GetAllActiveAsync();
         Task<IEnumerable<IGetAllEmployeeDTO>> GetAllAsync();
         Task<IEnumerable<GetAllManagerDTO>> GetAllManagerAsync();
         Task<IOperationResponseVO> CreateAsync(ICreateEntireEmployeePOCO employeePOCO);

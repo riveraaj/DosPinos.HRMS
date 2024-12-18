@@ -72,7 +72,7 @@
         @if (RoleHelper.HasAnyRole(User, (int)Roles.Headquarters, (int)Roles.Administrator))
         {
             <li class="sidebar-item">
-                <a href="#" class="sidebar-link">
+                <a asp-action="Index" asp-controller="OEE" class="sidebar-link">
                     <i class="bi bi-buildings"></i>
                     <span>OEE</span>
                 </a>

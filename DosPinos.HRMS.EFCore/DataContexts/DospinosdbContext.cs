@@ -101,6 +101,10 @@ public partial class DospinosdbContext : DbContext
 
     public virtual DbSet<WorkingDay> WorkingDays { get; set; }
 
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("server=localhost;database=dospinosdb;user id=anonymous;password=jr.07143*2024;encrypt=false;MultipleActiveResultSets=True;");
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<ActionCategory>(entity =>
@@ -772,6 +776,9 @@ public partial class DospinosdbContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("machine_description");
+            entity.Property(e => e.MachineProduction)
+                .HasColumnType("decimal(9, 2)")
+                .HasColumnName("machine_production");
         });
 
         modelBuilder.Entity<MaritalStatus>(entity =>
@@ -866,25 +873,37 @@ public partial class DospinosdbContext : DbContext
 
             entity.Property(e => e.OeeId).HasColumnName("oee_id");
             entity.Property(e => e.Availability)
-                .HasColumnType("decimal(3, 2)")
+                .HasColumnType("decimal(5, 2)")
                 .HasColumnName("availability");
             entity.Property(e => e.Cuality)
-                .HasColumnType("decimal(3, 2)")
+                .HasColumnType("decimal(5, 2)")
                 .HasColumnName("cuality");
-            entity.Property(e => e.EmployeeId).HasColumnName("employee_id");
+            entity.Property(e => e.EmployeeOne).HasColumnName("employee_one");
+            entity.Property(e => e.EmployeeThree).HasColumnName("employee_three");
+            entity.Property(e => e.EmployeeTwo).HasColumnName("employee_two");
             entity.Property(e => e.MachineId).HasColumnName("machine_id");
             entity.Property(e => e.OeeDate).HasColumnName("oee_date");
             entity.Property(e => e.Performance)
-                .HasColumnType("decimal(3, 2)")
+                .HasColumnType("decimal(5, 2)")
                 .HasColumnName("performance");
             entity.Property(e => e.Total)
-                .HasColumnType("decimal(3, 2)")
+                .HasColumnType("decimal(5, 2)")
                 .HasColumnName("total");
 
-            entity.HasOne(d => d.Employee).WithMany(p => p.Oees)
-                .HasForeignKey(d => d.EmployeeId)
+            entity.HasOne(d => d.EmployeeOneNavigation).WithMany(p => p.OeeEmployeeOneNavigations)
+                .HasForeignKey(d => d.EmployeeOne)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_oee_employee_id");
+                .HasConstraintName("FK_oee_employee_one_id");
+
+            entity.HasOne(d => d.EmployeeThreeNavigation).WithMany(p => p.OeeEmployeeThreeNavigations)
+                .HasForeignKey(d => d.EmployeeThree)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_oee_employee_three_id");
+
+            entity.HasOne(d => d.EmployeeTwoNavigation).WithMany(p => p.OeeEmployeeTwoNavigations)
+                .HasForeignKey(d => d.EmployeeTwo)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_oee_employee_two_id");
 
             entity.HasOne(d => d.Machine).WithMany(p => p.Oees)
                 .HasForeignKey(d => d.MachineId)
@@ -1290,7 +1309,6 @@ public partial class DospinosdbContext : DbContext
                 .IsFixedLength()
                 .HasColumnName("approval_status");
             entity.Property(e => e.Comment)
-                .IsRequired()
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("comment");

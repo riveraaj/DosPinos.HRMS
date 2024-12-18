@@ -1,36 +1,5 @@
-﻿using DosPinos.HRMS.BusinessObjects.Interfaces.ChristmasBonus;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Dashboards;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.FreeTimes;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Commons.Notifications;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Employees;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Addresses;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Compensations;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Details;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Phones;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Liquidation;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Payroll;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Permissions.Catalogs.PermissionTypes;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Reports;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Rewards;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
-using DosPinos.HRMS.BusinessObjects.Interfaces.Vacations;
-using DosPinos.HRMS.BusinessObjects.Interfaces.WorkingDays;
-using DosPinos.HRMS.EFCore.Repositories.ChristmasBonus;
-using DosPinos.HRMS.EFCore.Repositories.Commons.Base;
-using DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards;
-using DosPinos.HRMS.EFCore.Repositories.Commons.FreeTimes;
-using DosPinos.HRMS.EFCore.Repositories.Employees;
-using DosPinos.HRMS.EFCore.Repositories.Licenses;
-using DosPinos.HRMS.EFCore.Repositories.Liquidation;
-using DosPinos.HRMS.EFCore.Repositories.Payroll;
-using DosPinos.HRMS.EFCore.Repositories.Permissions;
-using DosPinos.HRMS.EFCore.Repositories.Permissions.Catalogs;
-using DosPinos.HRMS.EFCore.Repositories.Reports;
-using DosPinos.HRMS.EFCore.Repositories.Rewards;
-using DosPinos.HRMS.EFCore.Repositories.Securities;
-using DosPinos.HRMS.EFCore.Repositories.Vacations;
-using DosPinos.HRMS.EFCore.Repositories.WorkingDays;
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Machines;
+using DosPinos.HRMS.EFCore.Repositories.Machines;
 
 namespace DosPinos.HRMS.EFCore
 {
@@ -114,6 +83,12 @@ namespace DosPinos.HRMS.EFCore
 
             //Reward
             services.AddScoped<IRewardRepository, RewardRepository>();
+
+            //OEE
+            services.AddScoped<IOEERepository, OEERepository>();
+
+            //Machine
+            services.AddScoped<IMachineRepository, MachineRepository>();
 
             return services;
         }

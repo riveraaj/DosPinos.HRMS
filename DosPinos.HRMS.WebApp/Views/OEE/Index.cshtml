@@ -1,0 +1,59 @@
+﻿@model DosPinos.HRMS.WebApp.Models.OEEs.OEEViewModel
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
+        <div class="container pb-3">
+            <button class="text-white btn btn-success" data-bs-toggle="modal" data-bs-target="#oeeModal"><i class="bi bi-plus-circle"></i> Añadir OEE</button>
+        </div>
+
+        <partial name="_CreateOEEModal" />
+
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Máquina</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Disponibilidad</th>
+                            <th scope="col">Rendimiento</th>
+                            <th scope="col">Calidad</th>
+                            <th scope="col">Total</th>
+                            <th scope="col">Empleado #1</th>
+                            <th scope="col">Empleado #2</th>
+                            <th scope="col">Empleado #3</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var oee in Model.OEEs)
+                        {
+                            <tr>
+                                <td>@oee.Machine</td>
+                                <td>@oee.Date.ToString("d-M-yyyy")</td>
+                                <td>@oee.Availability %</td>
+                                <td>@oee.Performance %</td>
+                                <td>@oee.Cuality %</td>
+                                <td>@oee.Total %</td>
+                                <td>@oee.EmployeeOneName</td>
+                                <td>@oee.EmployeeTwoName</td>
+                                <td>@oee.EmployeeThreeName</td>
+                                <td>
+                                    <form asp-action="Delete" method="post">
+                                        <input type="hidden" name="OEEId" value="@oee.OEEId" />
+                                        <button class="btn btn-success">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
