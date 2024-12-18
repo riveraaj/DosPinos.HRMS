@@ -83,6 +83,21 @@ namespace DosPinos.HRMS.BusinessLogic
             //Machine
             services.AddScoped<MachineService>();
 
+            //Deduction
+            services.AddScoped<DeductionService>();
+
+            //EmployeeDeduction
+            services.AddScoped<EmployeeDeductionService>();
+
+            //IncomeTax
+            services.AddScoped<IncomeTaxService>();
+
+            //Salary Category
+            services.AddScoped<SalaryCategoryService>();
+
+            //Holiday
+            services.AddScoped<HolidayService>();
+
             return services;
         }
     }

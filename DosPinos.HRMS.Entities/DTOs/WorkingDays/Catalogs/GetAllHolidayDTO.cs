@@ -1,6 +1,6 @@
 ﻿namespace DosPinos.HRMS.Entities.DTOs.WorkingDays.Catalogs
 {
-    public class GetAllHolidayDTO : EntityDTO, IGetAllHolidayDTO
+    public class GetAllHolidayDTO : IGetAllHolidayDTO
     {
         public int HolidayId { get; set; }
         public DateOnly HolidayDate { get; set; }

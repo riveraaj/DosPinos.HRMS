@@ -1,4 +1,8 @@
-﻿using DosPinos.HRMS.Controllers.Machines;
+﻿using DosPinos.HRMS.Controllers.Deductions;
+using DosPinos.HRMS.Controllers.Holidays;
+using DosPinos.HRMS.Controllers.IncomeTaxes;
+using DosPinos.HRMS.Controllers.Machines;
+using DosPinos.HRMS.Controllers.SalaryCategories;
 
 namespace DosPinos.HRMS.Controllers
 {
@@ -79,6 +83,21 @@ namespace DosPinos.HRMS.Controllers
 
             //Machine
             services.AddScoped<MachineController>();
+
+            //Deduction
+            services.AddScoped<DeductionController>();
+
+            //Employee Deduction
+            services.AddScoped<EmployeeDeductionController>();
+
+            //Income tax
+            services.AddScoped<IncomeTaxController>();
+
+            //Salary category
+            services.AddScoped<SalaryCategoryController>();
+
+            //Salary category
+            services.AddScoped<HolidayController>();
 
             return services;
         }

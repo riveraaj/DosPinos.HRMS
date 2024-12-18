@@ -1,4 +1,5 @@
-﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Machines;
+﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Deductions;
+using DosPinos.HRMS.BusinessObjects.Interfaces.Machines;
 using DosPinos.HRMS.EFCore.Repositories.Machines;
 
 namespace DosPinos.HRMS.EFCore
@@ -47,7 +48,6 @@ namespace DosPinos.HRMS.EFCore
             services.AddScoped<IPhoneRepository, PhoneRepository>();
             services.AddScoped<IAddressRepository, AddressRepository>();
 
-
             //User 
             services.AddScoped<IUserRepository, UserRepository>();
 
@@ -89,6 +89,9 @@ namespace DosPinos.HRMS.EFCore
 
             //Machine
             services.AddScoped<IMachineRepository, MachineRepository>();
+
+            //Employee Deduction
+            services.AddScoped<IEmployeeDeductionRepository, EmployeeDeductionRepository>();
 
             return services;
         }
