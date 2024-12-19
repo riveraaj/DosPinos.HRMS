@@ -6,6 +6,6 @@ namespace DosPinos.HRMS.BusinessObjects.Interfaces.Employees.Deductions
     {
         Task<IEnumerable<GetAllEmployeeDeductionDTO>> GetAllAsync(int employeeId);
         Task<IOperationResponseVO> CreateAsync(UpdateEmployeeDeductionDTO deductionDTO);
-        Task<IOperationResponseVO> DeleteAsync(byte deductionId);
+        Task<IOperationResponseVO> DeleteAsync(int deductionId);
     }
 }

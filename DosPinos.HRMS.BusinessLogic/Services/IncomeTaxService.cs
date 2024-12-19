@@ -22,12 +22,13 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
-        public async Task<IOperationResponseVO> CreateASync(CreateIncomeTaxDTO incomeTaxDTO)
+        public async Task<IOperationResponseVO> CreateAsync(CreateIncomeTaxDTO incomeTaxDTO)
         {
             IOperationResponseVO response;
 
             try
             {
+                if (incomeTaxDTO.Percentage > 70) return this.CustomWarning("El porcentaje del impuesto no puede ser superior al 70%.");
                 response = await _repository.CreateAsync(incomeTaxDTO);
             }
             catch (Exception exception)
@@ -44,6 +45,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
+                if (incomeTaxDTO.Percentage > 70) return this.CustomWarning("El porcentaje del impuesto no puede ser superior al 70%.");
                 response = await _repository.UpdateAsync(incomeTaxDTO);
             }
             catch (Exception exception)

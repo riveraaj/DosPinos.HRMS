@@ -21,7 +21,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
             return await _invokeSP.ExecuteAsync("[humanresources].usp_UpdateEmployeeDeduction", parameters, false);
         }
 
-        public async Task<IOperationResponseVO> DeleteAsync(byte deductionId)
+        public async Task<IOperationResponseVO> DeleteAsync(int deductionId)
         {
             Dictionary<string, object> parameters = new()
             {

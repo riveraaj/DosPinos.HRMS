@@ -61,6 +61,15 @@ namespace DosPinos.HRMS.WebApp.Resources.Payrolls {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reporte nómina.
+        /// </summary>
+        internal static string PayrollReportTitle {
+            get {
+                return ResourceManager.GetString("PayrollReportTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nómina.
         /// </summary>
         internal static string Title {

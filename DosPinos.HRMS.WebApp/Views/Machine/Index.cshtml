@@ -1,0 +1,56 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Maintenances.Machines.MachineViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
+        <div class="container pb-3">
+            <button class="text-white btn btn-success" data-bs-toggle="modal" data-bs-target="#machineModal"><i class="bi bi-plus-circle"></i> Añadir máquina</button>
+        </div>
+
+        <partial name="_CreateMachineModal" />
+
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th class="text-start" scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Producción</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var machine in Model.Machines)
+                        {
+                            <tr>
+                                <td class="text-start">@machine.MachineId</td>
+                                <td >@machine.Description</td>
+                                <td>
+                                    <form data-url="@Url.Action("Edit", "Machine")" class="update-form" method="post" onsubmit="return false">
+                                        <input type="hidden" asp-for="UpdateMachineObj.MachineId" value="@machine.MachineId" />
+                                        <input class="form-control" type="number" asp-for="UpdateMachineObj.Production" value="@machine.Production" min="1" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <form asp-action="Delete" method="post">
+                                        <input type="hidden" name="machineId" value="@machine.MachineId" />
+                                        <button class="btn btn-success">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Dospinos.HRMS.Content/js/maintenances/maintenances.js"></script>
+}

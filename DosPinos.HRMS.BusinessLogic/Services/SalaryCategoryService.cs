@@ -8,7 +8,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
         private readonly ISalaryCategoryRepository _repository = repository;
 
 
-        public async Task<IOperationResponseVO> CreateASync(CreateSalaryCategoryDTO salaryCategoryDTO)
+        public async Task<IOperationResponseVO> CreateAsync(CreateSalaryCategoryDTO salaryCategoryDTO)
         {
             IOperationResponseVO response;
 

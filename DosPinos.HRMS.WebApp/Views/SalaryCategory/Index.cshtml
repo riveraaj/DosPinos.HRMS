@@ -1,0 +1,52 @@
+﻿@using System.Globalization
+@model DosPinos.HRMS.WebApp.Models.Maintenances.SalaryCategories.SalaryCategoryViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
+        <div class="container pb-3">
+            <button class="text-white btn btn-success" data-bs-toggle="modal" data-bs-target="#categoryModal"><i class="bi bi-plus-circle"></i> Añadir categoría salarial</button>
+        </div>
+
+        <partial name="_CreateSalaryCategoryModal" />
+
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th class="text-start" scope="col">#</th>
+                            <th scope="col">Descripción</th>
+                            <th class="text-start" scope="col">Salario</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var salaryCategory in Model.SalaryCategories)
+                        {
+                            <tr>
+                                <td class="text-start">@salaryCategory.SalaryCategoryId</td>
+                                <td class="text-start">@salaryCategory.SalaryCategoryDescription</td>
+                                <td class="text-start">@salaryCategory.SalaryCategoryRange.ToString("C", new CultureInfo("es-CR"))</td>
+                                <td>
+                                    <form asp-action="Delete" method="post">
+                                        <input type="hidden" name="salaryCategoryId" value="@salaryCategory.SalaryCategoryId" />
+                                        <button class="btn btn-success">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Dospinos.HRMS.Content/js/maintenances/maintenances.js"></script>
+}

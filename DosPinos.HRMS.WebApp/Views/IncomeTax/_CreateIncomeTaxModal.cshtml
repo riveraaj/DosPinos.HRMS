@@ -1,0 +1,45 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Maintenances.IncomeTaxes.IncomeTaxViewModel
+
+<div class="modal fade" id="incomeTaxModal" tabindex="-1" aria-labelledby="incomeTaxModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="Create" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva deducción</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label class="m-0 form-label" asp-for="IncomeTaxObj.Percentage" class="form-label">Porcentaje</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="m-0 form-control" type="number" asp-for="IncomeTaxObj.Percentage" step="0.01" min="0" max="70" required />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label class="m-0 form-label" asp-for="IncomeTaxObj.Min" class="form-label">Salario mínimo</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="m-0 form-control" type="number" asp-for="IncomeTaxObj.Min" min="1" required />
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label class="m-0 form-label" asp-for="IncomeTaxObj.Max" class="form-label">Salario máximo</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="m-0 form-control" type="number" asp-for="IncomeTaxObj.Max" />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

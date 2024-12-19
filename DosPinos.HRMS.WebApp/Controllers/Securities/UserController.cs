@@ -66,9 +66,14 @@ namespace DosPinos.HRMS.WebApp.Controllers.Securities
         {
             model.UpdateUserObj.UserId = ActualUser;
 
-            TempData["alert"] = JsonConvert.SerializeObject(await _controller.UpdateAsync(model.UpdateUserObj));
+            IOperationResponseVO response = await _controller.UpdateAsync(model.UpdateUserObj);
 
-            return RedirectToAction("Index");
+            return Json(new
+            {
+                success = response.Status == ResponseStatus.Success,
+                message = response.Message.FirstOrDefault(),
+                status = response.Status.ToString()
+            });
         }
 
         [Route("usuarios/desactivar")]

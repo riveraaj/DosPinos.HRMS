@@ -1,0 +1,96 @@
+﻿@using System.Globalization
+@model DosPinos.HRMS.WebApp.Models.Payrolls.PayrollReportViewModel
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+
+@section Styles {
+    <style>
+        #DataTables_Table_0_wrapper {
+            margin-bottom: 2rem;
+        }
+    </style>
+}
+
+<div class="content-container">
+
+    <div class="card border-0 shadow m-3">
+        <div class="card-header bg-success-subtle fw-semibold">
+            Reporte nómina
+        </div>
+        <div class="card-body overflow-y-auto py-5">
+            <div class="content-tables">
+                <div class="table-responsive">
+                    <table class="table report-table">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-start">Identificación</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Puesto</th>
+                                <th scope="col">Inicio período</th>
+                                <th scope="col">Fin período</th>
+                                <th scope="col">Salario base</th>
+                                <th scope="col">Salario bruto</th>
+                                <th scope="col">Horas extras</th>
+                                <th scope="col">Monto horas extras</th>
+                                <th scope="col">Recompensas</th>
+                                <th scope="col">Deducciones</th>
+                                <th scope="col">Salario neto</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var payroll in Model.Payrolls)
+                            {
+                                <tr>
+                                    <td class="text-start">@payroll.Identification</td>
+                                    <td>@payroll.FullName</td>
+                                    <td>@payroll.JobTitle</td>
+                                    <td>@payroll.StartPeriod</td>
+                                    <td>@payroll.EndPeriod</td>
+                                    <td>@payroll.Salary.ToString("C", new CultureInfo("es-CR"))</td>
+                                    <td>@payroll.GrossSalary.ToString("C", new CultureInfo("es-CR"))</td>
+                                    <td>
+                                        @* Convertir las horas decimales en formato "hh h mm min" *@
+                                        @{
+                                            decimal decimalHours = payroll.Overtime;  // Suponemos que `Overtime` es el campo con horas decimales
+                                            int hours = (int)decimalHours;
+                                            int minutes = (int)((decimalHours - hours) * 60);
+
+                                            // Construimos el string con horas y minutos, verificando si son mayores a 0
+                                            string formattedTime = "";
+
+                                            if (hours > 0)
+                                            {
+                                                formattedTime += $"{hours} h";
+                                            }
+
+                                            if (minutes > 0)
+                                            {
+                                                if (formattedTime != "")
+                                                {
+                                                    formattedTime += " ";  // Agrega espacio si ya hay horas
+                                                }
+                                                formattedTime += $"{minutes} min";
+                                            }
+
+                                            if (string.IsNullOrEmpty(formattedTime))
+                                            {
+                                                formattedTime = "------";
+                                            }
+                                        }
+                                        @formattedTime
+                                    </td>
+                                    <td>@payroll.AmoutOvertime.ToString("C", new CultureInfo("es-CR"))</td>
+                                    <td>@payroll.Bonus.ToString("C", new CultureInfo("es-CR"))</td>
+                                    <td>@payroll.Deductions.ToString("C", new CultureInfo("es-CR"))</td>
+                                    <td>@payroll.NetSalary.ToString("C", new CultureInfo("es-CR"))</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

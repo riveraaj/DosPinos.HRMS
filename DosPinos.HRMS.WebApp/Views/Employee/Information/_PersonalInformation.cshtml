@@ -3,7 +3,7 @@
 <div class="info-card shadow">
     <h4 class="text-success fw-semibold">Información personal</h4>
 
-    <form data-url="@Url.Action("Edit", "Employee")">
+    <form data-url="@Url.Action("Edit", "Employee")" class="update-form" method="post" onsubmit="return false">
         <input type="hidden" class="form-control" asp-for="UpdateEmployeeObj.EmployeeObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId">
 
         <div class="info-card-body">

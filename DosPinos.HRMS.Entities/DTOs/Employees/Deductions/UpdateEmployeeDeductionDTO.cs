@@ -3,7 +3,7 @@
     public class UpdateEmployeeDeductionDTO : EntityDTO, IEntityDTO
     {
         public int EmployeeId { get; set; }
-        public int DeductionId { get; set; }
-        public int DeductionPercentage { get; set; }
+        public byte DeductionId { get; set; }
+        public decimal DeductionPercentage { get; set; }
     }
 }

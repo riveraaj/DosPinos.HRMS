@@ -1,0 +1,58 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Maintenances.IncomeTaxes.IncomeTaxViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
+        <div class="container pb-3">
+            <button class="text-white btn btn-success" data-bs-toggle="modal" data-bs-target="#incomeTaxModal"><i class="bi bi-plus-circle"></i> Añadir impuesto</button>
+        </div>
+
+        <partial name="_CreateIncomeTaxModal" />
+
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th class="text-start" scope="col">#</th>
+                            <th class="text-start" scope="col">Porcentaje</th>
+                            <th class="text-start" scope="col">Salario mínimo</th>
+                            <th class="text-start" scope="col">Salario máximo</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var incomeTax in Model.IncomeTaxes)
+                        {
+                            <tr>
+                                <td class="text-start">@incomeTax.IncomeTaxId</td>
+                                <td class="text-start">
+                                    <form data-url="@Url.Action("Edit", "IncomeTax")" class="update-form" method="post" onsubmit="return false">
+                                        <input type="hidden" asp-for="UpdateIncomeTaxObj.IncomeTaxId" value="@incomeTax.IncomeTaxId" />
+                                        <input class="form-control" type="number" asp-for="UpdateIncomeTaxObj.Percentage" value="@incomeTax.Percentage" step="0.01" min="0" max="60" />
+                                    </form>                                   
+                                </td>
+                                <td class="text-start">@incomeTax.min</td>
+                                <td class="text-start">@incomeTax.max</td>
+                                <td>
+                                    <form asp-action="Delete" method="post">
+                                        <input type="hidden" name="incomeTaxId" value="@incomeTax.IncomeTaxId" />
+                                        <button class="btn btn-success">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Dospinos.HRMS.Content/js/maintenances/maintenances.js"></script>
+}

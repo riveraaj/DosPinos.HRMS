@@ -8,7 +8,7 @@ using DosPinos.HRMS.WebApp.Models.Dashboards;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DosPinos.HRMS.WebApp.Controllers.Dashboards
+namespace DosPinos.HRMS.WebApp.Controllers.Employees.Dashboards
 {
     [Authorize]
     public class DashboardController(GetAllNotificationController getAllNotificationController,
@@ -23,7 +23,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Dashboards
 
         [Route("notificacion/actualizar")]
         [HttpPost]
-        public async Task<IActionResult> UpdateNotification(BaseViewModel model) => await this.UpdateNotificationAsync(model.NotificationObj);
+        public async Task<IActionResult> UpdateNotification(BaseViewModel model) => await UpdateNotificationAsync(model.NotificationObj);
 
         private async Task<DashboardViewModel> PopulateDashboardViewModel()
         {

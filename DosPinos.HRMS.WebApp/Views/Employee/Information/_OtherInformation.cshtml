@@ -10,7 +10,7 @@
     <div>
         <h5 class="text-success fw-semibold">Información de contacto</h5>
 
-        <form data-url="@Url.Action("Edit", "Phone")">
+        <form data-url="@Url.Action("Edit", "Phone")" class="update-form" method="post" onsubmit="return false">
             <input type="hidden" class="form-control" asp-for="UpdateEmployeeObj.PhoneObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId">
             <input type="hidden" class="form-control" asp-for="EmployeeObj.Identification" value="@Model.EmployeeObj.Identification">
 
@@ -31,7 +31,7 @@
     <div class="mt-5">
         <h5 class="text-success fw-semibold">Dirección de domicilio</h5>
 
-        <form data-url="@Url.Action("Edit", "Address")">
+        <form data-url="@Url.Action("Edit", "Address")" class="update-form" method="post" onsubmit="return false">
             <input type="hidden" class="form-control" asp-for="UpdateEmployeeObj.AddressObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId">
             <input type="hidden" class="form-control" asp-for="EmployeeObj.Identification" value="@Model.EmployeeObj.Identification">
 

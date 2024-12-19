@@ -7,8 +7,8 @@ namespace DosPinos.HRMS.Controllers.SalaryCategories
     {
         private readonly SalaryCategoryService _service = service;
 
-        public async Task<IOperationResponseVO> CreateASync(CreateSalaryCategoryDTO saalryCategoryDTO)
-            => await _service.CreateASync(saalryCategoryDTO);
+        public async Task<IOperationResponseVO> CreateAsync(CreateSalaryCategoryDTO saalryCategoryDTO)
+            => await _service.CreateAsync(saalryCategoryDTO);
 
 
         public async Task<IOperationResponseVO> DeleteAsync(byte saalryCategoryId, IEntityDTO entity)

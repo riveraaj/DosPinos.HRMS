@@ -1,0 +1,56 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Maintenances.Deductions.DeductionViewModel
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
+        <div class="container pb-3">
+            <button class="text-white btn btn-success" data-bs-toggle="modal" data-bs-target="#deductionModal"><i class="bi bi-plus-circle"></i> Añadir deducción</button>
+        </div>
+
+        <partial name="_CreateDeductionModal" />
+
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th class="text-start" scope="col">#</th>
+                            <th scope="col">Descripción</th>
+                            <th class="text-start" scope="col">Porcentaje</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var deduction in Model.Deductions)
+                        {
+                            <tr>
+                                <td class="text-start">@deduction.DeductionId</td>
+                                <td>@deduction.DeductionDescription</td>
+                                <td>
+                                    <form data-url="@Url.Action("Edit", "Deduction")" class="update-form" method="post" onsubmit="return false">
+                                        <input type="hidden" asp-for="UpdateDeductionObj.DeductionId" value="@deduction.DeductionId" />
+                                        <input class="form-control" type="number" asp-for="UpdateDeductionObj.DeductionPercentage" value="@deduction.DeductionPercentage" step="0.01" min="0" max="90" />
+                                    </form>
+                                </td>
+                                <td>
+                                    <form asp-action="Delete" method="post">
+                                        <input type="hidden" name="deductionId" value="@deduction.DeductionId" />
+                                        <button class="btn btn-success">Eliminar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Dospinos.HRMS.Content/js/maintenances/maintenances.js"></script>
+}

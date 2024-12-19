@@ -1,0 +1,27 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Maintenances.Deductions.DeductionViewModel
+
+<div class="modal fade" id="deductionModal" tabindex="-1" aria-labelledby="deductionModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="Create" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva deducción</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-3 align-items-center">
+                        <div class="col-auto">
+                            <label class="m-0 form-label" asp-for="DeductionObj.Description" class="form-label">Descripción</label>
+                        </div>
+                        <div class="col-auto">
+                            <input class="m-0 form-control" type="text" asp-for="DeductionObj.Description" maxlength="50" required />
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -94,7 +94,7 @@ const submitFormReward = async () => {
 
 /* Hanlder update fields */
 document.addEventListener('DOMContentLoaded', function () {
-    const forms = document.querySelectorAll('form');
+    const forms = document.querySelectorAll('.update-form');
 
     forms.forEach(form => {
         form.addEventListener('change', function (e) {
@@ -118,9 +118,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     },
                     body: data.toString()
                 })
-                    .catch(error => {
-                        showToast("Error", "El campo no se ha podido actualizar.");
-                    });
+                    .then(response => {
+                        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                        return response.json();
+                    })
+                    .then(data => showToast(data.status, data.message))
+                    .catch(() => showToast("Error", "El campo no se ha podido actualizar."));
             } else if (emptyInputs){
                 showToast("Warning", "No pueden dejarse campos vacíos.");
             }

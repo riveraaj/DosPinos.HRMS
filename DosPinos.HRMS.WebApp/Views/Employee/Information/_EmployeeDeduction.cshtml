@@ -1,0 +1,42 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Employees.EditEmployeeViewModel;
+
+<div class="container bg-white rounded shadow py-4 mb-3 mt-2" style="width: 98% !important;">
+
+    <div class="container pb-3">
+        <button class="text-white btn btn-success" data-bs-toggle="modal" data-bs-target="#deductionModal"><i class="bi bi-plus-circle"></i> Añadir deducción</button>
+    </div>
+
+    <partial name="Information/_CreateEmployeeDeductionModal" />
+
+    <div class="content-tables">
+        <div class="table-responsive">
+            <table class="table data-table">
+                <thead>
+                    <tr>
+                        <th class="text-center" scope="col">#</th>
+                        <th scope="col">Descripción</th>
+                        <th scope="col">Porcentaje</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var deduction in Model.EmployeeDeductions)
+                    {
+                        <tr>
+                            <td class="text-center">@deduction.EmployeeDeductionId</td>
+                            <td>@deduction.DeductionDescription</td>
+                            <td class="text-center">@deduction.Percentage%</td>
+                            <td>
+                                <form asp-action="Delete" asp-controller="EmployeeDeduction" method="post">
+                                    <input type="hidden" name="employeeDeductionId" value="@deduction.EmployeeDeductionId" />
+                                    <input type="hidden" name="identification" value="@Model.EmployeeObj.Identification" />
+                                    <button class="btn btn-success">Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

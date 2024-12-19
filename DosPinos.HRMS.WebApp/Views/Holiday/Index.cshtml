@@ -1,0 +1,67 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Maintenances.Holidays.HolidayViewModel
+
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+<div class="content-container">
+    <div class="container bg-white rounded shadow py-4" style="width: 98% !important;">
+
+        <div class="container pb-3">
+            <button class="text-white btn btn-success" data-bs-toggle="modal" data-bs-target="#holidayModal"><i class="bi bi-plus-circle"></i> Añadir feriado</button>
+        </div>
+
+        <partial name="_CreateHolidayModal" />
+
+        <div class="content-tables">
+            <div class="table-responsive">
+                <table class="table data-table">
+                    <thead>
+                        <tr>
+                            <th class="text-start" scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th class="text-start" scope="col">Fecha</th>
+                            <th scope="col">Pago obligatorio</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var holiday in Model.Holidays)
+                        {
+                            <tr>
+                                <td class="text-start">@holiday.HolidayId</td>
+                                <td>@holiday.HolidayDescription</td>
+                                <td>
+                                    <form data-url="@Url.Action("Edit", "Holiday")" class="update-form" method="post" onsubmit="return false">
+                                        <input type="hidden" asp-for="UpdateHolidayObj.HolidayId" value="@holiday.HolidayId" />
+                                        <input type="hidden" asp-for="UpdateHolidayObj.IsMandatory" value="@holiday.MandatoryPayment">
+                                        <input type="date" class="form-control" asp-for="UpdateHolidayObj.Date" value="@holiday.HolidayDate.ToString("yyyy-MM-dd")">
+                                    </form>
+                                </td>
+                                <td>
+                                    @if(holiday.MandatoryPayment){
+                                        <form data-url="@Url.Action("Edit", "Holiday")" class="update-form" method="post" onsubmit="return false">
+                                            <input type="hidden" asp-for="UpdateHolidayObj.HolidayId" value="@holiday.HolidayId" />
+                                            <input type="hidden" asp-for="UpdateHolidayObj.Date" value="@holiday.HolidayDate" />
+                                            <input class="form-check-input" type="checkbox" asp-for="UpdateHolidayObj.IsMandatory" value="true" checked>
+                                        </form>
+                                    }else{
+                                        <form data-url="@Url.Action("Edit", "Holiday")" class="update-form" method="post" onsubmit="return false">
+                                            <input type="hidden" asp-for="UpdateHolidayObj.HolidayId" value="@holiday.HolidayId" />
+                                            <input type="hidden" asp-for="UpdateHolidayObj.Date" value="@holiday.HolidayDate" />
+                                            <input class="form-check-input" type="checkbox" asp-for="UpdateHolidayObj.IsMandatory" value="false">
+                                        </form>
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Dospinos.HRMS.Content/js/maintenances/maintenances.js"></script>
+}

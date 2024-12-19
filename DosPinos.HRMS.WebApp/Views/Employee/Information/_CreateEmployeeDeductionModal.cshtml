@@ -1,0 +1,35 @@
+﻿@model DosPinos.HRMS.WebApp.Models.Employees.EditEmployeeViewModel;
+
+<div class="modal fade" id="deductionModal" tabindex="-1" aria-labelledby="deductionModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <form asp-action="Create" asp-controller="EmployeeDeduction" class="needs-validation" novalidate enctype="multipart/form-data">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Nueva deducción</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" asp-for="UpdateEmployeeObj.DeductionObj.EmployeeId" value="@Model.EmployeeObj.EmployeeId" />
+                    <input type="hidden" asp-for="EmployeeObj.Identification" value="@Model.EmployeeObj.Identification" />
+
+                    <div class="col-8">
+                        <div class="form-floating">
+                            <input class="m-0 form-control" type="number" asp-for="UpdateEmployeeObj.DeductionObj.DeductionPercentage" step="0.01" min="0" max="50" required />
+                            <label class="m-0 form-label" asp-for="UpdateEmployeeObj.DeductionObj.DeductionPercentage" class="form-label">Porcentaje</label>
+                        </div>
+                    </div>
+
+                    <div class="col-8 my-3">
+                        <label class="form-label" asp-for="UpdateEmployeeObj.DeductionObj.DeductionId">Deducción</label>
+                        <select class="form-select" asp-for="UpdateEmployeeObj.DeductionObj.DeductionId" asp-items="@Model.Deductions" readonly>
+                            <option selected disabled value="">Seleccione una opción</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Crear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

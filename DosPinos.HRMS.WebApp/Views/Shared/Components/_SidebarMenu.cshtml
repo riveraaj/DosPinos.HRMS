@@ -33,7 +33,7 @@
 
         <li class="sidebar-item">
             <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-            data-bs-target="#assistance" aria-expanded="false" aria-controls="assistance">
+               data-bs-target="#assistance" aria-expanded="false" aria-controls="assistance">
                 <i class="bi bi-clock"></i>
                 <span>Asistencia</span>
             </a>
@@ -48,11 +48,11 @@
                     </li>
                 }
             </ul>
-        </li>    
+        </li>
 
         <li class="sidebar-item">
-            <a  href="#" class ="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-            data-bs-target="#freeTime" aria-expanded="false" aria-controls="freeTimes">
+            <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+               data-bs-target="#freeTime" aria-expanded="false" aria-controls="freeTimes">
                 <i class="bi bi-airplane"></i>
                 <span>Tiempo libre</span>
             </a>
@@ -65,7 +65,7 @@
                     <li class="sidebar-item">
                         <a asp-action="ManageApplication" asp-controller="FreeTime" class="sidebar-link">Gestión de solicitudes</a>
                     </li>
-                }               
+                }
             </ul>
         </li>
 
@@ -79,7 +79,7 @@
             </li>
         }
 
-        @if (RoleHelper.HasAnyRole(User, (int)Roles.Administrator, (int)Roles.HumanResources, (int) Roles.HumanResourcesAdministrator))
+        @if (RoleHelper.HasAnyRole(User, (int)Roles.Administrator, (int)Roles.HumanResources, (int)Roles.HumanResourcesAdministrator))
         {
             <li class="sidebar-item">
                 <a asp-action="Index" asp-controller="Liquidation" class="sidebar-link">
@@ -99,25 +99,50 @@
             </li>
         }
 
-        @if (RoleHelper.HasAnyRole(User, (int)Roles.Administrator, (int)Roles.HumanResourcesAdministrator))
-        {
-            <li class="sidebar-item">
-                <a asp-action="Index" asp-controller="Payroll" class="sidebar-link">
-                    <i class="bi bi-coin"></i>
-                    <span>Nómina</span>
-                </a>
-            </li>
-        }
+
+        <li class="sidebar-item">
+            <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
+               data-bs-target="#payrolls" aria-expanded="false" aria-controls="payrolls">
+                <i class="bi bi-coin"></i>
+                <span>Nómina</span>
+            </a>
+            <ul id="payrolls" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                @if (RoleHelper.HasAnyRole(User, (int)Roles.Administrator, (int)Roles.HumanResourcesAdministrator))
+                {
+                    <li class="sidebar-item">
+                        <a asp-action="Index" asp-controller="Payroll" class="sidebar-link text-wrap">Nómina actual</a>
+                    </li>
+                }
+                <li class="sidebar-item">
+                    <a asp-action="Index" asp-controller="PayrollReport" class="sidebar-link text-wrap">Reporte</a>
+                </li>
+            </ul>
+        </li>
 
         @if (RoleHelper.HasAnyRole(User, (int)Roles.Administrator, (int)Roles.SystemAdministrator))
         {
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                data-bs-target="#maintenances" aria-expanded="false" aria-controls="maintenances">
+                   data-bs-target="#maintenances" aria-expanded="false" aria-controls="maintenances">
                     <i class="bi bi-tools"></i>
                     <span>Mantenimiento</span>
                 </a>
-                <ul id="maintenance" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                <ul id="maintenances" class="sidebar-dropdown list-unstyled collapse" data-bs-parent="#sidebar">
+                    <li class="sidebar-item">
+                        <a asp-action="Index" asp-controller="Deduction" class="sidebar-link text-wrap">Deducciones</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a asp-action="Index" asp-controller="Holiday" class="sidebar-link text-wrap">Feriados</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a asp-action="Index" asp-controller="IncomeTax" class="sidebar-link text-wrap">Impuestos</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a asp-action="Index" asp-controller="SalaryCategory" class="sidebar-link text-wrap">Categoría salarial</a>
+                    </li>
+                    <li class="sidebar-item">
+                        <a asp-action="Index" asp-controller="Machine" class="sidebar-link text-wrap">Máquinas</a>
+                    </li>
                 </ul>
             </li>
         }
@@ -126,7 +151,7 @@
         {
             <li class="sidebar-item">
                 <a href="#" class="sidebar-link collapsed has-dropdown" data-bs-toggle="collapse"
-                data-bs-target="#reports" aria-expanded="false" aria-controls="reports">
+                   data-bs-target="#reports" aria-expanded="false" aria-controls="reports">
                     <i class="bi bi-graph-up"></i>
                     <span>Reportes</span>
                 </a>

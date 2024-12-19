@@ -29,6 +29,8 @@ namespace DosPinos.HRMS.BusinessLogic.Services
 
             try
             {
+                if (deductionDTO.DeductionPercentage > 20) return this.CustomWarning("El porcentaje no debe de ser mayor al 90%.");
+
                 response = await _repository.UpdateAsync(deductionDTO);
             }
             catch (Exception exception)

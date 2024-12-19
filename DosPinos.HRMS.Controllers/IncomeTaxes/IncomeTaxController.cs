@@ -10,8 +10,8 @@ namespace DosPinos.HRMS.Controllers.IncomeTaxes
         public async Task<IOperationResponseVO> GetAllTableAsync(IEntityDTO entity)
             => await _service.GetAllTableAsync(entity);
 
-        public async Task<IOperationResponseVO> CreateASync(CreateIncomeTaxDTO incomeTaxDTO)
-            => await _service.CreateASync(incomeTaxDTO);
+        public async Task<IOperationResponseVO> CreateAsync(CreateIncomeTaxDTO incomeTaxDTO)
+            => await _service.CreateAsync(incomeTaxDTO);
 
         public async Task<IOperationResponseVO> UpdateAsync(UpdateIncomeTaxDTO incomeTaxDTO)
             => await _service.UpdateAsync(incomeTaxDTO);

@@ -39,7 +39,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
-        public async Task<IOperationResponseVO> DeleteAsync(byte deductionId, IEntityDTO entity)
+        public async Task<IOperationResponseVO> DeleteAsync(int deductionId, IEntityDTO entity)
         {
             IOperationResponseVO response;
 

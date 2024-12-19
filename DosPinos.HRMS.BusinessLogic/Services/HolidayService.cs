@@ -7,7 +7,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
     {
         private readonly IHolidayRepository _repository = repository;
 
-        public async Task<IOperationResponseVO> CreateASync(CreateHolidayDTO holidayDTO)
+        public async Task<IOperationResponseVO> CreateAsync(CreateHolidayDTO holidayDTO)
         {
             IOperationResponseVO response;
 

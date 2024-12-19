@@ -12,9 +12,9 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees.Catalogs
         {
             Dictionary<string, object> parameters = new()
             {
-                {"@salaryCategoryDescription", salaryCategoryDTO},
-                {"@salaryCategoryRange", salaryCategoryDTO},
-                {"@incomeTaxId", salaryCategoryDTO},
+                {"@salaryCategoryDescription", salaryCategoryDTO.Description},
+                {"@salaryCategoryRange", salaryCategoryDTO.Range},
+                {"@incomeTaxId", salaryCategoryDTO.IncomeTaxId},
             };
 
             return await _invokeSP.ExecuteAsync("[humanresources].usp_CreateSalaryCategory", parameters, false);

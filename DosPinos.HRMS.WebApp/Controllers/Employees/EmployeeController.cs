@@ -1,6 +1,7 @@
 ﻿using DosPinos.HRMS.Controllers.Commons.Notifications;
 using DosPinos.HRMS.Controllers.Employees;
 using DosPinos.HRMS.Controllers.Employees.Catalogs.Cantons;
+using DosPinos.HRMS.Controllers.Employees.Catalogs.Deductions;
 using DosPinos.HRMS.Controllers.Employees.Catalogs.Districts;
 using DosPinos.HRMS.Controllers.Employees.Catalogs.Genders;
 using DosPinos.HRMS.Controllers.Employees.Catalogs.HiringsType;
@@ -12,10 +13,12 @@ using DosPinos.HRMS.Controllers.Employees.Catalogs.Provinces;
 using DosPinos.HRMS.Controllers.Employees.Catalogs.SalaryCategories;
 using DosPinos.HRMS.Entities.DTOs.Commons.Base;
 using DosPinos.HRMS.Entities.DTOs.Employees;
+using DosPinos.HRMS.Entities.DTOs.Employees.Deductions;
 using DosPinos.HRMS.Entities.Enums.Commons;
 using DosPinos.HRMS.Entities.Helpers;
 using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 using DosPinos.HRMS.Entities.Interfaces.Employees;
+using DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
 using DosPinos.HRMS.Entities.ValueObjects;
 using DosPinos.HRMS.WebApp.Models.Employees;
 using Microsoft.AspNetCore.Authorization;
@@ -39,7 +42,9 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
                                         GetAllJobTitleController getAllJobTitleController,
                                         GetAllPhoneTypeController getAllPhoneTypeController,
                                         GetAllHiringTypeController getAllHiringTypeController,
-                                        HRMS.Controllers.Employees.EmployeeController employeeController) : BaseEmployeeController(getAllNotificationController,
+                                        HRMS.Controllers.Employees.EmployeeController employeeController,
+                                        GetAllDeductionController deductionsIP,
+                                        HRMS.Controllers.Employees.EmployeeDeductionController deductionController) : BaseEmployeeController(getAllNotificationController,
                                                                                                                                    updateNotificationController,
                                                                                                                                    getAllDistrictController,
                                                                                                                                    getAllCantonController,
@@ -55,6 +60,8 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
     {
         private readonly CreateEmployeeController _createController = createController;
         private readonly GetAllEmployeeController _getAllController = getAllController;
+        private readonly GetAllDeductionController _deductionsIP = deductionsIP;
+        private readonly HRMS.Controllers.Employees.EmployeeDeductionController _deductionController = deductionController;
 
         [Route("empleados")]
         public async Task<IActionResult> Index()
@@ -117,9 +124,15 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
         [Route("empleados/editar-empleado")]
         public async Task<IActionResult> Edit(string id)
         {
-            EditEmployeeViewModel model = await this.PopulateEmployee<EditEmployeeViewModel>(new EntityDTO { UserId = ActualUser });
+            EditEmployeeViewModel model = await this.PopulateEmployee<EditEmployeeViewModel>(Entity);
 
-            IOperationResponseVO response = await this._employeeController.GetAsync(Convert.ToInt32(CryptographyHelper.Decrypt(id)), new EntityDTO() { UserId = ActualUser });
+            IOperationResponseVO response = await _deductionsIP.GetAllAsync(Entity);
+            model.DeductionList = response.Content as List<IGetAllDeductionDTO>;
+
+            response = await _deductionController.GetAllAsync(ActualEmployee, Entity);
+            model.EmployeeDeductions = response.Content as List<GetAllEmployeeDeductionDTO>;
+
+            response = await this._employeeController.GetAsync(Convert.ToInt32(CryptographyHelper.Decrypt(id)), Entity);
 
             if (response.Status != ResponseStatus.Success)
             {
@@ -147,11 +160,12 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
 
             IOperationResponseVO response = await _employeeController.UpdateAsync(model.UpdateEmployeeObj.EmployeeObj);
 
-            TempData["alert"] = JsonConvert.SerializeObject(response);
-
-            string id = CryptographyHelper.Encrypt(model.EmployeeObj.Identification.ToString());
-
-            return RedirectToAction("Edit", "Employee", new { id });
+            return Json(new
+            {
+                success = response.Status == ResponseStatus.Success,
+                message = response.Message.FirstOrDefault(),
+                status = response.Status.ToString()
+            });
         }
     }
 }

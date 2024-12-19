@@ -50,6 +50,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>LiquidationLabel.resx</DependentUpon>
     </Compile>
+    <Compile Update="Resources\Maintenances\MaintenanceLabel.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaintenanceLabel.resx</DependentUpon>
+    </Compile>
     <Compile Update="Resources\OEEs\OEELabel.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -97,6 +102,10 @@
     <EmbeddedResource Update="Resources\Liquidations\LiquidationLabel.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LiquidationLabel.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Maintenances\MaintenanceLabel.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaintenanceLabel.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Update="Resources\OEEs\OEELabel.resx">
       <Generator>ResXFileCodeGenerator</Generator>

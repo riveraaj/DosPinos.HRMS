@@ -17,7 +17,23 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             }
             catch (Exception exception)
             {
-                response = await this.HandlerLog(Module.Payroll, ActionCategory.Create, exception, entity);
+                response = await this.HandlerLog(Module.Payroll, ActionCategory.GetAll, exception, entity);
+            }
+
+            return response;
+        }
+
+        public async Task<IOperationResponseVO> GetAllEmployeeAsync(int employeeId, IEntityDTO entity)
+        {
+            IOperationResponseVO response = new OperationResponseVO();
+
+            try
+            {
+                response.Content = await _payrollRepository.GetAllAsync(employeeId);
+            }
+            catch (Exception exception)
+            {
+                response = await this.HandlerLog(Module.Payroll, ActionCategory.GetAll, exception, entity);
             }
 
             return response;

@@ -38,7 +38,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
-        public async Task<IOperationResponseVO> CreateASync(CreateMachineDTO machineDTO)
+        public async Task<IOperationResponseVO> CreateAsync(CreateMachineDTO machineDTO)
         {
             IOperationResponseVO response;
 
