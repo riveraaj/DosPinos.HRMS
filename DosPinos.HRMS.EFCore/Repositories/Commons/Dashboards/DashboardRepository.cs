@@ -37,12 +37,12 @@ namespace DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards
 
         public async Task<GetAllEmployeesLicenseDTO> GetAllEmployeesLicenseAsync() => new()
         {
-            Total = await _context.Licenses.CountAsync(l => l.DateEnd >= DateOnly.FromDateTime(DateTime.Today) && l.ApprovalStatus.Equals('A'))
+            Total = await _context.Licenses.CountAsync(l => l.DateEnd >= DateOnly.FromDateTime(DateTime.Today) && l.ApprovalStatus.Equals("A"))
         };
 
         public async Task<IEnumerable<GetAllEmployeesVacationDTO>> GetAllEmployeesVacationAsync()
             => await _context.Vacations.Include(v => v.Employee)
-                                       .Where(v => v.DateEnd >= DateOnly.FromDateTime(DateTime.Today) && v.ApprovalStatus.Equals('A'))
+                                       .Where(v => v.DateEnd >= DateOnly.FromDateTime(DateTime.Today) && v.ApprovalStatus.Equals("A"))
                                        .Select(v => new GetAllEmployeesVacationDTO()
                                        {
                                            FullName = $"{v.Employee.FirstName} {v.Employee.FirstLastName} {v.Employee.SecondLastName}",
@@ -52,6 +52,6 @@ namespace DosPinos.HRMS.EFCore.Repositories.Commons.Dashboards
         private IQueryable<Vacation> GetAllCloseVacationsQuery(DateOnly today)
             => _context.Vacations
                            .Include(v => v.Employee)
-                           .Where(v => v.DateEnd >= today && v.DateStart <= today && v.ApprovalStatus.Equals('A'));
+                           .Where(v => v.DateEnd >= today && v.DateStart <= today && v.ApprovalStatus.Equals("A"));
     }
 }
