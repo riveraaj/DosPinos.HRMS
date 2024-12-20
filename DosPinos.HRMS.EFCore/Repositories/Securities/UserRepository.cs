@@ -1,5 +1,4 @@
-﻿using DosPinos.HRMS.BusinessObjects.Interfaces.Securities;
-using DosPinos.HRMS.EFCore.Mappers.Securities;
+﻿using DosPinos.HRMS.EFCore.Mappers.Securities;
 using DosPinos.HRMS.Entities.DTOs.Securities;
 using DosPinos.HRMS.Entities.Interfaces.Securities;
 
@@ -14,7 +13,8 @@ namespace DosPinos.HRMS.EFCore.Repositories.Securities
         public async Task<ILoginUserDTO> Get(string username)
         {
             User user = await _context.Users.Include(x => x.Employee).FirstOrDefaultAsync(x => x.Username == username);
-            int userManagerId = await _context.Users.Where(x => x.EmployeeId == user.Employee.ManagerId)
+            int userManagerId = await _context.Users.Include(x => x.Employee)
+                                                    .Where(x => x.Employee.EmployeeId == user.Employee.ManagerId)
                                                     .Select(x => x.UserId)
                                                     .FirstOrDefaultAsync();
 
