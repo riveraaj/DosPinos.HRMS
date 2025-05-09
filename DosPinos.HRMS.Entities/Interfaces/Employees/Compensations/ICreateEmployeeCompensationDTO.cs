@@ -1,7 +1,9 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Compensations
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Compensations;
+
+/// <summary>
+/// DTO for creating an employee compensation.
+/// </summary>
+public interface ICreateEmployeeCompensationDTO : IEntityDTO
 {
-    public interface ICreateEmployeeCompensationDTO
-    {
-        byte SalaryCategoryId { get; set; }
-    }
+    byte SalaryCategoryId { get; }
 }

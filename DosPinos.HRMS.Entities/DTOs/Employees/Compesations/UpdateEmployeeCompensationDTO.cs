@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Compesations
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Compesations;
+
+/// <summary>
+/// DTO for updating employee compensation.
+/// </summary>
+public class UpdateEmployeeCompensationDTO(int employeeId, int salaryCategoryId) : EntityDTO, IUpdateEmployeeCompensationDTO
 {
-    public class UpdateEmployeeCompensationDTO : EntityDTO, IEntityDTO
-    {
-        public int EmployeeId { get; set; }
-        public int SalaryCategoryId { get; set; }
-    }
+    public int EmployeeId => employeeId;
+    public int SalaryCategoryId => salaryCategoryId;
 }
