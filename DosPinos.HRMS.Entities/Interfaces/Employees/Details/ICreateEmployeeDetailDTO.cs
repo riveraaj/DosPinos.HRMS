@@ -3,7 +3,7 @@
 /// <summary>
 /// Interface for creating an employee detail.
 /// </summary>
-public interface ICreateEmployeeDetailDTO
+public interface ICreateEmployeeDetailDTO : IEntityDTO
 {
     DateOnly DateBirth { get; }
     int Children { get; }

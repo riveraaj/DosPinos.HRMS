@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Phones
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Phones;
+
+/// <summary>
+/// Interface for creating a phone number.
+/// </summary>
+public interface ICreatePhoneDTO : IEntityDTO
 {
-    public interface ICreatePhoneDTO
-    {
-        string PhoneNumber { get; set; }
-        byte PhoneTypeId { get; set; }
-    }
+    string Number { get; }
+    byte PhoneTypeId { get; }
 }

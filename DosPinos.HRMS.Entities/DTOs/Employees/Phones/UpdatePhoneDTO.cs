@@ -1,9 +1,13 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Phones
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Phones;
+
+/// <summary>
+/// DTO for updating a phone number.
+/// </summary>
+public class UpdatePhoneDTO(int employeeId,
+                            string number,
+                            int phoneTypeId) : EntityDTO, IUpdatePhoneDTO
 {
-    public class UpdatePhoneDTO : EntityDTO, IEntityDTO
-    {
-        public int EmployeeId { get; set; }
-        public string Number { get; set; }
-        public int PhoneTypeId { get; set; }
-    }
+    public int EmployeeId => employeeId;
+    public string Number => number;
+    public int PhoneTypeId => phoneTypeId;
 }
