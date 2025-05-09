@@ -1,9 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Deductions
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Deductions;
+
+/// <summary>
+/// DTO for creating an employee deduction.
+/// </summary>
+public interface ICreateEmployeeDeductionDTO : IEntityDTO
 {
-    public interface ICreateEmployeeDeductionDTO
-    {
-        decimal DeductionAmount { get; set; }
-        byte DeductionId { get; set; }
-        int EmployeeId { get; set; }
-    }
+    int EmployeeId { get; }
+    byte Id { get; }
+    decimal Percentage { get; }
 }

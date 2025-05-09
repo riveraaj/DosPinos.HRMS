@@ -10,7 +10,7 @@ namespace DosPinos.HRMS.Controllers.Employees
         public async Task<IOperationResponseVO> GetAllAsync(int employeeId, IEntityDTO entity)
             => await _service.GetAllAsync(employeeId, entity);
 
-        public async Task<IOperationResponseVO> CreateAsync(UpdateEmployeeDeductionDTO deductionDTO)
+        public async Task<IOperationResponseVO> CreateAsync(CreateEmployeeDeductionDTO deductionDTO)
             => await _service.CreateASync(deductionDTO);
 
         public async Task<IOperationResponseVO> DeleteAsync(int deductionID, IEntityDTO entity)

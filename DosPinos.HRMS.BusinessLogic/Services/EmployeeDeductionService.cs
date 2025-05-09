@@ -23,7 +23,7 @@ namespace DosPinos.HRMS.BusinessLogic.Services
             return response;
         }
 
-        public async Task<IOperationResponseVO> CreateASync(UpdateEmployeeDeductionDTO deductionDTO)
+        public async Task<IOperationResponseVO> CreateASync(CreateEmployeeDeductionDTO deductionDTO)
         {
             IOperationResponseVO response;
 

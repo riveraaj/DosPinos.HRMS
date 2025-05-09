@@ -11,6 +11,7 @@ global using DosPinos.HRMS.Entities.Interfaces.Deductions;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Addresses;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Compensations;
+global using DosPinos.HRMS.Entities.Interfaces.Employees.Deductions;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Details;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Phones;
 global using DosPinos.HRMS.Entities.Interfaces.Licenses.Catalogs;

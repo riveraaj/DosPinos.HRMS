@@ -9,7 +9,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
         private readonly DospinosdbContext _context = context;
         private readonly IInvokeStoredProcedure _invokeSP = invokeSP;
 
-        public async Task<IOperationResponseVO> CreateAsync(UpdateEmployeeDeductionDTO deductionDTO)
+        public async Task<IOperationResponseVO> CreateAsync(CreateEmployeeDeductionDTO deductionDTO)
         {
             Dictionary<string, object> parameters = new()
             {

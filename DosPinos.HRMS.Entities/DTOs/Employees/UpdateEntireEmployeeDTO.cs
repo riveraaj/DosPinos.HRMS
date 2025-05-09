@@ -13,6 +13,6 @@ namespace DosPinos.HRMS.Entities.DTOs.Employees
         public UpdateAddressDTO AddressObj { get; set; }
         public UpdateEmployeeDetailDTO DetailObj { get; set; }
         public UpdateEmployeeCompensationDTO CompensationObj { get; set; }
-        public UpdateEmployeeDeductionDTO DeductionObj { get; set; }
+        public CreateEmployeeDeductionDTO DeductionObj { get; set; }
     }
 }
