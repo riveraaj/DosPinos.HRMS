@@ -1,8 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Images
+﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Images;
+
+/// <summary>
+/// DTO for save image data.
+/// </summary>
+public class ImageDataDTO(byte[] data,
+                          string name) : EntityDTO, IImageDataDTO
 {
-    public class ImageDataDTO
-    {
-        public byte[] Data { get; set; }
-        public string Name { get; set; }
-    }
+    public byte[] Data => data;
+    public string Name => name;
 }
