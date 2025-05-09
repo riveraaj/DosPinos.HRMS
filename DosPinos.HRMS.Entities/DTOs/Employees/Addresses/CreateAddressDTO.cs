@@ -1,8 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Addresses
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Addresses;
+
+/// <summary>
+/// DTO for create an address
+/// </summary>
+public class CreateAddressDTO(string address,
+                              short districtId) : EntityDTO, ICreateAddressDTO
 {
-    public class CreateAddressDTO : ICreateAddressDTO
-    {
-        public string Address { get; set; }
-        public short DistrictId { get; set; }
-    }
+    public string Address => address;
+    public short DistrictId => districtId;
 }

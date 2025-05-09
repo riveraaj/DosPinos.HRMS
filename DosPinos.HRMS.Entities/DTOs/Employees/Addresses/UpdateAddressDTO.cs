@@ -1,9 +1,13 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Addresses
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Addresses;
+
+/// <summary>
+/// DTO to update an address.   
+/// </summary>
+public class UpdateAddressDTO(int employeeId,
+                              string address,
+                              int districtId) : EntityDTO, IUpdateAddressDTO
 {
-    public class UpdateAddressDTO : EntityDTO, IEntityDTO
-    {
-        public int EmployeeId { get; set; }
-        public string Address { get; set; }
-        public int DistrictId { get; set; }
-    }
+    public int EmployeeId => employeeId;
+    public string Address => address;
+    public int DistrictId => districtId;
 }

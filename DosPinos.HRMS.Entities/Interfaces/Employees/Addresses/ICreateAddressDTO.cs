@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Addresses
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Addresses;
+
+/// <summary>
+/// Interface for create an address
+/// </summary>
+public interface ICreateAddressDTO : IEntityDTO
 {
-    public interface ICreateAddressDTO
-    {
-        string Address { get; set; }
-        short DistrictId { get; set; }
-    }
+    string Address { get; }
+    short DistrictId { get; }
 }
