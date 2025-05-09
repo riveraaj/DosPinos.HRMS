@@ -1,4 +1,5 @@
 ﻿global using DosPinos.HRMS.Entities.DTOs.Commons.Base;
+global using DosPinos.HRMS.Entities.Enums.Commons;
 global using DosPinos.HRMS.Entities.Interfaces.ChristmasBonuses;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Base;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
@@ -12,3 +13,4 @@ global using DosPinos.HRMS.Entities.Interfaces.Overtimes.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.Securities;
 global using DosPinos.HRMS.Entities.Interfaces.Securities.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.WorkingDays.Catalogs;
+global using DosPinos.HRMS.Entities.Resources.Commons;
