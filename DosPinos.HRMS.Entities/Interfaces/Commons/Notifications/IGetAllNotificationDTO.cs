@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Commons.Notifications
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
+
+/// <summary>
+/// Interface for getting all notification DTO.
+/// </summary>
+public interface IGetAllNotificationDTO : IEntityDTO
 {
-    public interface IGetAllNotificationDTO : IEntityDTO
-    {
-        int NotificationId { get; set; }
-        string Message { get; set; }
-    }
+    int Id { get; }
+    string Message { get; }
 }

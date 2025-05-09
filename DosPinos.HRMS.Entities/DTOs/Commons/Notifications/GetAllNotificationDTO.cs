@@ -1,10 +1,10 @@
-﻿using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
+﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Notifications;
 
-namespace DosPinos.HRMS.Entities.DTOs.Commons.Notifications
+/// <summary>
+/// DTO for getting all notifications.
+/// </summary>
+public class GetAllNotificationDTO(int id, string message) : EntityDTO, IGetAllNotificationDTO
 {
-    public class GetAllNotificationDTO : EntityDTO, IGetAllNotificationDTO
-    {
-        public int NotificationId { get; set; }
-        public string Message { get; set; }
-    }
+    public int Id => id;
+    public string Message => message;
 }

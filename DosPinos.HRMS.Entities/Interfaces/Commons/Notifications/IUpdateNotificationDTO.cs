@@ -1,10 +1,12 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Commons.Notifications
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
+
+/// <summary>
+/// Interface for updating notification DTO.
+/// </summary>
+public interface IUpdateNotificationDTO
 {
-    public interface IUpdateNotificationDTO
-    {
-        int NotificationId { get; set; }
-        bool IsRead { get; }
-        string ControllerOrigin { get; set; }
-        string ActionOrigin { get; set; }
-    }
+    int Id { get; }
+    bool IsRead { get; }
+    string ControllerOrigin { get; }
+    string ActionOrigin { get; }
 }
