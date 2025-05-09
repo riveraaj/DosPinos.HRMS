@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Deductions
+﻿namespace DosPinos.HRMS.Entities.DTOs.Deductions;
+
+/// <summary>
+/// DTO for updating a deduction.
+/// </summary>
+public class UpdateDeductionDTO(byte id, decimal percentage) : EntityDTO, IUpdateDeductionDTO
 {
-    public class UpdateDeductionDTO : EntityDTO, IEntityDTO
-    {
-        public byte DeductionId { get; set; }
-        public decimal DeductionPercentage { get; set; }
-    }
+    public byte Id => id;
+    public decimal Percentage => percentage;
 }

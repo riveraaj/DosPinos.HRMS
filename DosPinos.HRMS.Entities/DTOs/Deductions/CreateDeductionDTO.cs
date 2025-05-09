@@ -1,7 +1,9 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Deductions
+﻿namespace DosPinos.HRMS.Entities.DTOs.Deductions;
+
+/// <summary>
+/// DTO for creating a deduction.
+/// </summary>
+public class CreateDeductionDTO(string description) : EntityDTO, ICreateDeductionDTO
 {
-    public class CreateDeductionDTO : EntityDTO, IEntityDTO
-    {
-        public string Description { get; set; }
-    }
+    public string Description => description;
 }
