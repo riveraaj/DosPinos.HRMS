@@ -1,12 +1,15 @@
-﻿using DosPinos.HRMS.Entities.Enums.FreeTimes;
+﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes;
 
-namespace DosPinos.HRMS.Entities.DTOs.Commons.FreeTimes
+/// <summary>
+/// DTO for evaluate applications 
+/// like: vacation, licenses & permissions.
+/// </summary>
+public class EvaluateApplicationDTO(int id, int employeeId,
+                                    bool isApproved,
+                                    ApplicationCode code) : EntityDTO, IEvaluateApplicationDTO
 {
-    public class EvaluateApplicationDTO : EntityDTO, IEntityDTO
-    {
-        public int ApplicantId { get; set; }
-        public int EmployeeId { get; set; }
-        public bool IsApproved { get; set; }
-        public ApplicationCode Code { get; set; }
-    }
+    public int Id => id;
+    public int EmployeeId => employeeId;
+    public bool IsApproved => isApproved;
+    public ApplicationCode Code => code;
 }
