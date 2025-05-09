@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs;
+
+/// <summary>
+/// DTO for getting all job titles.
+/// </summary>
+public class GetAllJobTitleDTO(int id, string description) : EntityDTO, IGetAllJobTitleDTO
 {
-    public class GetAllJobTitleDTO : EntityDTO, IGetAllJobTitleDTO
-    {
-        public int JobTitleId { get; set; }
-        public string JobTitleDescription { get; set; }
-    }
+    public int Id => id;
+    public string Description => description;
 }

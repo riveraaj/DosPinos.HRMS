@@ -1,9 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
+
+/// <summary>
+/// Interface for retrieving all salary categories.
+/// </summary>
+public interface IGetAllSalaryCategoryDTO : IEntityDTO
 {
-    public interface IGetAllSalaryCategoryDTO : IEntityDTO
-    {
-        int SalaryCategoryId { get; set; }
-        string SalaryCategoryDescription { get; set; }
-        decimal SalaryCategoryRange { get; set; }
-    }
+    int Id { get; }
+    string Description { get; }
+    decimal Range { get; }
 }

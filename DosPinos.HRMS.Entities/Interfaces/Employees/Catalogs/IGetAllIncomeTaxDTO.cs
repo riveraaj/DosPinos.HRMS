@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
+
+/// <summary>
+/// Interface for retrieving all income tax.
+/// </summary>
+public interface IGetAllIncomeTaxDTO : IEntityDTO
 {
-    public interface IGetAllIncomeTaxDTO : IEntityDTO
-    {
-        int IncomeTaxId { get; set; }
-        decimal IncomeTaxPercentage { get; set; }
-    }
+    int Id { get; }
+    decimal Percentage { get; }
 }

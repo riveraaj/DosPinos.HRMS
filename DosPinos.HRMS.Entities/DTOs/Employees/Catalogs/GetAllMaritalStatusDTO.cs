@@ -1,8 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs;
+
+/// <summary>
+/// DTO for retrieving all marital status.
+/// </summary>
+public class GetAllMaritalStatusDTO(int id,
+                                    string description) : EntityDTO, IGetAllMaritalStatusDTO
 {
-    public class GetAllMaritalStatusDTO : EntityDTO, IGetAllMaritalStatusDTO
-    {
-        public int MaritalStatusId { get; set; }
-        public string MaritalStatusDescription { get; set; }
-    }
+    public int Id => id;
+    public string Description => description;
 }

@@ -1,9 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
+
+/// <summary>
+/// Interface for retrieving all deductions.
+/// </summary>
+public interface IGetAllDeductionDTO : IEntityDTO
 {
-    public interface IGetAllDeductionDTO : IEntityDTO
-    {
-        int DeductionId { get; set; }
-        string DeductionDescription { get; set; }
-        decimal DeductionPercentage { get; set; }
-    }
+    int Id { get; }
+    string Description { get; }
+    decimal Percentage { get; }
 }

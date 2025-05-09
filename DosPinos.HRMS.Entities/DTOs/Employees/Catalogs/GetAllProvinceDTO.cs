@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs;
+
+/// <summary>
+/// DTO for retrieving all provinces.
+/// </summary>
+public class GetAllProvinceDTO(int id, string description) : EntityDTO, IGetAllProvinceDTO
 {
-    public class GetAllProvinceDTO : EntityDTO, IGetAllProvinceDTO
-    {
-        public int ProvinceId { get; set; }
-        public string ProvinceDescription { get; set; }
-    }
+    public int Id => id;
+    public string Description => description;
 }

@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
+
+/// <summary>
+/// Interface for getting all job titles.
+/// </summary>
+public interface IGetAllJobTitleDTO : IEntityDTO
 {
-    public interface IGetAllJobTitleDTO : IEntityDTO
-    {
-        int JobTitleId { get; set; }
-        string JobTitleDescription { get; set; }
-    }
+    int Id { get; }
+    string Description { get; }
 }

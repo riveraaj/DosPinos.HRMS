@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
+
+/// <summary>
+/// Interface for retrieving all provinces.
+/// </summary>
+public interface IGetAllProvinceDTO : IEntityDTO
 {
-    public interface IGetAllProvinceDTO : IEntityDTO
-    {
-        int ProvinceId { get; set; }
-        string ProvinceDescription { get; set; }
-    }
+    int Id { get; }
+    string Description { get; }
 }

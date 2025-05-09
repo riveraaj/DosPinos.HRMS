@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs;
+
+/// <summary>
+/// DTO for retrieving all income tax.
+/// </summary>
+public class GetAllIncomeTaxDTO(int id, decimal percentage) : EntityDTO, IGetAllIncomeTaxDTO
 {
-    public class GetAllIncomeTaxDTO : EntityDTO, IGetAllIncomeTaxDTO
-    {
-        public int IncomeTaxId { get; set; }
-        public decimal IncomeTaxPercentage { get; set; }
-    }
+    public int Id => id;
+    public decimal Percentage => percentage;
 }

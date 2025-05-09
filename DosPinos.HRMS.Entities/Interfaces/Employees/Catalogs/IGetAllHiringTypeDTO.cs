@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
+
+/// <summary>
+/// Interface for getting all hiring types.
+/// </summary>
+public interface IGetAllHiringTypeDTO : IEntityDTO
 {
-    public interface IGetAllHiringTypeDTO : IEntityDTO
-    {
-        int HiringTypeId { get; set; }
-        string HiringTypeDescription { get; set; }
-    }
+    int Id { get; }
+    string Description { get; }
 }

@@ -1,9 +1,12 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs;
+
+/// <summary>
+/// DTO for retrieving all deductions.
+/// </summary>
+public class GetAllDeductionDTO(int id, string description,
+                                decimal percentage) : EntityDTO, IGetAllDeductionDTO
 {
-    public class GetAllDeductionDTO : EntityDTO, IGetAllDeductionDTO
-    {
-        public int DeductionId { get; set; }
-        public string DeductionDescription { get; set; }
-        public decimal DeductionPercentage { get; set; }
-    }
+    public int Id => id;
+    public string Description => description;
+    public decimal Percentage => percentage;
 }

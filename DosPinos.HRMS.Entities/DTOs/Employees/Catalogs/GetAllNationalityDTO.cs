@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs;
+
+/// <summary>
+/// DTO for retrieving all nationalities.
+/// </summary>
+public class GetAllNationalityDTO(int id, string description) : EntityDTO, IGetAllNationalityDTO
 {
-    public class GetAllNationalityDTO : EntityDTO, IGetAllNationalityDTO
-    {
-        public int NationalityId { get; set; }
-        public string NationalityDescription { get; set; }
-    }
+    public int Id => id;
+    public string Description => description;
 }

@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
+
+/// <summary>
+/// Interface for retriving all genders.
+/// </summary>
+public interface IGetAllGenderDTO : IEntityDTO
 {
-    public interface IGetAllGenderDTO : IEntityDTO
-    {
-        int GenderId { get; set; }
-        string GenderDescription { get; set; }
-    }
+    int Id { get; }
+    string Description { get; }
 }

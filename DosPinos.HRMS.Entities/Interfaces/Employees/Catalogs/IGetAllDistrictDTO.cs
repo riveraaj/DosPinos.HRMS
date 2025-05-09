@@ -1,9 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
+
+/// <summary>
+/// Interface for retrieving all districts.
+/// </summary>
+public interface IGetAllDistrictDTO : IEntityDTO
 {
-    public interface IGetAllDistrictDTO : IEntityDTO
-    {
-        int DistrictId { get; set; }
-        string DistrictDescription { get; set; }
-        int CantonId { get; set; }
-    }
+    int Id { get; }
+    string Description { get; }
+    int CantonId { get; }
 }

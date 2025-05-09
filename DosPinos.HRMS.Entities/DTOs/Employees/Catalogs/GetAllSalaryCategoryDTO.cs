@@ -1,9 +1,12 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs;
+
+/// <summary>
+/// DTO for retrieving all salary categories.
+/// </summary>
+public class GetAllSalaryCategoryDTO(int id, string description,
+                                     decimal range) : EntityDTO, IGetAllSalaryCategoryDTO
 {
-    public class GetAllSalaryCategoryDTO : EntityDTO, IGetAllSalaryCategoryDTO
-    {
-        public int SalaryCategoryId { get; set; }
-        public string SalaryCategoryDescription { get; set; }
-        public decimal SalaryCategoryRange { get; set; }
-    }
+    public int Id => id;
+    public string Description => description;
+    public decimal Range => range;
 }

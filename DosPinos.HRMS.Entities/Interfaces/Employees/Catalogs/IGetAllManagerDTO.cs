@@ -1,10 +1,10 @@
 ﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
 
 /// <summary>
-/// Interface for get all phone type.
+/// Interface for retrieving all managers.
 /// </summary>
-public interface IGetAllPhoneTypeDTO : IEntityDTO
+public interface IGetAllManagerDTO : IEntityDTO
 {
     int Id { get; }
-    string Description { get; }
+    string FullName { get; }
 }

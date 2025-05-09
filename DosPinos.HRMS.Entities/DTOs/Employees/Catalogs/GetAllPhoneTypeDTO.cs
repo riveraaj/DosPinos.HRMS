@@ -1,8 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Catalogs;
+
+/// <summary>
+/// DTO for get all phone type.
+/// </summary>
+public class GetAllPhoneTypeDTO(int id,
+                                string description) : EntityDTO, IGetAllPhoneTypeDTO
 {
-    public class GetAllPhoneTypeDTO : EntityDTO, IGetAllPhoneTypeDTO
-    {
-        public int PhoneTypeId { get; set; }
-        public string PhoneTypeDescription { get; set; }
-    }
+    public int Id => id;
+    public string Description => description;
 }
