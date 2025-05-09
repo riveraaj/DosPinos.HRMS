@@ -1,14 +1,23 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Details
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Details;
+
+/// <summary>
+/// DTO for updating employee details.
+/// </summary>
+public class UpdateEmployeeDetailDTO(int employeeId,
+                                     DateOnly dateBirth,
+                                     int children,
+                                     int maritalStatusId,
+                                     int nationalityId,
+                                     int genderId,
+                                     int hiringTypeId,
+                                     int jobTitleId) : EntityDTO, IUpdateEmployeeDetailDTO
 {
-    public class UpdateEmployeeDetailDTO : EntityDTO, IEntityDTO
-    {
-        public int EmployeeId { get; set; }
-        public DateOnly DateBirth { get; set; }
-        public int Children { get; set; }
-        public int MaritalStatusId { get; set; }
-        public int NationalityId { get; set; }
-        public int GenderId { get; set; }
-        public int HiringTypeId { get; set; }
-        public int JobTitleId { get; set; }
-    }
+    public int EmployeeId => employeeId;
+    public DateOnly DateBirth => dateBirth;
+    public int Children => children;
+    public int MaritalStatusId => maritalStatusId;
+    public int NationalityId => nationalityId;
+    public int GenderId => genderId;
+    public int HiringTypeId => hiringTypeId;
+    public int JobTitleId => jobTitleId;
 }

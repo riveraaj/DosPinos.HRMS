@@ -1,15 +1,25 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Details
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees.Details;
+
+/// <summary>
+/// DTO for creating an employee detail.
+/// </summary>
+public class CreateEmployeeDetailDTO(DateOnly dateBirth,
+                                     int children,
+                                     byte maritalStatusId,
+                                     byte nationalityId,
+                                     byte genderId,
+                                     byte hiringTypeId,
+                                     byte jobTitleId,
+                                     string email,
+                                     DateOnly entryDate) : EntityDTO, ICreateEmployeeDetailDTO
 {
-    public class CreateEmployeeDetailDTO : ICreateEmployeeDetailDTO
-    {
-        public DateOnly DateBirth { get; set; }
-        public int Children { get; set; }
-        public byte MaritalStatusId { get; set; }
-        public byte NationalityId { get; set; }
-        public byte GenderId { get; set; }
-        public byte HiringTypeId { get; set; }
-        public byte JobTitleId { get; set; }
-        public string Email { get; set; }
-        public DateOnly EntryDate { get; set; }
-    }
+    public DateOnly DateBirth => dateBirth;
+    public int Children => children;
+    public byte MaritalStatusId => maritalStatusId;
+    public byte NationalityId => nationalityId;
+    public byte GenderId => genderId;
+    public byte HiringTypeId => hiringTypeId;
+    public byte JobTitleId => jobTitleId;
+    public string Email => email;
+    public DateOnly EntryDate => entryDate;
 }
