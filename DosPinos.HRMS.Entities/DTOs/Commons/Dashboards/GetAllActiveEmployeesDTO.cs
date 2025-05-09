@@ -1,7 +1,9 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Dashboards
+﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Dashboards;
+
+/// <summary>
+/// DTO for dashboard to get all active employees.
+/// </summary>
+public class GetAllActiveEmployeesDTO(int total) : EntityDTO, IGetAllActiveEmployeesDTO
 {
-    public class GetAllActiveEmployeesDTO
-    {
-        public int Total { get; set; }
-    }
+    public int Total => total;
 }

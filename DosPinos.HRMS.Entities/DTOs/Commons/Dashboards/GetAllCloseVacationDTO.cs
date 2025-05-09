@@ -1,8 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Dashboards
+﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Dashboards;
+
+/// <summary>
+/// DTO for dashboard to get all person's close vacation.
+/// </summary>
+public class GetAllCloseVacationDTO(string fullName,
+                                    int days) : EntityDTO, IGetAllCloseVacationDTO
 {
-    public class GetAllCloseVacationDTO
-    {
-        public string FullName { get; set; }
-        public int Days { get; set; }
-    }
+    public string FullName => fullName;
+    public int Days => days;
 }

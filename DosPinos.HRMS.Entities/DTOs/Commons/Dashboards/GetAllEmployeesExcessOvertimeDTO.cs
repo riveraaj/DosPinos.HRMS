@@ -1,8 +1,11 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Dashboards
+﻿namespace DosPinos.HRMS.Entities.DTOs.Commons.Dashboards;
+
+/// <summary>
+/// DTO for dashboard to get all employees with excess overtime.
+/// </summary>
+public class GetAllEmployeesExcessOvertimeDTO(string fullName,
+                                              decimal overtime) : EntityDTO, IGetAllEmployeesExcessOvertimeDTO
 {
-    public class GetAllEmployeesExcessOvertimeDTO
-    {
-        public string FullName { get; set; }
-        public decimal Overtime { get; set; }
-    }
+    public string FullName => fullName;
+    public decimal Overtime => overtime;
 }
