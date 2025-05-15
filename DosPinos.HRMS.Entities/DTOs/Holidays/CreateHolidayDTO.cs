@@ -1,9 +1,12 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Holidays
+﻿namespace DosPinos.HRMS.Entities.DTOs.Holidays;
+
+/// <summary>
+/// DTO for creating a holiday.
+/// </summary>
+public class CreateHolidayDTO(string description, DateOnly date,
+                              bool isMandatory) : EntityDTO, ICreateHolidayDTO
 {
-    public class CreateHolidayDTO : EntityDTO, IEntityDTO
-    {
-        public string Description { get; set; }
-        public DateOnly Date { get; set; }
-        public bool IsMandatory { get; set; }
-    }
+    public string Description => description;
+    public DateOnly Date => date;
+    public bool IsMandatory => isMandatory;
 }

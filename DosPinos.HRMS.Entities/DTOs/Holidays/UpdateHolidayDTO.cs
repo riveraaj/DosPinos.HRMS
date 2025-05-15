@@ -1,9 +1,12 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Holidays
+﻿namespace DosPinos.HRMS.Entities.DTOs.Holidays;
+
+/// <summary>
+/// DTO for updating a holiday.
+/// </summary>
+public class UpdateHolidayDTO(int id, DateOnly date,
+                              bool isMandatory) : EntityDTO, IUpdateHolidayDTO
 {
-    public class UpdateHolidayDTO : EntityDTO, IEntityDTO
-    {
-        public int HolidayId { get; set; }
-        public DateOnly Date { get; set; }
-        public bool IsMandatory { get; set; }
-    }
+    public int Id => id;
+    public DateOnly Date => date;
+    public bool IsMandatory => isMandatory;
 }
