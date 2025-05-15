@@ -12,7 +12,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
         private readonly DospinosdbContext _context = context;
         private readonly IInvokeStoredProcedure _invokeSP = invokeSP;
 
-        public async Task<GetEmployeeByIdentifactionDTO> GetAsync(int identifiaction)
+        public async Task<GetEmployeeByIdentificationDTO> GetAsync(int identifiaction)
         {
             Dictionary<string, object> parameters = new()
             {
@@ -21,7 +21,7 @@ namespace DosPinos.HRMS.EFCore.Repositories.Employees
 
             var result = await _invokeSP.ExecuteAsync("[humanresources].usp_GetEmployeeByIdentification", parameters, true);
 
-            GetEmployeeByIdentifactionDTO employee = null;
+            GetEmployeeByIdentificationDTO employee = null;
 
             if (result.Status == ResponseStatus.Error) return null;
 

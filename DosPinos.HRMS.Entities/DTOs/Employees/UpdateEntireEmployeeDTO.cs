@@ -1,18 +1,19 @@
-﻿using DosPinos.HRMS.Entities.DTOs.Employees.Addresses;
-using DosPinos.HRMS.Entities.DTOs.Employees.Compesations;
-using DosPinos.HRMS.Entities.DTOs.Employees.Deductions;
-using DosPinos.HRMS.Entities.DTOs.Employees.Details;
-using DosPinos.HRMS.Entities.DTOs.Employees.Phones;
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees;
 
-namespace DosPinos.HRMS.Entities.DTOs.Employees
+/// <summary>
+/// DTO for updating an entire employee.
+/// </summary>
+public class UpdateEntireEmployeeDTO(IUpdateEmployeeDTO employeeObj,
+                                     IUpdatePhoneDTO phoneObj,
+                                     IUpdateAddressDTO addressObj,
+                                     IUpdateEmployeeDetailDTO detailObj,
+                                     IUpdateEmployeeCompensationDTO compensationObj,
+                                     ICreateEmployeeDeductionDTO deductionObj) : EntityDTO, IUpdateEntireEmployeeDTO
 {
-    public class UpdateEntireEmployeeDTO : EntityDTO, IEntityDTO
-    {
-        public UpdateEmployeeDTO EmployeeObj { get; set; }
-        public UpdatePhoneDTO PhoneObj { get; set; }
-        public UpdateAddressDTO AddressObj { get; set; }
-        public UpdateEmployeeDetailDTO DetailObj { get; set; }
-        public UpdateEmployeeCompensationDTO CompensationObj { get; set; }
-        public CreateEmployeeDeductionDTO DeductionObj { get; set; }
-    }
+    public IUpdateEmployeeDTO EmployeeObj => employeeObj;
+    public IUpdatePhoneDTO PhoneObj => phoneObj;
+    public IUpdateAddressDTO AddressObj => addressObj;
+    public IUpdateEmployeeDetailDTO DetailObj => detailObj;
+    public IUpdateEmployeeCompensationDTO CompensationObj => compensationObj;
+    public ICreateEmployeeDeductionDTO DeductionObj => deductionObj;
 }

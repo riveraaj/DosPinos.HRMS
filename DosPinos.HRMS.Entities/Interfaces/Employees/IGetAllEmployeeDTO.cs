@@ -1,12 +1,14 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees;
+
+/// <summary>
+/// Interface for get all employee
+/// </summary>
+public interface IGetAllEmployeeDTO : IEntityDTO
 {
-    public interface IGetAllEmployeeDTO
-    {
-        string Identification { get; set; }
-        string EmployeeName { get; set; }
-        string JobTitleDescription { get; set; }
-        DateOnly DateEntry { get; set; }
-        string HiringTypeDescription { get; set; }
-        string ManagerName { get; set; }
-    }
+    string Identification { get; }
+    string Fullname { get; }
+    string JobTitle { get; }
+    DateOnly DateEntry { get; }
+    string HiringType { get; }
+    string Manager { get; }
 }

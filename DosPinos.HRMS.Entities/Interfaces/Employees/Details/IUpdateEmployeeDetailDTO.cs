@@ -3,7 +3,7 @@
 /// <summary>
 /// Interface for updating employee details.
 /// </summary>
-internal interface IUpdateEmployeeDetailDTO : IEntityDTO
+public interface IUpdateEmployeeDetailDTO : IEntityDTO
 {
     int EmployeeId { get; }
     DateOnly DateBirth { get; }

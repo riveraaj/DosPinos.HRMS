@@ -1,4 +1,8 @@
 ﻿global using DosPinos.HRMS.Entities.DTOs.Commons.Base;
+global using DosPinos.HRMS.Entities.DTOs.Employees.Addresses;
+global using DosPinos.HRMS.Entities.DTOs.Employees.Compesations;
+global using DosPinos.HRMS.Entities.DTOs.Employees.Details;
+global using DosPinos.HRMS.Entities.DTOs.Employees.Phones;
 global using DosPinos.HRMS.Entities.Enums.Commons;
 global using DosPinos.HRMS.Entities.Enums.FreeTimes;
 global using DosPinos.HRMS.Entities.Interfaces.ChristmasBonuses;
@@ -8,6 +12,7 @@ global using DosPinos.HRMS.Entities.Interfaces.Commons.FreeTimes;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Images;
 global using DosPinos.HRMS.Entities.Interfaces.Commons.Notifications;
 global using DosPinos.HRMS.Entities.Interfaces.Deductions;
+global using DosPinos.HRMS.Entities.Interfaces.Employees;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Addresses;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Catalogs;
 global using DosPinos.HRMS.Entities.Interfaces.Employees.Compensations;

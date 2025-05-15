@@ -22,7 +22,7 @@ namespace DosPinos.HRMS.WebApp.Models.Employees
         }
 
         public string Today { get; set; }
-        public GetEmployeeByIdentifactionDTO EmployeeObj { get; set; }
+        public GetEmployeeByIdentificationDTO EmployeeObj { get; set; }
         public CreateLiquidationDTO LiquidationObj { get; set; }
         public CreateRewardDTO RewardObj { get; set; }
         public UpdateEntireEmployeeDTO UpdateEmployeeObj { get; set; }

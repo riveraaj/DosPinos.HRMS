@@ -1,8 +1,10 @@
-﻿namespace DosPinos.HRMS.Entities.DTOs.Employees
+﻿namespace DosPinos.HRMS.Entities.DTOs.Employees;
+
+/// <summary>
+/// DTO for retrieving all active employees.
+/// </summary>
+public class GetAllActiveEmployeeDTO(int id, string fullName) : EntityDTO, IGetAllActiveEmployeeDTO
 {
-    public class GetAllActiveEmployeeDTO
-    {
-        public int EmployeeId { get; set; }
-        public string FullName { get; set; }
-    }
+    public int Id => id;
+    public string FullName => fullName;
 }

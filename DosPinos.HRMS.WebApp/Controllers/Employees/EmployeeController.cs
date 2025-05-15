@@ -140,7 +140,7 @@ namespace DosPinos.HRMS.WebApp.Controllers.Employees
                 return RedirectToAction("Index");
             }
 
-            model.EmployeeObj = response.Content as GetEmployeeByIdentifactionDTO;
+            model.EmployeeObj = response.Content as GetEmployeeByIdentificationDTO;
 
             if (TempData["alert"] is not null)
             {

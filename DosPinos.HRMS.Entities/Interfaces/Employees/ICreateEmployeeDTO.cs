@@ -1,11 +1,13 @@
-﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees
+﻿namespace DosPinos.HRMS.Entities.Interfaces.Employees;
+
+/// <summary>
+/// Interface for creating an employee.
+/// </summary>
+public interface ICreateEmployeeDTO : IEntityDTO
 {
-    public interface ICreateEmployeeDTO : IEntityDTO
-    {
-        int Identification { get; set; }
-        string Name { get; set; }
-        string FirstLastName { get; set; }
-        string SecondLastName { get; set; }
-        int ManagerId { get; set; }
-    }
+    int Identification { get; }
+    string Name { get; }
+    string FirstLastName { get; }
+    string SecondLastName { get; }
+    int ManagerId { get; }
 }
